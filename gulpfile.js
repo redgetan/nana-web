@@ -15,7 +15,7 @@ const env                = process.env.NODE_ENV || 'development';
 
 const VENDORS = ['react'];
 const ENTRY       = "./client/application.js"
-const WATCH_DIRS = ["./client/**/.js"]
+const WATCH_DIRS = ["./client/**/*.js"]
 const DESTINATION = "./dist/"
 
 gulp.task('default', ['build:vendor', 'build:app']);
@@ -50,6 +50,7 @@ gulp.task('build:app', () => {
   }
 
   watch(WATCH_DIRS, bundleApp);
+  bundleApp();
 
 });
 

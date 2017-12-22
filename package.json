@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js --exec babel-node "
+    "start": "nodemon server/server.js --exec babel-node "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -13,7 +13,7 @@ const app = express()
 app.use("/dist", express.static(path.resolve(__dirname + "/../", 'dist')))
 
 /* VIEW TEMPLATING */
-app.set('views', './client/views')
+app.set('views', './server/views')
 app.set('view engine', 'ejs')
 
 
