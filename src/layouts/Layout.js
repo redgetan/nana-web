@@ -11,6 +11,7 @@ export default ({ body, title }) => {
       </body>
       
       <script src="/dist/vendor.js"></script>
+      <script src="/dist/app.js"></script>
     </html>
   `;
 };
