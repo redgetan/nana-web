@@ -14,7 +14,8 @@ const gulp = require('gulp'),
 const env                = process.env.NODE_ENV || 'development';
 
 const VENDORS = ['react'];
-const ENTRY       = "./src/main.js"
+const ENTRY       = "./client/application.js"
+const WATCH_DIRS = ["./client/**/.js"]
 const DESTINATION = "./dist/"
 
 gulp.task('default', ['build:vendor', 'build:app']);
@@ -48,7 +49,7 @@ gulp.task('build:app', () => {
     .pipe(gulp.dest(DESTINATION));
   }
 
-  watch(['src/**/*.js'], bundleApp);
+  watch(WATCH_DIRS, bundleApp);
 
 });
 
