@@ -38,10 +38,15 @@ gulp.task('build:vendor', () => {
 });
 
 gulp.task('build:stylesheets', () => {
-  return gulp.src(STYLESHEETS)
-    .pipe(concat('style.css'))
-    .pipe(minifyCSS())
-    .pipe(gulp.dest(DESTINATION))
+  const bundleCSS = () => {
+    console.log("Rebuilding dist/style.css")
+    gulp.src(STYLESHEETS)
+      .pipe(concat('style.css'))
+      .pipe(minifyCSS())
+      .pipe(gulp.dest(DESTINATION))
+  }
+
+  watch(STYLESHEETS, bundleCSS);
 })
 
 gulp.task('build:app', () => {
@@ -53,10 +58,6 @@ gulp.task('build:app', () => {
     })
     .external(VENDORS) 
     .transform(babelify)
-    .transform('browserify-css', {
-        minify: true,
-        output: 'bundle.css'
-    })
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
