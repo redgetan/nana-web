@@ -4,6 +4,10 @@ import React from 'react'
 import Layout from './layouts/Layout';
 import App from './components/Hello';
 
+const path = require("path");
+
+global.appRoot = path.resolve(__dirname + '/../');
+
 
 const PORT = 8080
 
@@ -17,6 +21,9 @@ const Fox = ({ name }) => (
 
 // basic HTTP server via express:
 const app = express();
+// app.use("dist", express.static("../dist"))
+app.use("/dist", express.static(path.resolve(__dirname + "/../", 'dist')));
+
 app.listen(PORT, () => {
 	console.log("server listening on " + PORT)	
 });
