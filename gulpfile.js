@@ -1,5 +1,6 @@
 const gulp = require('gulp'),
   uglify = require('gulp-uglify'),
+  watch = require('gulp-watch'),
   babelify = require('babelify'),
   browserify = require('browserify'),
   watchify = require('watchify'),
@@ -33,15 +34,21 @@ gulp.task('build:vendor', () => {
 });
 
 gulp.task('build:app', () => {
-  browserify({
-    entries: [ENTRY]
-  })
-  .external(VENDORS) 
-  .transform(babelify)
-  .bundle()
-  .pipe(source('app.js'))
-  .pipe(buffer())
-  .pipe(gulp.dest(DESTINATION));
+  const bundleApp = () => {
+    console.log("Rebuilding dist/app.js")
+
+    browserify({
+      entries: [ENTRY]
+    })
+    .external(VENDORS) 
+    .transform(babelify)
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(gulp.dest(DESTINATION));
+  }
+
+  watch(['src/**/*.js'], bundleApp);
 
 });
 
