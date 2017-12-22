@@ -2,6 +2,8 @@ const gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   watch = require('gulp-watch'),
   babelify = require('babelify'),
+  minifyCSS = require('gulp-minify-css'),
+  concat = require('gulp-concat'),
   browserify = require('browserify'),
   watchify = require('watchify'),
   buffer = require('vinyl-buffer'),
@@ -13,12 +15,13 @@ const gulp = require('gulp'),
 
 const env                = process.env.NODE_ENV || 'development';
 
-const VENDORS = ['react'];
+const VENDORS = ['react', 'bootstrap', 'react-dom'];
 const ENTRY       = "./client/application.js"
+const STYLESHEETS = "./server/stylesheets/*.css"
 const WATCH_DIRS = ["./client/**/*.js"]
 const DESTINATION = "./dist/"
 
-gulp.task('default', ['build:vendor', 'build:app']);
+gulp.task('default', ['build:vendor', 'build:stylesheets', 'build:app']);
 
 gulp.task('build:vendor', () => {
   const b = browserify();
@@ -34,6 +37,13 @@ gulp.task('build:vendor', () => {
   
 });
 
+gulp.task('build:stylesheets', () => {
+  return gulp.src(STYLESHEETS)
+    .pipe(concat('style.css'))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest(DESTINATION))
+})
+
 gulp.task('build:app', () => {
   const bundleApp = () => {
     console.log("Rebuilding dist/app.js")
@@ -43,6 +53,10 @@ gulp.task('build:app', () => {
     })
     .external(VENDORS) 
     .transform(babelify)
+    .transform('browserify-css', {
+        minify: true,
+        output: 'bundle.css'
+    })
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
