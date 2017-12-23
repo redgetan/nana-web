@@ -1,3 +1,25 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
 .main-container {
-  border: solid 2px blue;
+  
+}
+
+.home_search_form {
+  padding-top: 10px;
+}
+
+.home_search {
+  border: solid 1px #ccc;
+  background-repeat: no-repeat;
+  text-indent: 30px;
+  background-position: 6px center;
+  margin-right: 0px;
+  height: 30px;
+  color: #ccc;
+  width: 250px;
 }

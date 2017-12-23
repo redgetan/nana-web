@@ -22,10 +22,11 @@ const  fs = require('fs')
 const env                = process.env.NODE_ENV || 'development'
 const isProduction       = env === "production"
 
-const VENDORS = ['react', 'bootstrap', 'react-dom'];
+const VENDORS = ['react', 'react-dom'];
 const ENTRY       = "./client/application.js"
 const STYLESHEETS = "./server/stylesheets/*.css"
 const WATCH_DIRS = ["./client/**/*.js"]
+const WATCH_VIEW_DIRS = ["./server/views/header.ejs"]
 const DESTINATION = "./dist/"
 const REV_MANIFEST_FILE = "dist/rev-manifest.json"
 const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
@@ -106,13 +107,20 @@ gulp.task('build:revisionreplace', () => {
     manifest = JSON.parse(fs.readFileSync(REV_MANIFEST_FILE, 'utf8'));
   }
 
-  return gulp.src('server/views/header.ejs')
-    .pipe(ejs({ assetPath: function(path){
-      return isProduction ? manifest[path] : path
-    }}))
-    .on('error', function(e){ console.log(e); })
-    .pipe(rename("header_compiled.ejs"))
-    .pipe(gulp.dest("server/views/"));
+  const bundleLayout = () => {
+    console.log("Rebuilding server/views/header.ejs")
+
+    return gulp.src(WATCH_VIEW_DIRS)
+      .pipe(ejs({ assetPath: function(path){
+        return isProduction ? manifest[path] : path
+      }}))
+      .on('error', function(e){ console.log(e); })
+      .pipe(rename("header_compiled.ejs"))
+      .pipe(gulp.dest("server/views/"));
+  }
+
+  if (!isProduction) watch(WATCH_VIEW_DIRS, bundleLayout)
+  return bundleLayout()
 })
 
 
