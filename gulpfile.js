@@ -69,7 +69,8 @@ gulp.task('build:stylesheets', () => {
       .pipe(gulp.dest(DESTINATION))
   }
 
-  watch(STYLESHEETS, bundleCSS)
+  if (!isProduction) watch(STYLESHEETS, bundleCSS)
+  
   return bundleCSS()
 })
 
@@ -93,7 +94,8 @@ gulp.task('build:javascript', () => {
     .pipe(gulp.dest(DESTINATION))
   }
 
-  watch(WATCH_DIRS, bundleApp)
+  if (!isProduction) watch(WATCH_DIRS, bundleApp)
+  
   return bundleApp()
 })
 
