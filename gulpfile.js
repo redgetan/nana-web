@@ -22,7 +22,17 @@ const  fs = require('fs')
 const env                = process.env.NODE_ENV || 'development'
 const isProduction       = env === "production"
 
-const VENDORS = ['react', 'react-dom'];
+const VENDORS = [
+  'react', 
+  'react-dom', 
+  'react-router-dom', 
+  'react-apollo', 
+  'apollo-client',
+  'apollo-link-http',
+  'apollo-cache-inmemory',
+  'babel-polyfill'
+]
+
 const ENTRY       = "./client/application.js"
 const STYLESHEETS = "./server/stylesheets/*.css"
 const WATCH_DIRS = ["./client/**/*.js"]
