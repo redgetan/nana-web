@@ -1,0 +1,79 @@
+[x] Homepage
+  [x] Title
+  [x] navbar
+    [x] explore
+    [x] signup
+    [x] sign in
+
+[x] ExploreActivity
+  [x] Card
+    [x] Picture
+    [x] Rating
+    [x] username
+    [x] user_avatar
+
+[ ] BookActivity
+  [ ] summary
+    [ ] gallery pics
+    [ ] title
+    [ ] location
+    [ ] duration (2 hours total)
+    [ ] Meet xxx
+  [ ] profile
+    [ ] picture
+    [ ] description
+    [ ] notes
+  [ ] availability
+    [ ]
+  [ ]
+  [ ] reviews
+  [ ] action bar
+    [ ] price (per person)
+    [ ] # reviews (# of stars)
+    [ ] see dates
+
+[ ] DateSelectionActivity
+  [ ] scrolling down can show me future dates
+  [ ] price
+
+[ ] GuestListActivity
+  [ ] who's coming
+  [ ] Add guest
+
+[ ] ReviewPurchaseActivity
+  [ ] title
+  [ ] date/time
+  [ ] 1 guest
+  [ ] payment method (i.e visa 2019) - editable
+  [ ] price details
+  [ ] price total
+
+[ ] AddPaymentActivity
+  [ ] credit card
+  [ ] paypal
+
+[ ] NewCreditCardActivity
+  [ ] enter your card details
+  [ ]
+
+
+===== Web
+1. GuestList + price summary (i.e pricepurchaseactivity)
+2. Confirm and pay
+
+
+
+
+
+
+
+
+
+video
+-----
+airbnb experiences
+https://www.twitch.tv/videos/200483558
+
+
+
+
