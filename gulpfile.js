@@ -3,57 +3,81 @@ const gulp = require('gulp'),
   watch = require('gulp-watch'),
   babelify = require('babelify'),
   minifyCSS = require('gulp-minify-css'),
+  gulpif = require('gulp-if'),
   concat = require('gulp-concat'),
   browserify = require('browserify'),
   watchify = require('watchify'),
   buffer = require('vinyl-buffer'),
   connect = require('gulp-connect'),
   source = require('vinyl-source-stream'),
-  process = require('process'),
-  rev = require('gulp-rev');
+  rev = require('gulp-rev'),
+  ejs = require("gulp-ejs"),
+  rename = require('gulp-rename'),
+  runSequence = require('run-sequence')
+
+const  process = require('process')
+const  fs = require('fs')
 
 
-const env                = process.env.NODE_ENV || 'development';
+const env                = process.env.NODE_ENV || 'development'
+const isProduction       = env === "production"
 
 const VENDORS = ['react', 'bootstrap', 'react-dom'];
 const ENTRY       = "./client/application.js"
 const STYLESHEETS = "./server/stylesheets/*.css"
 const WATCH_DIRS = ["./client/**/*.js"]
 const DESTINATION = "./dist/"
+const REV_MANIFEST_FILE = "dist/rev-manifest.json"
+const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
 
-gulp.task('default', ['build:vendor', 'build:stylesheets', 'build:app']);
+gulp.task('default', ['build:all'])
+
+gulp.task('build:all', (cb) => {
+  runSequence('build:vendor', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+})
 
 gulp.task('build:vendor', () => {
-  const b = browserify();
+  const b = browserify()
 
   VENDORS.forEach(lib => {
     b.require(lib);
-  });
+  })
 
-  b.bundle()
-  .pipe(source('vendor.js'))
-  .pipe(buffer())
-  .pipe(gulp.dest(DESTINATION));
+  return b.bundle()
+    .pipe(source('vendor.js'))
+    .pipe(buffer())
+    .pipe(gulpif(isProduction, uglify()))
+    .pipe(gulpif(isProduction, rev()))
+    .pipe(gulp.dest(DESTINATION))
+    .pipe(gulpif(isProduction, rev.manifest(REV_MANIFEST_FILE, { merge: true })))
+    .pipe(rename(REV_MANIFEST_FILE_WITHOUT_DIR))
+    .pipe(gulp.dest(DESTINATION))
   
-});
+})
 
 gulp.task('build:stylesheets', () => {
   const bundleCSS = () => {
     console.log("Rebuilding dist/style.css")
-    gulp.src(STYLESHEETS)
+
+    return gulp.src(STYLESHEETS)
       .pipe(concat('style.css'))
       .pipe(minifyCSS())
+      .pipe(gulpif(isProduction, rev()))
+      .pipe(gulp.dest(DESTINATION))
+      .pipe(gulpif(isProduction, rev.manifest(REV_MANIFEST_FILE, { merge: true })))
+      .pipe(rename(REV_MANIFEST_FILE_WITHOUT_DIR))
       .pipe(gulp.dest(DESTINATION))
   }
 
-  watch(STYLESHEETS, bundleCSS);
+  watch(STYLESHEETS, bundleCSS)
+  return bundleCSS()
 })
 
-gulp.task('build:app', () => {
+gulp.task('build:javascript', () => {
   const bundleApp = () => {
     console.log("Rebuilding dist/app.js")
 
-    browserify({
+    return browserify({
       entries: [ENTRY]
     })
     .external(VENDORS) 
@@ -61,13 +85,32 @@ gulp.task('build:app', () => {
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(gulp.dest(DESTINATION));
+    .pipe(gulpif(isProduction, uglify()))
+    .pipe(gulpif(isProduction, rev()))
+    .pipe(gulp.dest(DESTINATION))
+    .pipe(gulpif(isProduction, rev.manifest(REV_MANIFEST_FILE, { merge: true })))
+    .pipe(rename(REV_MANIFEST_FILE_WITHOUT_DIR))
+    .pipe(gulp.dest(DESTINATION))
   }
 
-  watch(WATCH_DIRS, bundleApp);
-  bundleApp();
+  watch(WATCH_DIRS, bundleApp)
+  return bundleApp()
+})
 
-});
+gulp.task('build:revisionreplace', () => {
+  let manifest = {}
 
+  if (isProduction) {
+    manifest = JSON.parse(fs.readFileSync(REV_MANIFEST_FILE, 'utf8'));
+  }
+
+  return gulp.src('server/views/header.ejs')
+    .pipe(ejs({ assetPath: function(path){
+      return isProduction ? manifest[path] : path
+    }}))
+    .on('error', function(e){ console.log(e); })
+    .pipe(rename("header_compiled.ejs"))
+    .pipe(gulp.dest("server/views/"));
+})
 
 

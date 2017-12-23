@@ -3,7 +3,10 @@
   <head>
     <title>Nana</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="dist/<%= assetPath("style.css") %>" rel="stylesheet" type="text/css" />
+    
+    <script src="dist/<%= assetPath("vendor.js") %>"></script>
+    <script src="dist/<%= assetPath("app.js") %>"></script>
     
   </head>
   
