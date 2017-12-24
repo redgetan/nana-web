@@ -30,6 +30,10 @@ button:focus {
   display: none !important;
 }
 
+.home_user_menu[data-shown='true'] {
+  display: block !important;
+}
+
 /* Photographer */
 
 .photographer_container {
