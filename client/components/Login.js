@@ -117,10 +117,8 @@ const AUTHENTICATE_USER_MUTATION = gql`
       email: $email,
       password: $password
     ) {
+      id
       token
-      user {
-        id
-      }
     }
   }
 `
