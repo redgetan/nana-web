@@ -88,7 +88,7 @@ class Login extends Component {
   _postAuth(id, token) {
     this._saveUserData(id, token)
     this.props.history.push("/")
-    renderNavbar()
+    renderNavbar(id)
   }
 
   _saveUserData = (id, token) => {

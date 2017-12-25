@@ -54,7 +54,7 @@ document.querySelector(".home_logout_btn").addEventListener("click", (event) => 
    renderNavbar()
 })
 
-const renderNavbar = () => {
+window.renderNavbar = (currentUserId) => {
   if (currentUserId) {
     document.querySelector(".login_btn").style.display = 'none'
     document.querySelector(".signup_btn").style.display = 'none'
@@ -66,4 +66,4 @@ const renderNavbar = () => {
   }
 }
 
-renderNavbar()
+renderNavbar(currentUserId)

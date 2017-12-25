@@ -58,7 +58,7 @@ class Signup extends Component {
     })
 
     this.props.history.push(`/`)
-    renderNavbar()
+    renderNavbar(true)
   }
 
 }
