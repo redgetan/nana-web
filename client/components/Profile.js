@@ -25,8 +25,26 @@ export default class Profile extends Component {
         <a href="/photographer/:username/book" className="book_photographer_btn btn btn-primary">Book</a>
         <a href="/photographer/:username/message" className="contact_photographer_btn btn">Contact</a>
 
+        <h3>Availability</h3>
+        <div className='input-group date' ref={(input) => { this.datePicker = input }}>
+          <input type='text' className="form-control" />
+          <span className="input-group-addon">
+            <span className="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+
       </div>
     )
+  }
+
+  componentDidMount() {
+    $(this.datePicker).datetimepicker({
+      inline: true
+    })
+  }
+
+  componentWillUnmount() {
+    $(this.datePicker).destroy()
   }
   
   _voteForLink = async () => {
