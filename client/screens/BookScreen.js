@@ -4,7 +4,11 @@ import gql from 'graphql-tag'
 
 import Profile from './../components/Profile'
 
-class UserScreen extends Component {
+/*
+  similar to user
+*/
+
+class BookScreen extends Component {
 
   render() {
     const graphData = this.props.allUsersQuery
@@ -44,4 +48,4 @@ const ALL_LINKS_QUERY = gql`
 `
 
 // 3
-export default graphql(ALL_LINKS_QUERY, { name: 'allUsersQuery' }) (UserScreen)
+export default graphql(ALL_LINKS_QUERY, { name: 'allUsersQuery' }) (Book)

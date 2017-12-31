@@ -1,0 +1,12 @@
+Photographer
+  [x] show price
+  [x] contact
+  [ ] see dates available
+
+BookScreen
+  [ ] date/time shown
+
+  [ ] Review Guest Requirements
+  [ ] Who's Coming
+  [ ] Confirm and Pay
+

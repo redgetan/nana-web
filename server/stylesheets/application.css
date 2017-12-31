@@ -50,5 +50,21 @@ button:focus {
 .service_summary_container {
   list-style: none;
   padding-left: 0px;
+  margin: 20px 0px;
 }
 
+.session_price {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.username {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.contact_photographer_btn {
+  border: solid 1px #777;
+  margin-left: 10px;
+  color: #777;
+}
