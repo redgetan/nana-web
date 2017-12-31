@@ -10,7 +10,7 @@ import Home from './../components/Home'
 import About from './../components/About'
 import Signup from './../components/Signup'
 import Login from './../components/Login'
-import UserScreen from './../screens/UserScreen'
+import UserDirectoryScreen from './../screens/UserDirectoryScreen'
 
 
 export default class AppRouter extends Component {
@@ -22,7 +22,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/about" component={About}/>
 	        <Route exact path='/login' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>
-		      <Route exact path="/" component={UserScreen}/>
+		      <Route exact path="/" component={UserDirectoryScreen}/>
 				</Switch>
 			</div>
 		)

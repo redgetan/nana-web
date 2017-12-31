@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import Profile from './../components/Profile'
+import ProfileCard from './../components/ProfileCard'
 
-class UserScreen extends Component {
+class UserDirectoryScreen extends Component {
 
   render() {
     const graphData = this.props.allUsersQuery
@@ -21,7 +21,7 @@ class UserScreen extends Component {
       <div>
         {
           graphData.allUsers.map((user) => (
-            <Profile key={user.id} user={user}/>
+            <ProfileCard key={user.id} user={user}/>
           ))
         }
       </div>
@@ -44,4 +44,4 @@ const ALL_LINKS_QUERY = gql`
 `
 
 // 3
-export default graphql(ALL_LINKS_QUERY, { name: 'allUsersQuery' }) (UserScreen)
+export default graphql(ALL_LINKS_QUERY, { name: 'allUsersQuery' }) (UserDirectoryScreen)
