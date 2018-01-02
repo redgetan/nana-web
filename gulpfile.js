@@ -26,10 +26,6 @@ const VENDORS = [
   'react', 
   'react-dom', 
   'react-router-dom', 
-  'react-apollo', 
-  'apollo-client',
-  'apollo-link-http',
-  'apollo-cache-inmemory',
   'babel-polyfill'
 ]
 
@@ -90,7 +86,8 @@ gulp.task('build:javascript', () => {
     console.log("Rebuilding dist/app.js")
 
     return browserify({
-      entries: [ENTRY]
+      entries: [ENTRY],
+      fullPaths: true
     })
     .external(VENDORS) 
     .transform(babelify)

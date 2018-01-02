@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 
 class Signup extends Component {
 
@@ -62,22 +60,3 @@ class Signup extends Component {
   }
 
 }
-
-const CREATE_USER_MUTATION = gql`
-  mutation CreateUserMutation($username: String!, $description: String!, $imageUrl: String!) {
-    createUser(
-      username: $username,
-      description: $description,
-      imageUrl: $imageUrl,
-    ) {
-      id
-      createdAt
-      username
-      description
-      imageUrl
-    }
-  }
-`
-
-// 3
-export default graphql(CREATE_USER_MUTATION, { name: 'createUserMutation' })(Signup)

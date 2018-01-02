@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
 
 import Profile from './../components/Profile'
 
@@ -34,18 +32,3 @@ class BookScreen extends Component {
 
 }
 
-const ALL_LINKS_QUERY = gql`
-  # 2
-  query AllUsersQuery {
-    allUsers {
-      id
-      createdAt
-      username
-      description
-      imageUrl
-    }
-  }
-`
-
-// 3
-export default graphql(ALL_LINKS_QUERY, { name: 'allUsersQuery' }) (Book)

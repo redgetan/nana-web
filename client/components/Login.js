@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../config/config'
-import { graphql, compose } from 'react-apollo'
-import gql from 'graphql-tag'
 
 class Login extends Component {
 
@@ -98,32 +96,3 @@ class Login extends Component {
 
 }
 
-const SIGNUP_USER_MUTATION = gql`
-  mutation SignupUserMutation($email: String!, $password: String!, $username: String!) {
-    signupUser(
-      email: $email,
-      password: $password,
-      username: $username
-    ) {
-      id
-      token
-    }
-  }
-`
-
-const AUTHENTICATE_USER_MUTATION = gql`
-  mutation AuthenticateUserMutation($email: String!, $password: String!) {
-    authenticateUser(
-      email: $email,
-      password: $password
-    ) {
-      id
-      token
-    }
-  }
-`
-
-export default compose(
-  graphql(SIGNUP_USER_MUTATION, { name: 'signupUserMutation' }),
-  graphql(AUTHENTICATE_USER_MUTATION, { name: 'authenticateUserMutation' })
-)(Login)
