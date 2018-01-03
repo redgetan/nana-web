@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../config/config'
+import { AUTHENTICATION_TOKEN } from '../config/config'
+import ClientAPI from './../api/client_api'
 
 export default class Login extends Component {
 
@@ -54,44 +55,39 @@ export default class Login extends Component {
     )
   }
 
-  _confirm = () => {
+  _confirm = async () => {
     const { username, email, password } = this.state
-    let authPromise = null
-    if (this.state.login) {
-      authPromise = this.props.authenticateUserMutation({
-        variables: {
-          email,
-          password
-        }
-      })
+
+    const res = await ClientAPI.signin(email, password)
+    if (res.err) {
+      if (res.body.error) {
+        alert(res.body.error)
+      } else {
+        alert("Unable to login. try again later")
+      }
     } else {
-      authPromise = this.props.signupUserMutation({
-        variables: {
-          email,
-          password,
-          username
-        }
-      })
+      const token = res.authentication_token
+      this._postAuth(token)  
     }
+    
 
-    return authPromise.then((result) => {
-      const { id, token } = result.data.authenticateUser
-      this._postAuth(id, token)
-    }).catch((e) => {
-      const msg = e.graphQLErrors.map((err) => { return err.functionError }).join(". ")
-      alert(msg)
-    })
+    //   console.log(response)
+    //   const token = response.data.authentication_token
+    //   this._postAuth(token)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
   }
 
-  _postAuth(id, token) {
-    this._saveUserData(id, token)
+  _postAuth(token) {
+    this._saveUserData(token)
     this.props.history.push("/")
-    renderNavbar(id)
+    renderNavbar(token)
   }
 
-  _saveUserData = (id, token) => {
-    localStorage.setItem(GC_USER_ID, id)
-    localStorage.setItem(GC_AUTH_TOKEN, token)
+  _saveUserData = (token) => {
+    localStorage.setItem(AUTHENTICATION_TOKEN, token)
   }
 
 }

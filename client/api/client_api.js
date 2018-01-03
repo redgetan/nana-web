@@ -16,7 +16,7 @@ export default class ClientAPI {
   }
 
   static async signin(email, password) {
-    let res = await this.getInstance().post('/user/login', {
+    let res = await this.getInstance().post('/users/signin', {
       body: {
         email: email,
         password: password

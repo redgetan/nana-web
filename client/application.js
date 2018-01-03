@@ -4,9 +4,9 @@ import AppRouter from './router/index';
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
-import { GC_USER_ID, GC_AUTH_TOKEN } from './config/config'
+import { AUTHENTICATION_TOKEN } from './config/config'
 
-const currentUserId = localStorage.getItem(GC_USER_ID)
+const currentUserId = localStorage.getItem(AUTHENTICATION_TOKEN)
 
 window.browserHistory = createBrowserHistory()
 
