@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { GC_USER_ID, GC_AUTH_TOKEN } from '../config/config'
 
-class Login extends Component {
+export default class Login extends Component {
 
   state = {
     login: true, // switch between Login and SignUp

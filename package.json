@@ -16,6 +16,7 @@
     "ejs": "^2.5.7",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "express": "^4.16.2",
+    "frisbee": "^1.6.4",
     "jquery": "^3.2.1",
     "moment": "^2.20.1",
     "paypal-rest-sdk": "^1.8.1",

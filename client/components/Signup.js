@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Signup extends Component {
+export default class Signup extends Component {
 
   state = {
     username: '',

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Profile from './../components/Profile'
 
-class PhotographerScreen extends Component {
+export default class PhotographerScreen extends Component {
 
   componentDidMount() {
   }

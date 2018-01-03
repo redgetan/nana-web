@@ -26,7 +26,8 @@ const VENDORS = [
   'react', 
   'react-dom', 
   'react-router-dom', 
-  'babel-polyfill'
+  'babel-polyfill',
+  'frisbee'
 ]
 
 const ENTRY       = "./client/application.js"

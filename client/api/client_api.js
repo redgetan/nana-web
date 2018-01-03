@@ -1,0 +1,30 @@
+import Frisbee from 'frisbee'
+
+export default class ClientAPI {
+  static getInstance() {
+    if (!this.api) {
+      this.api = new Frisbee({
+        baseURI: 'http://localhost:3000',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+
+    return this.api
+  }
+
+  static async signin(email, password) {
+    let res = await this.getInstance().post('/user/login', {
+      body: {
+        email: email,
+        password: password
+      }
+    })
+
+    return res
+  }
+}
+
+
