@@ -40,7 +40,7 @@ export default class Login extends Component {
         <div className='flex mt3'>
           <div
             className='btn btn-primary'
-            onClick={() => this._confirm()}
+            onClick={() => this.performLogin()}
           >
             {this.state.login ? 'login' : 'create account' }
           </div>
@@ -55,29 +55,21 @@ export default class Login extends Component {
     )
   }
 
-  _confirm = async () => {
+  performLogin = async () => {
     const { username, email, password } = this.state
 
     const res = await ClientAPI.signin(email, password)
+
     if (res.err) {
-      if (res.body.error) {
+      if (res.body && res.body.error) {
         alert(res.body.error)
       } else {
         alert("Unable to login. try again later")
       }
     } else {
-      const token = res.authentication_token
+      const token = res.body.authentication_token
       this._postAuth(token)  
     }
-    
-
-    //   console.log(response)
-    //   const token = response.data.authentication_token
-    //   this._postAuth(token)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
   }
 
   _postAuth(token) {

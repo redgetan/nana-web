@@ -20,8 +20,7 @@ document.getElementById('root'))
 
 /* integrate regular html with react */
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
-   localStorage.removeItem(GC_USER_ID)
-   localStorage.removeItem(GC_AUTH_TOKEN)
+   localStorage.removeItem(AUTHENTICATION_TOKEN)
    browserHistory.push("/")
    renderNavbar()
 })

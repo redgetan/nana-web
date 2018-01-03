@@ -25,6 +25,17 @@ export default class ClientAPI {
 
     return res
   }
+
+  static async signup(email, password) {
+    let res = await this.getInstance().post('/users', {
+      body: {
+        email: email,
+        password: password
+      }
+    })
+
+    return res
+  }
 }
 
 
