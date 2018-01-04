@@ -1,7 +1,8 @@
-Tutorials
-  [ ] https://www.howtographql.com/react-apollo/1-getting-started/
+Photographer Signup Flow
+  [ ] include details
 
-Photographer
+Book Photographer Flow
+  [ ] list photographers
   [x] show price
   [x] contact
   [ ] see dates available

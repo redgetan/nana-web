@@ -16,8 +16,6 @@ ReactDOM.render(
   </Router>, 
 document.getElementById('root'))
 
-
-
 /* integrate regular html with react */
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
    localStorage.removeItem(AUTHENTICATION_TOKEN)

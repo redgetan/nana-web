@@ -36,6 +36,12 @@ export default class ClientAPI {
 
     return res
   }
+
+  static async listUsers() {
+    let res = await this.getInstance().get('/users')
+
+    return res
+  }
 }
 
 

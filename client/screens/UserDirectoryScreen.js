@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 import ProfileCard from './../components/ProfileCard'
+import ClientAPI from './../api/client_api'
+
 
 export default class UserDirectoryScreen extends Component {
 
-  componentDidMount() {
+  state = {
+    users: []
+  }
+
+
+  async componentDidMount() {
+    const res = await ClientAPI.listUsers()
+
+    this.setState({ users: res.body })
+
   } 
 
   render() {
@@ -12,7 +23,7 @@ export default class UserDirectoryScreen extends Component {
     return (
       <div>
         {
-          graphData.map((user) => (
+          this.state.users.map((user) => (
             <ProfileCard key={user.id} user={user}/>
           ))
         }
