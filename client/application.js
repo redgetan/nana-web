@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './router/index';
+import Config from './config/config';
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-
-import { AUTHENTICATION_TOKEN } from './config/config'
-
-const currentUserId = localStorage.getItem(AUTHENTICATION_TOKEN)
 
 window.browserHistory = createBrowserHistory()
 
@@ -18,13 +15,17 @@ document.getElementById('root'))
 
 /* integrate regular html with react */
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
-   localStorage.removeItem(AUTHENTICATION_TOKEN)
-   browserHistory.push("/")
-   renderNavbar()
+  Config.clearCredentials()
+  browserHistory.push("/")
+  renderNavbar()
 })
 
-window.renderNavbar = (currentUserId) => {
-  if (currentUserId) {
+document.querySelector(".edit_profile_btn").addEventListener("click", (event) => {
+  browserHistory.push("/users/edit")
+})
+
+window.renderNavbar = () => {
+  if (Config.isSignedIn()) {
     document.querySelector(".login_btn").style.display = 'none'
     document.querySelector(".signup_btn").style.display = 'none'
     document.querySelector(".home_user_menu").dataset.shown = 'true'
@@ -35,4 +36,4 @@ window.renderNavbar = (currentUserId) => {
   }
 }
 
-renderNavbar(currentUserId)
+renderNavbar()

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AUTHENTICATION_TOKEN } from '../config/config'
+import Config from '../config/config'
 import ClientAPI from './../api/client_api'
 
 export default class Signup extends Component {
@@ -12,7 +12,7 @@ export default class Signup extends Component {
   render() {
     return (
       <div>
-        <div className=''>
+        <form className='' onSubmit={this.performSignup}>
           <input
             className=''
             value={this.state.email}
@@ -29,41 +29,36 @@ export default class Signup extends Component {
             placeholder='password'
           />
           <br/>
-        </div>
-        <button
-          onClick={() => this.performSignup()}
-        >
-          Submit
-        </button>
+          <input type="submit" value="Sign Up"/>
+        </form>
       </div>
     )
   }
 
-  performSignup = async () => {
+  performSignup = (event) => {
+    event.preventDefault()
+
     const { email, password } = this.state
 
-    const res = await ClientAPI.signup(email, password)
-
-    if (res.err) {
-      if (res.body.error) {
+    ClientAPI.signup(email, password).then((res) => {
+      if (res.err) {
         alert(res.body.error)
       } else {
-        alert("Unable to login. try again later")
+        this._postAuth(res.body)  
       }
-    } else {
-      const token = res.body.authentication_token
-      this._postAuth(token)  
-    }
+    }).catch((err) => {
+      alert(err.message)
+    })
   }
 
-  _postAuth(token) {
-    this._saveUserData(token)
+  _postAuth(data) {
+    this._saveUserData(data)
     this.props.history.push("/")
-    renderNavbar(token)
+    renderNavbar()
   }
 
-  _saveUserData = (token) => {
-    localStorage.setItem(AUTHENTICATION_TOKEN, token)
+  _saveUserData = (data) => {
+    Config.setUserData(data)
   }
 
 

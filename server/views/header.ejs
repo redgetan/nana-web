@@ -5,17 +5,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css.map" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css" rel="stylesheet" type="text/css" />
-    <link href="dist/<%= assetPath("style.css") %>" rel="stylesheet" type="text/css" />
+    <link href="/dist/<%= assetPath("style.css") %>" rel="stylesheet" type="text/css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" ></script>
     
-    <script defer src="dist/<%= assetPath("vendor.js") %>"></script>
-    <script defer src="dist/<%= assetPath("app.js") %>"></script>
+    <script defer src="/dist/<%= assetPath("vendor.js") %>"></script>
+    <script defer src="/dist/<%= assetPath("app.js") %>"></script>
   </head>
   
   <body>
@@ -46,7 +47,7 @@
           <li class="home_user_menu dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Me <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Edit Profile</a></li>
+              <li><a class="edit_profile_btn" href="#">Edit Profile</a></li>
               <li><a class="home_logout_btn" href="#">Logout</a></li>
             </ul>
           </li>

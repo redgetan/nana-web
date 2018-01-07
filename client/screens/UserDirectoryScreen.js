@@ -9,12 +9,16 @@ export default class UserDirectoryScreen extends Component {
     users: []
   }
 
-
-  async componentDidMount() {
-    const res = await ClientAPI.listUsers()
-
-    this.setState({ users: res.body })
-
+  componentDidMount() {
+    ClientAPI.listUsers().then((res) => {
+      if (Array.isArray(res.body)) {
+        this.setState({ users: res.body })
+      } else {
+        throw new Error("failed to list users")
+      }
+    }).catch((err) => {
+      alert(err.message)
+    })
   } 
 
   render() {

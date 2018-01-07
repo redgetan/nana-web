@@ -1,3 +1,126 @@
+Jan
+  5
+    [ ] booking wizard
+      [ ] choose date from calendar
+      [ ] /:username/book?date=1255522
+        [ ] review requirements
+        [ ] number of guest
+        [ ] cost confirm container
+          [ ] cost summary
+          [ ] paypal button
+            [ ] mock
+      [ ] onSuccess
+        [ ] mark date as booked (create booking entry with cost/buyer/seller/date)
+
+  6
+
+  7
+   [ ] migrate to bookshelf
+   [ ] if i hit instagram connect again, it should show error
+   [ ] oauth callback should never leak details of error in catch promise
+   [ ] if i already connected instagram, then:
+    [ ] show state (dont show button)
+    [ ] populate profile pic (create column in db)
+    [ ] ask user to choose 5 sample pictures
+
+  10
+   [ ] clean up error in production (dont leak data, ie. stacktrace)
+     [ ] syntax error in user model
+     [ ] POST /users returns 200 when it should be 400
+      user.js getSchema is not a function
+   [ ] mobile navbar, when clicked on edit profile, should slideup navbar
+
+
+
+
+
+
+Feb
+
+  3
+    [ ] release among friends
+
+  10
+    [ ] release to 10 photographers
+    [ ] get them to post their url page on instagram profile
+
+
+  24
+    [ ] release to reddit
+      [ ] /r/okcupid or /r/tinder
+
+
+
+
+
+
+
+
+
+
+=== Nana.ly =====
+
+[ ] design
+  [ ] inspirations
+    - cryptokitties
+    - ant design
+    - vsco
+    - 500px
+
+[ ] photographer
+  [ ] signup
+  [ ] paypal payment must work
+  [ ] connect instagram account must build their profile page
+  [ ] show ratings
+
+[ ] buyer
+  [ ] photographer directory
+    [ ] new
+    [ ] featured
+  [ ] message photographer
+  [ ] rate photographer
+    [ ] email notification
+
+[ ] analytics
+  [ ] google analytics
+
+[ ] hosting
+  [ ] website - cloudfront
+  [ ] lambda - serverless (sub-domain)
+
+[ ] error notification
+  [ ] server
+    sentry
+  [ ] client
+    sentry
+
+[ ] sharing metatags
+  [ ] twitter
+  [ ] facebook
+  [ ] reddit
+
+[ ] security
+  [ ] find react security best practices
+  [ ] xss
+  [ ] csrf
+  [ ] sqli
+
+
+
+
+
+
+
+
+
+
+================
+
+
+
+
+
+
 Photographer Signup Flow
   [ ] include details
 
