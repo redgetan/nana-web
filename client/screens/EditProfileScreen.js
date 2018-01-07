@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
+import ProfileSummary from './../components/ProfileSummary'
+import GalleryPicker from './../components/GalleryPicker'
 
 export default class EditProfileScreen extends Component {
 
@@ -16,24 +18,35 @@ export default class EditProfileScreen extends Component {
     })
   } 
 
+  componentWillUpdate() {
+    if (this.state.user && this.state.user.providers.length) {
+      this.state.user.providers.map((provider) => {
+        Config.setAccessToken(provider)
+      })
+    }
+  }
+
   render() {
     if (this.state.user) {
       if (this.state.user.providers.length > 0) {
         return (
           <div>
+            <ProfileSummary user={this.state.user} />
             <h3>Connected Accounts</h3>
             {
               this.state.user.providers.map((provider) => (
-                <div key={provider} className="connected_account_label">
-                  {provider}  
+                <div key={provider.name} className="connected_account_label">
+                  {provider.name}  
                 </div>
               ))
             }
+            <GalleryPicker />
           </div>
         )
       } else {
         return (
           <div>
+            <ProfileSummary user={this.state.user} />
             <a href={Config.getInstagramOAuthUrl()} >
               <i className="fa fa-instagram" aria-hidden="true"></i>
               Connect to Instagram

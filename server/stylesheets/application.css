@@ -68,3 +68,11 @@ button:focus {
   margin-left: 10px;
   color: #777;
 }
+
+.user_avatar {
+  width: 150px;
+}
+
+.user_gallery_picker img {
+  margin: 10px;
+}

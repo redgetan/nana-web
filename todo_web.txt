@@ -15,13 +15,19 @@ Jan
   6
 
   7
-   [ ] migrate to bookshelf
-   [ ] if i hit instagram connect again, it should show error
-   [ ] oauth callback should never leak details of error in catch promise
+   [x] migrate to bookshelf
+   [x] if i hit instagram connect again, it should show error
    [ ] if i already connected instagram, then:
-    [ ] show state (dont show button)
-    [ ] populate profile pic (create column in db)
+    [x] show state (dont show button)
+    [x] populate profile pic (create column in db)
     [ ] ask user to choose 5 sample pictures
+      [x] list 5 pictures
+      [ ] cache pictures
+      [ ] let user set which ones they want to display 
+        [ ] follow airbnb listing creation
+
+   [ ] implement middleware (prod/dev error stacktrace/notification)
+   [ ] deploy api live
 
   10
    [ ] clean up error in production (dont leak data, ie. stacktrace)
@@ -29,6 +35,10 @@ Jan
      [ ] POST /users returns 200 when it should be 400
       user.js getSchema is not a function
    [ ] mobile navbar, when clicked on edit profile, should slideup navbar
+   [ ] oauth callback should never leak details of error in catch promise
+
+  15
+    [ ] sentry error reporting on catch
 
 
 

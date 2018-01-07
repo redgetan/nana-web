@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 export default class Login extends Component {
 
   state = {
-    login: true, // switch between Login and SignUp
     email: '',
     password: '',
     username: ''
@@ -50,24 +49,25 @@ export default class Login extends Component {
     const { username, email, password } = this.state
 
     ClientAPI.signin(email, password).then((res) => {
-      this._postAuth(res.body)  
-    }).catch((err) => {
-
-    })
-
-    if (res.err) {
       if (res.body && res.body.error) {
         alert(res.body.error)
       } else {
-        alert("Unable to login. try again later")
+        this._postAuth(res.body)  
       }
-    } else {
-    }
+    }).catch((err) => {
+      alert("Unable to login. try again later")
+    })
+
   }
 
   _postAuth(data) {
     this._saveUserData(data)
-    this.props.history.push("/")
+
+    data.providers.forEach((provider) => {
+      Config.setAccessToken(provider)
+    })
+
+    this.props.history.push("/account/manage")
     renderNavbar()
   }
 

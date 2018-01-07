@@ -4,12 +4,23 @@ export default class Config {
     localStorage.setItem("authentication_token", data.authentication_token)
   }  
 
+  static setAccessToken(provider) {
+    if (typeof this.getProviderToken(provider.name) === "undefined" && provider.access_token) {
+      localStorage.setItem(provider.name + "_access_token", provider.access_token)
+    }
+  }
+
+  static getAccessToken(provider_name) {
+    return localStorage.getItem(provider_name + "_access_token")
+  }
+
   static getAuthenticationToken() {
     return localStorage.getItem("authentication_token")
   }
 
   static clearCredentials() {
     localStorage.removeItem("authentication_token")
+    localStorage.removeItem("instagram_access_token")
   }
 
   static isSignedIn() {
