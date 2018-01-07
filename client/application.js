@@ -21,7 +21,7 @@ document.querySelector(".home_logout_btn").addEventListener("click", (event) => 
 })
 
 document.querySelector(".edit_profile_btn").addEventListener("click", (event) => {
-  browserHistory.push("/users/edit")
+  browserHistory.push("/account/manage")
 })
 
 window.renderNavbar = () => {

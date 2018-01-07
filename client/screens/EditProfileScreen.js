@@ -5,7 +5,7 @@ import Config from './../config/config'
 export default class EditProfileScreen extends Component {
 
   state = {
-    user: {}
+    user: null
   }
 
   componentDidMount() {
@@ -18,16 +18,31 @@ export default class EditProfileScreen extends Component {
 
   render() {
     if (this.state.user) {
-      return (
-        <div>
-          <a href={Config.getInstagramOAuthUrl()} >
-            <i className="fa fa-instagram" aria-hidden="true"></i>
-            Connect to Instagram
-          </a>
-        </div>
-      )
+      if (this.state.user.providers.length > 0) {
+        return (
+          <div>
+            <h3>Connected Accounts</h3>
+            {
+              this.state.user.providers.map((provider) => (
+                <div key={provider} className="connected_account_label">
+                  {provider}  
+                </div>
+              ))
+            }
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <a href={Config.getInstagramOAuthUrl()} >
+              <i className="fa fa-instagram" aria-hidden="true"></i>
+              Connect to Instagram
+            </a>
+          </div>
+        )
+      }
     } else {
-      return (<div>Must show login screen</div>)
+      return (<div></div>)
 
     }
   }

@@ -25,7 +25,7 @@ export default class AppRouter extends Component {
 	        <Route exact path='/login' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>
 		      <Route exact path="/:username" component={PhotographerScreen}/>
-		      <Route exact path="/users/edit" component={EditProfileScreen}/>
+		      <Route exact path="/account/manage" component={EditProfileScreen}/>
 		      <Route exact path="/" component={UserDirectoryScreen}/>
 				</Switch>
 			</div>
