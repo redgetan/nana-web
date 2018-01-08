@@ -1,11 +1,11 @@
 export default class Config {
   static setUserData(data) {
-    if (typeof data.authentication_token === "undefined") return
+    if (!data.authentication_token) return
     localStorage.setItem("authentication_token", data.authentication_token)
   }  
 
   static setAccessToken(provider) {
-    if (typeof this.getProviderToken(provider.name) === "undefined" && provider.access_token) {
+    if (!this.getAccessToken(provider.name) && provider.access_token) {
       localStorage.setItem(provider.name + "_access_token", provider.access_token)
     }
   }

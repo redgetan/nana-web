@@ -3,16 +3,23 @@ import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import ProfileSummary from './../components/ProfileSummary'
 import GalleryPicker from './../components/GalleryPicker'
+import { Redirect } from 'react-router-dom'
+
 
 export default class EditProfileScreen extends Component {
 
   state = {
-    user: null
+    user: null,
+    unauthorized: false
   }
 
   componentDidMount() {
     ClientAPI.getUserAccount().then((res) => {
-      this.setState({ user: res.body })
+      if (res.status === 401) {
+        this.setState({ unauthorized: true })
+      } else {
+        this.setState({ user: res.body })
+      }
     }).catch((err) => {
       console.log("fail..")
     })
@@ -27,6 +34,12 @@ export default class EditProfileScreen extends Component {
   }
 
   render() {
+    if (this.state.unauthorized) {
+      return (
+        <Redirect to="/signin"/>
+      )
+    }
+
     if (this.state.user) {
       if (this.state.user.providers.length > 0) {
         return (

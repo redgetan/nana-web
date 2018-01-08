@@ -22,7 +22,7 @@ export default class AppRouter extends Component {
 				<Switch>
 		      <Route exact path="/messages" component={Home}/>
 		      <Route exact path="/about" component={About}/>
-	        <Route exact path='/login' component={Login}/>
+	        <Route exact path='/signin' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>
 		      <Route exact path="/:username" component={PhotographerScreen}/>
 		      <Route exact path="/account/manage" component={EditProfileScreen}/>
