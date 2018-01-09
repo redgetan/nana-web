@@ -20,9 +20,10 @@ Jan
    [ ] if i already connected instagram, then:
     [x] show state (dont show button)
     [x] populate profile pic (create column in db)
+
+  9
     [ ] ask user to choose 5 sample pictures
       [x] list 5 pictures
-      [ ] cache pictures
       [ ] let user set which ones they want to display 
         [ ] follow airbnb listing creation
 
@@ -30,6 +31,7 @@ Jan
    [ ] deploy api live
 
   10
+   [ ] drag/drop https://github.com/atlassian/react-beautiful-dnd
    [ ] clean up error in production (dont leak data, ie. stacktrace)
      [ ] syntax error in user model
      [ ] POST /users returns 200 when it should be 400
@@ -81,6 +83,8 @@ Feb
   [ ] signup
   [ ] paypal payment must work
   [ ] connect instagram account must build their profile page
+    [ ] https://github.com/deanmcpherson/react-native-sortable-listview
+    [ ] https://github.com/ollija/react-native-sortable-grid
   [ ] show ratings
 
 [ ] buyer
@@ -116,6 +120,8 @@ Feb
   [ ] sqli
 
 
+[ ] user reviews (2.0)
+  [ ] buyer/photographer's review of site
 
 
 

@@ -58,6 +58,10 @@ export default class ClientAPI {
     return this.getInstance().get('/users')
   }
 
+  static getUser(username) {
+    return this.getInstance().get('/users/' + username)
+  }
+
   static getUserAccount() {
     return this.getInstance().get('/account')
   }

@@ -5,8 +5,8 @@ export default class Profile extends Component {
   render() {
     return (
       <div className='photographer_container'>
-        <div className="username">{this.props.user.username}</div>
-        <img className='user_photo_gallery_item' src={this.props.user.imageUrl} alt=""/>
+        <div className="username">{this.props.user.email}</div>
+        <img className='user_photo_gallery_item' src={this.props.user.avatar} alt=""/>
         <ul className="service_summary_container">
           <li><span className="session_price">$45</span> per person</li>
           <li>Location: Toronto</li>
@@ -26,11 +26,7 @@ export default class Profile extends Component {
         <a href="/photographer/:username/message" className="contact_photographer_btn btn">Contact</a>
 
         <h3>Availability</h3>
-        <div className='input-group date' ref={(input) => { this.datePicker = input }}>
-          <input type='text' className="form-control" />
-          <span className="input-group-addon">
-            <span className="glyphicon glyphicon-calendar"></span>
-          </span>
+        <div className='book_datepicker' ref={(el) => { this.datePicker = el }}>
         </div>
 
       </div>

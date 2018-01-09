@@ -12,7 +12,9 @@ export default class UserDirectoryScreen extends Component {
   componentDidMount() {
     ClientAPI.listUsers().then((res) => {
       if (Array.isArray(res.body)) {
-        this.setState({ users: res.body })
+        const users = res.body
+        const sortedUsers = users.sort((a, b) => { return (new Date(b.created_at)) - (new Date(a.created_at)) })
+        this.setState({ users: sortedUsers })
       } else {
         throw new Error("failed to list users")
       }
@@ -27,7 +29,8 @@ export default class UserDirectoryScreen extends Component {
     return (
       <div>
         {
-          this.state.users.map((user) => (
+          this.state.users
+                    .map((user) => (
             <ProfileCard key={user.id} user={user}/>
           ))
         }
