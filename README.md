@@ -1,6 +1,10 @@
-Rafff.co
+Intro
+------
 
-# Usage
+Nana is a marketplace for finding photographers nearby who can take pictures of you doing things that you're passionate about, and make your dating photos 10x better.
+
+Usage
+------
 
     npm start
 

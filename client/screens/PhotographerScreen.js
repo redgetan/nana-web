@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Profile from './../components/Profile'
+import ReviewList from './../components/ReviewList'
 
 export default class PhotographerScreen extends Component {
 
@@ -41,6 +42,7 @@ export default class PhotographerScreen extends Component {
           </ul>
 
           <Profile user={this.state.user} />
+          <ReviewList user={this.state.user} />
 
         </div>
       )

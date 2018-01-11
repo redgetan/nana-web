@@ -24,7 +24,7 @@ Jan
   9
     [ ] ask user to choose 5 sample pictures
       [x] list 5 pictures
-      [ ] let user set which ones they want to display 
+      [ ] let user set which ones they want to display
         [ ] follow airbnb listing creation
 
    [ ] implement middleware (prod/dev error stacktrace/notification)
@@ -86,6 +86,7 @@ Feb
     [ ] https://github.com/deanmcpherson/react-native-sortable-listview
     [ ] https://github.com/ollija/react-native-sortable-grid
   [ ] show ratings
+    https://github.com/Monte9/react-native-ratings
 
 [ ] buyer
   [ ] photographer directory
@@ -94,6 +95,9 @@ Feb
   [ ] message photographer
   [ ] rate photographer
     [ ] email notification
+  [ ] checkout
+    https://www.kingstonfarrell.com/13681699/checkouts/8596afb4c8b48f7eaa5313ada80896f8?previous_step=shipping_method&step=payment_method
+    https://gocoin.com/merchant_signup
 
 [ ] analytics
   [ ] google analytics

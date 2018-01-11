@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import ProfileSummary from './../components/ProfileSummary'
-import GalleryPicker from './../components/GalleryPicker'
+import ProfileGalleryPicker from './../components/ProfileGalleryPicker'
 import { Redirect } from 'react-router-dom'
 
 
@@ -53,7 +53,7 @@ export default class EditProfileScreen extends Component {
                 </div>
               ))
             }
-            <GalleryPicker />
+            <ProfileGalleryPicker />
           </div>
         )
       } else {
