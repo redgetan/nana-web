@@ -126,6 +126,7 @@ Feb
 
 [ ] user reviews (2.0)
   [ ] buyer/photographer's review of site
+  [ ] can only review a user after transaction completed.
 
 
 

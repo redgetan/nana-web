@@ -84,3 +84,39 @@ button:focus {
 .user_gallery_picker img {
   margin: 10px;
 }
+
+.photographer_card {
+  display: inline-block;
+}
+
+.header_2 {
+  font-weight: bold;
+  font-size: 24px;
+  display: block;
+  margin: 10px 0px;
+}
+
+/* review */
+.review_submit_form .reviewer_avatar {
+  width: 150px;
+  height: 150px;
+}
+
+.review_submit_form form {
+  display: inline-block;
+  width: 100%;
+}
+
+.review_submit_form textarea {
+  resize: none;
+}
+
+.review_submit_form .rating_container {
+  text-align: center;
+}
+
+.review_submit_form .review_description {
+  height: 150px;
+  font-size: 20px;
+  margin: 20px 0px;
+}

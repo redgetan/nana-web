@@ -1,23 +1,35 @@
-import Frisbee from 'frisbee'
+import request from 'request-promise-native'
 import Config from './../config/config'
 
 export default class InstagramAPI {
-  static getInstance() {
-    if (!this.api) {
-      this.api = new Frisbee({
-        baseURI: 'https://api.instagram.com/v1',
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
+  static getDefaultOptions() {
+    return {
+      baseURI: 'https://api.instagram.com/v1',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        
+      },
+      json: true,
+      resolveWithFullResponse: true
     }
+  }
 
-    return this.api
+  static buildOptions(method, relativePath, additionalOptions) {
+    const options = Object.assign({}, this.getOptions(), additionalOptions)
+    options["method"] = method
+    options["uri"] = options["baseURI"] + relativePath
+    return options
+  }
+
+  static get(relativePath, additionalOptions) {
+    const options = this.buildOptions("GET", relativePath, additionalOptions)
+    return request(options)
   }
 
   static getSelfMediaRecent() {
     const accessToken = Config.getAccessToken("instagram")
-    return this.getInstance().get(`users/self/media/recent/?access_token=${accessToken}&count=5`)
+    return this.get(`users/self/media/recent/?access_token=${accessToken}&count=5`)
   }
 
 }

@@ -1,7 +1,7 @@
 export default class Config {
   static setUserData(data) {
     if (!data.authentication_token) return
-    localStorage.setItem("authentication_token", data.authentication_token)
+    localStorage.setItem("user", JSON.stringify(data))
   }  
 
   static setAccessToken(provider) {
@@ -15,16 +15,20 @@ export default class Config {
   }
 
   static getAuthenticationToken() {
-    return localStorage.getItem("authentication_token")
+    return JSON.parse(localStorage.getItem("user")).authentication_token
+  }
+
+  static getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"))
   }
 
   static clearCredentials() {
-    localStorage.removeItem("authentication_token")
+    localStorage.removeItem("user")
     localStorage.removeItem("instagram_access_token")
   }
 
   static isSignedIn() {
-    return localStorage.getItem("authentication_token") !== null
+    return localStorage.getItem("user") !== null
   }
 
   static getInstagramOAuthUrl() {

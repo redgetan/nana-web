@@ -27,7 +27,7 @@ const VENDORS = [
   'react-dom', 
   'react-router-dom', 
   'babel-polyfill',
-  'frisbee'
+  'request-promise-native'
 ]
 
 const ENTRY       = "./client/application.js"

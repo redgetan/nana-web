@@ -6,12 +6,9 @@ export default class ReviewList extends Component {
   render() {
     return (
       <div>
-        reviews
+        <div className='header_2'>Reviews</div>
 
-        <Rating 
-          emptySymbol="fa fa-star-o fa-2x"
-          fullSymbol="fa fa-star fa-2x"
-        />
+
       </div>
 
     )

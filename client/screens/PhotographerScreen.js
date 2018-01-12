@@ -2,16 +2,19 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Profile from './../components/Profile'
 import ReviewList from './../components/ReviewList'
+import ReviewSubmit from './../components/ReviewSubmit'
 
 export default class PhotographerScreen extends Component {
 
   state = {
     user: null,
+    reviews: [],
     notFound: false
   }
 
   componentDidMount() {
     const username = this.props.match.params.username
+
     ClientAPI.getUser(username).then((res) => {
       if (res.body && res.body.error) {
         this.setState({ notFound: true })
@@ -23,6 +26,11 @@ export default class PhotographerScreen extends Component {
     })
   } 
 
+  onReviewCreated(review) {
+    const reviews = this.state.reviews
+    reviews.unshift(review)
+    this.setState({ reviews: reviews })
+  }
 
   render() {
     if (this.state.user) {
@@ -42,7 +50,8 @@ export default class PhotographerScreen extends Component {
           </ul>
 
           <Profile user={this.state.user} />
-          <ReviewList user={this.state.user} />
+          <ReviewSubmit user={this.state.user} onReviewCreated={this.onReviewCreated}/>
+          <ReviewList user={this.state.user} reviews={this.state.reviews} />
 
         </div>
       )

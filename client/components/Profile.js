@@ -25,7 +25,7 @@ export default class Profile extends Component {
         <a href="/photographer/:username/book" className="book_photographer_btn btn btn-primary">Book</a>
         <a href="/photographer/:username/message" className="contact_photographer_btn btn">Contact</a>
 
-        <h3>Availability</h3>
+        <div className='header_2'>Availability</div>
         <div className='book_datepicker' ref={(el) => { this.datePicker = el }}>
         </div>
 

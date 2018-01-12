@@ -1,69 +1,85 @@
-import Frisbee from 'frisbee'
+import request from 'request-promise-native'
 import Config from './../config/config'
 
 export default class ClientAPI {
-  static getInstance() {
+  static getOptions() {
     if (Config.isSignedIn()) {
-      if (!this.authenticatedApi) {
-        this.authenticatedApi = new Frisbee({
-          baseURI: 'http://localhost:3000',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': "Token " + Config.getAuthenticationToken()
-
-          }
-        })
-      }
-
-      return this.authenticatedApi
+      return this.getAuthenticationOptions()
     } else {
-      if (!this.api) {
-        this.api = new Frisbee({
-          baseURI: 'http://localhost:3000',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        })
-      }
-
-      return this.api
+      return this.getDefaultOptions()
     }
   }
 
-  static async signin(email, password) {
-    let res = await this.getInstance().post('/users/signin', {
-      body: {
-        email: email,
-        password: password
-      }
-    })
-
-    return res
+  static getAuthenticationOptions() {
+    const options = this.getDefaultOptions() 
+    options["headers"]["Authorization"] = "Token " + Config.getAuthenticationToken()
+    return options
   }
 
-  static async signup(email, password) {
-    let res = await this.getInstance().post('/users', {
+  static getDefaultOptions() {
+    return {
+      baseURI: 'http://localhost:3000',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        
+      },
+      json: true,
+      resolveWithFullResponse: true
+    }
+  }
+
+  static buildOptions(method, relativePath, additionalOptions) {
+    const options = Object.assign({}, this.getOptions(), additionalOptions)
+    options["method"] = method
+    options["uri"] = options["baseURI"] + relativePath
+    return options
+  }
+
+  static post(relativePath, additionalOptions) {
+    const options = this.buildOptions("POST", relativePath, additionalOptions)
+    return request(options)
+  }
+
+  static get(relativePath, additionalOptions) {
+    const options = this.buildOptions("GET", relativePath, additionalOptions)
+    return request(options)
+  }
+
+  static signin(email, password) {
+    return this.post('/users/signin', {
       body: {
         email: email,
         password: password
       }
     })
+  }
 
-    return res
+  static signup(email, password) {
+    return this.post('/users', {
+      body: {
+        email: email,
+        password: password
+      }
+    })
   }
 
   static listUsers() {
-    return this.getInstance().get('/users')
+    return this.get('/users')
   }
 
   static getUser(username) {
-    return this.getInstance().get('/users/' + username)
+    return this.get('/users/' + username)
   }
 
   static getUserAccount() {
-    return this.getInstance().get('/account')
+    return this.get('/account')
+  }
+
+  static createReview(attributes) {
+    return this.post('/reviews', {
+      body: attributes
+    })
   }
 }
 
