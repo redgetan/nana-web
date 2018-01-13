@@ -62,9 +62,11 @@ export default class ReviewSubmit extends Component {
     }).then((res) => {
       if (res.body && res.body.error) {
         alert(res.body.error)
-      } else {
+      } else if (res.body.rating) {
         console.log("review created")
         this.props.onReviewCreated(res.body)
+      } else {
+
       }
     }).catch((err) => {
       alert("Unable to submit review. try again later")

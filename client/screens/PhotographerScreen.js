@@ -12,6 +12,12 @@ export default class PhotographerScreen extends Component {
     notFound: false
   }
 
+  constructor(props) {
+    super(props)
+
+    this.onReviewCreatedHandler = this.onReviewCreated.bind(this)
+  }
+
   componentDidMount() {
     const username = this.props.match.params.username
 
@@ -50,7 +56,7 @@ export default class PhotographerScreen extends Component {
           </ul>
 
           <Profile user={this.state.user} />
-          <ReviewSubmit user={this.state.user} onReviewCreated={this.onReviewCreated}/>
+          <ReviewSubmit user={this.state.user} onReviewCreated={this.onReviewCreatedHandler}/>
           <ReviewList user={this.state.user} reviews={this.state.reviews} />
 
         </div>

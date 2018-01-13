@@ -40,7 +40,7 @@ export default class Profile extends Component {
   }
 
   componentWillUnmount() {
-    $(this.datePicker).destroy()
+    
   }
   
   _voteForLink = async () => {

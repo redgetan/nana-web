@@ -27,7 +27,7 @@ Jan
       [ ] let user set which ones they want to display
         [ ] follow airbnb listing creation
 
-   [ ] implement middleware (prod/dev error stacktrace/notification)
+   [x] implement middleware (prod/dev error stacktrace/notification)
    [ ] deploy api live
 
   10
@@ -38,6 +38,30 @@ Jan
       user.js getSchema is not a function
    [ ] mobile navbar, when clicked on edit profile, should slideup navbar
    [ ] oauth callback should never leak details of error in catch promise
+
+  12
+   [x] remove - Serverless: Warning: context.done called twice within handler 'hello'!
+   [ ] create review
+   [ ] list review
+   [ ] booking (paypal test)
+     [ ] checkout
+   [ ] fiverr
+    [ ] checkout
+      [ ] order details
+        https://www.fiverr.com/checkout/customize/15563779
+      [ ] review & pay
+        paypal
+   [ ] specify rate
+
+  13
+   [ ] live api
+   [ ] /account/manage (if not logged in, show login modal)
+   [ ] proper error handling
+      always have { error: "something went wrong" } in 400-500
+      {errorMessage: "Uncaught error in your 'hello' handler", errorType: "TypeError", stackTrace: Array(34), offlineInfo: "If you believe this is an issue with the plugin pl…s://github.com/dherault/serverless-offline/issues"}
+
+  14
+   [ ] login fiverr-like design
 
   15
     [ ] sentry error reporting on catch
@@ -96,6 +120,12 @@ Feb
   [ ] rate photographer
     [ ] email notification
   [ ] checkout
+    [ ] order details
+      https://www.fiverr.com/checkout/customize/15563779
+    [ ] review & pay
+      paypal
+
+
     https://www.kingstonfarrell.com/13681699/checkouts/8596afb4c8b48f7eaa5313ada80896f8?previous_step=shipping_method&step=payment_method
     https://gocoin.com/merchant_signup
 

@@ -15,10 +15,12 @@ export default class EditProfileScreen extends Component {
 
   componentDidMount() {
     ClientAPI.getUserAccount().then((res) => {
-      if (res.status === 401) {
+      if (res.statusCode === 401) {
         this.setState({ unauthorized: true })
-      } else {
+      } else if (res.body.providers) {
         this.setState({ user: res.body })
+      } else {
+        throw new Error("bad request")
       }
     }).catch((err) => {
       console.log("fail..")

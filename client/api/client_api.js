@@ -25,7 +25,8 @@ export default class ClientAPI {
         
       },
       json: true,
-      resolveWithFullResponse: true
+      resolveWithFullResponse: true,
+      simple: false
     }
   }
 
