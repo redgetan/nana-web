@@ -26,6 +26,7 @@ export default class PhotographerScreen extends Component {
         this.setState({ notFound: true })
       } else {
         this.setState({ user: res.body })
+        this.setState({ reviews: res.body.reviews })
       }
     }).catch((err) => {
       console.log("fail..")

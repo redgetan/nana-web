@@ -54,8 +54,10 @@ Jan
    [ ] specify rate
 
   13
+   [ ] list reviews
+   [ ] booking
+   [ ] unique booking_user
    [ ] live api
-   [ ] /account/manage (if not logged in, show login modal)
    [ ] proper error handling
       always have { error: "something went wrong" } in 400-500
       {errorMessage: "Uncaught error in your 'hello' handler", errorType: "TypeError", stackTrace: Array(34), offlineInfo: "If you believe this is an issue with the plugin pl…s://github.com/dherault/serverless-offline/issues"}

@@ -120,3 +120,16 @@ button:focus {
   font-size: 20px;
   margin: 20px 0px;
 }
+
+.review_container {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.review_container .reviewer_avatar {
+  width: 75px;
+  height: 75px;
+  float: left;
+  margin-right: 10px;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 const Rating = require('react-rating')
+import Review from './Review'
 
 export default class ReviewList extends Component {
 
@@ -7,8 +8,11 @@ export default class ReviewList extends Component {
     return (
       <div>
         <div className='header_2'>Reviews</div>
-
-
+        {
+          this.props.reviews.map((review) => (
+            <Review review={review} />
+          ))
+        }
       </div>
 
     )
