@@ -47,6 +47,8 @@ Jan
    [x] list reviews
    [ ] booking (paypal test)
      [ ] checkout
+     [ ] stripe connect
+     
    [ ] fiverr
     [ ] checkout
       [ ] order details

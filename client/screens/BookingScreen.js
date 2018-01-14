@@ -5,6 +5,7 @@ import Profile from './../components/Profile'
 import OrderDetails from './../components/OrderDetails'
 import ConfirmPayment from './../components/ConfirmPayment'
 import WizardStep from './../components/WizardStep'
+import PriceSummary from './../components/PriceSummary'
 import { Redirect } from 'react-router-dom'
 
 export default class BookScreen extends Component {
@@ -13,7 +14,8 @@ export default class BookScreen extends Component {
     currentStep: "order_details",
     completedSteps: [],
     user: null,
-    notFound: false
+    notFound: false,
+    guests: []
   }
 
   steps() {
@@ -111,8 +113,11 @@ export default class BookScreen extends Component {
                       completedSteps={this.state.completedSteps} 
                       handleStepClick={this.onStepClick} />
         </div>
-        <div className="booking_submit_container">
+        <div className="col-sm-8 booking_submit_container ">
           { this.steps()[this.state.currentStep].component }
+        </div>
+        <div className="col-sm-4">
+          <PriceSummary guests={this.state.guests} basePrice={100} />
         </div>
       </div>
     )

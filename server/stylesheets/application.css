@@ -138,6 +138,7 @@ button:focus {
 
 .step_container {
   display: inline-block;
+  width: 100%;
 }
 
 .step_container .step {
@@ -159,4 +160,11 @@ button:focus {
 .step_container .step.completed:hover {
   cursor: pointer; 
   text-decoration: underline; 
+}
+
+.price_summary_container {
+  display: inline-block;
+  border: solid 1px #ccc;
+  padding: 20px;
+  width: 100%;
 }
