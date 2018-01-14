@@ -4,19 +4,38 @@ import ClientAPI from './../api/client_api'
 import Profile from './../components/Profile'
 import OrderDetails from './../components/OrderDetails'
 import ConfirmPayment from './../components/ConfirmPayment'
+import WizardStep from './../components/WizardStep'
+import { Redirect } from 'react-router-dom'
 
 export default class BookScreen extends Component {
 
   state = {
+    currentStep: "order_details",
     completedSteps: [],
-    step: "",
     user: null,
     notFound: false
   }
 
+  steps() {
+    return {
+      "order_details": { 
+        index: 1,
+        label: "Order Details",
+        component: <OrderDetails user={this.state.user} nextHandler={this.goToNext} />,
+        prevStep: null,
+        nextStep: "payment"
+      },
+      "payment": { 
+        index: 2,
+        label: "Confirm Payment",
+        component: <ConfirmPayment user={this.state.user} nextHandler={this.goToNext} />,
+        prevStep: "order_details",
+        nextStep: null
+      }
+    }
+  }
+
   componentWillMount() {
-    const step = this.props.match.params.step
-    this.setState({ step: step })
   }
 
   componentDidMount() {
@@ -33,42 +52,67 @@ export default class BookScreen extends Component {
     })
   } 
 
-  getBookingStep() {
-    return {
-      "order_details": { 
-        component: <OrderDetails user={this.state.user} nextHandler={this.goToNext} />,
-        nextStep: "payment"
-      },
-      "payment": { 
-        component: <ConfirmPayment user={this.state.user} nextHandler={this.goToNext} />,
-        nextStep: null
-      }
-    }
-  }
-
   goToNext = (e) => {
     e.preventDefault()
 
-    const nextStep = this.getBookingStep()[this.state.step].nextStep
+    const nextStep = this.steps()[this.state.currentStep].nextStep
 
     if (nextStep) {
-      const nextStepUrl = window.location.pathname.replace(this.state.step, nextStep)
+      const nextStepUrl = window.location.pathname.replace(this.state.currentStep, nextStep)
       browserHistory.push(nextStepUrl)
 
-      this.setState({ step: nextStep })
+      const completedSteps = this.state.completedSteps
+      completedSteps.push(this.state.currentStep)
+
+      this.setState({ completedSteps: completedSteps })
+      this.setState({ currentStep: nextStep })
     }
   }
 
+  onStepClick = (e) => {
+    e.preventDefault()
+
+    const targetStep = $(e.target).attr("id")
+    if (!this.isStepRenderable(targetStep)) return
+
+    const completedSteps = this.state.completedSteps
+    const indexOfTargetStep = completedSteps.indexOf(targetStep)
+    completedSteps.splice(indexOfTargetStep)
+
+    this.setState({ completedSteps: completedSteps })
+    this.setState({ currentStep: targetStep })
+  }
+
+  isStepRenderable(step) {
+    const prevStep = this.steps()[step].prevStep
+    return prevStep === null || this.state.completedSteps.indexOf(prevStep) !== -1
+  }
+
   render() {
+    const stepBasedOnUrl = this.props.match.params.step
+    if (!this.isStepRenderable(stepBasedOnUrl)) {
+      const beginningStepUrl = window.location.pathname.replace(stepBasedOnUrl, "order_details")
+      return ( <Redirect to={beginningStepUrl} /> )
+    }
+
     if (!this.state.user) return <div></div>
+
     return (
       <div>
         <div className="step_container">
-          <div className="step"><div className="step_icon">1</div> Order Details</div>
-          <div className="step"><div className="step_icon">2</div> Confirm Payment</div>
+          <WizardStep step="order_details" 
+                      stepData={this.steps()["order_details"]} 
+                      currentStep={this.state.currentStep}
+                      completedSteps={this.state.completedSteps} 
+                      handleStepClick={this.onStepClick} />
+          <WizardStep step="payment"       
+                      stepData={this.steps()["payment"]}       
+                      currentStep={this.state.currentStep}
+                      completedSteps={this.state.completedSteps} 
+                      handleStepClick={this.onStepClick} />
         </div>
         <div className="booking_submit_container">
-          { this.getBookingStep()[this.state.step].component }
+          { this.steps()[this.state.currentStep].component }
         </div>
       </div>
     )

@@ -12,6 +12,7 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
     "ejs": "^2.5.7",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "es6-promise": "^4.2.2",

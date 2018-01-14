@@ -143,11 +143,20 @@ button:focus {
 .step_container .step {
   float: left;
   margin-right: 50px;
+  color: #ccc;
 }
 
 .step_container .step .step_icon {
   float: left;
   margin-right: 10px;
 }
-  float: left;
+
+.step_container .step.current, 
+.step_container .step.completed {
+  color: black !important;
+}
+
+.step_container .step.completed:hover {
+  cursor: pointer; 
+  text-decoration: underline; 
 }
