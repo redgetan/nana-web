@@ -31,7 +31,6 @@ Jan
    [ ] deploy api live
 
   10
-   [ ] drag/drop https://github.com/atlassian/react-beautiful-dnd
    [ ] clean up error in production (dont leak data, ie. stacktrace)
      [ ] syntax error in user model
      [ ] POST /users returns 200 when it should be 400
@@ -41,8 +40,11 @@ Jan
 
   12
    [x] remove - Serverless: Warning: context.done called twice within handler 'hello'!
-   [ ] create review
-   [ ] list review
+   [x] create review
+   [x] list review
+
+  14
+   [x] list reviews
    [ ] booking (paypal test)
      [ ] checkout
    [ ] fiverr
@@ -52,18 +54,16 @@ Jan
       [ ] review & pay
         paypal
    [ ] specify rate
-
-  13
-   [ ] list reviews
-   [ ] booking
-   [ ] unique booking_user
+   [ ] unique review for booking_user
    [ ] live api
    [ ] proper error handling
       always have { error: "something went wrong" } in 400-500
       {errorMessage: "Uncaught error in your 'hello' handler", errorType: "TypeError", stackTrace: Array(34), offlineInfo: "If you believe this is an issue with the plugin pl…s://github.com/dherault/serverless-offline/issues"}
-
-  14
+   [ ] TimeoutError: Knex: Timeout acquiring a connection. The pool is probably full. Are you missing a .transacting(trx) call
+     [ ] probably due to code reload
+     [ ] https://stackoverflow.com/questions/12391174/how-to-close-idle-connections-in-postgresql-automatically/12403753#12403753
    [ ] login fiverr-like design
+   [ ] http://buildwithreact.com/ (font)
 
   15
     [ ] sentry error reporting on catch

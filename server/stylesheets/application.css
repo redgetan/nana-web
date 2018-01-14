@@ -133,3 +133,21 @@ button:focus {
   float: left;
   margin-right: 10px;
 }
+
+/* Booking */
+
+.step_container {
+  display: inline-block;
+}
+
+.step_container .step {
+  float: left;
+  margin-right: 50px;
+}
+
+.step_container .step .step_icon {
+  float: left;
+  margin-right: 10px;
+}
+  float: left;
+}
