@@ -48,14 +48,25 @@ Jan
    [ ] booking (paypal test)
      [ ] checkout
      [ ] stripe connect
+       https://stripe.com/docs/recipes/on-demand-app
+       https://stripe.com/docs/connect/required-verification-information
+
+       [ ] accept user agreement
+         [ ] https://stripe.com/docs/connect/updating-accounts#tos-acceptance
+
+          curl https://api.stripe.com/v1/accounts/{CONNECTED_STRIPE_ACCOUNT_ID} \
+           -u sk_test_l5I2glmdiWdTF1q3oHLKgBh9: \
+           -d tos_acceptance[date]=1515981209 \
+           -d tos_acceptance[ip]="8.8.8.8"
+       [ ] identity verification
+        https://stripe.com/docs/connect/identity-verification-api
      
    [ ] fiverr
     [ ] checkout
-      [ ] order details
+      [x] order details
         https://www.fiverr.com/checkout/customize/15563779
-      [ ] review & pay
+      [x] review & pay
         paypal
-   [ ] specify rate
    [ ] unique review for booking_user
    [ ] live api
    [ ] proper error handling

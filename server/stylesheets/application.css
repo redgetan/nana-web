@@ -163,8 +163,32 @@ button:focus {
 }
 
 .price_summary_container {
-  display: inline-block;
   border: solid 1px #ccc;
   padding: 20px;
+  font-size: 18px;
+}
+
+.block {
+  display: inline-block;
   width: 100%;
+}
+
+.price_total_row {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.vertical_spacing {
+  display: block;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.vertical_spacing.line {
+  border-bottom: solid 1px #ccc; 
+}
+
+.proceed_payment_btn {
+  width: 100%;
+  margin: 10px 0px;  
 }

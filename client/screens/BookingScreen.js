@@ -47,7 +47,10 @@ export default class BookScreen extends Component {
       if (res.body && res.body.error) {
         this.setState({ notFound: true })
       } else {
-        this.setState({ user: res.body })
+        const user = res.body
+
+        this.setState({ guests: [user] })
+        this.setState({ user: user })
       }
     }).catch((err) => {
       console.log("fail..")
@@ -113,11 +116,15 @@ export default class BookScreen extends Component {
                       completedSteps={this.state.completedSteps} 
                       handleStepClick={this.onStepClick} />
         </div>
-        <div className="col-sm-8 booking_submit_container ">
+        <div className="col-sm-7 booking_submit_container ">
           { this.steps()[this.state.currentStep].component }
         </div>
-        <div className="col-sm-4">
-          <PriceSummary guests={this.state.guests} basePrice={100} />
+        <div className="col-sm-5">
+          <PriceSummary 
+            basePrice={100} 
+            guests={this.state.guests} 
+            currentStep={this.state.currentStep}
+            nextHandler={this.goToNext} />
         </div>
       </div>
     )
