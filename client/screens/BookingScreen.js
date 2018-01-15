@@ -7,6 +7,8 @@ import ConfirmPayment from './../components/ConfirmPayment'
 import WizardStep from './../components/WizardStep'
 import PriceSummary from './../components/PriceSummary'
 import { Redirect } from 'react-router-dom'
+import StepZilla from 'react-stepzilla'
+
 
 export default class BookScreen extends Component {
 
@@ -18,23 +20,29 @@ export default class BookScreen extends Component {
     guests: []
   }
 
-  steps() {
-    return {
-      "order_details": { 
+  steps(stepName) {
+    const list = [
+      { 
         index: 1,
+        step: "order_details",
         label: "Order Details",
         component: <OrderDetails user={this.state.user} nextHandler={this.goToNext} />,
         prevStep: null,
         nextStep: "payment"
       },
-      "payment": { 
+      { 
         index: 2,
+        step: "payment",
         label: "Confirm Payment",
         component: <ConfirmPayment user={this.state.user} nextHandler={this.goToNext} />,
         prevStep: "order_details",
         nextStep: null
       }
-    }
+    ]
+
+    if (!stepName) return list
+
+    list.find((stepData) => { return stepData.step === stepName })
   }
 
   componentWillMount() {
@@ -60,7 +68,7 @@ export default class BookScreen extends Component {
   goToNext = (e) => {
     e.preventDefault()
 
-    const nextStep = this.steps()[this.state.currentStep].nextStep
+    const nextStep = this.steps(this.state.currentStep).nextStep
 
     if (nextStep) {
       const nextStepUrl = window.location.pathname.replace(this.state.currentStep, nextStep)
@@ -89,44 +97,26 @@ export default class BookScreen extends Component {
   }
 
   isStepRenderable(step) {
-    const prevStep = this.steps()[step].prevStep
+    const prevStep = this.steps(step).prevStep
     return prevStep === null || this.state.completedSteps.indexOf(prevStep) !== -1
   }
 
   render() {
     const stepBasedOnUrl = this.props.match.params.step
     if (!this.isStepRenderable(stepBasedOnUrl)) {
-      const beginningStepUrl = window.location.pathname.replace(stepBasedOnUrl, "order_details")
+      const beginningStepUrl = window.location.pathname.replace(stepBasedOnUrl, this.steps()[0].step)
       return ( <Redirect to={beginningStepUrl} /> )
     }
 
     if (!this.state.user) return <div></div>
 
     return (
-      <div>
-        <div className="step_container">
-          <WizardStep step="order_details" 
-                      stepData={this.steps()["order_details"]} 
-                      currentStep={this.state.currentStep}
-                      completedSteps={this.state.completedSteps} 
-                      handleStepClick={this.onStepClick} />
-          <WizardStep step="payment"       
-                      stepData={this.steps()["payment"]}       
-                      currentStep={this.state.currentStep}
-                      completedSteps={this.state.completedSteps} 
-                      handleStepClick={this.onStepClick} />
-        </div>
-        <div className="col-sm-7 booking_submit_container ">
-          { this.steps()[this.state.currentStep].component }
-        </div>
+      <Wizard>
+        <WizardContent className="col-sm-7 booking_submit_container " />
         <div className="col-sm-5">
-          <PriceSummary 
-            basePrice={100} 
-            guests={this.state.guests} 
-            currentStep={this.state.currentStep}
-            nextHandler={this.goToNext} />
+          <PriceSummary basePrice={100} guests={this.state.guests} currentStep={this.state.currentStep} nextHandler={this.goToNext} />
         </div>
-      </div>
+      </Wizard>
     )
   }
 
