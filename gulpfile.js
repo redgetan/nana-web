@@ -27,7 +27,8 @@ const VENDORS = [
   'react-dom', 
   'react-router-dom', 
   'babel-polyfill',
-  'request-promise-native'
+  'request-promise-native',
+  'formik'
 ]
 
 const ENTRY       = "./client/application.js"

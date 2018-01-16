@@ -82,6 +82,11 @@ Jan
   15
     [ ] sentry error reporting on catch
 
+  16
+    [ ] https://hackernoon.com/painless-react-forms-with-formik-e61b70473c60
+       https://github.com/bvaughn/react-virtualized-select 
+       https://github.com/enaqx/awesome-react
+
 
 
 
