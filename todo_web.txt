@@ -60,6 +60,7 @@ Jan
            -d tos_acceptance[ip]="8.8.8.8"
        [ ] identity verification
         https://stripe.com/docs/connect/identity-verification-api
+        https://www.hitchhq.com/stripe/activities/575972e38e2e411000b8d9a2
      
    [ ] fiverr
     [ ] checkout

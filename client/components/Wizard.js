@@ -1,0 +1,105 @@
+import React, { Component } from 'react'
+import classNames from 'classnames'
+import { Redirect } from 'react-router-dom'
+import WizardStep from './WizardStep'
+
+
+export default class Wizard extends Component {
+
+  state = {
+    currentStep: null,
+    completedSteps: [],
+  }
+
+  componentWillMount() {
+    this.setState({ currentStep: this.props.steps[0].step })
+  }
+
+  goToNext = (e) => {
+    e.preventDefault()
+
+    const index = this.props.steps.findIndex((stepData) => { 
+      return stepData.step === this.state.currentStep 
+    })
+
+    const nextStepData = this.props.steps[index + 1]
+    const nextStep = nextStepData && nextStepData.step
+
+    if (nextStep) {
+      const nextStepUrl = window.location.pathname.replace(this.state.currentStep, nextStep)
+      browserHistory.push(nextStepUrl)
+
+      const completedSteps = this.state.completedSteps
+      completedSteps.push(this.state.currentStep)
+
+      this.setState({ completedSteps: completedSteps })
+      this.setState({ currentStep: nextStep })
+    }
+  }
+
+  onStepClick = (e) => {
+    e.preventDefault()
+
+    const targetStep = $(e.target).attr("id")
+    if (!this.isStepRenderable(targetStep)) return
+
+    const completedSteps = this.state.completedSteps
+    const indexOfTargetStep = completedSteps.indexOf(targetStep)
+    completedSteps.splice(indexOfTargetStep)
+
+    this.setState({ completedSteps: completedSteps })
+    this.setState({ currentStep: targetStep })
+  }
+
+  isStepRenderable(step) {
+    const stepIndex = this.props.steps.findIndex((stepData) => { return stepData.step === step })
+    return stepIndex <= this.state.completedSteps.length 
+  }
+
+  render() {
+    const stepBasedOnUrl = this.props.match.params.step
+    if (!this.isStepRenderable(stepBasedOnUrl)) {
+      const beginningStepUrl = window.location.pathname.replace(stepBasedOnUrl, this.props.steps[0].step)
+      return ( <Redirect to={beginningStepUrl} /> )
+    }
+
+    return (
+      <div>
+        <WizardNavigation steps={this.props.steps} currentStep={this.state.currentStep} completedSteps={this.state.completedSteps} handleStepClick={this.onStepClick} />
+        <WizardContent steps={this.props.steps} currentStep={this.state.currentStep} onNextClick={this.goToNext} />
+      </div>
+    )
+  }
+}
+
+const WizardNavigation = (props) => {
+  return (
+    <div className="wizard_navigation_container">
+      {
+        props.steps.map((stepData, index) => (
+          <WizardStep 
+            key={index}
+            step={stepData.step}
+            stepData={stepData}
+            currentStep={props.currentStep}
+            completedSteps={props.completedSteps}
+            handleStepClick={props.handleStepClick} />
+        ))
+      }
+    </div>
+  )
+}
+
+
+const WizardContent = (props) => {
+  const stepData = props.steps.find((stepData) => {
+    return props.currentStep === stepData.step
+  })
+
+  return (
+    <div className='wizard_content_container col-sm-7'>
+      {stepData.component}
+      <button className="wizard_next_btn" onClick={props.onNextClick}>Next</button>
+    </div>
+  )
+}

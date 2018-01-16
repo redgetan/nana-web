@@ -5,7 +5,7 @@ import classNames from 'classnames'
 export default class PriceSummary extends Component {
   render() {
     return (
-      <div className="price_summary_container block">
+      <div className="price_summary_container col-sm-5">
         <div className="header_2">Summary</div>
 
         <div className="service_date_row block">

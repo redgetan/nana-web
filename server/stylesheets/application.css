@@ -192,3 +192,9 @@ button:focus {
   width: 100%;
   margin: 10px 0px;  
 }
+
+.progtrckr-todo,
+.progtrckr-doing {
+  float: left;
+  margin-right: 50px;
+}

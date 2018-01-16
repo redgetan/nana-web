@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
 export default class OrderDetails extends Component {
+  isValidated() {
+    return true
+  }
+
   render() {
     return (
       <div>
@@ -11,10 +15,6 @@ export default class OrderDetails extends Component {
           <li>1 hour Experience</li>
           <li>by: {this.props.user.email}</li>
         </ul>
-
-        <button onClick={this.props.nextHandler}>
-          Next
-        </button>
       </div>
     );
   }
