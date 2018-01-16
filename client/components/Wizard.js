@@ -40,7 +40,7 @@ export default class Wizard extends Component {
   onStepClick = (e) => {
     e.preventDefault()
 
-    const targetStep = $(e.target).attr("id")
+    const targetStep = $(e.target).closest(".step").attr("id")
     if (!this.isStepRenderable(targetStep)) return
 
     const completedSteps = this.state.completedSteps
@@ -65,7 +65,11 @@ export default class Wizard extends Component {
 
     return (
       <div>
-        <WizardNavigation steps={this.props.steps} currentStep={this.state.currentStep} completedSteps={this.state.completedSteps} handleStepClick={this.onStepClick} />
+        <WizardNavigation 
+          steps={this.props.steps} 
+          currentStep={this.state.currentStep} 
+          completedSteps={this.state.completedSteps} 
+          handleStepClick={this.onStepClick} />
         <WizardContent steps={this.props.steps} currentStep={this.state.currentStep} onNextClick={this.goToNext} />
       </div>
     )
@@ -79,6 +83,7 @@ const WizardNavigation = (props) => {
         props.steps.map((stepData, index) => (
           <WizardStep 
             key={index}
+            index={index}
             step={stepData.step}
             stepData={stepData}
             currentStep={props.currentStep}

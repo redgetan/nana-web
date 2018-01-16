@@ -15,7 +15,7 @@ export default class WizardStep extends Component {
 
     return (
       <div className={stepClass} onClick={this.props.handleStepClick} id={this.props.step} >
-        <div className="step_icon">{this.props.stepData.index}</div> {this.props.stepData.label}
+        <div className="step_icon">{this.props.index + 1}</div> {this.props.stepData.label}
       </div>
     )
 

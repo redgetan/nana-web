@@ -136,28 +136,28 @@ button:focus {
 
 /* Booking */
 
-.step_container {
+.wizard_navigation_container {
   display: inline-block;
   width: 100%;
 }
 
-.step_container .step {
+.wizard_navigation_container .step {
   float: left;
   margin-right: 50px;
   color: #ccc;
 }
 
-.step_container .step .step_icon {
+.wizard_navigation_container .step .step_icon {
   float: left;
   margin-right: 10px;
 }
 
-.step_container .step.current, 
-.step_container .step.completed {
+.wizard_navigation_container .step.current, 
+.wizard_navigation_container .step.completed {
   color: black !important;
 }
 
-.step_container .step.completed:hover {
+.wizard_navigation_container .step.completed:hover {
   cursor: pointer; 
   text-decoration: underline; 
 }
