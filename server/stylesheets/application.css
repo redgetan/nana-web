@@ -198,3 +198,16 @@ button:focus {
   float: left;
   margin-right: 50px;
 }
+
+input.error {
+  border: solid 1px red;
+}
+
+.application_form label {
+  display: block !important;
+  margin-top: 10px;
+}
+
+.application_form .form_error_label {
+  color: red;
+}

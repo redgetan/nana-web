@@ -12,41 +12,62 @@ const PartnerDetailsForm = ({
   handleSubmit,
   isSubmitting,
 }) => (
-  <form onSubmit={handleSubmit}>
+  <form onSubmit={handleSubmit} className="application_form">
+    <br />
+    <label htmlFor="country">Country</label>
     <input
-      type="email"
-      name="email"
+      type="text"
+      name="country"
+      className={errors.country ? "error" : ""}
       onChange={handleChange}
       onBlur={handleBlur}
-      value={values.email}
+      value={values.country}
     />
-    {touched.email && errors.email && <div>{errors.email}</div>}
+    {touched.country && errors.country && <div className="form_error_label">{errors.country}</div>}
+
+    <label htmlFor="city">City</label>
     <input
-      type="password"
-      name="password"
+      type="text"
+      name="city"
+      className={errors.city ? "error" : ""}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      value={values.city}
+    />
+    {touched.city && errors.city && <div className="form_error_label">{errors.city}</div>}
+
+    <label>Street Address</label>
+    <input
+      type="text"
+      name="address"
       onChange={handleChange}
       onBlur={handleBlur}
       value={values.password}
     />
     {touched.password && errors.password && <div>{errors.password}</div>}
+
+    <br />
+    <br />
     <button type="submit" disabled={isSubmitting}>
       Submit
     </button>
+    <br />
+    <br />
   </form>
 )
 
 export default withFormik({
   // Transform outer props into form values
-  mapPropsToValues: props => ({ email: '', password: '' }),
+  mapPropsToValues: props => ({ city: '', password: '' }),
   // Add a custom validation function (this can be async too!)
   validate: (values, props) => {
     const errors = {};
-    if (!values.email) {
-      errors.email = 'Required';
+    if (!values.city) {
+      errors.city = 'Required';
     } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.city)
     ) {
-      errors.email = 'Invalid email address';
+      errors.city = 'Invalid email address';
     }
     return errors;
   },
@@ -59,6 +80,7 @@ export default withFormik({
       setErrors /* setValues, setStatus, and other goodies */,
     }
   ) => {
+    debugger
     console.log("form submitted")
     // LoginToMyApp(values).then(
     //   user => {

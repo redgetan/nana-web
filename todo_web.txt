@@ -73,9 +73,6 @@ Jan
    [ ] proper error handling
       always have { error: "something went wrong" } in 400-500
       {errorMessage: "Uncaught error in your 'hello' handler", errorType: "TypeError", stackTrace: Array(34), offlineInfo: "If you believe this is an issue with the plugin pl…s://github.com/dherault/serverless-offline/issues"}
-   [ ] TimeoutError: Knex: Timeout acquiring a connection. The pool is probably full. Are you missing a .transacting(trx) call
-     [ ] probably due to code reload
-     [ ] https://stackoverflow.com/questions/12391174/how-to-close-idle-connections-in-postgresql-automatically/12403753#12403753
    [ ] login fiverr-like design
    [ ] http://buildwithreact.com/ (font)
 
@@ -86,6 +83,12 @@ Jan
     [ ] https://hackernoon.com/painless-react-forms-with-formik-e61b70473c60
        https://github.com/bvaughn/react-virtualized-select 
        https://github.com/enaqx/awesome-react
+
+  17
+    [ ] use local js files in header.ejs
+   [ ] TimeoutError: Knex: Timeout acquiring a connection. The pool is probably full. Are you missing a .transacting(trx) call
+     [ ] probably due to code reload
+     [ ] https://stackoverflow.com/questions/12391174/how-to-close-idle-connections-in-postgresql-automatically/12403753#12403753
 
 
 
@@ -116,6 +119,13 @@ Feb
 
 
 === Nana.ly =====
+[ ] objective: measure demand
+  [ ] list of photographers/profiles 
+  [ ] metrics: 
+    [ ] messages sent to photographers
+    [ ] bookings
+    [ ] photographer signup
+    [ ] buyer signup
 
 [ ] design
   [ ] inspirations
@@ -125,9 +135,10 @@ Feb
     - 500px
 
 [ ] photographer
-  [ ] signup
+  [x] signup
   [ ] paypal payment must work
   [ ] connect instagram account must build their profile page
+    [x] list images
     [ ] https://github.com/deanmcpherson/react-native-sortable-listview
     [ ] https://github.com/ollija/react-native-sortable-grid
   [ ] show ratings
@@ -137,7 +148,6 @@ Feb
   [ ] photographer directory
     [ ] new
     [ ] featured
-  [ ] message photographer
   [ ] rate photographer
     [ ] email notification
   [ ] checkout
