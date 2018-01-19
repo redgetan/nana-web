@@ -30,14 +30,9 @@ export default class PartnerRegisterScreen extends Component {
         component: <PartnerDetailsForm partner={this.state.partner} />
       },
       { 
-        step: "address",
-        label: "Address",
+        step: "bank_account",
+        label: "Bank Account",
         component: <PartnerAddressForm partner={this.state.partner} />
-      },
-      { 
-        step: "terms_of_service",
-        label: "Terms of Service",
-        component: <PartnerTermsOfServiceForm partner={this.state.partner} />
       }
     ]
   }

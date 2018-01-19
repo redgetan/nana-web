@@ -1,3 +1,6 @@
+
+/* Global */
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -5,9 +8,25 @@ button:focus {
   outline: none;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ccc;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ccc;
+}
+
 .main-container {
   
 }
+
+
+
 
 /* Home */
 
@@ -204,10 +223,33 @@ input.error {
 }
 
 .application_form label {
-  display: block !important;
-  margin-top: 10px;
+  /*float: left;*/
+  margin-right: 10px;
+}
+
+.application_form select,
+.application_form .form_field {
+  float: left;
+  margin: 0px 5px 5px 0px;
 }
 
 .application_form .form_error_label {
-  color: red;
+  /*color: red;*/
+}
+
+select {
+  -webkit-appearance: none;
+  padding: 4px 10px;
+  border-radius: 0px;
+  background: none;
+  border-color: #ccc;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.checkbox_label {
+  font-weight: normal;
+  margin-left: 10px;
 }

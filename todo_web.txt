@@ -59,8 +59,10 @@ Jan
            -d tos_acceptance[date]=1515981209 \
            -d tos_acceptance[ip]="8.8.8.8"
        [ ] identity verification
-        https://stripe.com/docs/connect/identity-verification-api
-        https://www.hitchhq.com/stripe/activities/575972e38e2e411000b8d9a2
+         https://stripe.com/docs/connect/identity-verification-api
+         https://www.hitchhq.com/stripe/activities/575972e38e2e411000b8d9a2
+         
+       [ ] https://support.streamlabs.com/hc/en-us/articles/219435648-FAQ-for-Credit-Card-Donations
      
    [ ] fiverr
     [ ] checkout
@@ -159,6 +161,8 @@ Feb
 
     https://www.kingstonfarrell.com/13681699/checkouts/8596afb4c8b48f7eaa5313ada80896f8?previous_step=shipping_method&step=payment_method
     https://gocoin.com/merchant_signup
+  [ ] receipts
+    https://www.airbnb.ca/reservation/receipt?code=KMSX4W&eluid=4&euid=959af199-dbf7-e29b-90ac-df0e3b29a006&print=true
 
 [ ] analytics
   [ ] google analytics
