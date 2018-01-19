@@ -11,6 +11,7 @@ const app = express()
 
 /* MIDDLEWARE */
 app.use("/dist", express.static(path.resolve(__dirname + "/../", 'dist')))
+app.use("/assets", express.static(path.resolve(__dirname + "/../", 'public')))
 
 /* VIEW TEMPLATING */
 app.set('views', './server/views')

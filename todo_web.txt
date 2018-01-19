@@ -1,3 +1,24 @@
+== Landing Page
+[ ] https://www.10xfactory.com/
+[ ] copywrite
+  #1 Dating Profile Concierge
+  #1 Dating Profile Photographer Marketplace
+  Find Photographers that can Improve your Tinder profile by 10x
+  Find Photographers that can Capture your Best Authentic Moments
+  Expert Photographers for your Dating Profile Pictures
+  Find Photographers for your Dating Profile Pictures
+  Dating Profile Pictures delivered in 5 days
+  Photographers Make You Swipe Right on Tinder
+[ ] inspiration
+  https://www.onlineprofilepros.com/
+  cryptokitties.co
+  airbnb
+  vsco
+  instagram
+  fiverr
+  shootmytravel
+
+
 Jan
   5
     [ ] booking wizard
@@ -61,7 +82,7 @@ Jan
        [ ] identity verification
          https://stripe.com/docs/connect/identity-verification-api
          https://www.hitchhq.com/stripe/activities/575972e38e2e411000b8d9a2
-         
+
        [ ] https://support.streamlabs.com/hc/en-us/articles/219435648-FAQ-for-Credit-Card-Donations
      
    [ ] fiverr
@@ -91,6 +112,9 @@ Jan
    [ ] TimeoutError: Knex: Timeout acquiring a connection. The pool is probably full. Are you missing a .transacting(trx) call
      [ ] probably due to code reload
      [ ] https://stackoverflow.com/questions/12391174/how-to-close-idle-connections-in-postgresql-automatically/12403753#12403753
+
+  19
+    [ ] 
 
 
 

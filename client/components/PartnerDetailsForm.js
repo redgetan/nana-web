@@ -21,7 +21,7 @@ const PartnerDetailsForm = ({
         <select>
           {
             ["US", "Canada"].map((month, index) => (
-              <option value={index}>{month}</option>
+              <option key={index} value={index}>{month}</option>
             ))
           }
         </select>
@@ -42,21 +42,21 @@ const PartnerDetailsForm = ({
         <select>
           {
             ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July"].map((month, index) => (
-              <option value={index}>{month}</option>
+              <option key={index} value={index}>{month}</option>
             ))
           }
         </select>
         <select>
           {
             [1,2,3,4,5,6,7,8,9].map((month, index) => (
-              <option value={index}>{month}</option>
+              <option key={index} value={index}>{month}</option>
             ))
           }
         </select>
         <select>
           {
             [1900,2000].map((month, index) => (
-              <option value={index}>{month}</option>
+              <option key={index} value={index}>{month}</option>
             ))
           }
         </select>
@@ -84,7 +84,7 @@ const PartnerDetailsForm = ({
     <div className='row'>
       <div className="col-xs-12">
         <input type="checkbox" name="checkbox" id="checkbox_id" value="value" />
-        <label for="checkbox_id" className="checkbox_label">I accept the terms of service.</label>
+        <label htmlFor="checkbox_id" className="checkbox_label">I accept the terms of service.</label>
       </div>
     </div>
     <br />

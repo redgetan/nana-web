@@ -10,6 +10,7 @@ import Home from './../components/Home'
 import About from './../components/About'
 import Signup from './../components/Signup'
 import Login from './../components/Login'
+import HomeScreen from './../screens/HomeScreen'
 import UserDirectoryScreen from './../screens/UserDirectoryScreen'
 import PhotographerScreen from './../screens/PhotographerScreen'
 import BookingScreen from './../screens/BookingScreen'
@@ -30,7 +31,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/:username/book/:step" component={BookingScreen}/>
 		      <Route exact path="/:username" component={PhotographerScreen}/>
 		      <Route exact path="/account/manage" component={EditProfileScreen}/>
-		      <Route exact path="/" component={UserDirectoryScreen}/>
+		      <Route exact path="/" component={HomeScreen}/>
 				</Switch>
 			</div>
 		)
