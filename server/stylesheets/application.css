@@ -106,10 +106,6 @@ button:focus {
   color: #777;
 }
 
-.user_avatar {
-  width: 150px;
-}
-
 .user_gallery_picker img {
   margin: 10px;
 }
@@ -333,4 +329,23 @@ select::-ms-expand {
 
 .photo_card {
   display: inline-block;
+}
+
+.user_avatar {
+  display: inline-block;
+  float: left;
+  margin: 0px 10px;
+}
+
+.user_avatar img {
+  width: 40px;
+  height: 40px;
+}
+
+.author_header .username {
+  font-size: 20px;
+  float: left;
+  color: #555;
+  text-decoration: underline;
+  line-height: 30px;
 }

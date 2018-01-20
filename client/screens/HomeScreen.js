@@ -41,8 +41,8 @@ export default class UserDirectoryScreen extends Component {
           <div className="home_sample_photo_container">
             <div className="photo_card">
               <div className="author_header">
-                <div className="user_avatar"></div>
-                <div className="username"></div>
+                <div className="user_avatar"><img src="https://pbs.twimg.com/profile_images/763917100624715776/C8hiV68x_bigger.jpg" alt=""/></div>
+                <div className="username">normalvr</div>
               </div>
               <img className="home_sample_photo" src="/assets/afro.jpg" alt=""/>
               <div className="user_rating">
@@ -59,8 +59,8 @@ export default class UserDirectoryScreen extends Component {
 
             <div className="photo_card">
               <div className="author_header">
-                <div className="user_avatar"></div>
-                <div className="username"></div>
+                <div className="user_avatar"><img src="https://pbs.twimg.com/profile_images/875643236416540672/nFPJfCQ-_bigger.jpg" alt=""/></div>
+                <div className="username">phillyd</div>
               </div>
               <img className="home_sample_photo" src="/assets/front_bike.png" alt=""/>
               <div className="user_rating">
@@ -77,8 +77,8 @@ export default class UserDirectoryScreen extends Component {
 
             <div className="photo_card">
               <div className="author_header">
-                <div className="user_avatar"></div>
-                <div className="username"></div>
+                <div className="user_avatar"><img src="https://pbs.twimg.com/profile_images/3729678808/db560ecbeb1b6bcf5d553358ea2c0e41_bigger.png" alt=""/></div>
+                <div className="username">seasailor</div>
               </div>
               <img className="home_sample_photo" src="/assets/kimono.jpg" alt=""/>
               <div className="user_rating">
