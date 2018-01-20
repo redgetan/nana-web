@@ -349,3 +349,31 @@ select::-ms-expand {
   text-decoration: underline;
   line-height: 30px;
 }
+
+.footer {
+  margin-top: 50px;
+  border-top: solid 1px #ddd;
+  padding-top: 50px;
+}
+
+.footer_container a {
+  color: #82817d;
+}
+
+.footer_container ul,
+.footer_container li {
+  list-style: none;
+}
+
+.footer_section {
+  font-size: 1.6rem;
+  margin-bottom: 100px;
+}
+
+.company_inc {
+  font-size: 14px;
+}
+
+.footer_brand_container {
+  text-align: right;
+}
