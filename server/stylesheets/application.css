@@ -1,6 +1,15 @@
 
 /* Global */
 
+div {
+  font-size: 20px;
+  color: #888;
+}
+
+h1 {
+  color: black;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -83,6 +92,7 @@ button:focus {
 .session_price {
   font-weight: bold;
   font-size: 20px;
+  color: black;
 }
 
 .username {
@@ -281,7 +291,6 @@ select::-ms-expand {
   font-size: 20px;
   width: 100%;
   margin: auto;
-  color: #888;
   margin-top: 10px;
   margin-bottom: 50px;
 }
@@ -291,12 +300,37 @@ select::-ms-expand {
   text-align: center;
 }
 
+.how_it_works_container {
+  margin-top: 50px;
+}
+
 .how_it_works_container ul {
   list-style: none;
+  padding: 0px;
+}
+
+.how_it_works_list {
+  font-size: 20px;
 }
 
 .brand_logo {
   font-weight: bold;
   color: #c70e92 !important;
   font-size: 28px;
+}
+
+.user_rating {
+  font-size: 16px;
+}
+
+.session_cost {
+  font-size: 16px;
+}
+
+.user_rating .fa-star {
+  color: #c70e92;
+}
+
+.photo_card {
+  display: inline-block;
 }
