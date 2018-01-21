@@ -9,13 +9,12 @@ export default class FormField extends Component {
         <input
           type="text"
           name={this.props.name}
-          className={this.props.errors[this.props.name] ? "error" : ""}
-          onChange={this.props.handleChange}
+          className={this.props.touched[this.props.name] && this.props.errors[this.props.name] ? "error" : ""}
+          onChange={this.props.onChange}
           placeholder={this.props.placeholder}
-          onBlur={this.props.handleBlur}
+          onBlur={this.props.onBlur}
           value={this.props.values[this.props.name]}
         />
-        {this.props.touched.country && this.props.errors[this.props.name] && <div className="form_error_label">{this.props.errors[this.props.name]}</div>}
       </div>
     )
   }

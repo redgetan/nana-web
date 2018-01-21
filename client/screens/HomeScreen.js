@@ -38,6 +38,10 @@ export default class UserDirectoryScreen extends Component {
           <div className="home_description">
             Improve your chance of success in Tinder, OkCupid, Match.com, Bumble, Coffee Meets Bagel
           </div>
+          <div className="call_to_action">
+            <a href="" className="btn btn-lg btn-primary">Become a Photographer</a>
+            <a href="" className="call_signup_btn btn btn-lg btn-primary">Sign up for Session</a>
+          </div>
           <div className="home_sample_photo_container">
             <div className="photo_card">
               <div className="author_header">
@@ -54,7 +58,7 @@ export default class UserDirectoryScreen extends Component {
                 />
 
               </div>
-              <div className="cost"><span class="session_price">$60</span> per person</div>
+              <div className="cost"><span className="session_price">$60</span> per person</div>
             </div>
 
             <div className="photo_card">
@@ -72,7 +76,7 @@ export default class UserDirectoryScreen extends Component {
                 />
 
               </div>
-              <div className="cost"><span class="session_price">$95</span> per person</div>
+              <div className="cost"><span className="session_price">$95</span> per person</div>
             </div>
 
             <div className="photo_card">
@@ -90,7 +94,7 @@ export default class UserDirectoryScreen extends Component {
                 />
 
               </div>
-              <div className="cost"><span class="session_price">$130</span> per person</div>
+              <div className="cost"><span className="session_price">$130</span> per person</div>
             </div>
 
           </div>
@@ -106,12 +110,6 @@ export default class UserDirectoryScreen extends Component {
         </div>
 
         <div className="vertical_spacing" style={{marginBottom: '200px'}}></div>
-        {
-          this.state.users
-                    .map((user) => (
-            <ProfileCard key={user.id} user={user}/>
-          ))
-        }
       </div>
     )
   }

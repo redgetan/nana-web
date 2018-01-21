@@ -82,6 +82,14 @@ export default class ClientAPI {
       body: attributes
     })
   }
+
+  static updatePartner(username, attributes) {
+    let body = Object.assign({}, attributes, { user_id: username })
+
+    return this.post('/partner_accounts', {
+      body: body
+    })
+  }
 }
 
 

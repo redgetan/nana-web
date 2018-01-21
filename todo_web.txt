@@ -10,7 +10,9 @@
   Dating Profile Pictures delivered in 5 days
   Photographers Make You Swipe Right on Tinder
 [ ] inspiration
+  https://valu.is/
   https://www.onlineprofilepros.com/
+  https://www.handy.com/services/home-cleaning
   cryptokitties.co
   airbnb
   vsco
@@ -225,6 +227,9 @@ Feb
   [ ] csrf
   [ ] sqli
 
+[ ] legal
+  [ ] https://s3.amazonaws.com/api.lyft.com/static/terms-lyft-ca-1.0.0.html
+  [ ] terms of service
 
 [ ] user reviews (2.0)
   [ ] buyer/photographer's review of site

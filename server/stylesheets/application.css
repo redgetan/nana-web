@@ -225,7 +225,7 @@ button:focus {
 }
 
 input.error {
-  border: solid 1px red;
+  border: 2px solid lightcoral;
 }
 
 .application_form label {
@@ -338,8 +338,12 @@ select::-ms-expand {
 }
 
 .user_avatar img {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
+}
+
+.author_header {
+  display: none;
 }
 
 .author_header .username {
@@ -376,4 +380,34 @@ select::-ms-expand {
 
 .footer_brand_container {
   text-align: right;
+}
+
+.call_to_action {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.call_to_action a {
+  background-color: #c70e92;
+  border: none;
+  font-size: 24px;
+}
+
+.call_to_action a:hover {
+  background-color: #c70e92;
+}
+
+.call_signup_btn {
+  margin-left: 10px;
+  background: none !important;
+  color: #c70e92;
+  border: solid 1px #c70e92 !important;
+}
+
+.call_signup_btn:hover {
+  color: #6f0550;
+}
+
+button[type='submit'][disabled='true'] {
+  background-color: gray;
 }

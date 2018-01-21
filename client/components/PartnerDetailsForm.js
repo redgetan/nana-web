@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import { withFormik } from 'formik'
+import { withFormik, Field } from 'formik'
 import FormField from "./FormField"
+import ClientAPI from './../api/client_api'
 
 // Our inner form component which receives our form's state and updater methods as props
 const PartnerDetailsForm = ({
@@ -18,13 +19,13 @@ const PartnerDetailsForm = ({
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Country</label></div>
       <div className="col-sm-9 col-xs-12">
-        <select>
+        <Field component="select" name="country" >
           {
             ["US", "Canada"].map((month, index) => (
-              <option key={index} value={index}>{month}</option>
+              <option key={index} value={month}>{month}</option>
             ))
           }
-        </select>
+        </Field>
         </div>
     </div>
 
@@ -39,33 +40,33 @@ const PartnerDetailsForm = ({
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Date of Birth</label></div>
       <div className="col-sm-9 col-xs-12">
-        <select>
+        <Field component="select" name="dob_month" >
           {
             ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July"].map((month, index) => (
               <option key={index} value={index}>{month}</option>
             ))
           }
-        </select>
-        <select>
+        </Field>
+        <Field component="select" name="dob_day">
           {
             [1,2,3,4,5,6,7,8,9].map((month, index) => (
               <option key={index} value={index}>{month}</option>
             ))
           }
-        </select>
-        <select>
+        </Field>
+        <Field component="select" name="dob_year">
           {
             [1900,2000].map((month, index) => (
               <option key={index} value={index}>{month}</option>
             ))
           }
-        </select>
+        </Field>
       </div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Street Address</label></div>
-      <div className="col-sm-9 col-xs-12"><FormField name="address" placeholder="134 Peter Avenue" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+      <div className="col-sm-9 col-xs-12"><FormField name="line1" placeholder="134 Peter Avenue" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
     </div>
 
     <div className='row'>
@@ -80,7 +81,7 @@ const PartnerDetailsForm = ({
         <FormField name="postal_code" placeholder="Your Postal Code" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
-
+    
     <div className='row'>
       <div className="col-xs-12">
         <input type="checkbox" name="checkbox" id="checkbox_id" value="value" />
@@ -96,19 +97,39 @@ const PartnerDetailsForm = ({
   </form>
 )
 
+const requiredFields = ["city", "line1", "postal_code", "state", "dob_day", "dob_month", "dob_year",
+                        "first_name", "last_name"]
+
+
 export default withFormik({
+  validateOnBlur: true,
+  validateOnChange: false,
   // Transform outer props into form values
-  mapPropsToValues: props => ({ city: '', password: '' }),
+  mapPropsToValues: (props) => {
+    let initialState = {}
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      initialState[fieldName] = ""
+    }
+
+    initialState["country"] = "Canada"
+    initialState["dob_month"] = "1"
+    initialState["dob_day"] = "1"
+    initialState["dob_year"] = "1990"
+
+    return initialState
+  },
   // Add a custom validation function (this can be async too!)
   validate: (values, props) => {
     const errors = {};
-    if (!values.city) {
-      errors.city = 'Required';
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.city)
-    ) {
-      errors.city = 'Invalid email address';
+
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      if (!values[fieldName]) {
+        errors[fieldName] = "Required"
+      }
     }
+
     return errors;
   },
   // Submission handler
@@ -120,7 +141,14 @@ export default withFormik({
       setErrors /* setValues, setStatus, and other goodies */,
     }
   ) => {
-    debugger
+    ClientApi.updatePartner(Config.getCurrentUser().id, values).then((res) => {
+      debugger
+
+    }).catch((err) => {
+
+    })
+
+
     console.log("form submitted")
     // LoginToMyApp(values).then(
     //   user => {
