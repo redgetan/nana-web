@@ -1,3 +1,8 @@
+[ ] stripe connect account (unique user_id)
+[ ] clean error handling
+  [ ] const StripeClient = require('./../models/stripe_client')
+        to strip_client, submit partner_details form should not show stacktrace
+
 == Landing Page
 [ ] https://www.10xfactory.com/
 [ ] copywrite

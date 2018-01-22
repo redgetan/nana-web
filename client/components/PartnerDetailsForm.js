@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 
 import { withFormik, Field } from 'formik'
 import FormField from "./FormField"
-import ClientAPI from './../api/client_api'
+import SelectField from "./SelectField"
+import NanaClient from './../api/client_api'
+import Config from '../config/config'
+import FormConfig from '../config/form_config'
 
 // Our inner form component which receives our form's state and updater methods as props
 const PartnerDetailsForm = ({
   values,
   errors,
+  status,
   touched,
   handleChange,
   handleBlur,
@@ -15,70 +19,56 @@ const PartnerDetailsForm = ({
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="application_form container">
+    <div className="form_errors_container">
+      {status && status.externalError}
+    </div>
     <br />
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Country</label></div>
       <div className="col-sm-9 col-xs-12">
-        <Field component="select" name="country" >
-          {
-            ["US", "Canada"].map((month, index) => (
-              <option key={index} value={month}>{month}</option>
-            ))
-          }
-        </Field>
-        </div>
+        <SelectField name="country" label="Select Country" options={["US", "CA"]} values={values} errors={errors} touched={touched}/>
+      </div>
+    </div>
+
+    <div className='row'>
+      <div className="col-sm-3 col-xs-12"><label>Legal Entity Type</label></div>
+      <div className="col-sm-9 col-xs-12">
+        <SelectField name="legal_entity.type" label="Type" options={FormConfig.getLegalEntityTypes()} values={values} errors={errors} touched={touched}/>
+      </div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Full Name</label></div>
       <div className="col-sm-9 col-xs-12">
-        <FormField name="first_name" placeholder="First Name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-        <FormField name="last_name" label="" placeholder="Last Name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+        <FormField name="legal_entity.first_name" placeholder="First Name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+        <FormField name="legal_entity.last_name" label="" placeholder="Last Name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Date of Birth</label></div>
       <div className="col-sm-9 col-xs-12">
-        <Field component="select" name="dob_month" >
-          {
-            ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July"].map((month, index) => (
-              <option key={index} value={index}>{month}</option>
-            ))
-          }
-        </Field>
-        <Field component="select" name="dob_day">
-          {
-            [1,2,3,4,5,6,7,8,9].map((month, index) => (
-              <option key={index} value={index}>{month}</option>
-            ))
-          }
-        </Field>
-        <Field component="select" name="dob_year">
-          {
-            [1900,2000].map((month, index) => (
-              <option key={index} value={index}>{month}</option>
-            ))
-          }
-        </Field>
+        <SelectField name="legal_entity.dob.month" label="Month" options={FormConfig.getMonths()} values={values} errors={errors} touched={touched}/>
+        <SelectField name="legal_entity.dob.day" label="Day" options={FormConfig.getDays()} values={values} errors={errors} touched={touched}/>
+        <SelectField name="legal_entity.dob.year" label="Day" options={FormConfig.getYears()} values={values} errors={errors} touched={touched}/>
       </div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Street Address</label></div>
-      <div className="col-sm-9 col-xs-12"><FormField name="line1" placeholder="134 Peter Avenue" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+      <div className="col-sm-9 col-xs-12"><FormField name="legal_entity.address.line1" placeholder="134 Peter Avenue" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>City</label></div>
-      <div className="col-sm-9 col-xs-12"><FormField name="city" placeholder="Your city" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+      <div className="col-sm-9 col-xs-12"><FormField name="legal_entity.address.city" placeholder="Your city" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
     </div>
 
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>State/Postal</label></div>
       <div className="col-sm-9 col-xs-12">
-        <FormField name="state" placeholder="Your State" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-        <FormField name="postal_code" placeholder="Your Postal Code" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+        <SelectField name="legal_entity.address.state" label="State" options={FormConfig.getStates()} values={values} errors={errors} touched={touched}/>
+        <FormField name="legal_entity.address.postal_code" placeholder="Your Postal Code" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
     
@@ -97,8 +87,17 @@ const PartnerDetailsForm = ({
   </form>
 )
 
-const requiredFields = ["city", "line1", "postal_code", "state", "dob_day", "dob_month", "dob_year",
-                        "first_name", "last_name"]
+const requiredFields = ["country",
+                        "legal_entity.address.city", 
+                        "legal_entity.address.line1", 
+                        "legal_entity.address.postal_code", 
+                        "legal_entity.address.state", 
+                        "legal_entity.dob.day", 
+                        "legal_entity.dob.month", 
+                        "legal_entity.dob.year",
+                        "legal_entity.type",
+                        "legal_entity.first_name", 
+                        "legal_entity.last_name"]
 
 
 export default withFormik({
@@ -112,10 +111,10 @@ export default withFormik({
       initialState[fieldName] = ""
     }
 
-    initialState["country"] = "Canada"
-    initialState["dob_month"] = "1"
-    initialState["dob_day"] = "1"
-    initialState["dob_year"] = "1990"
+    // initialState["country"] = "Canada"
+    // initialState["legal_entity.dob.month"] = "1"
+    // initialState["legal_entity.dob.day"] = "1"
+    // initialState["legal_entity.dob.year"] = "1990"
 
     return initialState
   },
@@ -138,14 +137,23 @@ export default withFormik({
     {
       props,
       setSubmitting,
-      setErrors /* setValues, setStatus, and other goodies */,
+      setErrors,
+      setStatus
     }
   ) => {
-    ClientApi.updatePartner(Config.getCurrentUser().id, values).then((res) => {
-      debugger
+    NanaClient.updatePartner(Config.getCurrentUser().id, values).then((res) => {
+      setSubmitting(false)
+
+      if (res.body && res.body.error) {
+        setStatus({ externalError: res.body.error })
+        debugger
+      } else {
+
+      }
 
     }).catch((err) => {
-
+      setSubmitting(false)
+      setStatus({ externalError: "Unable to submit form. Try again later" })
     })
 
 

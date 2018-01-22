@@ -41,7 +41,7 @@ export default class Signup extends Component {
     const { email, password } = this.state
 
     ClientAPI.signup(email, password).then((res) => {
-      if (res.err) {
+      if (res.body && res.body.error) {
         alert(res.body.error)
       } else {
         this._postAuth(res.body)  
