@@ -338,6 +338,11 @@ select::-ms-expand {
   margin: 0px 10px;
 }
 
+.profile_summary .user_avatar img {
+  width: 200px;
+  height: 200px;
+}
+
 .user_avatar img {
   width: 25px;
   height: 25px;

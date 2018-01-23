@@ -6,7 +6,9 @@ export default class ProfileSummary extends Component {
     return (
       <div className='profile_summary'>
         <div className="user_email">{this.props.user.email}</div>
-        <img className='user_avatar' src={this.props.user.avatar} alt=""/>
+        <div className="user_avatar">
+          <img src={this.props.user.avatar} alt=""/>
+        </div>
       </div>
     )
   }

@@ -1,4 +1,9 @@
 [ ] stripe connect account (unique user_id)
+[ ] book
+  [ ] show 5 sample photographs
+  [ ] create charge
+  [ ] contact goes to email
+
 [ ] clean error handling
   [ ] const StripeClient = require('./../models/stripe_client')
         to strip_client, submit partner_details form should not show stacktrace

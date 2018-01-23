@@ -8,6 +8,8 @@ import Wizard from './../components/Wizard'
 import PartnerDetailsForm from './../components/PartnerDetailsForm'
 import PartnerAddressForm from './../components/PartnerAddressForm'
 import PartnerTermsOfServiceForm from './../components/PartnerTermsOfServiceForm'
+import Config from './../config/config'
+import { Redirect } from 'react-router-dom'
 
 /*
 Step 1: What country do you live in?
@@ -46,6 +48,10 @@ export default class PartnerRegisterScreen extends Component {
   }
 
   render() {
+    if (!Config.isSignedIn()) {
+      return <Redirect to="/signin"/>
+    }
+
     return (
       <div>
         <Wizard steps={this.steps()} match={this.props.match} />

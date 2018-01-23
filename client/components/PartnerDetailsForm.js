@@ -111,11 +111,6 @@ export default withFormik({
       initialState[fieldName] = ""
     }
 
-    // initialState["country"] = "Canada"
-    // initialState["legal_entity.dob.month"] = "1"
-    // initialState["legal_entity.dob.day"] = "1"
-    // initialState["legal_entity.dob.year"] = "1990"
-
     return initialState
   },
   // Add a custom validation function (this can be async too!)
@@ -146,7 +141,6 @@ export default withFormik({
 
       if (res.body && res.body.error) {
         setStatus({ externalError: res.body.error })
-        debugger
       } else {
 
       }
