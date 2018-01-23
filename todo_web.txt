@@ -1,4 +1,4 @@
-[ ] stripe connect account (unique user_id)
+[x] stripe connect account (unique user_id)
 [ ] book
   [ ] show 5 sample photographs
   [ ] create charge
@@ -192,10 +192,14 @@ Feb
     [x] list images
     [ ] https://github.com/deanmcpherson/react-native-sortable-listview
     [ ] https://github.com/ollija/react-native-sortable-grid
-  [ ] show ratings
+    [ ] http://photoswipe.com/
+  [x] show ratings
     https://github.com/Monte9/react-native-ratings
 
 [ ] buyer
+  [ ] photographer booking page
+    http://photoswipe.com/
+    
   [ ] photographer directory
     [ ] new
     [ ] featured

@@ -22,8 +22,8 @@ export default class Profile extends Component {
           <br/>You’ll need to take a picture of yourself that matches the photo on your ID. This is so we can confirm who’s actually going on the experience. You’ll only have to do this once.
         </div>
         <br/>
-        <a href={`/${this.props.user.id}/book/order_details`} className="book_photographer_btn btn btn-primary">Book</a>
-        <a href={`/${this.props.user.id}/message`} className="contact_photographer_btn btn">Contact</a>
+        <a href={`/users/${this.props.user.id}/book/order_details`} className="book_photographer_btn btn btn-primary">Book</a>
+        <a href={`/users/${this.props.user.id}/message`} className="contact_photographer_btn btn">Contact</a>
 
         <div className='header_2'>Availability</div>
         <div className='book_datepicker' ref={(el) => { this.datePicker = el }}>

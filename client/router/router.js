@@ -28,8 +28,8 @@ export default class AppRouter extends Component {
 	        <Route exact path='/signin' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>
 		      <Route exact path="/partner/registration" component={PartnerRegisterScreen}/>
-		      <Route exact path="/:username/book/:step" component={BookingScreen}/>
-		      <Route exact path="/:username" component={PhotographerScreen}/>
+		      <Route exact path="/users/:username/book/:step" component={BookingScreen}/>
+		      <Route exact path="/users/:username" component={PhotographerScreen}/>
 		      <Route exact path="/account/manage" component={EditProfileScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>
 				</Switch>

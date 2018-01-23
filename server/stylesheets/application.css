@@ -73,14 +73,18 @@ button:focus {
 .user_photo_gallery {
   padding: 0;
   list-style: none;
-  display: inline-block;
+  display: block;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
 
 .user_photo_gallery_item {
   width: 320px;
   height: 320px;
-  float: left;
+  /*float: left;*/
   margin: 10px;
+  display: inline-block;
 }
 
 .service_summary_container {
