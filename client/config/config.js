@@ -22,6 +22,11 @@ export default class Config {
     return JSON.parse(localStorage.getItem("user"))
   }
 
+  static getPartnerAccount() {
+    const user = this.getCurrentUser()
+    return user.account
+  }
+
   static clearCredentials() {
     localStorage.removeItem("user")
     localStorage.removeItem("instagram_access_token")

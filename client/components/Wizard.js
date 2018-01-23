@@ -12,7 +12,22 @@ export default class Wizard extends Component {
   }
 
   componentWillMount() {
-    this.setState({ currentStep: this.props.steps[0].step })
+    if (this.props.currentStep) {
+      let completedSteps = []
+      for (var i = 0; i < this.props.steps.length; i++) {
+        let stepData = this.props.steps[i]
+        if (stepData.step !== this.props.currentStep) {
+          completedSteps.push(stepData.step)
+        } else {
+          break
+        }
+      }
+
+      this.setState({ completedSteps: completedSteps })
+      this.setState({ currentStep: this.props.currentStep })
+    } else {
+      this.setState({ currentStep: this.props.steps[0].step })
+    }
   }
 
   goToNext = (e) => {

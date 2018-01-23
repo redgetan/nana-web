@@ -21,7 +21,8 @@ export default class PartnerRegisterScreen extends Component {
 
   state = {
     partner: {},
-    errors: {}
+    errors: {},
+    initialStep: ""
   }
 
   steps() {
@@ -40,7 +41,12 @@ export default class PartnerRegisterScreen extends Component {
   }
 
   componentDidMount() {
-
+    const partnerAccount = Config.getPartnerAccount()
+    if (partnerAccount) {
+      this.setState({ initialStep: "bank_account" })
+    } else {
+      this.setState({ initialStep: "personal_details" })
+    }
   } 
 
   goToNext = (e) => {
@@ -52,9 +58,11 @@ export default class PartnerRegisterScreen extends Component {
       return <Redirect to="/signin"/>
     }
 
+    if (!this.state.initialStep) return <div></div>
+
     return (
       <div>
-        <Wizard steps={this.steps()} match={this.props.match} />
+        <Wizard steps={this.steps()} match={this.props.match} currentStep={this.state.initialStep} />
       </div>
     )
   }
