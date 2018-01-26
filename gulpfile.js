@@ -28,13 +28,14 @@ const VENDORS = [
   'react-router-dom', 
   'babel-polyfill',
   'request-promise-native',
-  'formik'
+  'formik',
+  'react-stripe-elements'
 ]
 
 const ENTRY       = "./client/application.js"
 const STYLESHEETS = "./server/stylesheets/*.css"
 const WATCH_DIRS = ["./client/**/*.js"]
-const WATCH_VIEW_DIRS = ["./server/views/header.ejs"]
+const WATCH_VIEW_DIRS = ["./server/views/*.ejs"]
 const DESTINATION = "./dist/"
 const REV_MANIFEST_FILE = "dist/rev-manifest.json"
 const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
@@ -42,7 +43,7 @@ const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
 gulp.task('default', ['build:all'])
 
 gulp.task('build:all', (cb) => {
-  runSequence('build:vendor', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+  runSequence('build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
 })
 
 gulp.task('build:vendor', () => {
@@ -83,6 +84,10 @@ gulp.task('build:stylesheets', () => {
   return bundleCSS()
 })
 
+gulp.task('copy:images', () => {
+  gulp.src("./public/**/*").pipe(gulp.dest(DESTINATION + "/assets"))
+})
+
 gulp.task('build:javascript', () => {
   const bundleApp = () => {
     console.log("Rebuilding dist/app.js")
@@ -119,13 +124,13 @@ gulp.task('build:revisionreplace', () => {
   const bundleLayout = () => {
     console.log("Rebuilding server/views/header.ejs")
 
-    return gulp.src(WATCH_VIEW_DIRS)
+    return gulp.src("./server/views/index.ejs")
       .pipe(ejs({ assetPath: function(path){
         return isProduction ? manifest[path] : path
       }}))
       .on('error', function(e){ console.log(e); })
-      .pipe(rename("header_compiled.ejs"))
-      .pipe(gulp.dest("server/views/"));
+      .pipe(rename("index.html"))
+      .pipe(gulp.dest(DESTINATION));
   }
 
   if (!isProduction) watch(WATCH_VIEW_DIRS, bundleLayout)
