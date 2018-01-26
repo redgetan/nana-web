@@ -20,7 +20,7 @@ const  fs = require('fs')
 
 
 const env                = process.env.NODE_ENV || 'development'
-const isProduction       = env === "production"
+let   isProduction       = env === "production"
 
 const VENDORS = [
   'react', 
@@ -43,6 +43,11 @@ const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
 gulp.task('default', ['build:all'])
 
 gulp.task('build:all', (cb) => {
+  runSequence('build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+})
+
+gulp.task('build', (cb) => {
+  isProduction = true
   runSequence('build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
 })
 
