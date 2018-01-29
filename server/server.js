@@ -28,7 +28,9 @@ app.get('/privacy', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-	res.render('index')
+	res.render('index', { 
+    assetPath: (path) => { return "dist/" + path }
+  })
 })
 
 /* SETUP */

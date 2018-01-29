@@ -127,7 +127,7 @@ gulp.task('build:revisionreplace', () => {
   }
 
   const bundleLayout = () => {
-    console.log("Rebuilding server/views/header.ejs")
+    console.log("Rebuilding server/views/index.ejs")
 
     return gulp.src("./server/views/index.ejs")
       .pipe(ejs({ assetPath: function(path){

@@ -1,6 +1,32 @@
 === Validate Demand
 
+[ ] Mobile Web
+  [ ] happy flow
+    [ ] step 1: click ad "book now"
+    [ ] step 2: i browse website, i must be wow awesome pictures. i want one too.
+    [ ] step 3: i browse photographers that i like. 
+  [ ] "More Results" button
+    [ ] fetch more photographer profiles
+  [ ] contact button
+  [ ] upload photo
+    http://www.dropzonejs.com/
+  [ ] taxes
+
+  [ ] terms
+    https://www.cryptocribs.com/terms
+    https://www.cryptocribs.com/payment-terms#section11
+    https://www.cryptocribs.com/privacy
+
+
 [ ] Tinder Ad that people would click
+  [x] Ad 1 (girl w/ sunglasses)
+    [x] toronto
+    [ ] vancouver
+
+  [ ] Ad 2 (guy in office)
+    [ ] instagram + messenger
+    [ ] toronto + vancouver + los_angeles + new york
+
   [ ] Before/After
     [ ] girl (find online)
 
@@ -14,13 +40,32 @@ https://www.pexels.com/photo/whiteboard-presentation-ideas-planning-7370/
 [ ] Facebook/Tinder Ad
   [ ] user likes ad
     [ ] message sent to user
-      - Hi there! We can help make your photos 10x better. Browse our list of instagram photographers now http://nanaly.com
+      - I will make your profile picture 10x better.
   [ ] 10 photographers
     5 pictures each
     mobile friendly
   [ ] signup for beta
 
 
+==== Instagram A-List
+
+nyc
+  https://www.instagram.com/kylesensei/
+  https://www.instagram.com/whoisoda/
+
+vancouver
+  https://www.instagram.com/zmelhus/
+  https://www.instagram.com/nickjzator/
+
+uk
+  https://www.instagram.com/clemono2/
+
+== expensive
+https://www.instagram.com/willselviz/
+
+video
+-----
+https://www.instagram.com/bigproductionmedia/
 
 ====
 
@@ -36,3 +81,15 @@ lets you find and rent Photographers who can take informal, authentic, high qual
 
 Improve your chance of success in Tinder, OkCupid, Match.com, Bumble, Coffee Meets Bagel
 
+
+=== taxes
+Your local laws and taxes
+Take a moment to review your local laws. We want to make sure you’ve got everything you need to get off to a great start.
+
+Please educate yourself about the laws in your jurisdiction before listing your space.
+
+Most cities have rules covering homesharing, and the specific codes and ordinances can appear in many places (such as zoning, building, licensing or tax codes). In most places, you must register, get a permit, or obtain a license before you list your property or accept guests. You may also be responsible for collecting and remitting certain taxes. In some places, short-term rentals could be prohibited altogether.
+
+Since you are responsible for your own decision to list or book, you should get comfortable with the applicable rules before listing on CryptoCribs. To get you started, we offer some helpful resources under “Your City Laws.”
+
+By accepting our Terms of Service and listing your space, you certify that you will follow applicable laws and regulations.
