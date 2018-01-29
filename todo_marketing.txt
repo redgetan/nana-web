@@ -4,7 +4,39 @@
   [ ] happy flow
     [ ] step 1: click ad "book now"
     [ ] step 2: i browse website, i must be wow awesome pictures. i want one too.
-    [ ] step 3: i browse photographers that i like. 
+    [ ] step 3: i browse photographers that i like using carousel. 
+    [ ] step 4: i click on photograph listing brings me to user page
+    [ ] step 5: i click on "Contact Photographer" (I provide my email, and message)
+      [ ] similar to craigslist email relay
+
+  [ ] toronto photographers
+    [ ] 5 people
+      [ ] nana.shoots
+        curl -H "Authorization: Token dJRvF8SO2X9C" -X POST -d '{ "ups://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots" }' http://localhost:3000/photos
+
+        https://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots
+        https://www.instagram.com/p/Bc_Vvr1BU5W/?taken-by=nani.shoots
+        https://www.instagram.com/p/BU0CaTfhg8x/?taken-by=nani.shoots
+        https://www.instagram.com/p/BOP4JntFtxw/?taken-by=nani.shoots
+        https://www.instagram.com/p/BON7r98jFpy/?taken-by=nani.shoots
+        https://www.instagram.com/p/BNyQOt1FbKW/?taken-by=nani.shoots
+
+  [ ] spinner
+    http://kyleamathews.github.io/react-spinkit/
+
+  [ ] re-arrange photos
+    http://react-dnd.github.io/react-dnd/
+
+  [ ] Let Photographer signup
+    [ ] put description (ala craigslist)
+    [ ] connect with instagram 
+    [ ] upload photos
+    [ ] arrange photos
+    [ ] put email
+
+  [ ] Enter city
+    [ ] sign up to get notified when available on your city
+
   [ ] "More Results" button
     [ ] fetch more photographer profiles
   [ ] contact button

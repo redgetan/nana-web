@@ -11,7 +11,6 @@ export default class UserDirectoryScreen extends Component {
   }
 
   componentDidMount() {
-    return
     ClientAPI.listUsers().then((res) => {
       if (Array.isArray(res.body)) {
         const users = res.body
