@@ -1,4 +1,6 @@
 [x] stripe connect account (unique user_id)
+[ ] 
+
 [ ] book
   [x] show 5 sample photographs
   [ ] create charge

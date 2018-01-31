@@ -272,12 +272,34 @@ select::-ms-expand {
 }
 
 .home_sample_photo {
-  /*width: 200px;*/
-  height: 300px;
-  /*border: solid 3px;*/
-  margin: 10px;
+  display: block;
+  max-width: 400px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
 }
 
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.right_slider {
+  right: 0;
+  left: auto;
+}
+
+.photo_card .slick-track {
+  min-height: 400px;
+}
+
+.slick-slide img {
+  /*width: 100%;*/
+  margin: auto;
+}
 
 .home_title {
   margin-bottom: 100px;
@@ -298,7 +320,7 @@ select::-ms-expand {
 
 .home_sample_photo_container,
 .how_it_works_container {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .how_it_works_container {
@@ -321,7 +343,13 @@ select::-ms-expand {
 }
 
 .user_rating {
+  display: none;
   font-size: 16px;
+}
+
+.profile_card_bottom {
+  display: block;
+  margin-top: 30px;
 }
 
 .session_cost {
@@ -334,12 +362,69 @@ select::-ms-expand {
 
 .photo_card {
   display: inline-block;
+  text-align: center;
 }
 
 .user_avatar {
   display: inline-block;
   float: left;
   margin: 0px 10px;
+}
+
+.photo_card {
+  /*cursor: pointer;*/
+}
+
+.profile_card_bottom:hover {
+  text-decoration: none !important;
+}
+
+.slider_right_control {
+  height: 24px; 
+  width: 24px; 
+  display: block; 
+  fill: rgb(255, 255, 255);
+}
+
+.carousel-inner .item {
+  max-height: 200px;
+}
+
+.carousel-control {
+  z-index: 5;
+}
+
+.slick-slide {
+  background-color: white !important;
+}
+
+.slick-dots li {
+  margin: 0px;
+}
+
+.carousel-control {
+}
+
+.carousel-control:hover {
+  cursor: pointer;  
+}
+
+.carousel-control .carousel_icon_left,
+.carousel-control .carousel_icon_right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+  font-size: 32px;
+  line-height: 7px;
+}
+
+.carousel-control .carousel_icon_left {
+  left: 8px;
+}
+
+.carousel-control .carousel_icon_right {
+  right: 8px;
 }
 
 .profile_summary .user_avatar img {
