@@ -7,9 +7,18 @@ import PhotoSlider from './PhotoSlider'
 
 export default class ProfileCard extends Component {
 
+
+  componentWillMount() {
+    const coverPhotoIndex = this.props.user.photos.findIndex((photo) => { return photo.is_cover === true })
+    if (coverPhotoIndex >= 0) {
+      const coverPhoto = this.props.user.photos.splice(coverPhotoIndex, 1)[0]
+      this.props.user.photos.unshift(coverPhoto)
+    }
+  }
+
   render() {
     return (
-      <div className="photo_card col-xs-12 col-md-4 col-sm-6 ">
+      <div className="photo_card">
         <div className="author_header">
           <div className="user_avatar"><img src="https://pbs.twimg.com/profile_images/763917100624715776/C8hiV68x_bigger.jpg" alt=""/></div>
           <div className="username">{this.props.user.email}</div>

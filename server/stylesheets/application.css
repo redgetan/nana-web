@@ -320,7 +320,7 @@ select::-ms-expand {
 
 .home_sample_photo_container,
 .how_it_works_container {
-  /*text-align: center;*/
+  text-align: center;
 }
 
 .how_it_works_container {
@@ -363,16 +363,14 @@ select::-ms-expand {
 .photo_card {
   display: inline-block;
   text-align: center;
+  width: 400px;
+  margin-top: 50px;
 }
 
 .user_avatar {
   display: inline-block;
   float: left;
   margin: 0px 10px;
-}
-
-.photo_card {
-  /*cursor: pointer;*/
 }
 
 .profile_card_bottom:hover {
@@ -439,6 +437,12 @@ select::-ms-expand {
 
 .author_header {
   display: none;
+  /*display: inline-block;*/
+}
+
+.photographer_directory {
+  margin-top: 20px;
+  text-align: center;
 }
 
 .author_header .username {
@@ -479,7 +483,6 @@ select::-ms-expand {
 
 .call_to_action {
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .call_to_action a {

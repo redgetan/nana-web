@@ -39,7 +39,8 @@ export default class UserDirectoryScreen extends Component {
             Improve your chance of success in Tinder, OkCupid, Match.com, Bumble, Coffee Meets Bagel
           </div>
           <div className="call_to_action">
-            <a href="" className="btn btn-lg btn-primary">Book a Photographer</a>
+            <a href="" className="btn btn-lg btn-primary">Become a Photographer</a>
+            <a href="" className="call_signup_btn btn btn-lg btn-primary">Sign up for Session</a>
           </div>
         </div>
 
@@ -56,7 +57,8 @@ export default class UserDirectoryScreen extends Component {
           <h1>How it Works</h1>
           <ul className="how_it_works_list light_gray">
             <li>Choose a Photographer</li>
-            <li>Pick a Date/Time</li>
+            <li>Pick a Date/Time as well as a place to meet</li>
+            <li>Review wardrobe requirements and agree upon the length of the photoshoot session.</li>
             <li>Meetup up with photographer and capture beautiful moments</li>
           </ul>
         </div>

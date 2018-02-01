@@ -13,7 +13,7 @@
     [ ] 5 people
       [ ] https://www.instagram.com/violettags/
       [ ] https://www.instagram.com/frapetitti/
-      [ ] https://www.instagram.com/crookedabstract/
+      [x] https://www.instagram.com/crookedabstract/
       [x] nana.shoots
         curl -H "Authorization: Token dJRvF8SO2X9C" -X POST -d '{ "ups://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots" }' http://localhost:3000/photos
 
