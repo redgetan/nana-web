@@ -1,16 +1,25 @@
+var async = require("async");
 var page = require('webpage').create();
-//url = 'https://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots'
-url = 'https://www.instagram.com/p/BU0CaTfhg8x/?taken-by=nani.shoots'
 
-page.open(url, function(status) {
-  console.log("Status: " + status);
+urls = [
+  "https://www.instagram.com/p/Beoy1SiDLO6/?taken-by=crookedabstract",
+  "https://www.instagram.com/p/BdLTdUnDhJv/?taken-by=crookedabstract",
+  "https://www.instagram.com/p/BclJ15GDafs/?taken-by=crookedabstract",
+  "https://www.instagram.com/p/BcgIlTljiZj/?taken-by=crookedabstract",
+  "https://www.instagram.com/p/BWJdrTxFjvI/?taken-by=crookedabstract"
+];
 
-  var imageUrl = page.evaluate(function() {
-    //return document.querySelector("img[srcset]").src;
-    return document.querySelector("img._2di5p").src;
+function getImageUrl(url, cb) {
+  page.open(url, function(status) {
+    var imageUrl = page.evaluate(function() {
+      return document.querySelector("img._2di5p").src;
+    });
+
+    cb(null, imageUrl);
   });
+}
 
-  console.log("imageUrl: " + imageUrl);
-
+async.mapSeries(urls, getImageUrl, function(err, results) {
+  console.log(JSON.stringify(results));
   phantom.exit();
 });

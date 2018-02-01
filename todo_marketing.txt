@@ -11,7 +11,10 @@
 
   [ ] toronto photographers
     [ ] 5 people
-      [ ] nana.shoots
+      [ ] https://www.instagram.com/violettags/
+      [ ] https://www.instagram.com/frapetitti/
+      [ ] https://www.instagram.com/crookedabstract/
+      [x] nana.shoots
         curl -H "Authorization: Token dJRvF8SO2X9C" -X POST -d '{ "ups://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots" }' http://localhost:3000/photos
 
         https://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots
@@ -21,8 +24,18 @@
         https://www.instagram.com/p/BON7r98jFpy/?taken-by=nani.shoots
         https://www.instagram.com/p/BNyQOt1FbKW/?taken-by=nani.shoots
 
+  [ ] world
+    https://www.instagram.com/saunakspace/
+
+  [ ] serbia photographer
+    https://www.shootwithkitty.com/presets/preset-swk6
+
+  [ ] Los Angeles
+    shot.god
+
   [ ] spinner
     http://kyleamathews.github.io/react-spinkit/
+
 
   [ ] re-arrange photos
     http://react-dnd.github.io/react-dnd/
