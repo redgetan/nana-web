@@ -7,7 +7,8 @@ export default class ReviewList extends Component {
   render() {
     return (
       <div>
-        <div className='header_2'>Reviews</div>
+        <h1>Reviews</h1>
+        <br/>
         {
           this.props.reviews.map((review, index) => (
             <Review key={index} review={review} />

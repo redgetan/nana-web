@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Profile from './../components/Profile'
-import ReviewList from './../components/ReviewList'
-import ReviewSubmit from './../components/ReviewSubmit'
 import Gallery from './../components/Gallery'
+import BookRequest from './../components/BookRequest'
 
 export default class PhotographerScreen extends Component {
 
   state = {
     user: null,
-    reviews: [],
     notFound: false
   }
 
@@ -20,7 +18,6 @@ export default class PhotographerScreen extends Component {
   }
 
   componentDidMount() {
-    window.c = this
     const username = this.props.match.params.username
 
     ClientAPI.getUser(username).then((res) => {
@@ -28,7 +25,6 @@ export default class PhotographerScreen extends Component {
         this.setState({ notFound: true })
       } else {
         this.setState({ user: res.body })
-        this.setState({ reviews: res.body.reviews })
       }
     }).catch((err) => {
       console.log("fail..")
@@ -46,9 +42,10 @@ export default class PhotographerScreen extends Component {
       return (
         <div>
           <Gallery images={this.state.user.photos} />
-          <Profile user={this.state.user} />
-          <ReviewSubmit user={this.state.user} onReviewCreated={this.onReviewCreatedHandler}/>
-          <ReviewList user={this.state.user} reviews={this.state.reviews} />
+          <div className="container">
+            <Profile user={this.state.user} />
+            <BookRequest />
+          </div>
         </div>
       )
     }

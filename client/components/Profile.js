@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import ReviewList from './../components/ReviewList'
 
 export default class Profile extends Component {
 
+  state = {
+    reviews: []
+  }
+
   render() {
     return (
-      <div className='user_profile_container'>
+      <div className='user_profile_container col-sm-7'>
         <div className="row">
           <div className='user_avatar_container' >
             <img className='user_avatar' src={this.props.user.avatar} alt=""/>
@@ -27,26 +32,17 @@ export default class Profile extends Component {
           <h1>What we'll do</h1>
           <p>We’ll walk around Times Square to shoot the most iconic place in New York City. As an award-winning street photographer photographer, I will provide you a photoshoot around Times Square with my professional camera. If you prefer a photo lesson, I will help you learn how to set up your camera at day or night to capture your moment in the way you want as well.</p>
         </div>
-        <div className="guest_requirements">
-          <p>Who can come</p>
-
-          <br/>Guests ages 18 and up can attend.
-          <br/>Government ID
-          <br/>You’ll need to take a picture of yourself that matches the photo on your ID. This is so we can confirm who’s actually going on the experience. You’ll only have to do this once.
-        </div>
-        <br/>
-        <a href={`/users/${this.props.user.id}/book/order_details`} className="book_photographer_btn btn btn-primary">Book</a>
-        <a href={`/users/${this.props.user.id}/message`} className="contact_photographer_btn btn">Contact</a>
-
-        <div className='header_2'>Availability</div>
-        <div className='book_datepicker' ref={(el) => { this.datePicker = el }}>
-        </div>
-
+        <ReviewList reviews={this.props.user.reviews} />
       </div>
     )
   }
 
   componentDidMount() {
+    /*
+        <div className='header_2'>Availability</div>
+        <div className='book_datepicker' ref={(el) => { this.datePicker = el }}>
+        </div>
+    */
     $(this.datePicker).datetimepicker({
       inline: true
     })
