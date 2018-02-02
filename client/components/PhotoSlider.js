@@ -51,7 +51,7 @@ export default class PhotoSlider extends Component {
         {
           this.props.photos.map((photo, index) => (
             <Link to={`/users/${this.props.userId}`} key={index}>
-              <img className="home_sample_photo" key={index} src={photo.url} alt=""/>
+              <img className="home_sample_photo" key={index} src={photo.src} alt=""/>
             </Link>
           ))
         }
@@ -68,7 +68,7 @@ export default class PhotoSlider extends Component {
             this.props.photos.map((photo, index) => (
               <div key={index} className={index === 0 ? 'item active' : 'item'}>
                 <Link to={`/users/${this.props.userId}`}>
-                  <img className="home_sample_photo" src={photo.url} alt=""/>
+                  <img className="home_sample_photo" src={photo.src} alt=""/>
                 </Link>
               </div>
             ))

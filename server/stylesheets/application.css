@@ -530,3 +530,14 @@ button[type='submit'][disabled='true'] {
   width: 100px;
 }
 
+.user_gallery_container {
+  overflow-x: scroll;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.user_gallery_photo {
+  max-height: 300px;
+}
+
+

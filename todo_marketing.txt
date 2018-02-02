@@ -1,6 +1,12 @@
 === Validate Demand
 
 [ ] Mobile Web
+  [ ] user-signup 
+    typeform
+
+  [ ] arrows should only show-up after hovering
+  [ ] userscreen should be appealing
+
   [ ] happy flow
     [ ] step 1: click ad "book now"
     [ ] step 2: i browse website, i must be wow awesome pictures. i want one too.
