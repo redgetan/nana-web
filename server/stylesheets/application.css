@@ -64,10 +64,34 @@ button:focus {
 
 /* Photographer */
 
-.photographer_container {
-  border: solid 1px #aaa;
+.user_profile_container {
   padding: 20px;
   margin: 50px 0px;
+}
+
+.user_profile_container .user_avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.user_avatar_container {
+  display: block;
+  float: left;
+  text-align: center;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.service_summary i {
+  margin-right: 20px;
+  width: 20px;
+}
+
+.guest_requirements {
+  display: block;
+  clear: both;
 }
 
 .user_photo_gallery {
@@ -99,9 +123,8 @@ button:focus {
   color: black;
 }
 
-.username {
-  font-size: 30px;
-  font-weight: bold;
+.photo_provider_description .username {
+  color: #c70e92;
 }
 
 .contact_photographer_btn {
