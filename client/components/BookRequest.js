@@ -15,7 +15,7 @@ export default class BookRequest extends Component {
     return (
       <div className="book_request_form col-sm-5">
         <form className='' onSubmit={this.bookRequest}>
-          <div className="cost"><span className="session_price">$60</span> per person</div>
+          <div className="cost"><span className="session_price">$100</span> per person</div>
           <div className='user_rating'>
             <Rating 
               emptySymbol="fa fa-star-o fa"
@@ -24,7 +24,7 @@ export default class BookRequest extends Component {
               readonly={true}
             />
           </div>
-          <input type='submit' className='btn btn-primary pull-right' value="Contact Photographer" />
+          <input type='submit' className='book_request_btn btn btn-primary pull-right' value="Contact Photographer" />
         </form>
       </div>
     )

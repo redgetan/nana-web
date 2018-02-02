@@ -1,11 +1,20 @@
 === Validate Demand
 
 [ ] Mobile Web
-  [ ] user-signup 
+  [x] user-signup 
     typeform
 
-  [ ] arrows should only show-up after hovering
-  [ ] userscreen should be appealing
+  [x] userscreen should be appealing
+  [ ] message should hit server and sent to recepient and myself
+  [ ] track events
+    [ ] search
+    [ ] waiting list signup
+    [ ] become photographer
+    [ ] contact photographer
+
+    [ ] search
+    
+  [ ] search "log whats being searched"
 
   [ ] happy flow
     [ ] step 1: click ad "book now"

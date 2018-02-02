@@ -13,24 +13,24 @@ export default class Profile extends Component {
         <div className="row">
           <div className='user_avatar_container' >
             <img className='user_avatar' src={this.props.user.avatar} alt=""/>
-            <div className="username">{this.props.user.email}</div>
+            <div className="username">{this.props.user.username}</div>
           </div>
           <div className="service_summary">
             <div className="location"><i className='fa fa-bank'></i>Toronto</div>
             <div className="duration"><i className='fa fa-clock-o'></i>2 hours</div>
-            <div className="language"><i className='fa fa-comments'></i>Offered in English, Russian</div>
+            <div className="language"><i className='fa fa-comments'></i>Offered in English</div>
             <div className="camera_specs"><i className='fa fa-camera'></i>Nikon D800</div>
           </div>
         </div>
         <div className="user_bio">
           <h1>About the Photographer</h1>
-          <p>I'm an award-winning street photographer who love shooting people in crowded places. My work has been exhibited and published in many places. I love meeting new people. I've always known that the best thing I can do is photography, so I love to meet either people who loves photography or love being photographed. Let's have fun shooting together!</p>
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
           {this.props.user.description}
           https://poupayphoto.com/airbnb/6ggi7dt2pymfp74lzc3z1qixwv5ucs
         </div>
         <div className="service_details">
           <h1>What we'll do</h1>
-          <p>We’ll walk around Times Square to shoot the most iconic place in New York City. As an award-winning street photographer photographer, I will provide you a photoshoot around Times Square with my professional camera. If you prefer a photo lesson, I will help you learn how to set up your camera at day or night to capture your moment in the way you want as well.</p>
+          <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
         </div>
         <ReviewList reviews={this.props.user.reviews} />
       </div>

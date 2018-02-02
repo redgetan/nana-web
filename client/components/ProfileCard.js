@@ -33,7 +33,7 @@ export default class ProfileCard extends Component {
               initialRating={5}
             />
           </div>
-          <div className="cost"><span className="session_price">$60</span> per person</div>
+          <div className="cost"><span className="session_price">$100</span> per person</div>
         </Link>
       </div>
     )

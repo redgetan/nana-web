@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113453623-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.GA_TRACKING_ID = 'UA-113453623-1'
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', GA_TRACKING_ID, { 'app_name': 'nana_cupid_web' });
+    </script>
+
     <title>Nana</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,9 +56,13 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/partner/registration">Become a Photographer</a>  </li>
+            <li>
+              <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG">
+                Become a Photographer
+              </a>  
+            </li>
             <li><a href="/about">About</a></li>
-            <li><a class="signup_btn" href="/signup">Sign Up</a></li>
+            <li><a class="signup_btn" target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH">Sign Up</a></li>
             <li><a class="login_btn" href="/signin">Login</a></li>
             <li class="home_user_menu dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Me <span class="caret"></span></a>
@@ -72,7 +87,7 @@
       <ul class="footer_container container">
         <li class="col-xs-12 col-sm-3">
           <ul class="footer_section">
-            <li><a href="#">About</a></li>
+            <li><a href="/about">About</a></li>
             <li><a href="#">FAQ</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Terms</a></li>

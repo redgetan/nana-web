@@ -39,8 +39,7 @@ export default class UserDirectoryScreen extends Component {
             Improve your chance of success in Tinder, OkCupid, Match.com, Bumble, Coffee Meets Bagel
           </div>
           <div className="call_to_action">
-            <a href="" className="btn btn-lg btn-primary">Become a Photographer</a>
-            <a href="" className="call_signup_btn btn btn-lg btn-primary">Sign up for Session</a>
+            <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG" className="btn btn-lg btn-primary">Become a Photographer</a>
           </div>
         </div>
 
@@ -61,9 +60,19 @@ export default class UserDirectoryScreen extends Component {
             <li>Review wardrobe requirements and agree upon the length of the photoshoot session.</li>
             <li>Meetup up with photographer and capture beautiful moments</li>
           </ul>
+
         </div>
 
-        <div className="vertical_spacing" style={{marginBottom: '200px'}}></div>
+        <br />
+        <br />
+        <div className="get_notified_container">
+          <h1>Get Notified</h1>
+
+          <div className='wait_list_description'>Not yet available in your city?</div>
+          <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className="nana_primary_btn btn btn-lg btn-primary">Join our Waiting List</a>
+        </div>
+
+        <div className="vertical_spacing" style={{marginBottom: '150px'}}></div>
       </div>
     )
   }
