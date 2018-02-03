@@ -13,7 +13,10 @@ const gulp = require('gulp'),
   rev = require('gulp-rev'),
   ejs = require("gulp-ejs"),
   rename = require('gulp-rename'),
-  runSequence = require('run-sequence')
+  runSequence = require('run-sequence'),
+  envify = require('envify/custom')
+  del = require('del')
+
 
 const  process = require('process')
 const  fs = require('fs')
@@ -40,15 +43,22 @@ const DESTINATION = "./dist/"
 const REV_MANIFEST_FILE = "dist/rev-manifest.json"
 const REV_MANIFEST_FILE_WITHOUT_DIR = "rev-manifest.json"
 
-gulp.task('default', ['build:all'])
+let shouldWatch = false
 
-gulp.task('build:all', (cb) => {
-  runSequence('build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+gulp.task('default', ['watch'])
+
+gulp.task('watch', (cb) => {
+  shouldWatch = true
+  runSequence('clean', 'build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
 })
 
 gulp.task('build', (cb) => {
   isProduction = true
-  runSequence('build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+  runSequence('clean', 'build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+})
+
+gulp.task('clean', (cb) => {
+  return del(["dist/**/*"])
 })
 
 gulp.task('build:vendor', () => {
@@ -84,7 +94,7 @@ gulp.task('build:stylesheets', () => {
       .pipe(gulp.dest(DESTINATION))
   }
 
-  if (!isProduction) watch(STYLESHEETS, bundleCSS)
+  if (shouldWatch) watch(STYLESHEETS, bundleCSS)
   
   return bundleCSS()
 })
@@ -97,11 +107,13 @@ gulp.task('build:javascript', () => {
   const bundleApp = () => {
     console.log("Rebuilding dist/app.js")
 
-    return browserify({
+    const b = browserify({
       entries: [ENTRY],
       fullPaths: true
     })
-    .external(VENDORS) 
+
+    return b.external(VENDORS) 
+    .transform(envify({  NODE_ENV: env }))
     .transform(babelify)
     .bundle()
     .pipe(source('app.js'))
@@ -114,7 +126,7 @@ gulp.task('build:javascript', () => {
     .pipe(gulp.dest(DESTINATION))
   }
 
-  if (!isProduction) watch(WATCH_DIRS, bundleApp)
+  if (shouldWatch) watch(WATCH_DIRS, bundleApp)
   
   return bundleApp()
 })
@@ -138,7 +150,7 @@ gulp.task('build:revisionreplace', () => {
       .pipe(gulp.dest(DESTINATION));
   }
 
-  if (!isProduction) watch(WATCH_VIEW_DIRS, bundleLayout)
+  if (shouldWatch) watch(WATCH_VIEW_DIRS, bundleLayout)
   return bundleLayout()
 })
 

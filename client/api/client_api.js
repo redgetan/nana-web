@@ -19,10 +19,10 @@ export default class ClientAPI {
   static getDefaultOptions() {
     let baseURI
 
-    if (window.location.match("localhost")) {
-      baseURI = "http://localhost:3000"
-    } else {
+    if (process.env.NODE_ENV === "production") {
       baseURI = "https://5jbouftijk.execute-api.us-west-2.amazonaws.com/production"
+    } else {
+      baseURI = "http://localhost:3000"
     }
 
     return {
