@@ -6,15 +6,7 @@
 
   [x] userscreen should be appealing
   [ ] message should hit server and sent to recepient and myself
-  [ ] track events
-    [ ] search
-    [ ] waiting list signup
-    [ ] become photographer
-    [ ] contact photographer
-
-    [ ] search
-    
-  [ ] search "log whats being searched"
+  [ ] messaging photographers should work
 
   [ ] happy flow
     [ ] step 1: click ad "book now"

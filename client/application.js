@@ -45,14 +45,14 @@ window.renderNavbar = () => {
   }
 }
 
-document.addEventListener("click", (event) => {
-  const eventAction = $(event).data("event-action")
-  const eventCategory = $(event).data("event-category")
-  const eventLabel = $(event).data("event-label")
+// document.addEventListener("click", (event) => {
+//   const eventAction = $(event).data("event-action")
+//   const eventCategory = $(event).data("event-category")
+//   const eventLabel = $(event).data("event-label")
 
-  if (eventAction) {
-    gtag('event', eventAction)
-  }
-})
+//   if (eventAction) {
+//     gtag('event', eventAction)
+//   }
+// })
 
 renderNavbar()
