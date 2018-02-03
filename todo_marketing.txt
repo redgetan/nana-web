@@ -7,6 +7,7 @@
   [x] userscreen should be appealing
   [ ] message should hit server and sent to recepient and myself
   [ ] messaging photographers should work
+  [ ] pip-server convert to promises instead of calling callback
 
   [ ] happy flow
     [ ] step 1: click ad "book now"
