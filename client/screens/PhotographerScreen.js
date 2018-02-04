@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
-import Profile from './../components/Profile'
+import Profile from './../components/Photographer/Profile'
 import Gallery from './../components/Gallery'
 import BookRequest from './../components/BookRequest'
 

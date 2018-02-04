@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfileCard from './../components/ProfileCard'
+import PhotographerDirectory from './../components/Photographer/PhotographerDirectory'
 import ClientAPI from './../api/client_api'
 
 
@@ -28,16 +28,7 @@ export default class UserDirectoryScreen extends Component {
   render() {
     const graphData = []
 
-    return (
-      <div>
-        {
-          this.state.users
-                    .map((user) => (
-            <ProfileCard key={user.id} user={user}/>
-          ))
-        }
-      </div>
-    )
+    return <PhotographerDirectory users={this.state.users} />
   }
 
 }

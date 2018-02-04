@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ProfileCard from './../components/ProfileCard'
+import PhotographerDirectory from './../components/Photographer/PhotographerDirectory'
 import ClientAPI from './../api/client_api'
 const Rating = require('react-rating')
 
@@ -47,14 +47,7 @@ export default class UserDirectoryScreen extends Component {
           </div>
         </div>
 
-        <div className="photographer_directory container-fluid">
-          {
-            this.state.users.map((user) => (
-              <ProfileCard key={user.id} user={user}/>
-            ))
-          }
-        </div>
-
+        <PhotographerDirectory users={this.state.users} />
 
         <div className="container how_it_works_container">
           <h1>How it Works</h1>
