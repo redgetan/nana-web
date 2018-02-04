@@ -49,12 +49,12 @@ gulp.task('default', ['watch'])
 
 gulp.task('watch', (cb) => {
   shouldWatch = true
-  runSequence('clean', 'build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+  runSequence('clean', 'build:vendor', 'copy:netlify', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
 })
 
 gulp.task('build', (cb) => {
   isProduction = true
-  runSequence('clean', 'build:vendor', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
+  runSequence('clean', 'build:vendor', 'copy:netlify', 'copy:images', 'build:stylesheets', 'build:javascript', 'build:revisionreplace', cb)
 })
 
 gulp.task('clean', (cb) => {
@@ -100,7 +100,11 @@ gulp.task('build:stylesheets', () => {
 })
 
 gulp.task('copy:images', () => {
-  gulp.src("./public/**/*").pipe(gulp.dest(DESTINATION + "/assets"))
+  gulp.src("./client/images/**/*").pipe(gulp.dest(DESTINATION + "/assets"))
+})
+
+gulp.task('copy:netlify', () => {
+  gulp.src("./server/_redirects").pipe(gulp.dest(DESTINATION))
 })
 
 gulp.task('build:javascript', () => {
