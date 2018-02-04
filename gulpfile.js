@@ -101,6 +101,7 @@ gulp.task('build:stylesheets', () => {
 
 gulp.task('copy:images', () => {
   gulp.src("./client/images/**/*").pipe(gulp.dest(DESTINATION + "/assets"))
+  gulp.src("./client/static/**/*").pipe(gulp.dest(DESTINATION))
 })
 
 gulp.task('copy:netlify', () => {

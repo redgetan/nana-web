@@ -5,7 +5,15 @@
     typeform
 
   [x] userscreen should be appealing
-  [ ] message should hit server and sent to recepient and myself
+  [ ] contact should work (zoho)
+  [ ] search autocomplete
+    [ ] if not toronto/vancouver/la/nyc, show, not available in city yet
+    [ ] https://developers.google.com/maps/documentation/javascript/geocoding
+  [ ] some nyc photographers
+  [ ] some vanoucver photographers
+  [ ] some la photographers
+
+  [ ] message should capture email and send to info@nanacupid.com
   [ ] messaging photographers should work
   [ ] pip-server convert to promises instead of calling callback
 
