@@ -20,10 +20,9 @@
       [ ] edit description/bio
 
   [ ] send msg
-
   [ ] message should capture email and send to info@nanacupid.com
   [ ] messaging photographers should work
-  [ ] pip-server convert to promises instead of calling callback
+  [x] pip-server convert to apex
 
   [ ] happy flow
     [ ] step 1: click ad "book now"

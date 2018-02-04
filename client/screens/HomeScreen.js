@@ -33,7 +33,7 @@ export default class UserDirectoryScreen extends Component {
       <div>
         <div className="container-fluid home_container">
           <h1 className="home_title">
-            Find a Photographer. Improve your <span className="home_highlight">Dating Profile</span>
+            Find a Photographer for your <span className="home_highlight">Dating Profile</span>
           </h1>
           <div className="home_description">
             <ul>
