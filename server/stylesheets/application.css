@@ -30,11 +30,6 @@ button:focus {
     color: #ccc;
 }
 
-.main-container {
-  
-}
-
-
 
 
 /* Home */
@@ -330,6 +325,39 @@ select::-ms-expand {
   height: auto;
 }
 
+@media only screen and (max-width : 400px) {
+  .home_sample_photo {
+    max-width: none;
+    width: 100%;
+  }
+
+  .desktop_description {
+    display: none;
+  }
+}
+
+.home_title {
+  margin-bottom: 100px;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  margin-top: 50px; 
+  font-size: 30px;
+  padding: 10px;
+}
+
+
+@media only screen and (max-width : 400px) {
+  .home_title {
+    font-size: 20px;
+    width: 100%;
+  }
+}
+
+.home_highlight {
+  color: 
+}
+
 .slick-next {
   right: 10px;
 }
@@ -352,14 +380,6 @@ select::-ms-expand {
   margin: auto;
 }
 
-.home_title {
-  margin-bottom: 100px;
-  text-align: center;
-  margin: auto;
-  width: 100%;
-  margin-top: 50px; 
-}
-
 .home_description {
   text-align: center;
   font-size: 20px;
@@ -367,6 +387,11 @@ select::-ms-expand {
   margin: auto;
   margin-top: 10px;
   margin-bottom: 50px;
+}
+
+.home_description ul {
+  list-style: none;
+  padding: 0px;
 }
 
 .home_sample_photo_container,
@@ -420,6 +445,13 @@ select::-ms-expand {
   text-align: center;
   width: 400px;
   margin-top: 50px;
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 400px) {
+  .photo_card {
+    width: 100%;
+  }
 }
 
 .user_avatar {
@@ -635,4 +667,10 @@ button[type='submit'][disabled='true'] {
 
 .login_btn {
   display: none !important;
+}
+
+.react_root_container,
+.home_container,
+.photographer_directory {
+  padding: 0px;
 }

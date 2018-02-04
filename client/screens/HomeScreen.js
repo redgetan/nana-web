@@ -31,12 +31,16 @@ export default class UserDirectoryScreen extends Component {
 
     return (
       <div>
-        <div className="container-fluid">
+        <div className="container-fluid home_container">
           <h1 className="home_title">
-            Find a Photographer for your Dating Profile
+            Find a Photographer. Improve your <span className="home_highlight">Dating Profile</span>
           </h1>
           <div className="home_description">
-            Improve your chance of success in Tinder, OkCupid, Match.com, Bumble, Coffee Meets Bagel
+            <ul>
+              <li>No Studio Pics</li>
+              <li>Casual yet High Quality Photos</li>
+              <li className="desktop_description">Make your hobbies, lifestyle, and intellect standout</li>
+            </ul>
           </div>
           <div className="call_to_action">
             <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG" className="btn btn-lg btn-primary">Become a Photographer</a>
@@ -55,10 +59,9 @@ export default class UserDirectoryScreen extends Component {
         <div className="container how_it_works_container">
           <h1>How it Works</h1>
           <ul className="how_it_works_list light_gray">
-            <li>Choose a Photographer</li>
-            <li>Pick a Date/Time as well as a place to meet</li>
-            <li>Review wardrobe requirements and agree upon the length of the photoshoot session.</li>
-            <li>Meetup up with photographer and capture beautiful moments</li>
+            <li>1. Choose a Photographer</li>
+            <li>2. Pick a Date/Time as well as a place to meet</li>
+            <li>3. Meetup up with photographer and capture beautiful moments</li>
           </ul>
 
         </div>

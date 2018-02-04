@@ -5,14 +5,9 @@ export default class About extends Component {
     return (
       <div className="container about_container">
         <h1>#1 Dating Profile Photography</h1>
-        <ul>
-          <li>No Studio Pictures</li>
-          <li>Casual yet High Quality Photos</li>
-          <li>Make your hobbies, lifestyle, and intellect standout</li>
-        </ul>
         <i className="about_logo fa fa-camera-retro" ></i>
         <p>
-          A marketplace that matches Instagram Photographers with people who need better dating profile pictures. 
+          We are a marketplace that matches Instagram Photographers with people who need better dating profile pictures. 
         </p>
         <br />
         <br />

@@ -22,7 +22,7 @@ export default class ClientAPI {
     if (process.env.NODE_ENV === "production") {
       baseURI = "https://5jbouftijk.execute-api.us-west-2.amazonaws.com/production"
     } else {
-      baseURI = "http://localhost:3000"
+      baseURI = "http://192.168.2.31:3000"
     }
 
     return {

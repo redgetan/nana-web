@@ -5,13 +5,21 @@
     typeform
 
   [x] userscreen should be appealing
-  [ ] contact should work (zoho)
+  [x] contact should work - godaddy
   [ ] search autocomplete
     [ ] if not toronto/vancouver/la/nyc, show, not available in city yet
     [ ] https://developers.google.com/maps/documentation/javascript/geocoding
   [ ] some nyc photographers
   [ ] some vanoucver photographers
   [ ] some la photographers
+  [ ] loading animation
+  [ ] start msgs photographers ask if they would be interested
+    [ ] 10 people
+    [ ] call to action (give them account, so they can)
+      [ ] enter email for notification
+      [ ] edit description/bio
+
+  [ ] send msg
 
   [ ] message should capture email and send to info@nanacupid.com
   [ ] messaging photographers should work
