@@ -121,12 +121,24 @@ button:focus {
 }
 
 .user_profile_container {
-  width: calc(100% - 400px);
 }
 
 .book_request_form {
-  width: 400px;
   border: solid 1px #ccc;
+}
+
+.user_gallery_photo {
+  max-height: 400px;
+}
+
+@media only screen and (max-width : 500px) {
+  .book_request_form {
+    width: 100%;
+  }
+
+  .user_gallery_photo {
+    max-height: 250px !important;
+  }
 }
 
 .book_request_btn {
@@ -153,8 +165,13 @@ button:focus {
   display: block;
   float: left;
   text-align: center;
-  margin-right: 20px;
   padding: 10px;
+  margin-bottom: 50px;
+}
+
+
+.service_summary {
+    margin-bottom: 50px;
 }
 
 .service_summary i {

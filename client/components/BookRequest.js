@@ -13,7 +13,7 @@ export default class BookRequest extends Component {
 
   render() {
     return (
-      <div className="book_request_form col-sm-5">
+      <div className="book_request_form col-sm-5 col-xs-12">
         <form className='' onSubmit={this.bookRequest}>
           <div className="cost"><span className="session_price">$100</span> per person</div>
           <div className='user_rating'>
