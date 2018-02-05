@@ -131,9 +131,15 @@ button:focus {
   max-height: 400px;
 }
 
-@media only screen and (max-width : 500px) {
+@media only screen and (max-width : 768px) {
   .book_request_form {
     width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    text-align: center;
+    background: white;
   }
 
   .user_gallery_photo {
