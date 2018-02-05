@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PhotographerDirectory from './../components/Photographer/PhotographerDirectory'
+import LocationSearch from './../components/LocationSearch'
 import ClientAPI from './../api/client_api'
 const Rating = require('react-rating')
 
@@ -42,9 +43,7 @@ export default class UserDirectoryScreen extends Component {
               <li className="desktop_description">Make your hobbies, lifestyle, and intellect standout</li>
             </ul>
           </div>
-          <div className="call_to_action">
-            <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG" className="btn btn-lg btn-primary">Become a Photographer</a>
-          </div>
+          <LocationSearch />
         </div>
 
         <PhotographerDirectory users={this.state.users} />
