@@ -642,6 +642,12 @@ select::-ms-expand {
   border: solid 1px #c70e92 !important;
 }
 
+@media only screen and (max-width : 500px) {
+  .call_signup_btn {
+    margin-top: 15px;
+  }
+}
+
 .call_signup_btn:hover,
 .call_signup_btn:focus {
   color: #c70e92;
