@@ -43,7 +43,11 @@ export default class UserDirectoryScreen extends Component {
               <li className="desktop_description">Make your hobbies, lifestyle, and intellect standout</li>
             </ul>
           </div>
-          <LocationSearch />
+
+          <div class="call_to_action">
+            <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG" class="btn btn-lg btn-primary">Become a Photographer</a>
+          <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" class='btn btn-lg call_signup_btn'>Join Waitlist</a>
+          </div>
         </div>
 
         <PhotographerDirectory users={this.state.users} />

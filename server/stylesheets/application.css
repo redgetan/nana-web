@@ -642,8 +642,9 @@ select::-ms-expand {
   border: solid 1px #c70e92 !important;
 }
 
-.call_signup_btn:hover {
-  color: #6f0550;
+.call_signup_btn:hover,
+.call_signup_btn:focus {
+  color: #c70e92;
 }
 
 button[type='submit'][disabled='true'] {
