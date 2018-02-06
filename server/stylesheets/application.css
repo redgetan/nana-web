@@ -121,24 +121,31 @@ button:focus {
 }
 
 .user_profile_container {
+  padding-top: 0px;
 }
 
-.book_request_form {
-  border: solid 1px #ccc;
+.user_profile_container .user_bio h1 {
+  margin-top: 0px;
 }
 
 .user_gallery_photo {
-  max-height: 400px;
+  max-height: 255px;
+  margin-right: 15px;
+  border: solid 1px #aaa;
+}
+
+.book_request_form {
+  text-align: center;
 }
 
 @media only screen and (max-width : 768px) {
   .book_request_form {
+    border: solid 1px #ccc;
     width: 100%;
     position: fixed;
     bottom: 0px;
     left: 0px;
     margin: 0px;
-    text-align: center;
     background: white;
   }
 
@@ -160,7 +167,7 @@ button:focus {
   background-color: darkblue !important;
 }
 
-.user_profile_container .user_avatar {
+.user_avatar_container .user_avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -172,17 +179,28 @@ button:focus {
   float: left;
   text-align: center;
   padding: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
+.user_avatar_container .username {
+  font-size: 30px;
+  color: black;
+}
 
 .service_summary {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.service_summary .summary_item {
+  display: inline-block;
+  margin-right: 30px;
+  color: #aaa;
 }
 
 .service_summary i {
-  margin-right: 20px;
-  width: 20px;
+  margin-right: 5px;
+  width: 25px;
 }
 
 .guest_requirements {
@@ -704,10 +722,8 @@ button[type='submit'][disabled='true'] {
   overflow-x: scroll;
   white-space: nowrap;
   text-align: center;
-}
-
-.user_gallery_photo {
-  max-height: 400px;
+  padding: 1px 0px;
+  border-right: solid 1px #ccc;
 }
 
 .about_container {

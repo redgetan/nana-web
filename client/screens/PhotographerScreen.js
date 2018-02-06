@@ -41,8 +41,18 @@ export default class PhotographerScreen extends Component {
     if (this.state.user) {
       return (
         <div>
-          <Gallery images={this.state.user.photos} />
           <div className="container">
+            <div className="row">
+              <div className='user_avatar_container col-xs-12' >
+                <img className='user_avatar' src={this.state.user.avatar} alt=""/>
+                <div className="username">{this.state.user.username}</div>
+              </div>
+              <div className="service_summary col-xs-12">
+                <div className="location summary_item"><i className='fa fa-map-marker'></i>Toronto</div>
+                <div className="camera_specs summary_item"><i className='fa fa-camera'></i>Nikon D800</div>
+              </div>
+            </div>
+            <Gallery images={this.state.user.photos} />
             <Profile user={this.state.user} />
             <BookRequest />
           </div>
