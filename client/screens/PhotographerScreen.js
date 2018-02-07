@@ -18,6 +18,8 @@ export default class PhotographerScreen extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0)
+
     const username = this.props.match.params.username
 
     ClientAPI.getUser(username).then((res) => {
@@ -38,33 +40,42 @@ export default class PhotographerScreen extends Component {
   }
 
   render() {
-    if (this.state.user) {
-      return (
-        <div>
-          <div className="container">
-            <div className="row">
-              <div className='user_avatar_container col-xs-12' >
-                <img className='user_avatar' src={this.state.user.avatar} alt=""/>
-                <div className="username">{this.state.user.username}</div>
-              </div>
-              <div className="service_summary col-xs-12">
-                <div className="location summary_item"><i className='fa fa-map-marker'></i>Toronto</div>
-                <div className="camera_specs summary_item"><i className='fa fa-camera'></i>Nikon D800</div>
-              </div>
-            </div>
-            <Gallery images={this.state.user.photos} />
-            <Profile user={this.state.user} />
-            <BookRequest />
-          </div>
-        </div>
-      )
-    }
-
     if (this.state.notFound) {
       return <div>User not found</div>
     }
 
-    return <div></div>
+    if (!this.state.user) {
+      return (
+          <div className="spinner">
+            <div className="rect1"></div>
+            <div className="rect2"></div>
+            <div className="rect3"></div>
+            <div className="rect4"></div>
+            <div className="rect5"></div>
+          </div>
+      )
+    } 
+
+    return (
+      <div>
+        <div className="container">
+          <div className="row">
+            <div className='user_avatar_container col-xs-12' >
+              <img className='user_avatar' src={this.state.user.avatar} alt=""/>
+              <div className="username">{this.state.user.username}</div>
+            </div>
+            <div className="service_summary col-xs-12">
+              <div className="location summary_item"><i className='fa fa-map-marker'></i>Toronto</div>
+              <div className="camera_specs summary_item"><i className='fa fa-camera'></i>Nikon D800</div>
+            </div>
+          </div>
+          <Gallery images={this.state.user.photos} />
+          <Profile user={this.state.user} />
+          <BookRequest />
+        </div>
+      </div>
+    )
+
   }
 }
 
