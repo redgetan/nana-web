@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Profile from './../components/Photographer/Profile'
-import Gallery from './../components/Gallery'
-import BookRequest from './../components/BookRequest'
+import Gallery from './../components/Widget/Gallery'
+import BookRequest from './../components/Photographer/BookRequest'
 
 export default class PhotographerScreen extends Component {
 

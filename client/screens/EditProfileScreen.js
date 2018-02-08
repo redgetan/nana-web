@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
-import ProfileSummary from './../components/ProfileSummary'
-import ProfileGalleryPicker from './../components/ProfileGalleryPicker'
+import ProfileSummary from './../components/Photographer/ProfileSummary'
+import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
 import { Redirect } from 'react-router-dom'
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 const Rating = require('react-rating')
-import Config from './../config/config'
-import ClientAPI from './../api/client_api'
+import Config from './../../config/config'
+import ClientAPI from './../api/../client_api'
 
 export default class BookRequest extends Component {
 

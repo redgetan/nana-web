@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
 import ClientAPI from './../api/client_api'
-import OrderDetails from './../components/OrderDetails'
-import ConfirmPayment from './../components/ConfirmPayment'
-import PriceSummary from './../components/PriceSummary'
-import Wizard from './../components/Wizard'
+import OrderDetails from './../components/Booking/OrderDetails'
+import ConfirmPayment from './../components/Booking/ConfirmPayment'
+import PriceSummary from './../components/Booking/PriceSummary'
+import Wizard from './../components/Widget/Wizard'
 
 
 export default class BookScreen extends Component {

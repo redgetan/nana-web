@@ -6,10 +6,9 @@ import {
   Switch
 } from 'react-router-dom'
 
-import Home from './../components/Home'
 import About from './../components/About'
-import Signup from './../components/Signup'
-import Login from './../components/Login'
+import Signup from './../components/Registration/Signup'
+import Login from './../components/Registration/Login'
 import HomeScreen from './../screens/HomeScreen'
 import UserDirectoryScreen from './../screens/UserDirectoryScreen'
 import PhotographerScreen from './../screens/PhotographerScreen'
@@ -23,7 +22,6 @@ export default class AppRouter extends Component {
 		return (
 			<div>
 				<Switch>
-		      <Route exact path="/messages" component={Home}/>
 		      <Route exact path="/about" component={About}/>
 	        <Route exact path='/signin' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>

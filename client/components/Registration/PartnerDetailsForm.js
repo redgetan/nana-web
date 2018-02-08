@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 import { withFormik, Field } from 'formik'
-import FormField from "./FormField"
-import SelectField from "./SelectField"
-import NanaClient from './../api/client_api'
-import Config from '../config/config'
-import FormConfig from '../config/form_config'
+import FormField from "./../Widget/FormField"
+import SelectField from "./../Widget/SelectField"
+import NanaClient from './../../api/client_api'
+import Config from '../../config/config'
+import FormConfig from '../config/../form_config'
 
 // Our inner form component which receives our form's state and updater methods as props
 const PartnerDetailsForm = ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 const Rating = require('react-rating')
 
-import PhotoSlider from './../PhotoSlider'
+import PhotoSlider from './../Widget/PhotoSlider'
 
 
 export default class ProfileCard extends Component {

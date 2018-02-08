@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ReviewList from './../ReviewList'
+import ReviewList from './../Review/ReviewList'
 
 export default class Profile extends Component {
 

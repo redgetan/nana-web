@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Config from '../config/config'
-import ClientAPI from './../api/client_api'
+import Config from '../../config/config'
+import ClientAPI from './../../api/client_api'
 
 export default class Signup extends Component {
 
