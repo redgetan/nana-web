@@ -92,6 +92,12 @@ export default class ClientAPI {
     })
   }
 
+  static createMessage(attributes) {
+    return this.post('/messages', {
+      body: attributes
+    })
+  }
+
   static getPartnerAccount(accountId) {
     return this.get('/partner_accounts/' + accountId)
   }

@@ -11,6 +11,23 @@ export default class BookRequest extends Component {
   componentWillUnmount() {
   }
 
+  emailPhotographer(email, name, text) {
+    ClientAPI.createMessage({
+      sender_email: email,
+      name: name,
+      text: text,
+      recipient_id: this.props.user.id
+    }).then(() => {
+      if (res.body && res.body.error) {
+        alert("Message sending failed")
+      } else {
+        alert("Message sent")
+      }
+    }).catch((err) => {
+      alert("Message sending failed")
+    })
+  }
+
   render() {
     return (
       <div className="book_request_form col-sm-5 col-xs-12">

@@ -1,16 +1,50 @@
 === Validate Demand
 
 [ ] Mobile Web
-  [x] user-signup 
+  [x] user-signup
     typeform
 
   [x] userscreen should be appealing
   [x] contact should work - godaddy
+  [ ] add 3 more toronto photographers (total of 6)
+  [ ] message button should just work
+    [ ] bootstrap modal (mobile fullscreen)
+      [ ] name
+      [ ] email
+      [ ] msg
+    [ ] /message
+      [ ] recepient_id + params
+  [ ] add 5 photographers from
+    [ ] los angeles
+
+  [ ] Test Facebook Instagram Ad
+
+  [ ] Photographer
+    [ ] photographers should be able to edit their profile
+      [ ] About
+      [ ] What we'll do
+      [ ] Availability
+      [ ] Upload their pictures
+      [ ] Set their own price
+
+    [ ] trust
+      [ ] verification
+        [ ] email verified
+
+  [ ] Client
+    [ ] needs to create account to message photographers
+    [ ] messaging should work
+
+  [ ] Photogapher
+    [ ] improve signup flow
+
   [ ] search autocomplete
     [ ] if not toronto/vancouver/la/nyc, show, not available in city yet
     [ ] https://developers.google.com/maps/documentation/javascript/geocoding
+
   [ ] some nyc photographers
-  [ ] some vanoucver photographers
+  [ ] some vancouver photographers
+
   [ ] some la photographers
   [ ] loading animation
   [ ] start msgs photographers ask if they would be interested
@@ -27,7 +61,7 @@
   [ ] happy flow
     [ ] step 1: click ad "book now"
     [ ] step 2: i browse website, i must be wow awesome pictures. i want one too.
-    [ ] step 3: i browse photographers that i like using carousel. 
+    [ ] step 3: i browse photographers that i like using carousel.
     [ ] step 4: i click on photograph listing brings me to user page
     [ ] step 5: i click on "Contact Photographer" (I provide my email, and message)
       [ ] similar to craigslist email relay
@@ -35,7 +69,8 @@
   [ ] toronto photographers
     [ ] 5 people
       [ ] https://www.instagram.com/violettags/
-      [ ] https://www.instagram.com/frapetitti/
+      [x] https://www.lucancoutts.com/people/
+      [x] https://www.instagram.com/frapetitti/
       [x] https://www.instagram.com/crookedabstract/
       [x] nana.shoots
         curl -H "Authorization: Token dJRvF8SO2X9C" -X POST -d '{ "ups://www.instagram.com/p/BapZ2NABT8j/?taken-by=nani.shoots" }' http://localhost:3000/photos
@@ -49,7 +84,10 @@
 
   [ ] world
     https://www.instagram.com/saunakspace/
-    https://vsco.co/obislens/images/1
+    [x] dallas
+      https://vsco.co/obislens/images/1
+    [x] michigan
+      http://teresamathew.com/contact/
 
   [ ] serbia photographer
     https://www.shootwithkitty.com/presets/preset-swk6
@@ -57,7 +95,7 @@
   [ ] Los Angeles
     shot.god
 
-  [ ] spinner
+  [x] spinner
     http://kyleamathews.github.io/react-spinkit/
 
 
@@ -66,7 +104,7 @@
 
   [ ] Let Photographer signup
     [ ] put description (ala craigslist)
-    [ ] connect with instagram 
+    [ ] connect with instagram
     [ ] upload photos
     [ ] arrange photos
     [ ] put email
@@ -123,8 +161,8 @@ nyc
   https://www.instagram.com/whoisoda/
 
 vancouver
-  https://www.instagram.com/zmelhus/
-  https://www.instagram.com/nickjzator/
+  [x] https://www.instagram.com/zmelhus/
+  [x] https://www.instagram.com/nickjzator/
 
 uk
   https://www.instagram.com/clemono2/

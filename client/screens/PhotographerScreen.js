@@ -71,7 +71,7 @@ export default class PhotographerScreen extends Component {
           </div>
           <Gallery images={this.state.user.photos} />
           <Profile user={this.state.user} />
-          <BookRequest />
+          <BookRequest user={this.state.user} />
         </div>
       </div>
     )
