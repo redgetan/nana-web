@@ -45,8 +45,7 @@ export default class UserDirectoryScreen extends Component {
           </div>
 
           <div className="call_to_action">
-            <a target="_blank" href="https://nanacupid.typeform.com/to/Ohl4OG" className="btn btn-lg btn-primary">Become a Photographer</a>
-          <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className='btn btn-lg call_signup_btn'>Join Waitlist</a>
+            <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className='btn btn-lg call_signup_btn'>Join Waitlist</a>
           </div>
         </div>
 
