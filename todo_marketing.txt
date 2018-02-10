@@ -26,6 +26,7 @@
       [ ] Availability
       [ ] Upload their pictures
       [ ] Set their own price
+      [ ] specify cameras used
 
     [ ] trust
       [ ] verification
@@ -68,7 +69,7 @@
 
   [ ] toronto photographers
     [ ] 5 people
-      [ ] https://www.instagram.com/violettags/
+      [x] http://www.bettinabogar.com/lifestyle-overview-photography-toronto-losangeles/
       [x] https://www.lucancoutts.com/people/
       [x] https://www.instagram.com/frapetitti/
       [x] https://www.instagram.com/crookedabstract/
@@ -82,12 +83,17 @@
         https://www.instagram.com/p/BON7r98jFpy/?taken-by=nani.shoots
         https://www.instagram.com/p/BNyQOt1FbKW/?taken-by=nani.shoots
 
+  [ ] nyc
+    https://www.airbnb.ca/experiences/145310?source=pdpother&currentTab=all_tab&searchId=da02640c-25bd-42ea-b367-c70933faa152
+
   [ ] world
     https://www.instagram.com/saunakspace/
     [x] dallas
       https://vsco.co/obislens/images/1
     [x] michigan
       http://teresamathew.com/contact/
+    [ ] spain
+      https://vsco.co/clararadtkefraigedo/images/1
 
   [ ] serbia photographer
     https://www.shootwithkitty.com/presets/preset-swk6

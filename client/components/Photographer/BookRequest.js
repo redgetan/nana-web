@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 const Rating = require('react-rating')
 import Config from './../../config/config'
-import ClientAPI from './../api/../client_api'
+import ClientAPI from './../../api/client_api'
+import ContactForm from "./ContactForm"
 
 export default class BookRequest extends Component {
 
@@ -9,23 +10,6 @@ export default class BookRequest extends Component {
   }
 
   componentWillUnmount() {
-  }
-
-  emailPhotographer(email, name, text) {
-    ClientAPI.createMessage({
-      sender_email: email,
-      name: name,
-      text: text,
-      recipient_id: this.props.user.id
-    }).then(() => {
-      if (res.body && res.body.error) {
-        alert("Message sending failed")
-      } else {
-        alert("Message sent")
-      }
-    }).catch((err) => {
-      alert("Message sending failed")
-    })
   }
 
   render() {
@@ -41,8 +25,9 @@ export default class BookRequest extends Component {
               readonly={true}
             />
           </div>
-          <input type='submit' className='book_request_btn btn btn-primary pull-right' value="Contact Photographer" />
+          <input type='submit' className='book_request_btn btn btn-primary pull-right' value="Contact Photographer" data-toggle="modal" data-target="#contact_modal" />
         </form>
+        <ContactForm user={this.props.user} />
       </div>
     )
   }

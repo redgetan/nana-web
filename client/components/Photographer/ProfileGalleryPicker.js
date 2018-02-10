@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import InstagramAPI from './../api/instagram_api'
+import InstagramAPI from './../../api/instagram_api'
 
 export default class GalleryPicker extends Component {
   state = {
