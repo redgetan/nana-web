@@ -16,43 +16,65 @@ const ContactForm = ({
   handleBlur,
   handleSubmit,
   isSubmitting,
-}) => (
-  <div className="modal fade" id="contact_modal" tabIndex="-1" role="dialog">
-    <div className="modal-dialog" role="document">
-      <div className="modal-content">
-        <div className="modal-header">
-          <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+}) => {
+
+  let modalHeader = null
+  let modalBody   = null
+
+  if (status && status.finishedSubmitting) {
+    modalHeader = <div className="modal-header contact_success">
+      <i className='check_icon fa fa-check'></i>
+      <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+
+    modalBody = <div className="modal-body contact_success">
+      <h2>Great!</h2>
+      <p>Your message has been sent.</p>
+    </div>
+  } else {
+    modalHeader = <div className="modal-header">
+      <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+
+    modalBody = <div className="modal-body contact_success">
+      <form onSubmit={handleSubmit} className="contact_form">
+        <div className="form_errors_container">
+          {status && status.externalError}
         </div>
-        <div className="modal-body">
-          <form onSubmit={handleSubmit} className="contact_form">
-            <div className="form_errors_container">
-              {status && status.externalError}
-            </div>
-            <div className='row'>
-              <div className="col-xs-12"><label>Email</label></div>
-              <div className="col-xs-12">
-                <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-              </div>
-            </div>
+        <div className='row'>
+          <div className="col-xs-12"><label>Email</label></div>
+          <div className="col-xs-12">
+            <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+          </div>
+        </div>
 
-            <div className='row'>
-              <div className="col-xs-12"><label>Message</label></div>
-              <div className="col-xs-12">
-                <FormTextArea name="text" className="message_textarea" placeholder="Tell photographer a bit about yourself, where you want your shots taken, or ask them questions about the photoshoot." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-              </div>
-            </div>
+        <div className='row'>
+          <div className="col-xs-12"><label>Message</label></div>
+          <div className="col-xs-12">
+            <FormTextArea name="text" className="message_textarea" placeholder="Tell photographer a bit about yourself, where you want your shots taken, or ask them questions about the photoshoot." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+          </div>
+        </div>
 
-            <button className="btn btn-primary btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
-              Send Message
-            </button>
-            <br />
-            <br />
-          </form>
+        <button className="btn btn-primary btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
+          Send Message
+        </button>
+        <br />
+        <br />
+      </form>
+    </div>
+  }
+
+  return (
+    <div className="modal fade" id="contact_modal" tabIndex="-1" role="dialog">
+      <div className="modal-dialog" role="document">
+        <div className="modal-content">
+          {modalHeader}
+          {modalBody}
         </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 const requiredFields = ["email",
                         "text"]
@@ -98,7 +120,8 @@ export default withFormik({
       props,
       setSubmitting,
       setErrors,
-      setStatus
+      setStatus,
+      resetForm
     }
   ) => {
     setStatus({ externalError: "" })
@@ -120,7 +143,12 @@ export default withFormik({
       if (res.body && res.body.error) {
         setStatus({ externalError: res.body.error })
       } else {
-
+        setStatus({ finishedSubmitting: true })
+        setTimeout(() => {
+          $('#contact_modal').modal('hide')
+          resetForm()
+          setStatus({ finishedSubmitting: false })
+        },1000)
       }
 
     }).catch((err) => {

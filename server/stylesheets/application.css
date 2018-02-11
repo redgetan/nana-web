@@ -889,3 +889,28 @@ button[type='submit'][disabled='true'] {
 .message_textarea {
   height: 150px;
 }
+
+.modal-header.contact_success {
+  text-align: center;
+  background-color: #6caa6c;
+}
+
+.modal-header.contact_success .check_icon {
+  font-size: 80px;
+  padding: 50px;
+  color: white;
+}
+
+.modal-header.contact_success .close {
+  color: white;
+  opacity: 1;
+}
+
+.modal-body.contact_success {
+  text-align: center;
+  padding: 20px;
+}
+
+.modal-body.contact_success h2 {
+  color: black;
+}

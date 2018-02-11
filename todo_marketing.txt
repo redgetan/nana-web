@@ -6,14 +6,19 @@
 
   [x] userscreen should be appealing
   [x] contact should work - godaddy
-  [ ] add 3 more toronto photographers (total of 6)
-  [ ] message button should just work
-    [ ] bootstrap modal (mobile fullscreen)
-      [ ] name
-      [ ] email
-      [ ] msg
-    [ ] /message
-      [ ] recepient_id + params
+  [x] add 1 more toronto photographers (total of 4)
+  [x] message button should just work
+    [x] bootstrap modal (mobile fullscreen)
+      [x] name
+      [x] email
+      [x] msg
+    [x] /message
+      [x] recepient_id + params
+  [x] when message is sent (must show successfully sent)
+  [ ] lambda must be api.nanacupid.com
+  [ ] update profile descriptions
+  [ ] ask nani's profile
+
   [ ] add 5 photographers from
     [ ] los angeles
 
