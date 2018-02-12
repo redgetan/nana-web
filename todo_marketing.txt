@@ -15,7 +15,7 @@
     [x] /message
       [x] recepient_id + params
   [x] when message is sent (must show successfully sent)
-  [ ] fix flat images
+  [x] fix flat images
   [ ] lambda must be api.nanacupid.com
   [ ] update profile descriptions
   [ ] ask nani's profile
