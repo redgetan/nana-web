@@ -914,3 +914,7 @@ button[type='submit'][disabled='true'] {
 .modal-body.contact_success h2 {
   color: black;
 }
+
+.service_details {
+  display: none; 
+}
