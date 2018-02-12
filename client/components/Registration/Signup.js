@@ -1,65 +1,118 @@
-import React, { Component } from 'react'
-import Config from '../../config/config'
+import { withFormik, Field } from 'formik'
+import FormField from "./../Widget/FormField"
+import FormTextArea from "./../Widget/FormTextArea"
 import ClientAPI from './../../api/client_api'
+import Config from '../../config/config'
 
-export default class Signup extends Component {
+const SignupForm = ({
+  values,
+  errors,
+  status,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting,
+}) => {
+  return (
+    <div className='signup_container'>
+      <form className='' onSubmit={this.performSignup}>
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="email" placeholder="asdf@gmail.com" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <br/>
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="password" placeholder="password" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <br/>
+        <input type="submit" value="Sign Up"/>
+      </form>
+    </div>
+  )
+}
 
-  state = {
-    email: '',
-    password: '',
-  }
+const requiredFields = ["email",
+                        "password"]
 
-  render() {
-    return (
-      <div>
-        <form className='' onSubmit={this.performSignup}>
-          <input
-            className=''
-            value={this.state.email}
-            onChange={(e) => this.setState({ email: e.target.value })}
-            type='text'
-            placeholder='asdf@gmail.com'
-          />
-          <br/>
-          <input
-            className=''
-            value={this.state.password}
-            onChange={(e) => this.setState({ password: e.target.value })}
-            type='password'
-            placeholder='password'
-          />
-          <br/>
-          <input type="submit" value="Sign Up"/>
-        </form>
-      </div>
-    )
-  }
+const allFieldsPopulated = (values) => {
+  const result = Object.keys(values).every((field) => { 
+    return values[field].length > 0 
+  })
 
-  performSignup = (event) => {
-    event.preventDefault()
+  return result
+}
 
-    const { email, password } = this.state
+export default withFormik({
+  validateOnBlur: true,
+  validateOnChange: false,
+  // Transform outer props into form values
+  mapPropsToValues: (props) => {
+    let initialState = {}
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      initialState[fieldName] = ""
+    }
 
-    ClientAPI.signup(email, password).then((res) => {
+    return initialState
+  },
+  // Add a custom validation function (this can be async too!)
+  validate: (values, props) => {
+    const errors = {};
+
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      if (!values[fieldName]) {
+        errors[fieldName] = "Required"
+      }
+    }
+
+    return errors;
+  },
+  // Submission handler
+  handleSubmit: (
+    values,
+    {
+      props,
+      setSubmitting,
+      setErrors,
+      setStatus,
+      resetForm
+    }
+  ) => {
+    setStatus({ externalError: "" })
+
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      setStatus({ externalError: "Invalid email" })
+      setSubmitting(false)
+      return
+    }
+
+    ClientAPI.signup(values.email, values.password).then((res) => {
+      setSubmitting(false)
       if (res.body && res.body.error) {
-        alert(res.body.error)
+        setStatus({ externalError: res.body.error })
       } else {
-        this._postAuth(res.body)  
+        postAuth(res.body, props)  
       }
     }).catch((err) => {
-      alert(err.message)
+      setSubmitting(false)
+      setStatus({ externalError: "Unable to submit form. Try again later" })
     })
-  }
 
-  _postAuth(data) {
-    this._saveUserData(data)
-    this.props.history.push("/")
-    renderNavbar()
-  }
-
-  _saveUserData = (data) => {
-    Config.setUserData(data)
-  }
+  },
+})(SignupForm);
 
 
+const postAuth = (data, props) => {
+  saveUserData(data)
+  props.history.push("/")
+  renderNavbar()
 }
+
+const saveUserData = (data) => {
+  Config.setUserData(data)
+}
+
+
+
+
