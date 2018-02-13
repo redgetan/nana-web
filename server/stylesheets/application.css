@@ -185,6 +185,11 @@ button:focus {
   text-align: center;
 }
 
+.book_request_btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
 @media only screen and (max-width : 768px) {
   .book_request_form {
     border: solid 1px #ccc;
@@ -194,6 +199,19 @@ button:focus {
     left: 0px;
     margin: 0px;
     background: white;
+    z-index: 5;
+  }
+
+  .book_request_form .cost {
+    float: left;
+    line-height: 45px;
+    font-size: 16px;
+  }
+
+  .book_request_btn {
+    width: calc(100% - 140px);
+    margin-top: 0px;
+    font-size: 18px;
   }
 
   .user_gallery_photo {
@@ -201,10 +219,6 @@ button:focus {
   }
 }
 
-.book_request_btn {
-  width: 100%;
-  margin-top: 20px;
-}
 
 .primary_action_btn {
   color: white;
