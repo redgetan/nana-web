@@ -25,7 +25,7 @@ export default class BookRequest extends Component {
               readonly={true}
             />
           </div>
-          <input type='submit' className='book_request_btn btn btn-primary primary_action_btn pull-right' value="Contact Photographer" data-toggle="modal" data-target="#contact_modal" />
+          <input type='submit' className='book_request_btn btn secondary_action_btn pull-right' value="Contact Photographer" data-toggle="modal" data-target="#contact_modal" />
         </form>
         <ContactForm user={this.props.user} />
       </div>

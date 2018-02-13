@@ -219,18 +219,32 @@ button:focus {
   }
 }
 
+.secondary_action_btn {
+  color: white;
+  padding: 10px;
+  font-size: 22px;
+  background-color: blue;
+  border: none;
+}
+
+.secondary_action_btn:hover,
+.secondary_action_btn:focus {
+  color: white;
+  background-color: darkblue !important;
+}
 
 .primary_action_btn {
   color: white;
   padding: 10px;
-  font-size: 22px;
-  background-color: blue !important;
+  font-size: 18px;
+  background-color: #c70e92 !important;
   border: none;
 }
 
-.primary_action_btn:hover {
+.primary_action_btn:hover,
+.primary_action_btn:focus {
   color: white;
-  background-color: darkblue !important;
+  background-color: #b80885 !important;
 }
 
 .user_avatar_container .user_avatar {
@@ -444,6 +458,10 @@ textarea.error {
 .application_form label {
   /*float: left;*/
   margin-right: 10px;
+}
+
+.form_field {
+  margin-bottom: 5px;
 }
 
 .application_form select,
