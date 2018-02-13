@@ -1,3 +1,5 @@
+import React, { Component } from 'react'
+
 import { withFormik, Field } from 'formik'
 import FormField from "./../Widget/FormField"
 import FormTextArea from "./../Widget/FormTextArea"
@@ -16,16 +18,17 @@ const SignupForm = ({
 }) => {
   return (
     <div className='signup_container'>
-      <form className='' onSubmit={this.performSignup}>
+      <form className='' onSubmit={handleSubmit}>
+        <h2>Signup</h2>
+        <br />
         <div className='row'>
           <div className="col-xs-12"><FormField name="email" placeholder="asdf@gmail.com" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>
-        <br/>
         <div className='row'>
           <div className="col-xs-12"><FormField name="password" placeholder="password" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>
         <br/>
-        <input type="submit" value="Sign Up"/>
+        <input type="submit" className="btn bt-primary primary_action_btn" value="Create Account"/>
       </form>
     </div>
   )

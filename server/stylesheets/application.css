@@ -204,13 +204,18 @@ button:focus {
 .book_request_btn {
   width: 100%;
   margin-top: 20px;
+}
+
+.primary_action_btn {
+  color: white;
   padding: 10px;
   font-size: 22px;
   background-color: blue !important;
   border: none;
 }
 
-.book_request_btn:hover {
+.primary_action_btn:hover {
+  color: white;
   background-color: darkblue !important;
 }
 
@@ -918,4 +923,18 @@ button[type='submit'][disabled='true'] {
 
 .service_details {
   display: none; 
+}
+
+.signup_container {
+  margin-bottom: 100px;
+}
+
+.signup_container form {
+  width: 300px;  
+  margin: auto;
+  text-align: center;
+}
+
+.signup_container input {
+  width: 100%;
 }
