@@ -12,7 +12,7 @@ export default class Profile extends Component {
       <div className='user_profile_container col-xs-12 col-sm-7'>
         <div className="user_bio">
           <h1>About Photographer</h1>
-          <p>{this.props.user.bio}</p>
+          <pre>{this.props.user.bio}</pre>
         </div>
         <div className="service_details">
           <h1>What we'll do</h1>

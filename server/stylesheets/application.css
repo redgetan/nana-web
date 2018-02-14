@@ -1,9 +1,19 @@
 
 /* Global */
 
-div, ul, li {
+div, ul, li, pre {
   font-size: 20px;
   color: #888;
+}
+
+pre {
+  display: inline-block;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0px;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 h1 {

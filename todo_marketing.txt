@@ -19,6 +19,35 @@
   [ ] update profile descriptions
   [ ] lambda must be api.nanacupid.com
   [ ] ask nani's profile
+  [ ] mobile homepage should make it obvious profiles are clickable
+  [ ] mobile user page should list photos vertically stacked (i.e flickr)
+  [ ] no-trolls
+    [ ] make user signup before they can contact
+    [ ] link their phone number (explain why..)
+    [ ] add photo
+    
+  [ ] what does it look like?
+    [ ] can you walk me through what a potential experience would be like?
+      [ ]
+
+    [ ] how long does a session take?
+      [ ] typically around 30min to an hour. depends on photographer (something you'll have to discuss w/ them personally)
+    [ ] how many photos do i get?
+      [ ] photographers would typically take as many shots as they can and have you choose 20-30 photos  that you like best or even more depending on how much time you spent doing photoshoots.
+    [ ] what do i have to bring
+      [ ] its generally a good idea to bring a few different wardrobes/shirts to diversity your look
+    [ ] can i go to different locations/venues
+      [ ] you can discuss with your photographer to take shots in 2-3 or more places if time allows for it. 
+
+    [ ] how do i know which photographer to pick?
+      [ ] It really depends on preference, some people look at the portfolio and see if they like they're style. Others focus more on whether they think can get along with the photographer and make them feel more relaxed throughout the experience. Also, if there are reviews listed in their profile, it help you gain more perspective as to what a potential experience would be like with them.
+
+  [ ] how do i become a photographer
+    [ ] currently accepting beta signups
+    [ ] 
+
+  [ ] reduce hesitations of clients
+    [ ] currently based in toronto, but will
 
   [ ] add 5 photographers from
     [ ] los angeles
