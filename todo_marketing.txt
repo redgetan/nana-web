@@ -16,8 +16,8 @@
       [x] recepient_id + params
   [x] when message is sent (must show successfully sent)
   [x] fix flat images
-  [ ] update profile descriptions
-  [ ] lambda must be api.nanacupid.com
+  [x] update profile descriptions
+  [ ] lovegraph
   [ ] ask nani's profile
   [ ] mobile homepage should make it obvious profiles are clickable
   [ ] mobile user page should list photos vertically stacked (i.e flickr)

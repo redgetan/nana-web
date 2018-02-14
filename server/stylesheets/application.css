@@ -210,18 +210,19 @@ button:focus {
     margin: 0px;
     background: white;
     z-index: 5;
+    padding: 10px;
   }
 
   .book_request_form .cost {
     float: left;
-    line-height: 45px;
-    font-size: 16px;
+    line-height: 38px;
+    font-size: 12px;
   }
 
   .book_request_btn {
-    width: calc(100% - 140px);
+    width: calc(100% - 120px);
     margin-top: 0px;
-    font-size: 18px;
+    font-size: 16px !important;
   }
 
   .user_gallery_photo {
@@ -871,6 +872,10 @@ button[type='submit'][disabled='true'] {
   padding: 0px;
 }
 
+.home_container {
+  margin-bottom: 50px;
+}
+
 .location_search_form {
   display: block;
   width: 100%;
@@ -979,4 +984,21 @@ button[type='submit'][disabled='true'] {
 
 .signup_container input {
   width: 100%;
+}
+
+.photographer_directory {
+  padding: 20px;
+}
+
+.photographer_directory .user_avatar_container .username {
+  font-size: 20px;
+}
+
+.photographer_directory .user_avatar_container {
+  display: inline-block;
+  float: none;
+}
+
+.photo_container img {
+  padding: 5px;
 }
