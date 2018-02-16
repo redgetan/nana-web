@@ -24,7 +24,6 @@ export default class UserDirectoryScreen extends Component {
         throw new Error("failed to list users")
       }
     }).catch((err) => {
-      debugger
       alert(err.message)
     })
   } 
