@@ -1000,5 +1000,95 @@ button[type='submit'][disabled='true'] {
 }
 
 .photo_container img {
+}
+
+.square_cropper {
+  width: 100%;
+  padding-top: 100%;
+}
+
+.frame-square {
+  background: #fff;
+  border: 2px solid #000;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  width: 130px;
+  height: 130px;
+  margin-right: .5em;
+  margin-bottom: .3em;
+}
+
+.crop {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  
+}
+
+.crop img {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+  margin: auto;
+  position: absolute;
+  top: -100%;
+  right: -100%;
+  bottom: -100%;
+  left: -100%;
+}
+
+.square {
+    float:left;
+    position: relative;
+    width: 100%;
+    padding-bottom : 100%; /* = width for a 1:1 aspect ratio */
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover; /* you change this to "contain" if you don't want the images to be cropped */
+}
+
+.img_1 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/a9f28c2d2aa45d34d856fc5524bd611a/5B161D49/t51.2885-15/e15/21372499_115943269091211_6912839318490841088_n.jpg');
+}
+
+.img_2 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/da3fca12045023284b8c0760e6f24c35/5AE9C8B3/t51.2885-15/s640x640/sh0.08/e35/15259069_1745486355775465_5928297024561610752_n.jpg');
+}
+
+.img_3 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/3a743c7b6d7025c10c9e49a9d97d8cc6/5B1BCCCC/t51.2885-15/s640x640/sh0.08/e35/15625252_1346823792006668_2626656772504420352_n.jpg');
+}
+
+.img_4 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/99eac1dff7c0622036279b7786a3b5fb/5B16B674/t51.2885-15/sh0.08/e35/p750x750/27878432_173508853291990_5533053646989688832_n.jpg');
+}
+
+.img_5 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/d15b4c479c8d84314948fd037ee51498/5B0B5618/t51.2885-15/e35/25007216_388725868250903_4981313764369367040_n.jpg');
+}
+
+.img_6 {
+  background-image:url('https://instagram.fybz2-1.fna.fbcdn.net/vp/de004ba33f6c979bebb6604c26d0979e/5B21E474/t51.2885-15/e35/21372848_1385407934921221_3426434134614999040_n.jpg');
+}
+
+.photo_container a {
   padding: 5px;
+}
+
+.faq_container ul {
+  padding-left: 0px; 
+  list-style: none;
+}
+
+.faq_item_container .question {
+  color: black;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.review_list_container {
+  padding: 20px;
+  margin-top: 50px;  
 }

@@ -3,6 +3,7 @@ import ClientAPI from './../api/client_api'
 import Profile from './../components/Photographer/Profile'
 import Gallery from './../components/Widget/Gallery'
 import BookRequest from './../components/Photographer/BookRequest'
+import ReviewList from './../components/Review/ReviewList'
 
 export default class PhotographerScreen extends Component {
 
@@ -69,9 +70,16 @@ export default class PhotographerScreen extends Component {
               <div className="camera_specs summary_item"><i className='fa fa-camera'></i>Nikon D800</div>
             </div>
           </div>
-          <Gallery images={this.state.user.photos} />
-          <Profile user={this.state.user} />
-          <BookRequest user={this.state.user} />
+          <div className='row'>
+            <Profile user={this.state.user} />
+            <BookRequest user={this.state.user} />
+          </div>
+          <div className='row'>
+            <Gallery images={this.state.user.photos} />
+          </div>
+          <div className='row'>
+            <ReviewList reviews={this.state.user.reviews} />
+          </div>
         </div>
       </div>
     )

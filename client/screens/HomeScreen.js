@@ -24,6 +24,7 @@ export default class UserDirectoryScreen extends Component {
         throw new Error("failed to list users")
       }
     }).catch((err) => {
+      debugger
       alert(err.message)
     })
   } 
@@ -51,27 +52,27 @@ export default class UserDirectoryScreen extends Component {
         </div>
 
         <div className='container-fluid photo_container'>
-          <Link to="/users/4" >
-            <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/a9f28c2d2aa45d34d856fc5524bd611a/5B161D49/t51.2885-15/e15/21372499_115943269091211_6912839318490841088_n.jpg" alt=""/>
+          <Link to="/users/4" className='col-xs-6 col-sm-4' >
+            <img className='square img_1' src="" alt=""/>
           </Link>
 
-          <Link to="/users/1" >
-            <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/da3fca12045023284b8c0760e6f24c35/5AE9C8B3/t51.2885-15/s640x640/sh0.08/e35/15259069_1745486355775465_5928297024561610752_n.jpg" alt=""/>
+          <Link to="/users/1" className='col-xs-6 col-sm-4'>
+            <img className='square img_2' src="" alt=""/>
           </Link>
-          <Link to="/users/1" >
-          <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/3a743c7b6d7025c10c9e49a9d97d8cc6/5B1BCCCC/t51.2885-15/s640x640/sh0.08/e35/15625252_1346823792006668_2626656772504420352_n.jpg" alt=""/>
-          </Link>
-
-          <Link to="/users/2" >
-          <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/99eac1dff7c0622036279b7786a3b5fb/5B16B674/t51.2885-15/sh0.08/e35/p750x750/27878432_173508853291990_5533053646989688832_n.jpg" alt=""/>
+          <Link to="/users/1" className='col-xs-6 col-sm-4'>
+            <img className='square img_3' src="" alt=""/>
           </Link>
 
-          <Link to="/users/6" >
-          <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/d15b4c479c8d84314948fd037ee51498/5B0B5618/t51.2885-15/e35/25007216_388725868250903_4981313764369367040_n.jpg" alt=""/>
+          <Link to="/users/2" className='col-xs-6 col-sm-4'>
+            <img className='square img_4' src="" alt=""/>
+          </Link>
+
+          <Link to="/users/6" className='col-xs-6 col-sm-4'>
+            <img className='square img_5' src="" alt=""/>
           </Link>
           
-          <Link to="/users/4" >
-          <img className='col-xs-6 col-sm-4' src="https://instagram.fybz2-1.fna.fbcdn.net/vp/de004ba33f6c979bebb6604c26d0979e/5B21E474/t51.2885-15/e35/21372848_1385407934921221_3426434134614999040_n.jpg" alt=""/>
+          <Link to="/users/4" className='col-xs-6 col-sm-4'>
+            <img className='square img_6' src="" alt=""/>
           </Link>
         </div>
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ReviewList from './../Review/ReviewList'
 
 export default class Profile extends Component {
 
@@ -11,14 +10,13 @@ export default class Profile extends Component {
     return (
       <div className='user_profile_container col-xs-12 col-sm-7'>
         <div className="user_bio">
-          <h1>About Photographer</h1>
+          <h1>Bio</h1>
           <pre>{this.props.user.bio}</pre>
         </div>
         <div className="service_details">
           <h1>What we'll do</h1>
           <p>{this.props.user.notes}</p>
         </div>
-        <ReviewList reviews={this.props.user.reviews} />
       </div>
     )
   }

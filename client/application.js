@@ -23,13 +23,33 @@ browserHistory.listen((location) => {
 })
 
 /* integrate regular html with react */
+document.querySelector("a.brand_logo").addEventListener("click", (event) => {
+  event.preventDefault()
+  browserHistory.push("/")
+  renderNavbar()
+})
+
+document.querySelector(".about_btn").addEventListener("click", (event) => {
+  event.preventDefault()
+  browserHistory.push("/about")
+  renderNavbar()
+})
+
+$(".faq_btn").on("click", (event) => {
+  event.preventDefault()
+  browserHistory.push("/faq")
+  renderNavbar()
+})
+
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
+  event.preventDefault()
   Config.clearCredentials()
   browserHistory.push("/")
   renderNavbar()
 })
 
 document.querySelector(".edit_profile_btn").addEventListener("click", (event) => {
+  event.preventDefault()
   browserHistory.push("/account/manage")
 })
 

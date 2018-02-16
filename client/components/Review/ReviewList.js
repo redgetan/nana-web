@@ -6,11 +6,14 @@ export default class ReviewList extends Component {
 
   render() {
     if (this.props.reviews.length === 0) {
-      return <div><h1>Reviews</h1><div>No reviews available</div></div>
+      return <div className='review_list_container'>
+        <h1>Reviews</h1>
+        <div>No reviews available</div>
+      </div>
     }
 
     return (
-      <div>
+      <div className='review_list_container'>
         <h1>Reviews</h1>
         <br/>
         {

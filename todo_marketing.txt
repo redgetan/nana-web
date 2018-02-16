@@ -17,14 +17,14 @@
   [x] when message is sent (must show successfully sent)
   [x] fix flat images
   [x] update profile descriptions
-  [ ] lovegraph
-  [ ] ask nani's profile
-  [ ] mobile homepage should make it obvious profiles are clickable
-  [ ] mobile user page should list photos vertically stacked (i.e flickr)
+  [ ] mobile user page should list photos vertically stacked - up to 10 (i.e flickr)
   [ ] no-trolls
     [ ] make user signup before they can contact
     [ ] link their phone number (explain why..)
     [ ] add photo
+  [ ] lovegraph
+  [x] ask nani's profile
+  [x] mobile homepage should make it obvious profiles are clickable
     
   [ ] what does it look like?
     [ ] can you walk me through what a potential experience would be like?
