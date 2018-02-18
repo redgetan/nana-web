@@ -41,11 +41,11 @@ $(".faq_btn").on("click", (event) => {
   renderNavbar()
 })
 
-$(".signup_btn").on("click", (event) => {
-  event.preventDefault()
-  browserHistory.push("/signup")
-  renderNavbar()
-})
+// $(".signup_btn").on("click", (event) => {
+//   event.preventDefault()
+//   browserHistory.push("/signup")
+//   renderNavbar()
+// })
 
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
   event.preventDefault()

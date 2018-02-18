@@ -200,6 +200,15 @@ button:focus {
   margin-top: 20px;
 }
 
+.user_gallery_container {
+  overflow-x: scroll;
+  white-space: nowrap;
+  text-align: center;
+  padding: 1px 0px;
+  border-right: solid 1px #ccc;
+}
+
+
 @media only screen and (max-width : 768px) {
   .book_request_form {
     border: solid 1px #ccc;
@@ -225,8 +234,13 @@ button:focus {
     font-size: 16px !important;
   }
 
+  .user_gallery_container {
+    white-space: normal !important;
+  }
+
   .user_gallery_photo {
-    max-height: 250px !important;
+    max-height: none;
+    width: 100%;
   }
 }
 
@@ -814,14 +828,6 @@ button[type='submit'][disabled='true'] {
 
 .application_form select[name='legal_entity.address.state'] {
   width: 100px;
-}
-
-.user_gallery_container {
-  overflow-x: scroll;
-  white-space: nowrap;
-  text-align: center;
-  padding: 1px 0px;
-  border-right: solid 1px #ccc;
 }
 
 .about_container {
