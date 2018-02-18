@@ -612,11 +612,12 @@ select::-ms-expand {
 
 .how_it_works_container ul {
   list-style: none;
-  padding: 0px;
+  padding: 10px;
 }
 
 .how_it_works_list {
   font-size: 20px;
+  text-align: left;
 }
 
 .brand_logo {
@@ -1088,8 +1089,12 @@ button[type='submit'][disabled='true'] {
 }
 
 .faq_container ul {
-  padding-left: 0px; 
+  padding: 10px;
   list-style: none;
+}
+
+.home_container .faq_btn {
+  text-decoration: underline;
 }
 
 .faq_item_container .question {

@@ -80,14 +80,10 @@ export default class UserDirectoryScreen extends Component {
         <div className="container how_it_works_container">
           <h1>How it Works</h1>
           <ul className="how_it_works_list light_gray">
-            <li>1. Choose a Photographer</li>
-            <li>2. Pick a Date/Time as well as a place to meet</li>
-            <li>3. Meetup up with photographer and capture beautiful moments</li>
+            <p>Simply contact a photographer of your choice to starting making your dating pictures 10x more interesting. Check out the <a className="faq_btn" href="/faq">Frequently Asked Questions </a> page to learn more.</p>
           </ul>
-
         </div>
 
-        <br />
         <br />
         <div className="get_notified_container">
           <h1>Get Notified</h1>
