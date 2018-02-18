@@ -241,6 +241,8 @@ button:focus {
   .user_gallery_photo {
     max-height: none;
     width: 100%;
+    border: none;
+    margin-bottom: 10px;
   }
 }
 
