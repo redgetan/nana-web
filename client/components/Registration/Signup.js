@@ -19,13 +19,22 @@ const SignupForm = ({
   return (
     <div className='signup_container'>
       <form className='' onSubmit={handleSubmit}>
+        <div className="form_errors_container">
+          {status && status.externalError}
+        </div>
         <h2>Signup</h2>
         <br />
         <div className='row'>
-          <div className="col-xs-12"><FormField name="email" placeholder="asdf@gmail.com" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+          <div className="col-xs-12"><FormField name="first_name" placeholder="First name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>
         <div className='row'>
-          <div className="col-xs-12"><FormField name="password" placeholder="password" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+          <div className="col-xs-12"><FormField name="last_name" placeholder="Last name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="email" placeholder="Email" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="password" type="password" placeholder="Password" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>
         <br/>
         <input type="submit" className="btn bt-primary primary_action_btn" value="Create Account"/>
@@ -34,7 +43,7 @@ const SignupForm = ({
   )
 }
 
-const requiredFields = ["email",
+const requiredFields = ["first_name", "last_name", "email",
                         "password"]
 
 const allFieldsPopulated = (values) => {
@@ -86,6 +95,12 @@ export default withFormik({
 
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       setStatus({ externalError: "Invalid email" })
+      setSubmitting(false)
+      return
+    }
+
+    if (values.password.length < 3) {
+      setStatus({ externalError: "Password must be at least 3 characters" })
       setSubmitting(false)
       return
     }

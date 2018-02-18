@@ -86,6 +86,15 @@ export default class ClientAPI {
     return this.get('/account')
   }
 
+  static postSMSVerification(csrf, code) {
+    return this.post('/users/sms_verification', {
+      body: {
+        csrf: csrf,
+        code: code
+      }
+    })
+  }
+
   static createReview(attributes) {
     return this.post('/reviews', {
       body: attributes

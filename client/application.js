@@ -41,6 +41,12 @@ $(".faq_btn").on("click", (event) => {
   renderNavbar()
 })
 
+$(".signup_btn").on("click", (event) => {
+  event.preventDefault()
+  browserHistory.push("/signup")
+  renderNavbar()
+})
+
 document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
   event.preventDefault()
   Config.clearCredentials()
@@ -76,3 +82,17 @@ window.renderNavbar = () => {
 // })
 
 renderNavbar()
+
+
+window.AccountKit_OnInteractive = () => {
+  AccountKit.init(
+    {
+      appId:"813391282196047", 
+      state:"changeme", 
+      version:"v1.0",
+      fbAppEventsEnabled: true,
+      display:"modal"
+    }
+  );
+};
+

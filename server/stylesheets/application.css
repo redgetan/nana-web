@@ -463,7 +463,7 @@ button:focus {
 select.error,
 input.error,
 textarea.error {
-  border: 2px solid lightcoral;
+  border: 2px solid lightcoral !important;
 }
 
 .application_form label {
@@ -799,7 +799,7 @@ button[type='submit'][disabled='true'] {
   border: 2px solid lightcoral;
   background-color: lightpink;
   color: #555;
-  padding: 15px;
+  padding: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -984,6 +984,9 @@ button[type='submit'][disabled='true'] {
 
 .signup_container input {
   width: 100%;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  padding: 5px 10px;
 }
 
 .photographer_directory {
@@ -1091,4 +1094,8 @@ button[type='submit'][disabled='true'] {
 .review_list_container {
   padding: 20px;
   margin-top: 50px;  
+}
+
+.phone_verification_container {
+  text-align: center;
 }

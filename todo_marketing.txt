@@ -22,10 +22,12 @@
     [ ] make user signup before they can contact
     [ ] link their phone number (explain why..)
     [ ] add photo
+  [ ] signup 
+
+  [ ] Test Facebook Instagram Ad
   [x] ask nani's profile
   [x] mobile homepage should make it obvious profiles are clickable
   [x] what does it look like?
-  [ ] Test Facebook Instagram Ad
 
   [ ] add 5 photographers from
     [ ] los angeles
@@ -105,6 +107,8 @@
       http://teresamathew.com/contact/
     [ ] spain
       https://vsco.co/clararadtkefraigedo/images/1
+    [ ] hk
+      https://www.instagram.com/hurtingbombz/ (500px feed curator...)
 
   [ ] serbia photographer
     https://www.shootwithkitty.com/presets/preset-swk6
