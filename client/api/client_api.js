@@ -51,6 +51,11 @@ export default class ClientAPI {
     return request(options)
   }
 
+  static put(relativePath, additionalOptions) {
+    const options = this.buildOptions("PUT", relativePath, additionalOptions)
+    return request(options)
+  }
+
   static get(relativePath, additionalOptions) {
     const options = this.buildOptions("GET", relativePath, additionalOptions)
     return request(options)
@@ -84,6 +89,14 @@ export default class ClientAPI {
 
   static getUserAccount() {
     return this.get('/account')
+  }
+
+  static updateUser(id, attributes) {
+    return this.put('/users/' + id, {
+      body: {
+        user: attributes
+      }
+    })
   }
 
   static postSMSVerification(csrf, code) {

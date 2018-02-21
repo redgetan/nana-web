@@ -2,13 +2,11 @@ import request from 'request-promise-native'
 import Config from './../config/config'
 
 export default class InstagramAPI {
-  static getDefaultOptions() {
+  static getOptions() {
     return {
-      baseURI: 'https://api.instagram.com/v1',
+      baseURI: 'https://api.instagram.com/v1/',
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        
+        'Accept': 'application/json'
       },
       json: true,
       resolveWithFullResponse: true

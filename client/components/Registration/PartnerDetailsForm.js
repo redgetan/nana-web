@@ -7,6 +7,29 @@ import NanaClient from './../../api/client_api'
 import Config from '../../config/config'
 import FormConfig from '../../config/form_config'
 
+function FlashContainer(props) {
+  const {className, style, onClick} = props
+
+  if (!props.status) return <None />
+
+  if (props.status.error) {
+    return (
+      <div className="form_errors_container">
+        { props.status.error }
+      </div>
+    )
+  }
+
+  if (props.status.success) {
+    return (
+      <div className="form_success_container">
+        { props.status.error }
+      </div>
+    )
+  }
+
+}
+
 // Our inner form component which receives our form's state and updater methods as props
 const PartnerDetailsForm = ({
   values,
@@ -19,9 +42,7 @@ const PartnerDetailsForm = ({
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="application_form container">
-    <div className="form_errors_container">
-      {status && status.externalError}
-    </div>
+    <FlashContainer status={status} />
     <br />
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Country</label></div>
@@ -138,32 +159,19 @@ export default withFormik({
   ) => {
     NanaClient.updatePartner(Config.getCurrentUser().id, values).then((res) => {
       setSubmitting(false)
+      setStatus({ error: null, success: null })
 
       if (res.body && res.body.error) {
-        setStatus({ externalError: res.body.error })
+        setStatus({ error: res.body.error })
       } else {
 
       }
 
     }).catch((err) => {
       setSubmitting(false)
-      setStatus({ externalError: "Unable to submit form. Try again later" })
+      setStatus({ error: "Unable to submit form. Try again later" })
     })
 
-
-    console.log("form submitted")
-    // LoginToMyApp(values).then(
-    //   user => {
-    //     setSubmitting(false);
-    //     // do whatevs...
-    //     // props.updateUser(user)
-    //   },
-    //   errors => {
-    //     setSubmitting(false);
-    //     // Maybe even transform your API's errors into the same shape as Formik's!
-    //     // setErrors(transformMyApiErrors(errors));
-    //   }
-    // )
   },
 })(PartnerDetailsForm);
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
-import ProfileSummary from './../components/Photographer/ProfileSummary'
+import EditProfileForm from './../components/Account/EditProfileForm'
 import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
 import { Redirect } from 'react-router-dom'
 
@@ -71,6 +71,35 @@ export default class EditProfileScreen extends Component {
     }
   }
 
+  hiddenForNow() {
+    if (!this.state.user.is_phone_verified) {
+      return (
+        <div className='phone_verification_container container'>
+          <h3>One more step: Phone Verification</h3>
+          <input type='hidden' defaultValue="+1" id="country_code" />
+          <input type='hidden' placeholder="phone number" id="phone_number"/>
+          <br />
+          <button className='btn btn-primary' onClick={this.initSMSVerification}>Verify via SMS</button>
+        </div>
+      ) 
+    }
+  }
+
+  connectToInstagram() {
+    if (this.state.user.providers.length > 0) {
+      return <a href={Config.getInstagramOAuthUrl()} >
+        <i className="fa fa-instagram" aria-hidden="true"></i>
+        Connect to Instagram
+        {
+          this.state.user.providers.map((provider) => (
+            <div key={provider.name} className="connected_account_label">
+              {provider.name}  
+            </div>
+          ))
+        }
+      </a>
+    }
+  }
 
   render() {
     if (this.state.unauthorized) {
@@ -80,44 +109,19 @@ export default class EditProfileScreen extends Component {
     }
 
     if (this.state.user) {
-      if (!this.state.user.is_phone_verified) {
-        return (
-          <div className='phone_verification_container container'>
-            <h3>One more step: Phone Verification</h3>
-            <input type='hidden' defaultValue="+1" id="country_code" />
-            <input type='hidden' placeholder="phone number" id="phone_number"/>
-            <br />
-            <button className='btn btn-primary' onClick={this.initSMSVerification}>Verify via SMS</button>
+      return (
+        <div className='user_settings_container container'>
+          <div className='user_settings_navigation col-xs-12 col-sm-3 '>
+            <ul>
+              <li>Edit Profile</li>
+            </ul>
           </div>
-        ) 
-      }
-
-      if (this.state.user.providers.length > 0) {
-        return (
-          <div>
-            <ProfileSummary user={this.state.user} />
-            <h3>Connected Accounts</h3>
-            {
-              this.state.user.providers.map((provider) => (
-                <div key={provider.name} className="connected_account_label">
-                  {provider.name}  
-                </div>
-              ))
-            }
-            <ProfileGalleryPicker />
+          <div className='user_settings_panel col-xs-12 col-sm-9 '>
+            <EditProfileForm user={this.state.user} />
           </div>
-        )
-      } else {
-        return (
-          <div>
-            <ProfileSummary user={this.state.user} />
-            <a href={Config.getInstagramOAuthUrl()} >
-              <i className="fa fa-instagram" aria-hidden="true"></i>
-              Connect to Instagram
-            </a>
-          </div>
-        )
-      }
+          <ProfileGalleryPicker />
+        </div>
+      )
     } else {
       return (<div></div>)
 

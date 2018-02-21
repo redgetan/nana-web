@@ -26,11 +26,11 @@ export default class GalleryPicker extends Component {
   }
 
   componentDidMount() {
-    InstagramAPI.getSelfMediaRecent().then((res) => {
-      this.setState({ available_photos: res.body.data })
-    }).catch((err) => {
+    // InstagramAPI.getSelfMediaRecent().then((res) => {
+    //   this.setState({ available_photos: res.body.data })
+    // }).catch((err) => {
 
-    })
+    // })
   }
 
   componentWillUnmount() {

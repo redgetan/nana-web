@@ -31,6 +31,22 @@ button:focus {
   outline: none;
 }
 
+input, textarea, select {
+  padding: 5px 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  border-radius: 0px;
+  background: none;
+  border-color: #ccc;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+
 .modal-body {
   padding: 0px 25px;
 }
@@ -505,18 +521,6 @@ textarea.error {
   /*color: red;*/
 }
 
-select {
-  -webkit-appearance: none;
-  padding: 2px 10px;
-  border-radius: 0px;
-  background: none;
-  border-color: #ccc;
-}
-
-select::-ms-expand {
-  display: none;
-}
-
 .checkbox_label {
   font-weight: normal;
   margin-left: 10px;
@@ -723,14 +727,11 @@ select::-ms-expand {
   right: 8px;
 }
 
-.profile_summary .user_avatar img {
-  width: 200px;
-  height: 200px;
-}
-
 .user_avatar img {
-  width: 25px;
-  height: 25px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 5px;
 }
 
 .author_header {
@@ -821,11 +822,22 @@ button[type='submit'][disabled='true'] {
   background-color: lightpink;
   color: #555;
   padding: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
+.form_success_container {
+  border: solid 1px #ccc;
+  background-color: lightgreen;
+  color: #555;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.form_success_container:empty,
 .form_errors_container:empty {
+  margin: 0px;
   padding: 0px;
   border: none;
 }
@@ -862,12 +874,27 @@ button[type='submit'][disabled='true'] {
 }
 
 .nana_primary_btn {
+  color: white;
   background-color: #c70e92;
   border: none;
   font-size: 24px;
 }
 
+.nana_btn {
+  color: white;
+  background-color: #c70e92;
+  border: none;
+  font-size: 18px;
+}
+
+.nana_btn:focus,
+.nana_btn:hover {
+  color: white;
+  background-color: #b80885;
+}
+
 .nana_primary_btn:hover {
+  color: white;
   background-color: #b80885;
 }
 
@@ -944,7 +971,7 @@ button[type='submit'][disabled='true'] {
   border: solid 1px #aaa;
 }
 
-.contact_form textarea {
+textarea {
   resize: none;
 }
 
@@ -985,16 +1012,19 @@ button[type='submit'][disabled='true'] {
   display: none; 
 }
 
+.login_container,
 .signup_container {
   margin-bottom: 100px;
 }
 
+.login_container form,
 .signup_container form {
   width: 300px;  
   margin: auto;
   text-align: center;
 }
 
+.login_container input,
 .signup_container input {
   width: 100%;
   border: solid 1px #ccc;
@@ -1115,4 +1145,51 @@ button[type='submit'][disabled='true'] {
 
 .phone_verification_container {
   text-align: center;
+}
+
+.signup_container .secondary_actions_container,
+.login_container .secondary_actions_container {
+  margin-top: 15px;
+}
+
+.secondary_label {
+  font-size: 14px;
+}
+
+.user_settings_navigation ul {
+  list-style: none;
+}
+
+.user_settings_container .user_avatar {
+  border: solid 1px #ccc;
+  width: 100px;
+  height: 100px;
+  margin: 0px;
+}
+
+.edit_profile_form label {
+  text-align: right;
+  width: 100%;
+}
+
+.edit_profile_form input,
+.edit_profile_form textarea {
+  width: 100%;
+}
+
+.edit_profile_form input[type='submit'] {
+  width: initial;
+}
+
+.edit_profile_form textarea {
+  height: 150px;
+}
+
+.user_settings_navigation {
+  margin-bottom: 50px;
+}
+
+.form_field_description {
+  font-size: 14px;
+  color: #aaa;
 }

@@ -1,79 +1,121 @@
 import React, { Component } from 'react'
-import Config from '../../config/config'
-import ClientAPI from './../../api/client_api'
 import { Link } from 'react-router-dom'
+import { withFormik, Field } from 'formik'
+import FormField from "./../Widget/FormField"
+import FormTextArea from "./../Widget/FormTextArea"
+import ClientAPI from './../../api/client_api'
+import Config from '../../config/config'
 
-export default class Login extends Component {
+const LoginForm = ({
+  values,
+  errors,
+  status,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit,
+  isSubmitting,
+}) => {
+  return (
+    <div className='login_container'>
+      <form className='' onSubmit={handleSubmit}>
+        <div className="form_errors_container">
+          {status && status.externalError}
+        </div>
+        <h2>Login</h2>
+        <br />
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="email" placeholder="Email" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <div className='row'>
+          <div className="col-xs-12"><FormField name="password" type="password" placeholder="Password" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+        </div>
+        <br/>
+        <input type="submit" className="btn bt-primary primary_action_btn" value="Login"/>
+        <div className='row secondary_label secondary_actions_container'>
+          Don't have an account? <a href="/signup" className="">Signup</a>
+        </div>
+      </form>
+    </div>
+  )
+}
 
-  state = {
-    email: '',
-    password: '',
-    username: ''
-  }
+const requiredFields = ["email",
+                        "password"]
 
-  render() {
+export default withFormik({
+  validateOnBlur: true,
+  validateOnChange: false,
+  // Transform outer props into form values
+  mapPropsToValues: (props) => {
+    let initialState = {}
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      initialState[fieldName] = ""
+    }
 
-    return (
-      <div>
-        <form className='' onSubmit={this.performLogin}>
-          <h4 className='mv3'>Login</h4>
-          <div className='flex flex-column'>
-            <input
-              value={this.state.email}
-              onChange={(e) => this.setState({ email: e.target.value })}
-              type='text'
-              placeholder='Your email address'
-            />
-            <input
-              value={this.state.password}
-              onChange={(e) => this.setState({ password: e.target.value })}
-              type='password'
-              placeholder='password'
-            />
-          </div>
-          <div className='flex mt3'>
-            <input type='submit' className='btn btn-primary' value="Login" />
-            
-            <Link to="/signup">
-              Register an account
-            </Link>
-          </div>
-        </form>
-      </div>
-    )
-  }
+    return initialState
+  },
+  // Add a custom validation function (this can be async too!)
+  validate: (values, props) => {
+    const errors = {};
 
-  performLogin = (event) => {
-    event.preventDefault()
+    for (var i = 0; i < requiredFields.length; i++) {
+      let fieldName = requiredFields[i]
+      if (!values[fieldName]) {
+        errors[fieldName] = "Required"
+      }
+    }
 
-    const { username, email, password } = this.state
+    return errors;
+  },
+  // Submission handler
+  handleSubmit: (
+    values,
+    {
+      props,
+      setSubmitting,
+      setErrors,
+      setStatus,
+      resetForm
+    }
+  ) => {
+    setStatus({ externalError: "" })
 
-    ClientAPI.signin(email, password).then((res) => {
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      setStatus({ externalError: "Invalid email" })
+      setSubmitting(false)
+      return
+    }
+
+    ClientAPI.signin(values.email, values.password).then((res) => {
+      setSubmitting(false)
       if (res.body && res.body.error) {
-        alert(res.body.error)
+        setStatus({ externalError: res.body.error })
       } else {
-        this._postAuth(res.body)  
+        postAuth(res.body, props)  
       }
     }).catch((err) => {
-      alert("Unable to login. try again later")
+      setSubmitting(false)
+      setStatus({ externalError: "Unable to login. Try again later" })
     })
 
-  }
+  },
+})(LoginForm);
 
-  _postAuth(data) {
-    this._saveUserData(data)
 
-    data.providers.forEach((provider) => {
-      Config.setAccessToken(provider)
-    })
+const postAuth = (data, props) => {
+  saveUserData(data)
 
-    this.props.history.push("/account/manage")
-    renderNavbar()
-  }
+  data.providers.forEach((provider) => {
+    Config.setAccessToken(provider)
+  })
 
-  _saveUserData = (data) => {
-    Config.setUserData(data)
-  }
+  props.history.push("/account/manage")
+  renderNavbar()
+}
 
+const saveUserData = (data) => {
+  Config.setUserData(data)
 }
 

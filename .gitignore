@@ -1,3 +1,4 @@
 node_modules
 dist
 header_compiled.ejs
+.DS_Store

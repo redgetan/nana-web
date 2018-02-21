@@ -38,6 +38,10 @@ const SignupForm = ({
         </div>
         <br/>
         <input type="submit" className="btn bt-primary primary_action_btn" value="Create Account"/>
+        <div className='row secondary_label secondary_actions_container'>
+          Already have an account? <a href="/signin" className="">Login</a>
+        </div>
+
       </form>
     </div>
   )
@@ -45,14 +49,6 @@ const SignupForm = ({
 
 const requiredFields = ["first_name", "last_name", "email",
                         "password"]
-
-const allFieldsPopulated = (values) => {
-  const result = Object.keys(values).every((field) => { 
-    return values[field].length > 0 
-  })
-
-  return result
-}
 
 export default withFormik({
   validateOnBlur: true,
