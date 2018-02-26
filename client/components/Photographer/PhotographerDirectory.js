@@ -34,7 +34,7 @@ export default class PhotographerDirectory extends Component {
 
     for (let location in usersByLocation) {
       contents.push(
-        <div>
+        <div key={location}>
           <h1>{capitalizeWords(location)} Photographers</h1>
           <br/>
         </div>
