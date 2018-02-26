@@ -11,7 +11,7 @@ import FormConfig from '../../config/form_config'
 function FlashContainer(props) {
   const {className, style, onClick} = props
 
-  if (!props.status) return <None />
+  if (!props.status) return ""
 
   if (props.status.error) {
     return (
