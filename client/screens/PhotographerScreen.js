@@ -5,6 +5,10 @@ import Gallery from './../components/Widget/Gallery'
 import BookRequest from './../components/Photographer/BookRequest'
 import ReviewList from './../components/Review/ReviewList'
 
+const capitalizeWords = (text) => {
+  return text.replace(/\b\w/g, l => l.toUpperCase())
+}
+
 export default class PhotographerScreen extends Component {
 
   state = {
@@ -66,8 +70,7 @@ export default class PhotographerScreen extends Component {
               <div className="username">{this.state.user.username}</div>
             </div>
             <div className="service_summary col-xs-12">
-              <div className="location summary_item"><i className='fa fa-map-marker'></i>Toronto</div>
-              <div className="camera_specs summary_item"><i className='fa fa-camera'></i>Nikon D800</div>
+              <div className="location summary_item"><i className='fa fa-map-marker'></i>{capitalizeWords(this.state.user.location)}</div>
             </div>
           </div>
           <div className='row'>
