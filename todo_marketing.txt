@@ -17,12 +17,14 @@
   [x] when message is sent (must show successfully sent)
   [x] fix flat images
   [x] update profile descriptions
-  [ ] mobile user page should list photos vertically stacked - up to 10 (i.e flickr)
+  [x] mobile user page should list photos vertically stacked - up to 10 (i.e flickr)
   [ ] no-trolls
     [ ] make user signup before they can contact
     [ ] link their phone number (explain why..)
     [ ] add photo
-  [ ] signup 
+  [x] signup
+  [ ] edit profile
+  [ ] make messaging work
 
   [ ] Test Facebook Instagram Ad
   [x] ask nani's profile
