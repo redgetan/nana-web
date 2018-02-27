@@ -31,6 +31,7 @@
     "react-router-dom": "^4.2.2",
     "react-select": "^1.2.1",
     "react-slick": "^0.16.0",
+    "react-sortable-hoc": "^0.6.8",
     "react-stripe-elements": "^1.4.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",

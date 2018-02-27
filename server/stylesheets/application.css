@@ -1160,6 +1160,12 @@ textarea {
   list-style: none;
 }
 
+.user_settings_navigation li {
+  border: solid 1px #ccc;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
 .user_settings_container .user_avatar {
   border: solid 1px #ccc;
   width: 100px;
@@ -1192,4 +1198,16 @@ textarea {
 .form_field_description {
   font-size: 14px;
   color: #aaa;
+}
+
+.sortable_profile_gallery_container {
+  list-style: none;
+}
+
+.profile_gallery_image {
+  float: left;
+  margin: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
