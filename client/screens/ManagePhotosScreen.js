@@ -13,9 +13,10 @@ const SortableItem = SortableElement(({value}) =>
   <img className="profile_gallery_image" src={value.src} alt=""/>
 );
 
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({items, isSorting}) => {
+  console.log("isSorting: " + isSorting + " props: ")
   return (
-    <ul className="sortable_profile_gallery_container">
+    <ul className={`sortable_profile_gallery_container ${isSorting ? "dragging_mode" : ""}`}>
       {items.map((value, index) => (
         <SortableItem key={`item-${index}`} index={index} value={value} />
       ))}
@@ -26,6 +27,7 @@ const SortableList = SortableContainer(({items}) => {
 export default class ManagePhotosScreen extends Component {
 
   state = {
+    isSorting: false,
     user: null,
     unauthorized: false,
     items: [
@@ -34,7 +36,14 @@ export default class ManagePhotosScreen extends Component {
     ]
   }
 
+  onSortStart = ({node, index, collection}, event) => {
+    console.log("start...")
+    this.setState({ isSorting: true })
+  }
+
   onSortEnd = ({oldIndex, newIndex}) => {
+    this.setState({ isSorting: false })
+
     this.setState({
       items: arrayMove(this.state.items, oldIndex, newIndex)
     })
@@ -76,7 +85,7 @@ export default class ManagePhotosScreen extends Component {
           </div>
           <div className='user_settings_panel col-xs-12 col-sm-12 '>
             <p className='tip'>Drag the pictures around in order to change the display order</p>
-            <SortableList items={this.state.items} onSortEnd={this.onSortEnd} axis="xy" />
+            <SortableList items={this.state.items} isSorting={this.state.isSorting} onSortStart={this.onSortStart} onSortEnd={this.onSortEnd} axis="xy" helperClass="dragging_item" />
           </div>
         </div>
       )

@@ -1220,9 +1220,16 @@ textarea {
 
 .sortable_profile_gallery_container {
   list-style: none;
+  display: inline-block;
+}
+
+.sortable_profile_gallery_container.dragging_mode {
+  background-color: #ddd;
 }
 
 .profile_gallery_image {
+  cursor: -webkit-grab;
+  cursor: grab;
   float: left;
   margin: 10px;
   width: 250px;
@@ -1238,4 +1245,10 @@ textarea {
 
 .user_settings_panel ul {
   padding: 0px;
+}
+
+.dragging_item {
+  border: solid 5px black;
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
