@@ -101,7 +101,7 @@ export default withFormik({
       return
     }
 
-    ClientAPI.signup(values.email, values.password).then((res) => {
+    ClientAPI.signup(values).then((res) => {
       setSubmitting(false)
       if (res.body && res.body.error) {
         setStatus({ externalError: res.body.error })
@@ -119,7 +119,7 @@ export default withFormik({
 
 const postAuth = (data, props) => {
   saveUserData(data)
-  props.history.push("/")
+  props.history.push("/account/manage")
   renderNavbar()
 }
 

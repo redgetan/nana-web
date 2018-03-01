@@ -70,12 +70,9 @@ export default class ClientAPI {
     })
   }
 
-  static signup(email, password) {
+  static signup(attributes) {
     return this.post('/users', {
-      body: {
-        email: email,
-        password: password
-      }
+      body: attributes
     })
   }
 
