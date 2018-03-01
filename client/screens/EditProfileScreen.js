@@ -2,24 +2,9 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import EditProfileForm from './../components/Account/EditProfileForm'
-import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
 import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
-
-const SortableItem = SortableElement(({value}) =>
-  <img className="profile_gallery_image" src={value.src} alt=""/>
-);
-
-const SortableList = SortableContainer(({items}) => {
-  return (
-    <ul className="sortable_profile_gallery_container">
-      {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
-      ))}
-    </ul>
-  );
-});
 
 export default class EditProfileScreen extends Component {
 
@@ -30,12 +15,6 @@ export default class EditProfileScreen extends Component {
       { src: "/dist/assets/kimono.jpg"} , 
       { src: "/dist/assets/bike.png" }
     ]
-  }
-
-  onSortEnd = ({oldIndex, newIndex}) => {
-    this.setState({
-      items: arrayMove(this.state.items, oldIndex, newIndex)
-    })
   }
 
   componentDidMount() {
@@ -136,17 +115,15 @@ export default class EditProfileScreen extends Component {
     if (this.state.user) {
       return (
         <div className='user_settings_container container'>
-          <div className='user_settings_navigation col-xs-12 col-sm-4 '>
+          <div className='user_settings_navigation col-xs-12 col-sm-12 '>
             <ul>
-              <li>Edit Profile</li>
-              <li>Manage Photos</li>
+              <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
+              <li ><Link to="/account/manage/photos">Manage Photos</Link></li>
             </ul>
           </div>
-          <div className='user_settings_panel col-xs-12 col-sm-8 '>
+          <div className='user_settings_panel col-xs-12 col-sm-12 '>
             <EditProfileForm user={this.state.user} />
           </div>
-          <ProfileGalleryPicker />
-          <SortableList items={this.state.items} onSortEnd={this.onSortEnd} axis="xy" />
         </div>
       )
     } else {

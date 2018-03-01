@@ -15,6 +15,7 @@ import UserDirectoryScreen from './../screens/UserDirectoryScreen'
 import PhotographerScreen from './../screens/PhotographerScreen'
 import BookingScreen from './../screens/BookingScreen'
 import EditProfileScreen from './../screens/EditProfileScreen'
+import ManagePhotosScreen from './../screens/ManagePhotosScreen'
 import PartnerRegisterScreen from './../screens/PartnerRegisterScreen'
 
 
@@ -31,6 +32,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/users/:username/book/:step" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={PhotographerScreen}/>
 		      <Route exact path="/account/manage" component={EditProfileScreen}/>
+		      <Route exact path="/account/manage/photos" component={ManagePhotosScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>
 				</Switch>
 			</div>

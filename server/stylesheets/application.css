@@ -206,7 +206,7 @@ select::-ms-expand {
 }
 
 .user_gallery_photo {
-  max-height: 255px;
+  max-height: 400px;
   margin-right: 15px;
   border: solid 1px #aaa;
 }
@@ -1158,12 +1158,30 @@ textarea {
 
 .user_settings_navigation ul {
   list-style: none;
+  padding: 0px;
 }
 
 .user_settings_navigation li {
-  border: solid 1px #ccc;
   padding: 10px 15px;
   font-size: 16px;
+  float: left;
+}
+
+.user_settings_navigation li a {
+  color: #777;
+}
+
+.user_settings_navigation li:hover a {
+  color: black;
+  text-decoration: none;
+}
+
+.user_settings_navigation li.active {
+  border-bottom: solid 1px black;
+}
+
+.user_settings_navigation li.active a {
+  color: black;
 }
 
 .user_settings_container .user_avatar {
@@ -1192,7 +1210,7 @@ textarea {
 }
 
 .user_settings_navigation {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .form_field_description {
@@ -1210,4 +1228,14 @@ textarea {
   width: 250px;
   height: 250px;
   object-fit: cover;
+}
+
+.user_settings_panel .tip {
+  color: #888;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.user_settings_panel ul {
+  padding: 0px;
 }
