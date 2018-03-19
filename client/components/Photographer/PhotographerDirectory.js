@@ -35,18 +35,35 @@ export default class PhotographerDirectory extends Component {
     for (let location in usersByLocation) {
       contents.push(
         <div key={location}>
-          <h1>{capitalizeWords(location)} Photographers</h1>
+          <h3>{capitalizeWords(location)}</h3>
           <br/>
         </div>
       )
 
       usersByLocation[location].map((user) => {
         contents.push(
-          <div className='user_avatar_container col-xs-6 col-sm-3 col-md-2' key={user.id} >
-            <Link to={`/users/${user.id}`} >
-              <img className='user_avatar' src={user.avatar} alt=""/>
-              <div className="username">{user.username}</div>
-            </Link>
+          <div className='directory_row row' key={user.id} >
+              <div className='row'>
+                <div className="directory_item_col">
+                  <img className='user_avatar' src={user.avatar} alt=""/>
+                </div>
+                <div className="directory_item_col">
+                  <div className="username">{user.username}</div>
+                </div>
+                <div className="directory_item_col">
+                  <Link to={`/users/${user.id}`} className='btn primary-btn' >
+                    Buy @ $99
+                  </Link>
+                </div>
+              </div>
+
+              <div className='row photo_gallery_thumbnails'>
+                {
+                  user.photos.map((photo, index) => (
+                    <img key={index} className="directory_photo_gallery_thumbnail" src={photo.src} />
+                  ))
+                }
+              </div>
           </div>
         )
       })

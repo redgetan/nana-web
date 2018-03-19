@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PhotographerDirectory from './../components/Photographer/PhotographerDirectory'
-import LocationSearch from './../components/LocationSearch'
+// import LocationSearch from './../components/LocationSearch'
 import ClientAPI from './../api/client_api'
 const Rating = require('react-rating')
 import { Link } from 'react-router-dom'
@@ -35,52 +35,51 @@ export default class UserDirectoryScreen extends Component {
       <div>
         <div className="container-fluid home_container">
           <h1 className="home_title">
-            Find a Photographer for your <span className="home_highlight">Dating Profile</span>
+            Find a Photographer 📷 for your Dating Profile 🔥
           </h1>
           <div className="home_description">
-            <ul>
-              <li>No Studio Pics</li>
-              <li>Casual yet High Quality Photos</li>
-              <li className="desktop_description">Make your hobbies, lifestyle, and intellect standout</li>
-            </ul>
+            No Studio Pics. Candid Shots. 100% Satisfaction Guarantee
+          </div>
+
+          <div className="background_header container">
+            <div className='background_square col-sm-4'><img className='square img_1' src="" alt=""/>   </div>
+            <div className='background_square col-sm-4'><img className='square img_2' src="" alt=""/>   </div>
+            <div className='background_square col-sm-4'><img className='square img_3' src="" alt=""/>   </div>
+          </div>
+
+          <div className="container home_section_container">
+            <h3>What is Nana?</h3>
+            <p>Nana lets you find photographers who understand how to take candid shots for your dating sites or even social media like instagram.</p>
+          </div>
+
+          <div className="container home_section_container">
+            <h3>How it Works</h3>
+            <p>Enter your current location, and you can immediately find available photographers in your area and chat with them via email. As we're currently in Beta, the prices currently shown are just estimates, but after requesting a session with a photographer and confirming dates with them via email, you can meetup at your agreed upon location and start having your pictures taken.</p>
+          </div>
+
+        </div>
+
+        <div className='container-fluid home_body_container'>
+          <h1 className='home_browser_header'>Browse</h1>
+
+          <PhotographerDirectory users={this.state.users} />
+
+          <br />
+        </div>
+
+        <div className='container-fluid home_more_info_container'>
+          <div className="container home_section_container">
+            <h3>What to say to Photographers?</h3>
+            <p>It's getting more common for people to ask photographers (especially ones from Instagram) to take their Tinder/Bumble/OkCupid profile photos. So most of them would already have an idea of how to go about it. To give photographers more context, it might help to send them a link to your existing profile or at least some pictures that you're currently using. This will give them better idea on what kind of shots to take beforehand.</p>
+          </div>
+
+          <div className="container home_section_container">
+            <h3>Frequently Asked Questions</h3>
+            <p>Check out <a href="/faq">F.A.Q</a> section to learn more or contact us at <a href="mailto:info@nanacupid.com">info@nanacupid.com</a> </p>
           </div>
         </div>
-
-        <div className='container-fluid photo_container'>
-          <Link to="/users/4" className='col-xs-6 col-sm-4' >
-            <img className='square img_1' src="" alt=""/>
-          </Link>
-
-          <Link to="/users/1" className='col-xs-6 col-sm-4'>
-            <img className='square img_2' src="" alt=""/>
-          </Link>
-          <Link to="/users/1" className='col-xs-6 col-sm-4'>
-            <img className='square img_3' src="" alt=""/>
-          </Link>
-
-          <Link to="/users/2" className='col-xs-6 col-sm-4'>
-            <img className='square img_4' src="" alt=""/>
-          </Link>
-
-          <Link to="/users/6" className='col-xs-6 col-sm-4'>
-            <img className='square img_5' src="" alt=""/>
-          </Link>
           
-          <Link to="/users/4" className='col-xs-6 col-sm-4'>
-            <img className='square img_6' src="" alt=""/>
-          </Link>
-        </div>
 
-        <PhotographerDirectory users={this.state.users} />
-
-        <div className="container how_it_works_container">
-          <h1>How it Works</h1>
-          <ul className="how_it_works_list light_gray">
-            <p>Simply contact a photographer of your choice to starting making your dating pictures 10x more interesting. Check out the <a className="faq_btn" href="/faq">Frequently Asked Questions </a> page to learn more.</p>
-          </ul>
-        </div>
-
-        <br />
         <div className="get_notified_container">
           <h1>Get Notified</h1>
 
