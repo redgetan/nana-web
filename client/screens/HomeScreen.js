@@ -40,11 +40,15 @@ export default class UserDirectoryScreen extends Component {
           <div className="home_description">
             No Studio Pics. Candid Shots. 100% Satisfaction Guarantee
           </div>
+      
+          <a href="" class='btn nana_primary_btn'>Become a Photographer</a>
+          <a href="" class='btn nana_btn'>Hire a Photographer</a>
+
 
           <div className="background_header container">
-            <div className='background_square col-sm-4'><img className='square img_1' src="" alt=""/>   </div>
-            <div className='background_square col-sm-4'><img className='square img_2' src="" alt=""/>   </div>
-            <div className='background_square col-sm-4'><img className='square img_3' src="" alt=""/>   </div>
+            <div className='background_square col-sm-4'><img className='square ' src="/assets/afro.jpg" alt=""/>   </div>
+            <div className='background_square col-sm-4'><img className='square ' src="/assets/front_bike.png" alt=""/>   </div>
+            <div className='background_square col-sm-4'><img className='square ' src="/assets/kimono.jpg" alt=""/>   </div>
           </div>
 
           <div className="container home_section_container">
