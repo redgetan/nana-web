@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PhotographerDirectory from './../components/Photographer/PhotographerDirectory'
-// import LocationSearch from './../components/LocationSearch'
+import LocationSearch from './../components/LocationSearch'
 import ClientAPI from './../api/client_api'
 const Rating = require('react-rating')
 import { Link } from 'react-router-dom'
@@ -59,10 +59,21 @@ export default class UserDirectoryScreen extends Component {
 
         </div>
 
-        <div className='container-fluid home_body_container'>
+        <div className='container home_body_container'>
           <h1 className='home_browser_header'>Browse</h1>
 
-          <PhotographerDirectory users={this.state.users} />
+          <LocationSearch />
+
+          {
+            this.state.users.map((user) => (
+              <div className='user_avatar_container col-xs-6 col-sm-3 col-md-2' key={user.id} >
+                <Link to={`/users/${user.id}`} >
+                  <img className='user_avatar' src={user.avatar} alt=""/>
+                  <div className="username">{user.username}</div>
+                </Link>
+              </div>
+            ))
+          }
 
           <br />
         </div>

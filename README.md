@@ -7,6 +7,7 @@ Usage
 ------
 
     npm start
+    gulp
 
 Deploy
 -----

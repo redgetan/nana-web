@@ -305,8 +305,10 @@ select::-ms-expand {
 }
 
 .photographer_directory .directory_photo_gallery_thumbnail {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 5px;
 }
 
 .home_browser_header {
@@ -333,8 +335,13 @@ select::-ms-expand {
 }
 
 .user_avatar_container .username {
-  font-size: 30px;
   color: black;
+}
+
+.user_avatar_container .user_avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; 
 }
 
 .service_summary {
