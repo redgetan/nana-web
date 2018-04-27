@@ -42,9 +42,22 @@ const ContactForm = ({
           {status && status.externalError}
         </div>
         <div className='row'>
+          <div className="col-xs-12"><label>Name</label></div>
+          <div className="col-xs-12">
+            <FormField name="name" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+          </div>
+        </div>
+        <div className='row'>
           <div className="col-xs-12"><label>Email</label></div>
           <div className="col-xs-12">
             <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+          </div>
+        </div>
+        <div className='row'>
+          <div className="col-xs-12"><label>Link to Existing Pictures</label></div>
+          <div className="col-xs-12"><span>Example: <a href="https://imgur.com/gallery/2s30Y7g" target="_blank">https://imgur.com/gallery/2s30Y7g</a></span></div>
+          <div className="col-xs-12">
+            <FormField name="album_link" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
           </div>
         </div>
 
@@ -77,7 +90,9 @@ const ContactForm = ({
 }
 
 const requiredFields = ["email",
-                        "text"]
+                        "text", 
+                        "name",
+                        "album_link"]
 
 const allFieldsPopulated = (values) => {
   const result = Object.keys(values).every((field) => { 
@@ -133,8 +148,12 @@ export default withFormik({
     }
 
 
+    debugger
+
     ClientAPI.createMessage({
+      sender_name: values.name,
       sender_email: values.email,
+      album_link: values.album_link,
       text: values.text,
       recipient_id: props.user.id
     }).then((res) => {

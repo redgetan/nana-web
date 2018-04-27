@@ -206,9 +206,9 @@ select::-ms-expand {
 }
 
 .user_gallery_photo {
-  max-height: 400px;
-  margin-right: 15px;
-  border: solid 1px #aaa;
+  padding: 3px;
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .book_request_form {
@@ -221,11 +221,8 @@ select::-ms-expand {
 }
 
 .user_gallery_container {
-  overflow-x: scroll;
-  white-space: nowrap;
-  text-align: center;
-  padding: 1px 0px;
-  border-right: solid 1px #ccc;
+  display: inline-block;
+  text-align: left;
 }
 
 
@@ -406,7 +403,7 @@ select::-ms-expand {
 }
 
 .cost {
-  /*display: none;*/
+  display: none;
 }
 
 .user_gallery_picker img {

@@ -113,7 +113,7 @@
     https://www.airbnb.ca/experiences/145310?source=pdpother&currentTab=all_tab&searchId=da02640c-25bd-42ea-b367-c70933faa152
 
   [ ] world
-    https://www.instagram.com/saunakspace/
+    [ ] https://www.instagram.com/saunakspace/
     [x] dallas
       https://vsco.co/obislens/images/1
     [x] michigan
