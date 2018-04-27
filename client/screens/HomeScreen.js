@@ -33,59 +33,38 @@ export default class UserDirectoryScreen extends Component {
 
     return (
       <div>
-        <div className="container-fluid home_container">
+        <div className="container home_container">
           <h1 className="home_title">
-            Find a Photographer 📷 for your Dating Profile 🔥
+            Find a Photographer for your <span className="home_highlight">Dating Profile</span>
           </h1>
           <div className="home_description">
-            No Studio Pics. Candid Shots. 100% Satisfaction Guarantee
+            Improve your chances on Tinder, OKCupid, Match, Bumble, Coffee Meets Bagel.
           </div>
-      
-          <a href="" class='btn nana_primary_btn'>Become a Photographer</a>
-          <a href="" class='btn nana_btn'>Hire a Photographer</a>
-
-
-          <div className="background_header container">
-            <div className='background_square col-sm-4'><img className='square ' src="/assets/afro.jpg" alt=""/>   </div>
-            <div className='background_square col-sm-4'><img className='square ' src="/assets/front_bike.png" alt=""/>   </div>
-            <div className='background_square col-sm-4'><img className='square ' src="/assets/kimono.jpg" alt=""/>   </div>
-          </div>
-
-          <div className="container home_section_container">
-            <h3>What is Nana?</h3>
-            <p>Nana lets you find photographers who understand how to take candid shots for your dating sites or even social media like instagram.</p>
-          </div>
-
-          <div className="container home_section_container">
-            <h3>How it Works</h3>
-            <p>Enter your current location, and you can immediately find available photographers in your area and chat with them via email. As we're currently in Beta, the prices currently shown are just estimates, but after requesting a session with a photographer and confirming dates with them via email, you can meetup at your agreed upon location and start having your pictures taken.</p>
-          </div>
-
         </div>
 
-        <div className='container home_body_container'>
-          <h1 className='home_browser_header'>Browse</h1>
+        <div className="call_to_action">
+          <a href="" className="btn btn-primary">Get Started</a>
+          <a href="" className="call_signup_btn btn btn-primary">Become Photographer</a>
+        </div>
 
-          <LocationSearch />
+        <br/>
+        <br/>
 
-          {
-            this.state.users.map((user) => (
-              <div className='user_avatar_container col-xs-6 col-sm-3 col-md-2' key={user.id} >
-                <Link to={`/users/${user.id}`} >
-                  <img className='user_avatar' src={user.avatar} alt=""/>
-                  <div className="username">{user.username}</div>
-                </Link>
-              </div>
-            ))
-          }
 
-          <br />
+        <div className='home_photo_container'>
+          <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/da36a3243757d42cdec08ee2af7a2a61/5B5DD210/t51.2885-15/e35/21149489_1452757384807116_8805558464408453120_n.jpg" alt=""/>
+          <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/56edc3f2c7de2df59e694961e5ec32ec/5B9CDD89/t51.2885-15/e35/30084042_1917379354992766_8237989806236237824_n.jpg" alt=""/>
+          <img src="http://image-aws-us-west-2.vsco.co/137ec1/1247224/5a4ae7a15629ad6b80cc4c85/vsco5a4ae7bba522e.jpg" alt=""/>
+          <img src="https://instagram.fybz2-1.fna.fbcdn.net/vp/def123fee3f51475da47a5c88c537c59/5B00D50B/t51.2885-15/e35/21576614_1919121631685734_897272020218150912_n.jpg" alt=""/>
+          <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/ae79e4c52e4d0ecdddabe722347e1f4b/5B798902/t51.2885-15/e35/26229258_328237087662435_3347298219724898304_n.jpg" alt=""/>
         </div>
 
         <div className='container-fluid home_more_info_container'>
           <div className="container home_section_container">
-            <h3>What to say to Photographers?</h3>
-            <p>It's getting more common for people to ask photographers (especially ones from Instagram) to take their Tinder/Bumble/OkCupid profile photos. So most of them would already have an idea of how to go about it. To give photographers more context, it might help to send them a link to your existing profile or at least some pictures that you're currently using. This will give them better idea on what kind of shots to take beforehand.</p>
+            <h3>How it Works</h3>
+            <p>1. Create a profile, which could be screenshots or link to your tinder/okcupid/bumble profile . This will give photographers more context as to how to prepare for the photoshoot </p>
+            <p>2. Wait for photographers to contact you or message ones you particularly like. </p>
+            <p>3. Meetup for a shoot. It could be a simple portrait, or a candid shot of you doing your regular activity like hanging out with friends or playing frisbee with your dog. Pay photographer, and have your photos sent to you in no time. </p>
           </div>
 
           <div className="container home_section_container">

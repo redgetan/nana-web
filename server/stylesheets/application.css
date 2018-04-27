@@ -587,9 +587,7 @@ textarea.error {
   text-align: center;
   margin: auto;
   width: 100%;
-  margin-top: 50px; 
   font-size: 30px;
-  padding: 10px;
 }
 
 
@@ -630,7 +628,7 @@ textarea.error {
   font-size: 20px;
   margin: auto;
   margin-top: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 .background_header {
@@ -849,7 +847,7 @@ textarea.error {
 .call_to_action a {
   background-color: #c70e92;
   border: none;
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .call_to_action a:hover,
@@ -866,7 +864,6 @@ textarea.error {
 
 @media only screen and (max-width : 500px) {
   .call_signup_btn {
-    margin-top: 15px;
   }
 }
 
@@ -975,7 +972,19 @@ button[type='submit'][disabled='true'] {
 }
 
 .home_container {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.home_photo_container {
+  max-height: 255px;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+}
+
+.home_photo_container img {
+  max-height: 255px;
+  margin-right: 5px;
 }
 
 .location_search_form {
