@@ -60,19 +60,36 @@ export default class UserDirectoryScreen extends Component {
         </div>
 
         <div className='container-fluid home_more_info_container'>
-          <div className="container home_section_container">
+          <div className="home_section_container how_it_works_container">
             <h3>How it Works</h3>
-            <p>1. Create a profile, which could be screenshots or link to your tinder/okcupid/bumble profile . This will give photographers more context as to how to prepare for the photoshoot </p>
-            <p>2. Wait for photographers to contact you or message ones you particularly like. </p>
-            <p>3. Meetup for a shoot. It could be a simple portrait, or a candid shot of you doing your regular activity like hanging out with friends or playing frisbee with your dog. Pay photographer, and have your photos sent to you in no time. </p>
+            <ul>
+              <li className='col-xs-12 col-sm-4'>
+                <p className='how_it_works_item_header'>1. Book a Shoot</p>
+                <p>which could be screenshots or link to your tinder/okcupid/bumble profile . This will give photographers more context as to how to prepare for the photoshoot </p> 
+              </li>
+              <li className='col-xs-12 col-sm-4'>
+                <p className='how_it_works_item_header'>2. Meet with Photographer</p>
+                <p>Wait for photographers to contact you or message ones you particularly like. </p></li>
+              <li className='col-xs-12 col-sm-4'>
+                <p className='how_it_works_item_header'>3. Receive Photos</p>
+                <p>It could be a simple portrait, or a candid shot of you doing your regular activity like hanging out with friends or playing frisbee with your dog. Pay photographer, and have your photos sent to you in no time. </p> 
+              </li>
+            </ul>
           </div>
 
-          <div className="container home_section_container">
-            <h3>Frequently Asked Questions</h3>
-            <p>Check out <a href="/faq">F.A.Q</a> section to learn more or contact us at <a href="mailto:info@nanacupid.com">info@nanacupid.com</a> </p>
-          </div>
         </div>
-          
+
+        <div class='sample_photographers_container'>
+          {
+            this.state.users.map((user) => (
+              <div class='user_avatar_container col-xs-6 col-sm-3 col-md-2'>
+                <a href="/users/10">
+                  <img class="user_avatar" src="https://instagram.fybz2-1.fna.fbcdn.net/vp/d67ea8ab41d5e83625fe4245c0629ca0/5B1B2F46/t51.2885-19/s150x150/26273924_162283807731573_6294803738028670976_n.jpg" alt=""><div class="username">chelspineda</div>
+                </a>
+              </div>
+            ))
+          }
+        </div>
 
         <div className="get_notified_container">
           <h1>Get Notified</h1>

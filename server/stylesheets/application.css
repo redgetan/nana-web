@@ -675,9 +675,19 @@ textarea.error {
   margin-top: 50px;
 }
 
+.how_it_works_container h3 {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
 .how_it_works_container ul {
   list-style: none;
   padding: 10px;
+}
+
+.how_it_works_item_header {
+  color: lightslategrey;
+  font-weight: bold;
 }
 
 .how_it_works_list {
