@@ -28,6 +28,11 @@ export default class UserDirectoryScreen extends Component {
     })
   } 
 
+  // https://stackoverflow.com/a/4878800
+  toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+  }
+
   render() {
     const graphData = []
 
@@ -42,10 +47,7 @@ export default class UserDirectoryScreen extends Component {
           </div>
         </div>
 
-        <div className="call_to_action">
-          <a href="" className="btn btn-primary">Get Started</a>
-          <a href="" className="call_signup_btn btn btn-primary">Become Photographer</a>
-        </div>
+        <LocationSearch />
 
         <br/>
         <br/>
@@ -61,31 +63,35 @@ export default class UserDirectoryScreen extends Component {
 
         <div className='container-fluid home_more_info_container'>
           <div className="home_section_container how_it_works_container">
-            <h3>How it Works</h3>
+            <h3 className="home_section_header">How it Works</h3>
             <ul>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>1. Book a Shoot</p>
-                <p>which could be screenshots or link to your tinder/okcupid/bumble profile . This will give photographers more context as to how to prepare for the photoshoot </p> 
+                <p>Message photographers that you like once you've fill out a basic profile (i.e existing pictures used in dating sites). This will give photographers more context on how to prepare for your shoot. </p> 
               </li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>2. Meet with Photographer</p>
-                <p>Wait for photographers to contact you or message ones you particularly like. </p></li>
+                <p>Setup a time/place to meet with photographer. You'll pay the photographers directly before the session starts. You'll be instructed on what to do for preparation.</p></li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>3. Receive Photos</p>
-                <p>It could be a simple portrait, or a candid shot of you doing your regular activity like hanging out with friends or playing frisbee with your dog. Pay photographer, and have your photos sent to you in no time. </p> 
+                <p>You'll be sent photos via email once they have finished editing. It'll typically take less than a week. </p> 
               </li>
             </ul>
           </div>
 
         </div>
 
-        <div class='sample_photographers_container'>
+        <div className='container-fluid sample_photographers_container home_section_container'>
+          <h3 className='home_section_header'>Nana Photographers</h3>
+          <br/>
           {
             this.state.users.map((user) => (
-              <div class='user_avatar_container col-xs-6 col-sm-3 col-md-2'>
-                <a href="/users/10">
-                  <img class="user_avatar" src="https://instagram.fybz2-1.fna.fbcdn.net/vp/d67ea8ab41d5e83625fe4245c0629ca0/5B1B2F46/t51.2885-19/s150x150/26273924_162283807731573_6294803738028670976_n.jpg" alt=""><div class="username">chelspineda</div>
-                </a>
+              <div className='user_avatar_container col-xs-6 col-sm-4 col-md-3 col-lg-2' key={user.id} >
+                <Link to={`/users/${user.id}`} >
+                  <img className='user_avatar' src={user.avatar} alt=""/>
+                  <div className="username">{user.username}</div>
+                  <div className="location">{this.toTitleCase(user.location)}</div>
+                </Link>
               </div>
             ))
           }
