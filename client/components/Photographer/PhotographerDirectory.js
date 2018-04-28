@@ -18,15 +18,21 @@ const capitalizeWords = (text) => {
 export default class PhotographerDirectory extends Component {
   render() {
     if (this.props.users.length === 0) {
-      return (
-          <div className="spinner">
-            <div className="rect1"></div>
-            <div className="rect2"></div>
-            <div className="rect3"></div>
-            <div className="rect4"></div>
-            <div className="rect5"></div>
-          </div>
-      )
+      if (this.props.loading) {
+        return (
+            <div className="spinner">
+              <div className="rect1"></div>
+              <div className="rect2"></div>
+              <div className="rect3"></div>
+              <div className="rect4"></div>
+              <div className="rect5"></div>
+            </div>
+        )
+      } else {
+        return (
+          <div>No Photographers found in {this.props.address}</div>
+        )
+      }
     } 
 
     let contents = []
@@ -35,35 +41,36 @@ export default class PhotographerDirectory extends Component {
     for (let location in usersByLocation) {
       contents.push(
         <div key={location}>
-          <h3>{capitalizeWords(location)}</h3>
+          <h3>Photographers in {location}</h3>
           <br/>
         </div>
       )
 
       usersByLocation[location].map((user) => {
         contents.push(
-          <div className='directory_row row' key={user.id} >
-              <div className='row'>
+          <div className='directory_row' key={user.id} >
+            <div className='row'>
+              <Link to={`/users/${user.id}`}>
                 <div className="directory_item_col">
                   <img className='user_avatar' src={user.avatar} alt=""/>
                 </div>
                 <div className="directory_item_col">
                   <div className="username">{user.username}</div>
                 </div>
-                <div className="directory_item_col">
-                  <Link to={`/users/${user.id}`} className='btn primary-btn' >
-                    Buy @ $99
-                  </Link>
-                </div>
-              </div>
-
-              <div className='row photo_gallery_thumbnails'>
+              </Link>
+            </div>
+            <div className='row photographer_directory_bio'>
+              {user.bio}
+            </div>
+            <div className='row photo_gallery_thumbnails'>
+              <Link to={`/users/${user.id}`}>
                 {
                   user.photos.map((photo, index) => (
                     <img key={index} className="directory_photo_gallery_thumbnail" src={photo.src} />
                   ))
                 }
-              </div>
+              </Link>
+            </div>
           </div>
         )
       })

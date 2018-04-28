@@ -20,11 +20,13 @@ export default class LocationSearch extends React.Component {
   handleSelect = (address, placeId) => {
     this.setState({ address, placeId })
 
-    this.getGeolocation(address)
+    this.trackSearch(address)
+    this.props.handleSelect(address);
+
+    // this.getGeolocation(address)
   }
 
   getGeolocation(address) {
-    this.trackSearch(address)
 
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))

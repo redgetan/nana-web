@@ -76,8 +76,8 @@ export default class ClientAPI {
     })
   }
 
-  static listUsers() {
-    return this.get('/users')
+  static listUsers(address) {
+    return address ? this.get('/users?address=' + address) : this.get('/users')
   }
 
   static getUser(username) {

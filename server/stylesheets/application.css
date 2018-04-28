@@ -208,6 +208,7 @@ select::-ms-expand {
 .user_gallery_photo {
   padding: 3px;
   max-height: 250px;
+  min-height: 250px;
   object-fit: cover;
 }
 
@@ -315,7 +316,8 @@ select::-ms-expand {
 }
 
 .directory_row {
-  margin-bottom: 20px;
+  margin-bottom: 100px;
+  display: inline-block;
 }
 
 .directory_item_col {
@@ -803,10 +805,6 @@ textarea.error {
 .author_header {
   display: none;
   /*display: inline-block;*/
-}
-
-.photographer_directory {
-  margin-top: 20px;
 }
 
 .photographer_directory h3 {
@@ -1340,4 +1338,10 @@ textarea {
   border: solid 5px black;
   cursor: -webkit-grabbing;
   cursor: grabbing;
+}
+
+.photographer_directory_bio {
+  height: 80px;
+  overflow: hidden;
+  text-align: justify;
 }

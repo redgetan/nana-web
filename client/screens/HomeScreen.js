@@ -33,6 +33,11 @@ export default class UserDirectoryScreen extends Component {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 
+  handleSelect = (address) => {
+    const formattedAddress = address.replace(/,\s+/g, "--").replace(/\s+/g,"-")
+    this.props.history.push("/places/" + formattedAddress)
+  }
+
   render() {
     const graphData = []
 
@@ -47,7 +52,7 @@ export default class UserDirectoryScreen extends Component {
           </div>
         </div>
 
-        <LocationSearch />
+        <LocationSearch handleSelect={this.handleSelect} />
 
         <br/>
         <br/>
