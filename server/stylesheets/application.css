@@ -1055,8 +1055,17 @@ textarea {
   resize: none;
 }
 
-.contact_form .row {
-  margin-bottom: 15px;
+.contact_form span {
+  font-size: 14px;
+}
+
+.contact_form label {
+  font-size: 14px;
+}
+
+.contact_form .cancel_btn {
+  border: solid 1px #ccc;
+  margin-left: 10px;
 }
 
 .message_textarea {

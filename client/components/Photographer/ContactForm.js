@@ -32,9 +32,7 @@ const ContactForm = ({
       <p>Your message has been sent.</p>
     </div>
   } else {
-    modalHeader = <div className="modal-header">
-      <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
+    modalHeader = <div className=""></div>
 
     modalBody = <div className="modal-body contact_success">
       <form onSubmit={handleSubmit} className="contact_form">
@@ -71,6 +69,7 @@ const ContactForm = ({
         <button className="btn btn-primary btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
           Send Message
         </button>
+        <button className="cancel_btn btn btn-lg" data-dismiss="modal" >Cancel</button>
         <br />
         <br />
       </form>

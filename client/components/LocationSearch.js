@@ -6,6 +6,10 @@ export default class LocationSearch extends React.Component {
     super(props)
     this.state = { address: '' }
     this.onChange = (address) => this.setState({ address })
+
+    this.searchOptions = {
+      types: ['(cities)']
+    }
   }
 
   handleFormSubmit = (event) => {
@@ -53,7 +57,7 @@ export default class LocationSearch extends React.Component {
     return (
       <form onSubmit={this.handleFormSubmit} className="location_search_form">
         <div className=''>
-          <PlacesAutocomplete inputProps={inputProps} classNames={cssClasses} onSelect={this.handleSelect} />
+          <PlacesAutocomplete inputProps={inputProps} classNames={cssClasses} onSelect={this.handleSelect} options={this.searchOptions} />
           <button type="submit" className="location_search_btn">Search</button>
         </div>
       </form>
