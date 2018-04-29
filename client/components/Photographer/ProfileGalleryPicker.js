@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import InstagramAPI from './../../api/instagram_api'
 
-export default class GalleryPicker extends Component {
+export default class ProfileGalleryPicker extends Component {
   state = {
     available_photos: []
   }
@@ -26,11 +26,12 @@ export default class GalleryPicker extends Component {
   }
 
   componentDidMount() {
-    // InstagramAPI.getSelfMediaRecent().then((res) => {
-    //   this.setState({ available_photos: res.body.data })
-    // }).catch((err) => {
+    InstagramAPI.getSelfMediaRecent().then((res) => {
+      debugger
+      this.setState({ available_photos: res.body.data })
+    }).catch((err) => {
 
-    // })
+    })
   }
 
   componentWillUnmount() {
