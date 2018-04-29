@@ -95,7 +95,7 @@ export default class UserDirectoryScreen extends Component {
                 <Link to={`/users/${user.id}`} >
                   <img className='user_avatar' src={user.avatar} alt=""/>
                   <div className="username">{user.username}</div>
-                  <div className="location">{this.toTitleCase(user.location)}</div>
+                  <div className="location">{user.location}</div>
                 </Link>
               </div>
             ))
