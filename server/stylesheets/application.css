@@ -209,6 +209,7 @@ select::-ms-expand {
   padding: 3px;
   max-height: 250px;
   min-height: 250px;
+  width: 250px;
   object-fit: cover;
 }
 
