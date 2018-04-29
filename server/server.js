@@ -23,10 +23,6 @@ app.get('/terms', (req, res) => {
   res.render('terms_of_service')
 })
 
-app.get('/privacy', (req, res) => {
-  res.render('privacy_policy')
-})
-
 app.get('*', (req, res) => {
 	res.render('index', { 
     assetPath: (path) => { return "dist/" + path }

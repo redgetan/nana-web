@@ -8,6 +8,7 @@ import {
 
 import About from './../components/Home/About'
 import Faq from './../components/Home/Faq'
+import PrivacyPolicy from './../components/Home/PrivacyPolicy'
 import Signup from './../components/Registration/Signup'
 import Login from './../components/Registration/Login'
 import HomeScreen from './../screens/HomeScreen'
@@ -26,6 +27,7 @@ export default class AppRouter extends Component {
 				<Switch>
 		      <Route exact path="/about" component={About}/>
 		      <Route exact path="/faq" component={Faq}/>
+		      <Route exact path="/privacy" component={PrivacyPolicy}/>
 	        <Route exact path='/signin' component={Login}/>
 		      <Route exact path="/signup" component={Signup}/>
 		      <Route exact path="/partner/registration" component={PartnerRegisterScreen}/>
