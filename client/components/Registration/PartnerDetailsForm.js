@@ -23,7 +23,7 @@ function FlashContainer(props) {
   if (props.status.success) {
     return (
       <div className="form_success_container">
-        { props.status.error }
+        { props.status.success }
       </div>
     )
   }

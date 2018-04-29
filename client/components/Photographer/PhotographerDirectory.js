@@ -30,7 +30,17 @@ export default class PhotographerDirectory extends Component {
         )
       } else {
         return (
-          <div>No Photographers found in {this.props.address}</div>
+          <div className="photographer_directory container">
+            <h3 className='center'>No Photographers found in {this.props.address}</h3>
+            <br/>
+            <br/>
+
+            <div className="get_notified_container">
+              <div className='wait_list_description'>Not yet available in your city?</div>
+              <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className="nana_primary_btn btn btn-lg btn-primary">Join our Waiting List</a>
+            </div>
+
+          </div>
         )
       }
     } 

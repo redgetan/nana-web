@@ -1345,3 +1345,10 @@ textarea {
   overflow: hidden;
   text-align: justify;
 }
+
+.center {
+  float: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}

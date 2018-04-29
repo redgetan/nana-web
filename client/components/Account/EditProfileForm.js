@@ -11,7 +11,7 @@ import FormConfig from '../../config/form_config'
 function FlashContainer(props) {
   const {className, style, onClick} = props
 
-  if (!props.status) return ""
+  if (!props.status) return <div></div>
 
   if (props.status.error) {
     return (
@@ -24,10 +24,12 @@ function FlashContainer(props) {
   if (props.status.success) {
     return (
       <div className="form_success_container">
-        { props.status.error }
+        { props.status.success }
       </div>
     )
   }
+
+  return <div></div>
 
 }
 
