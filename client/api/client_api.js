@@ -88,6 +88,10 @@ export default class ClientAPI {
     return this.get('/account')
   }
 
+  static getUserPhotos(user_id) {
+    return this.get('/users/' + user_id + "/photos")
+  }
+
   static updateUser(id, attributes) {
     return this.put('/users/' + id, {
       body: {

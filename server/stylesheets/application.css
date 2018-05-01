@@ -1251,7 +1251,7 @@ textarea {
 
 .user_settings_navigation li {
   padding: 10px 15px;
-  font-size: 16px;
+  font-size: 18px;
   float: left;
 }
 
@@ -1260,16 +1260,16 @@ textarea {
 }
 
 .user_settings_navigation li:hover a {
-  color: black;
-  text-decoration: none;
+  /*color: black;*/
+  text-decoration: underline;
 }
 
 .user_settings_navigation li.active {
-  border-bottom: solid 1px black;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .user_settings_navigation li.active a {
-  color: black;
 }
 
 .user_settings_container .user_avatar {
@@ -1358,4 +1358,18 @@ textarea {
   width: 250px;
   height: 250px;
   border: solid 1px blue;
+}
+
+.upload_modal_btn {
+  border: dashed 1px #ccc;
+  height: 130px;
+  margin-bottom: 50px;
+  width: 100%;
+  padding: 50px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.upload_modal_btn:hover {
+  background-color: #eee;
 }

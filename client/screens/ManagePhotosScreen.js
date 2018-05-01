@@ -39,8 +39,6 @@ export default class ManagePhotosScreen extends Component {
     user: null,
     unauthorized: false,
     items: [
-      { src: "/dist/assets/kimono.jpg"} , 
-      { src: "/dist/assets/bike.png" }
     ]
   }
 
@@ -63,16 +61,25 @@ export default class ManagePhotosScreen extends Component {
         this.setState({ unauthorized: true })
       } else if (res.body.providers) {
         this.setState({ user: res.body })
-        // this.prettyDashboard()
-        this.simpleDashboard()
+        this.prettyDashboard()
+        this.loadUserPhotos()
       } else {
         throw new Error("bad request")
       }
     }).catch((err) => {
-      debugger
-      console.log("fail..")
+      console.log(err)
     })
   } 
+
+  loadUserPhotos() {
+    const user = Config.getCurrentUser()
+
+    ClientAPI.getUserPhotos(user.id).then((res) => {
+      this.setState({ items: res.body })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 
   componentWillUpdate() {
 
@@ -105,8 +112,8 @@ export default class ManagePhotosScreen extends Component {
       }
     })
     .use(Dashboard, {
-      trigger: '.UppyModalOpenerBtn',
-      inline: true,
+      trigger: '.upload_modal_btn',
+      inline: false,
       target: '.upload_dashboard_container',
       replaceTargetContent: true,
       showProgressDetails: true,
@@ -130,20 +137,24 @@ export default class ManagePhotosScreen extends Component {
 
   simpleDashboard() {
     const uppy = Uppy({
+      meta: { type: 'avatar' },
       restrictions: { maxNumberOfFiles: 1 },
       autoProceed: true
-    }).use(Dashboard, { trigger: '#select-files' })
-      .use(GoogleDrive, { target: Dashboard, host: 'https://server.uppy.io' })
-      .use(AwsS3, { getUploadParameters(file) { return self.getUploadParameters(file) } })
-      .run()
+    })
 
+    uppy.use(Tus, { endpoint: '/upload' })
+
+    // .use(Dashboard, { trigger: '#select-files' })
+    // uppy.use(AwsS3, { getUploadParameters(file) { return self.getUploadParameters(file) } })
+    
+    uppy.run()
 
     uppy.on('file-added', (file) => {
       console.log('Added file', file)
     })
 
     uppy.on('complete', (result) => {
-      // const url = result.successful[0].uploadURL
+      const url = result.successful[0].uploadURL
       // store.dispatch({
       //   type: SET_USER_AVATAR_URL,
       //   payload: { url: url }
@@ -171,19 +182,10 @@ export default class ManagePhotosScreen extends Component {
             </ul>
           </div>
           <div className='user_settings_panel col-xs-12 col-sm-12 '>
-            { 
-              this.state.uppy && 
-                <DragDrop
-                  uppy={this.state.uppy}
-                  locale={{
-                    strings: {
-                      chooseFile: 'Pick a new avatar'
-                    }
-                  }}
-                />
-            }
-
+            <div className="upload_modal_btn">+ Upload Photos</div>
             <div className="upload_dashboard_container"></div>
+
+            <h3>My Photos</h3>
 
             <p className='tip'>Drag the pictures around in order to change the display order</p>
             <SortableList items={this.state.items} isSorting={this.state.isSorting} onSortStart={this.onSortStart} onSortEnd={this.onSortEnd} axis="xy" helperClass="dragging_item" />
