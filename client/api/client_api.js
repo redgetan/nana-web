@@ -117,6 +117,12 @@ export default class ClientAPI {
     })
   }
 
+  static s3Sign(attributes) {
+    return this.post('/users/s3_sign', {
+      body: attributes
+    })
+  }
+
   static getPartnerAccount(accountId) {
     return this.get('/partner_accounts/' + accountId)
   }

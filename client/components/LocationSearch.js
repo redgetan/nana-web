@@ -47,8 +47,7 @@ export default class LocationSearch extends React.Component {
     const inputProps = {
       value: this.state.address,
       onChange: this.onChange,
-      placeholder: 'Enter City',
-      autoFocus: true
+      placeholder: 'Enter City'
     }
 
     const cssClasses = {

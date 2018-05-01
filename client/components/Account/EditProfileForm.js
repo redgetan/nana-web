@@ -7,6 +7,7 @@ import SelectField from "./../Widget/SelectField"
 import ClientAPI from './../../api/client_api'
 import Config from '../../config/config'
 import FormConfig from '../../config/form_config'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 function FlashContainer(props) {
   const {className, style, onClick} = props
@@ -33,6 +34,42 @@ function FlashContainer(props) {
 
 }
 
+const onChange = (newVal) => {
+  console.log(newVal) 
+}
+
+const locationInputProps = (values, setFieldValue) => {
+  return {
+    value: values.location,
+    onChange: (newValue) => { setFieldValue('location', newValue) },
+    placeholder: 'Enter City',
+    autoFocus: false
+  }
+}  
+
+
+const searchOptions = {
+  types: ['(cities)']
+}
+
+const cssClasses = {
+  input: '',
+  autocompleteContainer: 'location_autocomplete_container'
+}
+
+const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
+  <div className="autocomplete-root">
+    <input {...getInputProps()} />
+    <div className="autocomplete-dropdown-container">
+      {suggestions.map(suggestion => (
+        <div {...getSuggestionItemProps(suggestion)}>
+          <span>{suggestion.description}</span>
+        </div>  
+      ))}
+    </div>
+  </div>
+);
+
 
 // Our inner form component which receives our form's state and updater methods as props
 const EditProfileForm = ({
@@ -43,6 +80,7 @@ const EditProfileForm = ({
   handleChange,
   handleBlur,
   handleSubmit,
+  setFieldValue,
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="edit_profile_form">
@@ -76,8 +114,12 @@ const EditProfileForm = ({
       </div>
     </div>
     <div className='row'>
-      <div className="col-xs-3"><label>City</label></div>
-      <div className="col-xs-9"><FormField name="location" placeholder="Your city" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+      <div className="col-xs-3"><label>Location</label></div>
+      <div className="col-xs-9">
+        <div className="form_field">
+          <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={searchOptions} />
+        </div>
+      </div>
     </div>
     <div className='row'>
       <div className="col-xs-3"><label>Bio</label></div>

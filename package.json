@@ -35,7 +35,8 @@
     "react-stripe-elements": "^1.4.1",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "tcomb-form": "^0.9.19"
+    "tcomb-form": "^0.9.19",
+    "uppy": "^0.24.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
