@@ -5,6 +5,8 @@ import FormField from "./../Widget/FormField"
 import FormTextArea from "./../Widget/FormTextArea"
 import ClientAPI from './../../api/client_api'
 import Config from '../../config/config'
+import { Redirect } from 'react-router-dom'
+
 
 const LoginForm = ({
   values,
@@ -16,6 +18,9 @@ const LoginForm = ({
   handleSubmit,
   isSubmitting,
 }) => {
+  if (Config.getCurrentUser()) return <Redirect to="/account/manage"/>
+ 
+
   return (
     <div className='login_container'>
       <form className='' onSubmit={handleSubmit}>
@@ -111,7 +116,9 @@ const postAuth = (data, props) => {
     Config.setAccessToken(provider)
   })
 
+  props.onUserAuthenticated(data)
   props.history.push("/account/manage")
+
   renderNavbar()
 }
 

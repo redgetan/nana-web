@@ -4,6 +4,8 @@ import Profile from './../components/Photographer/Profile'
 import Gallery from './../components/Widget/Gallery'
 import BookRequest from './../components/Photographer/BookRequest'
 import ReviewList from './../components/Review/ReviewList'
+import Config from './../config/config'
+import { Link } from 'react-router-dom'
 
 const capitalizeWords = (text) => {
   return text.replace(/\b\w/g, l => l.toUpperCase())

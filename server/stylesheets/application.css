@@ -346,7 +346,7 @@ select::-ms-expand {
 }
 
 .service_summary {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
@@ -1251,8 +1251,9 @@ textarea {
 
 .user_settings_navigation li {
   padding: 10px 15px;
-  font-size: 18px;
+  font-size: 16px;
   float: left;
+  width: 100%;
 }
 
 .user_settings_navigation li a {
@@ -1260,13 +1261,12 @@ textarea {
 }
 
 .user_settings_navigation li:hover a {
-  /*color: black;*/
-  text-decoration: underline;
+  text-decoration: none;
+  color: #444;
 }
 
 .user_settings_navigation li.active {
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .user_settings_navigation li.active a {
@@ -1282,11 +1282,13 @@ textarea {
 .edit_profile_form label {
   text-align: right;
   width: 100%;
+  font-size: 16px;
 }
 
 .edit_profile_form input,
 .edit_profile_form textarea {
   width: 100%;
+  font-size: 16px;
 }
 
 .edit_profile_form input[type='submit'] {
@@ -1316,12 +1318,13 @@ textarea {
 }
 
 .profile_gallery_image {
-  cursor: -webkit-grab;
+/*  cursor: -webkit-grab;
   cursor: grab;
+*/  
   float: left;
-  margin: 10px;
-  width: 250px;
-  height: 250px;
+  margin: 5px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
 }
 
@@ -1381,8 +1384,8 @@ textarea {
 
 .photo_delete_btn {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: -5px;
+  top: -10px;
   z-index: 2;
   display: none;
 }
@@ -1393,10 +1396,29 @@ textarea {
 
 .photo_delete_btn i {
   border: solid 1px black;
-  padding: 5px;
+  padding: 4px;
   border-radius: 50%;
   background-color: black;
   color: #ccc;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
 }
+
+.view_profile_btn {
+  color: steelblue !important;
+  font-weight: bold;
+  border: solid 1px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: 100%;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.view_profile_btn:hover {
+  text-decoration: none;
+}
+
+

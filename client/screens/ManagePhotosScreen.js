@@ -39,7 +39,6 @@ export default class ManagePhotosScreen extends Component {
 
   state = {
     isSorting: false,
-    user: null,
     unauthorized: false,
     items: [
     ]
@@ -59,23 +58,14 @@ export default class ManagePhotosScreen extends Component {
   }
 
   componentDidMount() {
-    ClientAPI.getUserAccount().then((res) => {
-      if (res.statusCode === 401) {
-        this.setState({ unauthorized: true })
-      } else if (res.body.providers) {
-        this.setState({ user: res.body })
-        this.prettyDashboard()
-        this.loadUserPhotos()
-      } else {
-        throw new Error("bad request")
-      }
-    }).catch((err) => {
-      console.log(err)
-    })
+    if (this.props.user) {
+      this.prettyDashboard()
+      this.loadUserPhotos()
+    }
   } 
 
   loadUserPhotos() {
-    const user = Config.getCurrentUser()
+    const user = this.props.user
 
     ClientAPI.getUserPhotos(user.id).then((res) => {
       this.setState({ items: res.body })
@@ -210,46 +200,41 @@ export default class ManagePhotosScreen extends Component {
   }
 
   render() {
-    if (this.state.unauthorized) {
+    if (!this.props.user) {
       return (
         <Redirect to="/signin"/>
       )
     }
 
-    if (this.state.user) {
-      return (
-        <div className='user_settings_container container'>
-          <div className='user_settings_navigation col-xs-12 col-sm-12 '>
-            <ul>
-              <li><Link to="/account/manage">Edit Profile</Link></li>
-              <li className="active"><Link to="/account/manage/photos">Manage Photos</Link></li>
-            </ul>
-          </div>
-          <div className='user_settings_panel col-xs-12 col-sm-12 '>
-            <div className="upload_modal_btn">+ Upload Photos</div>
-            <div className="upload_dashboard_container"></div>
+    return (
+      <div className='user_settings_container container'>
+        <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4'>
+          <ul>
+            <li><Link to="/account/manage">Edit Profile</Link></li>
+            <li className="active"><Link to="/account/manage/photos">Manage Photos</Link></li>
+            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
+          </ul>
+        </div>
+        <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>
+          <div className="upload_modal_btn">+ Upload Photos</div>
+          <div className="upload_dashboard_container"></div>
 
-            <h3>My Photos</h3>
+          <h3>My Photos</h3>
 
-            <p className='tip'>Drag the pictures around in order to change the display order</p>
-            <div className="photo_gallery_list_container" onClick={this.onPhotoGalleryClick}>
-              {
-                this.state.items.map((item, index) => (
-                  <div key={index} className="profile_gallery_image_container" data-photo-id={item.id}>
-                    <div className="photo_delete_btn"><i className="glyphicon glyphicon-remove"></i></div>
-                    <img className="profile_gallery_image" src={item.src} alt=""/>
-                  </div>
-                   
-                ))
-              }
-            </div>
+          <div className="photo_gallery_list_container" onClick={this.onPhotoGalleryClick}>
+            {
+              this.state.items.map((item, index) => (
+                <div key={index} className="profile_gallery_image_container" data-photo-id={item.id}>
+                  <div className="photo_delete_btn"><i className="glyphicon glyphicon-remove"></i></div>
+                  <img className="profile_gallery_image" src={item.src} alt=""/>
+                </div>
+                 
+              ))
+            }
           </div>
         </div>
-      )
-    } else {
-      return (<div></div>)
-
-    }
+      </div>
+    )
   }
 
 }

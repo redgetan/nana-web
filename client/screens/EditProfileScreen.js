@@ -9,26 +9,9 @@ import { Link } from 'react-router-dom'
 export default class EditProfileScreen extends Component {
 
   state = {
-    user: null,
-    unauthorized: false,
-    items: [
-      { src: "/dist/assets/kimono.jpg"} , 
-      { src: "/dist/assets/bike.png" }
-    ]
   }
 
   componentDidMount() {
-    ClientAPI.getUserAccount().then((res) => {
-      if (res.statusCode === 401) {
-        this.setState({ unauthorized: true })
-      } else if (res.body.providers) {
-        this.setState({ user: res.body })
-      } else {
-        throw new Error("bad request")
-      }
-    }).catch((err) => {
-      console.log("fail..")
-    })
   } 
 
   componentWillUpdate() {
@@ -106,30 +89,26 @@ export default class EditProfileScreen extends Component {
   }
 
   render() {
-    if (this.state.unauthorized) {
+    if (!this.props.user) {
       return (
         <Redirect to="/signin"/>
       )
     }
 
-    if (this.state.user) {
-      return (
-        <div className='user_settings_container container'>
-          <div className='user_settings_navigation col-xs-12 col-sm-12 '>
-            <ul>
-              <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
-              <li ><Link to="/account/manage/photos">Manage Photos</Link></li>
-            </ul>
-          </div>
-          <div className='user_settings_panel col-xs-12 col-sm-12 '>
-            <EditProfileForm user={this.state.user} />
-          </div>
+    return (
+      <div className='user_settings_container container'>
+        <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4 '>
+          <ul>
+            <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
+            <li ><Link to="/account/manage/photos">Manage Photos</Link></li>
+            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
+          </ul>
         </div>
-      )
-    } else {
-      return (<div></div>)
-
-    }
+        <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8 '>
+          <EditProfileForm user={this.props.user} />
+        </div>
+      </div>
+    )
   }
 
 }
