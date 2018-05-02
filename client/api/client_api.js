@@ -115,6 +115,16 @@ export default class ClientAPI {
     })
   }
 
+  static createPhoto(attributes) {
+    return this.post('/photos', {
+      body: attributes
+    })
+  }
+
+  static deletePhoto(photoId) {
+    return this.post('/photos/' + photoId + "/delete")
+  }
+
   static createMessage(attributes) {
     return this.post('/messages', {
       body: attributes

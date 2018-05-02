@@ -17,16 +17,19 @@ const Tus = require('uppy/lib/plugins/Tus')
 
 import {SortableContainer, SortableElement, arrayMove} from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value}) =>
-  <img className="profile_gallery_image" src={value.src} alt=""/>
+const SortableItem = SortableElement(({value, onDeleteClick}) =>
+  <div className="profile_gallery_image_container" data-photo-id={value.id}>
+    <div className="photo_delete_btn" onClick={onDeleteClick}><i className="glyphicon glyphicon-remove"></i></div>
+    <img className="profile_gallery_image" src={value.src} alt=""/>
+  </div>
 );
 
-const SortableList = SortableContainer(({items, isSorting}) => {
+const SortableList = SortableContainer(({items, isSorting, onDeleteClick}) => {
   console.log("isSorting: " + isSorting + " props: ")
   return (
     <ul className={`sortable_profile_gallery_container ${isSorting ? "dragging_mode" : ""}`}>
       {items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} />
+        <SortableItem key={`item-${index}`} index={index} value={value} onDeleteClick={onDeleteClick} />
       ))}
     </ul>
   );
@@ -106,7 +109,7 @@ export default class ManagePhotosScreen extends Component {
       autoProceed: false,
       restrictions: {
         maxFileSize: 1000000,
-        maxNumberOfFiles: 3,
+        maxNumberOfFiles: 5,
         minNumberOfFiles: 1,
         allowedFileTypes: ['image/*']
       }
@@ -116,24 +119,35 @@ export default class ManagePhotosScreen extends Component {
       inline: false,
       target: '.upload_dashboard_container',
       replaceTargetContent: true,
+      showLinkToFileUploadResult: false,
       showProgressDetails: true,
-      note: 'Images only, 2–3 files, up to 1 MB',
+      note: 'Images only, 1–5 files, up to 1 MB',
       height: 470,
       metaFields: [
         { id: 'name', name: 'Name', placeholder: 'file name' },
         { id: 'caption', name: 'Caption', placeholder: 'describe what the image is about' }
       ]
     })
-    .use(GoogleDrive, { target: Dashboard, host: 'https://server.uppy.io' })
-    .use(Instagram, { target: Dashboard, host: 'https://server.uppy.io' })
     .use(AwsS3, { getUploadParameters(file) { return self.getUploadParameters(file) } })
     .run()
 
     uppy.on('complete', result => {
-      console.log('successful files:', result.successful)
-      console.log('failed files:', result.failed)
+      this.assignPhotosToUser(result.successful)
     })
   }
+
+  assignPhotosToUser(uploadedFiles) {
+    const promises = uploadedFiles.map((uploadedFile) => {
+      const s3Url = uploadedFile.uploadURL.replace(/\?.*/,'') // remove query params
+      return ClientAPI.createPhoto({ src: s3Url })         
+    })
+
+    return Promise.all(promises).then(() => {
+      this.loadUserPhotos()
+    })
+  }
+
+
 
   simpleDashboard() {
     const uppy = Uppy({
@@ -164,6 +178,36 @@ export default class ManagePhotosScreen extends Component {
     this.setState({ uppy: uppy })
   }
 
+  onDeleteClick = (e) => {
+    const photoId = $(e.target).closest(".profile_gallery_image_container").data("photo-id")
+
+    ClientAPI.deletePhoto(photoId).then((res) => {
+      const newItems = this.removeFromItemsByPhotoId(photoId)
+
+      this.setState({ items: newItems })
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
+  onPhotoGalleryClick = (e) => {
+    const isDeleteBtnClicked = $(e.target).closest(".photo_delete_btn").length > 0  
+    if (isDeleteBtnClicked) {
+      return this.onDeleteClick(e)
+    }
+  }
+
+  removeFromItemsByPhotoId(photoId) {
+    let items = this.state.items
+
+    let indexToRemove = items.findIndex((item) => {
+      return item.id === photoId
+    })
+
+    items.splice(indexToRemove, 1)
+
+    return items
+  }
 
   render() {
     if (this.state.unauthorized) {
@@ -188,7 +232,17 @@ export default class ManagePhotosScreen extends Component {
             <h3>My Photos</h3>
 
             <p className='tip'>Drag the pictures around in order to change the display order</p>
-            <SortableList items={this.state.items} isSorting={this.state.isSorting} onSortStart={this.onSortStart} onSortEnd={this.onSortEnd} axis="xy" helperClass="dragging_item" />
+            <div className="photo_gallery_list_container" onClick={this.onPhotoGalleryClick}>
+              {
+                this.state.items.map((item, index) => (
+                  <div key={index} className="profile_gallery_image_container" data-photo-id={item.id}>
+                    <div className="photo_delete_btn"><i className="glyphicon glyphicon-remove"></i></div>
+                    <img className="profile_gallery_image" src={item.src} alt=""/>
+                  </div>
+                   
+                ))
+              }
+            </div>
           </div>
         </div>
       )
@@ -199,3 +253,5 @@ export default class ManagePhotosScreen extends Component {
   }
 
 }
+
+// <SortableList items={this.state.items} isSorting={this.state.isSorting} onSortStart={this.onSortStart} onSortEnd={this.onSortEnd} onDeleteClick={this.onDeleteClick} axis="xy" helperClass="dragging_item" />

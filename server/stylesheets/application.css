@@ -1373,3 +1373,30 @@ textarea {
 .upload_modal_btn:hover {
   background-color: #eee;
 }
+
+.profile_gallery_image_container {
+  float: left;
+  position: relative;
+}
+
+.photo_delete_btn {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 2;
+  display: none;
+}
+
+.profile_gallery_image_container:hover .photo_delete_btn  {
+  display: block !important;
+}
+
+.photo_delete_btn i {
+  border: solid 1px black;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: black;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+}
