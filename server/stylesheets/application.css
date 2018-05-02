@@ -2,7 +2,7 @@
 /* Global */
 
 div, ul, li, pre {
-  font-size: 20px;
+  font-size: 18px;
   color: #888;
 }
 
@@ -1458,4 +1458,8 @@ textarea {
 .upload_avatar_label {
   font-size: 14px;
   color: steelblue;
+}
+
+.sample_photographers_container .location {
+  font-size: 16px;
 }

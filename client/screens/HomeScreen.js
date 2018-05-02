@@ -38,6 +38,10 @@ export default class UserDirectoryScreen extends Component {
     this.props.history.push("/places/" + formattedAddress)
   }
 
+  formatShortLocation(location) {
+    return location.split(/,\s+/)[0]
+  }
+
   render() {
     const graphData = []
 
@@ -95,7 +99,7 @@ export default class UserDirectoryScreen extends Component {
                 <Link to={`/users/${user.id}`} >
                   <img className='user_avatar' src={user.avatar} alt=""/>
                   <div className="username">{user.username}</div>
-                  <div className="location">{user.location}</div>
+                  <div className="location">{this.formatShortLocation(user.location)}</div>
                 </Link>
               </div>
             ))
