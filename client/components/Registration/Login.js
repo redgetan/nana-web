@@ -110,7 +110,7 @@ export default withFormik({
 
 
 const postAuth = (data, props) => {
-  saveUserData(data)
+  Config.setUserData(data)
 
   data.providers.forEach((provider) => {
     Config.setAccessToken(provider)
@@ -121,8 +121,3 @@ const postAuth = (data, props) => {
 
   renderNavbar()
 }
-
-const saveUserData = (data) => {
-  Config.setUserData(data)
-}
-

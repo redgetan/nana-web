@@ -100,6 +100,15 @@ export default class ClientAPI {
     })
   }
 
+  static changeUserAvatar(id, avatar) {
+    return this.put('/users/' + id + '/change_avatar', {
+      body: {
+        avatar: avatar
+      }
+    })
+  }
+  
+
   static postSMSVerification(csrf, code) {
     return this.post('/users/sms_verification', {
       body: {

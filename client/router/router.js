@@ -32,6 +32,10 @@ export default class AppRouter extends Component {
 		this.setState({ user: user })
 	}
 
+	onUserUpdated = (user) => {
+		this.setState({ user: user })
+	}
+
 	componentWillMount() {
 		const user = Config.getCurrentUser()
 		if (user) {
@@ -51,7 +55,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/partner/registration" component={PartnerRegisterScreen}/>
 		      <Route exact path="/users/:username/book/:step" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={PhotographerScreen}/>
-		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} {...props} /> } />
+		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/manage/photos" render={ (props) => <ManagePhotosScreen user={this.state.user} {...props} /> } />
 		      <Route exact path="/places/:address" component={PhotographerDirectoryScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>

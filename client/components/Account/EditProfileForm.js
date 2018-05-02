@@ -43,7 +43,8 @@ const locationInputProps = (values, setFieldValue) => {
     value: values.location,
     onChange: (newValue) => { setFieldValue('location', newValue) },
     placeholder: 'Enter City',
-    autoFocus: false
+    autoFocus: false,
+    autoComplete: "new-password"
   }
 }  
 
@@ -59,7 +60,7 @@ const cssClasses = {
 
 const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   <div className="autocomplete-root">
-    <input {...getInputProps()} />
+    <input {...getInputProps({ autoComplete: "new-password" })} />
     <div className="autocomplete-dropdown-container">
       {suggestions.map(suggestion => (
         <div {...getSuggestionItemProps(suggestion)}>
@@ -70,6 +71,34 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   </div>
 );
 
+const onAvatarProvided = (props, setFieldValue, event) => {
+  const file = event.target.files[0]
+  return ClientAPI.s3Sign({ filename: file.name }).then((res) => {
+    const data = res.body
+
+    $.ajax({
+      url: data.url,
+      type: 'PUT',
+      data: file,
+      contentType: file.type, // Content type must much with the parameter you signed your URL with
+      processData: false, // this flag is important, if not set, it will try to send data as a form
+      success: function() {
+        const avatarUrl = data.url.replace(/\?.*/,''); // remove query params
+
+        ClientAPI.changeUserAvatar(Config.getCurrentUser().id, avatarUrl).then((res) => {
+          const user = res.body
+          setFieldValue('avatar', user.avatar)
+          Config.setUserData(user)
+          props.onUserUpdated(user)
+        })
+      },
+      error: function(data) {
+
+      }
+    })
+
+  })
+}
 
 // Our inner form component which receives our form's state and updater methods as props
 const EditProfileForm = ({
@@ -89,7 +118,13 @@ const EditProfileForm = ({
       <div className="col-xs-3"><label>Photo</label></div>
       <div className="col-xs-9">
         <div className="user_avatar">
-          <img src="/dist/assets/front_bike.png" alt=""/>
+          <img src={values.avatar} alt="" />
+          <span className="upload_avatar_btn btn-file">
+            <div className="upload_avatar_label">
+              Change Photo
+            </div>
+            <input className="user_avatar" name="user[avatar]" type="file" onChange={onAvatarProvided.bind(this, values, setFieldValue)} />
+          </span>
         </div>
       </div>
     </div>
@@ -163,6 +198,8 @@ export default withFormik({
       initialState[fieldName] = props.user[fieldName] || ""
     }
 
+    initialState["onUserUpdated"] = props.onUserUpdated
+
     return initialState
   },
   // Add a custom validation function (this can be async too!)
@@ -190,6 +227,10 @@ export default withFormik({
         setStatus({ error: res.body.error })
       } else {
         setStatus({ success: "Successfully updated" })
+        const user = res.body
+        Config.setUserData(user)
+        props.onUserUpdated(user)
+
       }
 
     }).catch((err) => {

@@ -105,7 +105,7 @@ export default class EditProfileScreen extends Component {
           </ul>
         </div>
         <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8 '>
-          <EditProfileForm user={this.props.user} />
+          <EditProfileForm user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
         </div>
       </div>
     )

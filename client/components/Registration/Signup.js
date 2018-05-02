@@ -118,17 +118,10 @@ export default withFormik({
 
 
 const postAuth = (data, props) => {
-  saveUserData(data)
+  Config.setUserData(data)
   props.history.push("/account/manage")
 
   props.onUserAuthenticated(data)
   renderNavbar()
 }
-
-const saveUserData = (data) => {
-  Config.setUserData(data)
-}
-
-
-
 
