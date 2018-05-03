@@ -193,7 +193,7 @@ select::-ms-expand {
 .user_profile_container,
 .book_request_form {
   padding: 20px;
-  margin: 50px 0px;
+  margin-top: 20px;
   display: inline-block;
 }
 
@@ -332,11 +332,12 @@ select::-ms-expand {
   float: left;
   text-align: center;
   padding: 10px;
-  margin-bottom: 10px;
 }
 
 .user_avatar_container .username {
   color: black;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .user_avatar_container .user_avatar {
@@ -1230,7 +1231,6 @@ textarea {
 
 .review_list_container {
   padding: 20px;
-  margin-top: 50px;  
 }
 
 .phone_verification_container {
@@ -1453,6 +1453,8 @@ textarea {
   padding: 0px;
   display: inline-block;
   cursor: pointer;
+  width: 100%;
+  text-align: center;
 }
 
 .upload_avatar_label {

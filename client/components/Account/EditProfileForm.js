@@ -115,7 +115,7 @@ const EditProfileForm = ({
   <form onSubmit={handleSubmit} className="edit_profile_form">
     <FlashContainer status={status} />
     <div className='row'>
-      <div className="col-xs-3"><label>Photo</label></div>
+      <div className="col-xs-3"><label>Avatar</label></div>
       <div className="col-xs-9">
         <div className="user_avatar">
           <img src={values.avatar} alt="" />

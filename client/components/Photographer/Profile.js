@@ -10,8 +10,8 @@ export default class Profile extends Component {
     return (
       <div className='user_profile_container col-xs-12 col-sm-7'>
         <div className="user_bio">
-          <h1>Bio</h1>
-          <pre>{this.props.user.bio}</pre>
+          <h2>Bio</h2>
+          <pre>{this.props.user.bio || "User has no bio"}</pre>
         </div>
         <div className="service_details">
           <h1>What we'll do</h1>
