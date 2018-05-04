@@ -72,8 +72,6 @@ export default class PhotographerScreen extends Component {
       )
     } 
 
-    debugger
-
     return (
       <div>
         <div className="container">

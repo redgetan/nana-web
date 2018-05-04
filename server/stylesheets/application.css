@@ -470,6 +470,7 @@ select::-ms-expand {
 .wizard_navigation_container {
   display: inline-block;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .wizard_navigation_container .step {
@@ -481,12 +482,21 @@ select::-ms-expand {
 .wizard_navigation_container .step .step_icon {
   float: left;
   margin-right: 10px;
+  border: solid 1px #ddd;
+  padding: 0px 7px;
+  border-radius: 50%;
 }
 
 .wizard_navigation_container .step.current, 
 .wizard_navigation_container .step.completed {
   color: black !important;
 }
+
+.wizard_navigation_container .step.current .step_icon, 
+.wizard_navigation_container .step.completed .step_icon {
+  background-color: whitesmoke;
+}
+
 
 .wizard_navigation_container .step.completed:hover {
   cursor: pointer; 
@@ -541,7 +551,8 @@ textarea.error {
   margin-right: 10px;
 }
 
-.form_field {
+.form_field,
+.edit_services_form select {
   margin-bottom: 5px;
 }
 
@@ -1283,12 +1294,11 @@ textarea {
 
 .edit_profile_form label {
   text-align: right;
-  width: 100%;
-  font-size: 16px;
 }
 
-.edit_profile_form input,
-.edit_profile_form textarea {
+.nana_form label,
+.nana_form input,
+.nana_form textarea {
   width: 100%;
   font-size: 16px;
 }
@@ -1297,7 +1307,7 @@ textarea {
   width: initial;
 }
 
-.edit_profile_form textarea {
+.nana_form textarea {
   height: 150px;
 }
 

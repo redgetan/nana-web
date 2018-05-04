@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import ClientAPI from './../api/client_api'
-import Config from './../config/config'
-import EditProfileForm from './../components/Account/EditProfileForm'
-import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
-import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 
 const Uppy = require('uppy/lib/core')
 const Dashboard = require('uppy/lib/plugins/Dashboard')
@@ -35,14 +30,15 @@ const SortableList = SortableContainer(({items, isSorting, onDeleteClick}) => {
   );
 });
 
-export default class ManagePhotosScreen extends Component {
+
+export default class UploadPhotosForm extends Component {
 
   state = {
     isSorting: false,
-    unauthorized: false,
     items: [
     ]
   }
+
 
   onSortStart = ({node, index, collection}, event) => {
     console.log("start...")
@@ -72,10 +68,6 @@ export default class ManagePhotosScreen extends Component {
     }).catch((err) => {
       console.log(err)
     })
-  }
-
-  componentWillUpdate() {
-
   }
 
   getUploadParameters(file) {
@@ -137,8 +129,6 @@ export default class ManagePhotosScreen extends Component {
     })
   }
 
-
-
   simpleDashboard() {
     const uppy = Uppy({
       meta: { type: 'avatar' },
@@ -199,44 +189,29 @@ export default class ManagePhotosScreen extends Component {
     return items
   }
 
+
   render() {
-    if (!this.props.user) {
-      return (
-        <Redirect to="/signin"/>
-      )
-    }
-
     return (
-      <div className='user_settings_container container'>
-        <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4'>
-          <ul>
-            <li><Link to="/account/manage">Edit Profile</Link></li>
-            <li className="active"><Link to="/account/manage/photos">Manage Photos</Link></li>
-            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
-          </ul>
-        </div>
-        <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>
-          <div className="upload_modal_btn">+ Upload Photos</div>
-          <div className="upload_dashboard_container"></div>
+      <div>
+        <div className="upload_modal_btn">+ Upload Photos</div>
+        <div className="upload_dashboard_container"></div>
 
-          <h3>My Photos</h3>
+        <h3>My Photos</h3>
 
-          <div className="photo_gallery_list_container" onClick={this.onPhotoGalleryClick}>
-            {
-              this.state.items.map((item, index) => (
-                <div key={index} className="profile_gallery_image_container" data-photo-id={item.id}>
-                  <div className="photo_delete_btn"><i className="glyphicon glyphicon-remove"></i></div>
-                  <img className="profile_gallery_image" src={item.src} alt=""/>
-                </div>
-                 
-              ))
-            }
-          </div>
+        <div className="photo_gallery_list_container" onClick={this.onPhotoGalleryClick}>
+          {
+            this.state.items.map((item, index) => (
+              <div key={index} className="profile_gallery_image_container" data-photo-id={item.id}>
+                <div className="photo_delete_btn"><i className="glyphicon glyphicon-remove"></i></div>
+                <img className="profile_gallery_image" src={item.src} alt=""/>
+              </div>
+               
+            ))
+          }
         </div>
       </div>
     )
   }
-
 }
 
 // <SortableList items={this.state.items} isSorting={this.state.isSorting} onSortStart={this.onSortStart} onSortEnd={this.onSortEnd} onDeleteClick={this.onDeleteClick} axis="xy" helperClass="dragging_item" />

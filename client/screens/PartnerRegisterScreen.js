@@ -60,7 +60,7 @@ export default class PartnerRegisterScreen extends Component {
     if (!this.state.initialStep) return <div></div>
 
     return (
-      <div>
+      <div className="container">
         <Wizard steps={this.steps()} match={this.props.match} currentStep={this.state.initialStep} />
       </div>
     )

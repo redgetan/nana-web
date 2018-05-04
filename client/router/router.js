@@ -16,7 +16,7 @@ import PhotographerDirectoryScreen from './../screens/PhotographerDirectoryScree
 import PhotographerScreen from './../screens/PhotographerScreen'
 import BookingScreen from './../screens/BookingScreen'
 import EditProfileScreen from './../screens/EditProfileScreen'
-import ManagePhotosScreen from './../screens/ManagePhotosScreen'
+import MyServicesScreen from './../screens/MyServicesScreen'
 import PartnerRegisterScreen from './../screens/PartnerRegisterScreen'
 import Config from './../config/config'
 
@@ -56,7 +56,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/users/:username/book/:step" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={PhotographerScreen}/>
 		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
-		      <Route exact path="/account/manage/photos" render={ (props) => <ManagePhotosScreen user={this.state.user} {...props} /> } />
+		      <Route exact path="/account/services" render={ (props) => <MyServicesScreen user={this.state.user} {...props} /> } />
 		      <Route exact path="/places/:address" component={PhotographerDirectoryScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>
 				</Switch>

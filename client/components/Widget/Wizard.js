@@ -37,7 +37,17 @@ export default class Wizard extends Component {
       return stepData.step === this.state.currentStep 
     })
 
-    const nextStepData = this.props.steps[index + 1]
+    const currentStepData = this.props.steps[index]
+    
+    debugger
+    currentStepData.component.handleNext().then((isSuccess) => {
+      const nextStepData = this.props.steps[index + 1]
+      this.transitionToNextStep(nextStepData)
+    })
+
+  }
+
+  transitionToNextStep(nextStepData) {
     const nextStep = nextStepData && nextStepData.step
 
     if (nextStep) {
@@ -117,7 +127,7 @@ const WizardContent = (props) => {
   })
 
   return (
-    <div className='wizard_content_container col-sm-7'>
+    <div className='wizard_content_container'>
       {stepData.component}
       <button className="wizard_next_btn" onClick={props.onNextClick}>Next</button>
     </div>

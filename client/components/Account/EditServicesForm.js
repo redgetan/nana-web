@@ -10,10 +10,6 @@ import Config from '../../config/config'
 import FormConfig from '../../config/form_config'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
-const onChange = (newVal) => {
-  console.log(newVal) 
-}
-
 const locationInputProps = (values, setFieldValue) => {
   return {
     value: values.location,
@@ -47,37 +43,8 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   </div>
 );
 
-const onAvatarProvided = (props, setFieldValue, event) => {
-  const file = event.target.files[0]
-  return ClientAPI.s3Sign({ filename: file.name }).then((res) => {
-    const data = res.body
-
-    $.ajax({
-      url: data.url,
-      type: 'PUT',
-      data: file,
-      contentType: file.type, // Content type must much with the parameter you signed your URL with
-      processData: false, // this flag is important, if not set, it will try to send data as a form
-      success: function() {
-        const avatarUrl = data.url.replace(/\?.*/,''); // remove query params
-
-        ClientAPI.changeUserAvatar(Config.getCurrentUser().id, avatarUrl).then((res) => {
-          const user = res.body
-          setFieldValue('avatar', user.avatar)
-          Config.setUserData(user)
-          props.onUserUpdated(user)
-        })
-      },
-      error: function(data) {
-
-      }
-    })
-
-  })
-}
-
 // Our inner form component which receives our form's state and updater methods as props
-const EditProfileForm = ({
+const EditServicesForm = ({
   values,
   errors,
   status,
@@ -88,53 +55,35 @@ const EditProfileForm = ({
   setFieldValue,
   isSubmitting,
 }) => (
-  <form onSubmit={handleSubmit} className="edit_profile_form nana_form">
+  <form ref={el => (this.form = el)} onSubmit={handleSubmit} className="edit_services_form nana_form">
     <FlashMessage status={status} />
     <div className='row'>
-      <div className="col-xs-3"><label>Avatar</label></div>
+      <div className="col-xs-3"><label>Hourly Rate</label></div>
       <div className="col-xs-9">
-        <div className="user_avatar">
-          <img src={values.avatar} alt="" />
-          <span className="upload_avatar_btn btn-file">
-            <div className="upload_avatar_label">
-              Change Photo
-            </div>
-            <input className="user_avatar" name="user[avatar]" type="file" onChange={onAvatarProvided.bind(this, values, setFieldValue)} />
-          </span>
-        </div>
-      </div>
-    </div>
-    <br />
-    <div className='row'>
-      <div className="col-xs-3"><label>First Name</label></div>
-      <div className="col-xs-9">
-        <FormField name="first_name" placeholder="First Name" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+        <FormField name="price" placeholder="i.e 100" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
     <div className='row'>
-      <div className="col-xs-3"><label>Last Name</label></div>
+      <div className="col-xs-3"><label>Currency</label></div>
       <div className="col-xs-9">
-        <FormField name="last_name" placeholder="Last Name" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+        <SelectField name="currency" label="Select Currency" options={["USD", "CAD"]} values={values} errors={errors} touched={touched}/>
       </div>
     </div>
     <div className='row'>
-      <div className="col-xs-3"><label>Email</label></div>
+      <div className="col-xs-3"><label>Languages</label></div>
       <div className="col-xs-9">
-        <FormField name="email" placeholder="email address" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-        <p className='form_field_description'>We won’t share your private email address with other users</p>
+        <SelectField name="languages" label="Select Languages" options={["English", "Spanish", "French", "Arabic", "Hindi", "Russian", "Portuguese", "Mandarin", "Japanese", "Korean"]} values={values} errors={errors} touched={touched}/>
       </div>
     </div>
     <div className='row'>
-      <div className="col-xs-3"><label>Location</label></div>
+      <div className="col-xs-3"><label>Cameras Used</label></div>
       <div className="col-xs-9">
-        <div className="form_field">
-          <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={searchOptions} />
-        </div>
+        <FormField name="cameras" placeholder="i.e Sony a6000, iPhone X" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
     <div className='row'>
-      <div className="col-xs-3"><label>Bio</label></div>
-      <div className="col-xs-9"><FormTextArea name="bio" placeholder="describe yourself" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
+      <div className="col-xs-3"><label>What you'll do</label></div>
+      <div className="col-xs-9"><FormTextArea name="expectation" placeholder="By the end of a 1 hour session, I'll have snapped at least 20 candid photos of you doing something interesting. I'll give you tips on what to wear, and suggest places to go based on your hobbies/lifestyle." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
     </div>
     <br />
     <input type='submit' className="pull-right btn nana_btn" value="Save" disabled={isSubmitting} />
@@ -143,12 +92,11 @@ const EditProfileForm = ({
   </form>
 )
 
-const requiredFields = ["first_name",
-                        "last_name",
-                        "email",
-                        "location", 
-                        "bio", 
-                        "avatar"
+const requiredFields = ["price",
+                        "languages",
+                        "currency",
+                        "cameras", 
+                        "expectation"
                         ]
 
 
@@ -204,5 +152,5 @@ export default withFormik({
       setStatus({ error: err })
     })
   }
-})(EditProfileForm);
+})(EditServicesForm);
 

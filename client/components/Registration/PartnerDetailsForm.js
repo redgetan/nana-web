@@ -3,32 +3,10 @@ import React, { Component } from 'react'
 import { withFormik, Field } from 'formik'
 import FormField from "./../Widget/FormField"
 import SelectField from "./../Widget/SelectField"
+import FlashMessage from "./../Widget/FlashMessage"
 import NanaClient from './../../api/client_api'
 import Config from '../../config/config'
 import FormConfig from '../../config/form_config'
-
-function FlashContainer(props) {
-  const {className, style, onClick} = props
-
-  if (!props.status) return <None />
-
-  if (props.status.error) {
-    return (
-      <div className="form_errors_container">
-        { props.status.error }
-      </div>
-    )
-  }
-
-  if (props.status.success) {
-    return (
-      <div className="form_success_container">
-        { props.status.success }
-      </div>
-    )
-  }
-
-}
 
 // Our inner form component which receives our form's state and updater methods as props
 const PartnerDetailsForm = ({
@@ -42,7 +20,7 @@ const PartnerDetailsForm = ({
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="application_form container">
-    <FlashContainer status={status} />
+    <FlashMessage status={status} />
     <br />
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Country</label></div>
