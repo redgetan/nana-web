@@ -3,6 +3,7 @@ import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import EditServicesForm from './../components/Account/EditServicesForm'
 import UploadPhotosForm from './../components/Account/UploadPhotosForm'
+import PublishServicesForm from './../components/Account/PublishServicesForm'
 import Wizard from './../components/Widget/Wizard'
 import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
 import { Redirect } from 'react-router-dom'
@@ -11,27 +12,49 @@ import { Link } from 'react-router-dom'
 export default class MyServicesScreen extends Component {
 
   state = {
-    initialStep: "service_details"
+    initialStep: "details"
   }
 
   componentWillUpdate() {
 
   }
 
+  constructor(props) {
+    super(props)
+    
+    this.stepRefs = {}
+
+  }
+
   steps() {
     return [
       { 
-        step: "service_details",
-        label: "Service Details",
-        component: <EditServicesForm user={this.props.user} />
+        step: "details",
+        label: "Details",
+        component: <EditServicesForm ref={el => (this.stepRefs["details"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
       },
       { 
         step: "upload_photos",
         label: "Upload Photos",
-        component: <UploadPhotosForm user={this.props.user} />
+        component: <UploadPhotosForm ref={el => (this.stepRefs["upload_photos"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
+      },
+      { 
+        step: "publish",
+        label: "Publish",
+        component: <PublishServicesForm ref={el => (this.stepRefs["publish"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
       }
     ]
   }
+
+
+  applyAsPhotographer = () => {
+    ClientAPI.applyAsPhotographer(Config.getCurrentUser().id).then((res) => {
+      const user = res.body
+      Config.setUserData(user)
+      this.props.onUserUpdated(user)
+    })
+  }
+
 
   render() {
     if (!this.props.user) {
@@ -40,8 +63,25 @@ export default class MyServicesScreen extends Component {
       )
     }
 
+    let content
+
+    if (this.props.user.my_services_step === "initial") {
+      content = (
+        <div className="apply_photographer_description">
+          <h2>Apply to become a Photographer</h2>
+          <p>When it comes to dating profiles or instagram worthy pictures, several people struggle with coming up with quality content that captures their lifestyle appropriately. Or worse, they have too many selfies or cringe shots that they themselves are unaware of.</p>
+          <br/>
+          <p>They need the help of photographers, who understand how to take candid shots, and have a good understanding of current trends. If you're ready to make an impact in people's lives and capture the best verion of themselves through your lenses, then jump on board and become a photographer for our platform</p>
+
+          <button className="nana_btn btn btn-primary" onClick={this.applyAsPhotographer}>Start</button>
+        </div>
+      )
+    } else {
+      content = <Wizard steps={this.steps()} stepRefs={this.stepRefs} match={this.props.match} currentStep={this.props.user.my_services_step} />
+    }
+
     return (
-      <div className='user_settings_container container'>
+      <div className='user_settings_container container-fluid'>
         <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4'>
           <ul>
             <li><Link to="/account/manage">Edit Profile</Link></li>
@@ -52,7 +92,7 @@ export default class MyServicesScreen extends Component {
           </ul>
         </div>
         <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>
-          <Wizard steps={this.steps()} match={this.props.match} currentStep={this.state.initialStep} />
+          {content} 
         </div>
       </div>
     )

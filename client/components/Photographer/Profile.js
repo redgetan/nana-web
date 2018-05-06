@@ -14,7 +14,7 @@ export default class Profile extends Component {
           <pre>{this.props.user.bio || "User has no bio"}</pre>
         </div>
         <div className="service_details">
-          <h1>What we'll do</h1>
+          <h2>What we'll do</h2>
           <p>{this.props.user.notes}</p>
         </div>
       </div>

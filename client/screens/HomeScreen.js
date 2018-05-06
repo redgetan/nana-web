@@ -95,7 +95,7 @@ export default class UserDirectoryScreen extends Component {
           <br/>
           {
             this.state.users.map((user) => (
-              <div className='user_avatar_container col-xs-6 col-sm-4 col-md-3 col-lg-2' key={user.id} >
+              <div className='home user_avatar_container col-xs-6 col-sm-4 col-md-3 col-lg-2' key={user.id} >
                 <Link to={`/users/${user.id}`} >
                   <img className='user_avatar' src={user.avatar} alt=""/>
                   <div className="username">{user.username}</div>

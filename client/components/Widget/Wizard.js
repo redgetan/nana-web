@@ -37,14 +37,40 @@ export default class Wizard extends Component {
       return stepData.step === this.state.currentStep 
     })
 
-    const currentStepData = this.props.steps[index]
-    
-    debugger
-    currentStepData.component.handleNext().then((isSuccess) => {
+    const stepRef = this.props.stepRefs[this.state.currentStep]
+
+    stepRef.setOnStepSuccess(() => {
       const nextStepData = this.props.steps[index + 1]
       this.transitionToNextStep(nextStepData)
     })
 
+    stepRef.handleNext()
+  }
+
+  goToPrev = (e) => {
+    e.preventDefault()
+
+    const index = this.props.steps.findIndex((stepData) => { 
+      return stepData.step === this.state.currentStep 
+    })
+
+    const prevStepData = this.props.steps[index - 1]
+    this.transitionToPrevStep(prevStepData)
+  }
+
+  transitionToPrevStep(stepData) {
+    const prevStep = stepData && stepData.step
+
+    if (prevStep) {
+      const stepUrl = window.location.pathname.replace(this.state.currentStep, prevStep)
+      browserHistory.push(stepUrl)
+
+      const completedSteps = this.state.completedSteps
+      completedSteps.pop()
+
+      this.setState({ completedSteps: completedSteps })
+      this.setState({ currentStep: prevStep })
+    }
   }
 
   transitionToNextStep(nextStepData) {
@@ -88,6 +114,9 @@ export default class Wizard extends Component {
       return ( <Redirect to={beginningStepUrl} /> )
     }
 
+    const isFirstStep = this.state.currentStep === this.props.steps[0].step
+    const isLastStep = this.state.currentStep === this.props.steps[this.props.steps.length - 1].step
+
     return (
       <div>
         <WizardNavigation 
@@ -95,7 +124,17 @@ export default class Wizard extends Component {
           currentStep={this.state.currentStep} 
           completedSteps={this.state.completedSteps} 
           handleStepClick={this.onStepClick} />
-        <WizardContent steps={this.props.steps} currentStep={this.state.currentStep} onNextClick={this.goToNext} />
+        <WizardContent steps={this.props.steps} currentStep={this.state.currentStep} />
+
+        { 
+          !isFirstStep && 
+            <button className="wizard_back_btn btn pull-left" onClick={this.goToPrev}>Prev</button>
+        }
+        { 
+          !isLastStep && 
+            <button className="wizard_next_btn btn btn-primary pull-right" onClick={this.goToNext}>Next</button>
+        }
+        
       </div>
     )
   }
@@ -129,7 +168,6 @@ const WizardContent = (props) => {
   return (
     <div className='wizard_content_container'>
       {stepData.component}
-      <button className="wizard_next_btn" onClick={props.onNextClick}>Next</button>
     </div>
   )
 }

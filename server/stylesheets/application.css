@@ -198,7 +198,7 @@ select::-ms-expand {
 }
 
 .user_profile_container {
-  padding-top: 0px;
+  padding: 0px;
 }
 
 .user_profile_container .user_bio h1 {
@@ -245,6 +245,7 @@ select::-ms-expand {
     float: left;
     line-height: 38px;
     font-size: 12px;
+    width: 115px;
   }
 
   .book_request_btn {
@@ -336,8 +337,12 @@ select::-ms-expand {
 
 .user_avatar_container .username {
   color: black;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
+}
+
+.home.user_avatar_container .username {
+  font-size: 16px;
 }
 
 .user_avatar_container .user_avatar {
@@ -346,6 +351,14 @@ select::-ms-expand {
   border-radius: 50%; 
   margin-bottom: 10px;
   object-fit: cover;
+}
+
+.normal.user_avatar_container {
+  margin-bottom: 20px;
+}
+
+.normal.user_avatar_container .location {
+  margin-top: 10px;
 }
 
 .service_summary {
@@ -409,7 +422,6 @@ select::-ms-expand {
 }
 
 .cost {
-  display: none;
 }
 
 .user_gallery_picker img {
@@ -467,6 +479,11 @@ select::-ms-expand {
 
 /* Booking */
 
+.wizard_next_btn {
+  background-color: #c70e92 !important;
+  border: none;
+}
+
 .wizard_navigation_container {
   display: inline-block;
   width: 100%;
@@ -475,7 +492,7 @@ select::-ms-expand {
 
 .wizard_navigation_container .step {
   float: left;
-  margin-right: 50px;
+  margin-right: 20px;
   color: #ccc;
 }
 
@@ -487,9 +504,19 @@ select::-ms-expand {
   border-radius: 50%;
 }
 
+.wizard_content_container {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #ccc;
+  padding-bottom: 20px;
+  min-height: 150px;
+}
+
 .wizard_navigation_container .step.current, 
 .wizard_navigation_container .step.completed {
   color: black !important;
+  text-decoration: underline;
 }
 
 .wizard_navigation_container .step.current .step_icon, 
@@ -974,6 +1001,13 @@ button[type='submit'][disabled='true'] {
   background-color: #b80885;
 }
 
+.nana_white_btn {
+  color: #c70e92;    
+  border: solid 1px;
+  background: none;
+}
+
+
 .nana_primary_btn:hover {
   color: white;
   background-color: #b80885;
@@ -1419,12 +1453,11 @@ textarea {
 }
 
 .view_profile_btn {
-  color: steelblue !important;
   font-weight: bold;
   border: solid 1px;
-  padding: 5px 10px;
+  padding: 5px 30px;
   border-radius: 4px;
-  width: 100%;
+  color: gray;
   display: inline-block;
   margin-top: 20px;
   font-size: 16px;
@@ -1474,4 +1507,34 @@ textarea {
 
 .sample_photographers_container .location {
   font-size: 16px;
+}
+
+.apply_photographer_description p {
+  font-size: 16px;
+}
+
+.apply_photographer_description h2 {
+  color: black;
+  font-size: 24px;
+  margin-top: 0px;
+}
+
+
+.join_date_label {
+  margin-top: 20px;
+}
+
+.user_profile_summary {
+  border: solid 1px #ddd;
+  height: 250px;
+  padding: 20px;
+}
+
+.publish_service_btn,
+.unpublish_service_btn {
+  margin-right: 20px;
+}
+
+.wizard_back_btn {
+  border: solid 1px;
 }

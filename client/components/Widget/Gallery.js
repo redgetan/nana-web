@@ -61,6 +61,7 @@ export default class Gallery extends Component {
   render() {
     return (
       <div className="user_gallery_container">
+        <h3>Photos</h3>
         <Lightbox
           images={this.props.images}
           currentImage={this.state.currentImage}

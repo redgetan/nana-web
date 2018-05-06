@@ -107,7 +107,26 @@ export default class ClientAPI {
       }
     })
   }
-  
+
+  static applyAsPhotographer(id) {
+    return this.post('/users/' + id + '/apply_as_photographer')
+  }
+
+  static toggleServices(id, isPhotographer) {
+    return this.post('/users/' + id + '/toggle_services', {
+      body: {
+        is_photographer: isPhotographer
+      }
+    })
+  }
+
+  static completeServicesStep(id) {
+    return this.post('/users/' + id + '/complete_step', {
+      body: {
+        step_type: "my_services_step"
+      }
+    })
+  }
 
   static postSMSVerification(csrf, code) {
     return this.post('/users/sms_verification', {

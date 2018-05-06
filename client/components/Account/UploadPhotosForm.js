@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
+import ClientAPI from './../../api/client_api'
+import Config from '../../config/config'
 
 const Uppy = require('uppy/lib/core')
 const Dashboard = require('uppy/lib/plugins/Dashboard')
@@ -39,6 +41,20 @@ export default class UploadPhotosForm extends Component {
     ]
   }
 
+  setOnStepSuccess(listener) {
+    this.onStepSuccess = listener
+  }
+
+  handleNext() {
+    ClientAPI.completeServicesStep(this.props.user.id).then((res) => {
+      const user = res.body
+
+      Config.setUserData(user)
+      this.props.onUserUpdated(user)
+
+      this.onStepSuccess()
+    })
+  }
 
   onSortStart = ({node, index, collection}, event) => {
     console.log("start...")

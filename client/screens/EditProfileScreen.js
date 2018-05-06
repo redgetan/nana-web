@@ -96,8 +96,8 @@ export default class EditProfileScreen extends Component {
     }
 
     return (
-      <div className='user_settings_container container'>
-        <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4 '>
+      <div className='user_settings_container container-fluid'>
+        <div className='user_settings_navigation col-xs-12 col-sm-4 col-md-3 col-lg-2  '>
           <ul>
             <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
             <li ><Link to="/account/services">My Services</Link></li>
@@ -105,7 +105,7 @@ export default class EditProfileScreen extends Component {
             <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>
-        <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8 '>
+        <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
           <EditProfileForm user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
         </div>
       </div>

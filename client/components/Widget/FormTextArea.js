@@ -9,6 +9,7 @@ export default class FormTextArea extends Component {
         <textarea
           type="text"
           name={this.props.name}
+          autoComplete="new-password"
           className={this.props.touched[this.props.name] && this.props.errors[this.props.name] ? this.props.className + " error" : this.props.className}
           onChange={this.props.onChange}
           placeholder={this.props.placeholder}
