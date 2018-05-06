@@ -7,15 +7,31 @@ export default class Profile extends Component {
   }
 
   render() {
+    const profileClassName = (this.props.user.is_photographer || this.props.isPreview) ? "user_profile_summary photographer" : "user_profile_summary" 
+
     return (
       <div className='user_profile_container col-xs-12 col-sm-7'>
+        <div className={profileClassName}>
+          <div className="summary_item hourly_rate_summary_item">
+            <label>Hourly Rate</label>
+            <span className="">$ {this.props.user.price} {this.props.user.currency}</span>
+          </div>
+          <div className="summary_item">
+            <label>Camera</label>
+            <span>{this.props.user.cameras}</span>
+          </div>
+          <div className="summary_item">
+            <label>Language</label>
+            <span>{this.props.user.languages}</span>
+          </div>
+        </div>
         <div className="user_bio">
-          <h2>Bio</h2>
+          <h3>Bio</h3>
           <pre>{this.props.user.bio || "User has no bio"}</pre>
         </div>
         <div className="service_details">
-          <h2>What we'll do</h2>
-          <p>{this.props.user.notes}</p>
+          <h3>What we'll do</h3>
+          <p>{this.props.user.expectation}</p>
         </div>
       </div>
     )

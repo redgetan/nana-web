@@ -20,6 +20,7 @@ const ContactForm = ({
 
   let modalHeader = null
   let modalBody   = null
+  const currentUser = Config.getCurrentUser()
 
   if (status && status.finishedSubmitting) {
     modalHeader = <div className="modal-header contact_success">
@@ -39,19 +40,24 @@ const ContactForm = ({
         <div className="form_errors_container">
           {status && status.externalError}
         </div>
-        <div className='row'>
-          <div className="col-xs-12"><label>Name</label></div>
-          <div className="col-xs-12">
-            <FormField name="name" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-          </div>
-        </div>
-        <div className='row'>
-          <div className="col-xs-12"><label>Email</label></div>
-          <div className="col-xs-12">
-            <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-          </div>
-        </div>
-        <div className='row'>
+        {
+          !currentUser &&
+            <div>
+              <div className='row'>
+                <div className="col-xs-12"><label>Name</label></div>
+                <div className="col-xs-12">
+                  <FormField name="name" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                </div>
+              </div>
+              <div className='row'>
+                <div className="col-xs-12"><label>Email</label></div>
+                <div className="col-xs-12">
+                  <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                </div>
+              </div>
+            </div>
+        }
+        <div className='row' style={{ display: 'none' }}>
           <div className="col-xs-12"><label>Link to Existing Pictures</label></div>
           <div className="col-xs-12"><span>Example: <a href="https://imgur.com/gallery/2s30Y7g" target="_blank">https://imgur.com/gallery/2s30Y7g</a></span></div>
           <div className="col-xs-12">
@@ -66,7 +72,7 @@ const ContactForm = ({
           </div>
         </div>
 
-        <button className="btn btn-primary btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
+        <button className="btn nana_btn btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
           Send Message
         </button>
         <button className="cancel_btn btn btn-lg" data-dismiss="modal" >Cancel</button>
@@ -89,9 +95,7 @@ const ContactForm = ({
 }
 
 const requiredFields = ["email",
-                        "text", 
-                        "name",
-                        "album_link"]
+                        "text"]
 
 const allFieldsPopulated = (values) => {
   const result = Object.keys(values).every((field) => { 
@@ -107,9 +111,11 @@ export default withFormik({
   // Transform outer props into form values
   mapPropsToValues: (props) => {
     let initialState = {}
-    for (var i = 0; i < requiredFields.length; i++) {
-      let fieldName = requiredFields[i]
-      initialState[fieldName] = ""
+
+    const currentUser = Config.getCurrentUser()
+    if (currentUser) {
+      initialState["name"]  = [currentUser.first_name, currentUser.last_name].join(" ")
+      initialState["email"] = currentUser.email
     }
 
     return initialState
@@ -146,8 +152,6 @@ export default withFormik({
       return
     }
 
-
-    debugger
 
     ClientAPI.createMessage({
       sender_name: values.name,

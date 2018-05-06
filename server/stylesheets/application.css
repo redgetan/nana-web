@@ -46,6 +46,12 @@ select::-ms-expand {
   display: none;
 }
 
+.btn {
+  outline-style:none;
+  box-shadow:none;
+  border-color:transparent;
+}
+
 
 .modal-body {
   padding: 0px 25px;
@@ -197,62 +203,90 @@ select::-ms-expand {
   display: inline-block;
 }
 
-.user_profile_container {
-  padding: 0px;
-}
-
 .user_profile_container .user_bio h1 {
   margin-top: 0px;
 }
 
 .user_gallery_photo {
-  padding: 3px;
-  max-height: 250px;
+  padding: 4px;
   min-height: 250px;
-  width: 250px;
+  max-height: 250px;
+  /*min-width: 250px;*/
   object-fit: cover;
 }
 
 .book_request_form {
   text-align: center;
+  float: right;
+  border: solid 1px #ddd;
 }
 
 .book_request_btn {
   width: 100%;
   margin-top: 20px;
+  background-color: #c70e92 !important;
+}
+
+.book_request_btn:hover,
+.book_request_btn:focus {
+  background-color: #910b6a !important;
 }
 
 .user_gallery_container {
+  padding: 20px;
   display: inline-block;
   text-align: left;
 }
 
+.hourly_rate_summary_item {
+  display: none;
+}
+
 
 @media only screen and (max-width : 768px) {
-  .book_request_form {
-    border: solid 1px #ccc;
-    width: 100%;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    margin: 0px;
-    background: white;
-    z-index: 5;
-    padding: 10px;
+  .hourly_rate_summary_item {
+    display: inline-block;
+  }
+
+  .book_request_form,
+  .user_profile_container {
+    min-height: none;
+    float: none;
+    margin-top: 0px;
+    border: none;
+
+    /*    border: solid 1px #ccc;
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        margin: 0px;
+        background: #ffedfa;
+        z-index: 5;
+        padding: 10px;
+    */  
+  }
+
+  .book_request_form form {
+    display: inline-block;
   }
 
   .book_request_form .cost {
-    float: left;
-    line-height: 38px;
-    font-size: 12px;
-    width: 115px;
+    display: none;
+  /*    float: left;
+      line-height: 38px;
+      font-size: 12px;
+      width: 115px;
+  */  
   }
 
   .book_request_btn {
-    width: calc(100% - 120px);
+    width: 250px;
+    margin-top: 0px;
+/*    width: calc(100% - 120px);
     margin-top: 0px;
     font-size: 16px !important;
-  }
+*/  }
 
   .user_gallery_container {
     white-space: normal !important;
@@ -260,9 +294,6 @@ select::-ms-expand {
 
   .user_gallery_photo {
     max-height: none;
-    width: 100%;
-    border: none;
-    margin-bottom: 10px;
   }
 }
 
@@ -277,7 +308,7 @@ select::-ms-expand {
 .secondary_action_btn:hover,
 .secondary_action_btn:focus {
   color: white;
-  background-color: darkblue !important;
+  background-color: #910b6a !important;
 }
 
 .primary_action_btn {
@@ -1145,7 +1176,7 @@ textarea {
 }
 
 .service_details {
-  display: none; 
+  /*display: none; */
 }
 
 .login_container,
@@ -1530,6 +1561,17 @@ textarea {
   padding: 20px;
 }
 
+.user_profile_summary.photographer {
+  border: none;
+  height: auto;
+  border-bottom: solid 1px #ddd;
+  padding: 0px 0px 20px 0px;
+}
+
+.user_profile_summary.photographer .summary_item label {
+  width: 120px;
+}
+
 .publish_service_btn,
 .unpublish_service_btn {
   margin-right: 20px;
@@ -1538,3 +1580,5 @@ textarea {
 .wizard_back_btn {
   border: solid 1px;
 }
+
+

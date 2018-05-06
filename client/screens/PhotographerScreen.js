@@ -92,8 +92,8 @@ export default class PhotographerScreen extends Component {
             </div>
           </div>
           <div className='row'>
-            <Profile user={this.state.user} />
             <BookRequest user={this.state.user} />
+            <Profile user={this.state.user} isPreview={this.props.isPreview} />
           </div>
           <div className='row'>
             <Gallery images={this.state.user.photos} />

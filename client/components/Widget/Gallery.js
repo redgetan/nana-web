@@ -77,7 +77,7 @@ export default class Gallery extends Component {
 
         {
           this.props.images.map((image, index) => (
-            <img className="user_gallery_photo col-xs-12 col-sm-4 col-md-3" key={index} src={image.src} alt=""/>
+            <img className="user_gallery_photo col-xs-6 col-sm-4 col-md-3" key={index} src={image.src} alt=""/>
           ))
         }
       </div>
