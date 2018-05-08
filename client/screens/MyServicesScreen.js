@@ -80,6 +80,8 @@ export default class MyServicesScreen extends Component {
       content = <Wizard steps={this.steps()} stepRefs={this.stepRefs} match={this.props.match} currentStep={this.props.user.my_services_step} />
     }
 
+    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+
     return (
       <div className='user_settings_container container-fluid'>
         <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4'>
@@ -89,7 +91,7 @@ export default class MyServicesScreen extends Component {
             <li className="active"><Link to="/account/services">My Services</Link></li>
             <li ><Link to="/account/bookings">My Bookings</Link></li>
 
-            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
+            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>
         <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>

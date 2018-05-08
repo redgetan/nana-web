@@ -52,6 +52,8 @@ export default class VerificationScreen extends Component {
     }
 
     const username = this.props.user.username ? this.props.user.username : "username"
+    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+
 
     return (
       <div className='user_settings_container container-fluid'>
@@ -61,7 +63,7 @@ export default class VerificationScreen extends Component {
             <li className="active"><Link to="/account/verification">Verification</Link></li>
             <li ><Link to="/account/services">My Services</Link></li>
             <li ><Link to="/account/bookings">My Bookings</Link></li>
-            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
+            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
