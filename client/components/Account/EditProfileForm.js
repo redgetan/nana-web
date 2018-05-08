@@ -24,7 +24,6 @@ const locationInputProps = (values, setFieldValue) => {
   }
 }  
 
-
 const searchOptions = {
   types: ['(cities)']
 }
@@ -90,6 +89,7 @@ const EditProfileForm = ({
 }) => (
   <form onSubmit={handleSubmit} className="edit_profile_form nana_form">
     <FlashMessage status={status} />
+
     <div className='row'>
       <div className="col-xs-3"><label>Avatar</label></div>
       <div className="col-xs-9">

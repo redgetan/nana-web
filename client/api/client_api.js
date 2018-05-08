@@ -22,7 +22,7 @@ export default class ClientAPI {
     if (process.env.NODE_ENV === "production") {
       baseURI = "https://5jbouftijk.execute-api.us-west-2.amazonaws.com/production"
     } else {
-      baseURI = "http://localhost:3000"
+      baseURI = "http://dev.nanapx.com:3000"
       // baseURI = "http://192.168.2.31:3000"
     }
 
@@ -162,6 +162,26 @@ export default class ClientAPI {
   static s3Sign(attributes) {
     return this.post('/users/s3_sign', {
       body: attributes
+    })
+  }
+
+  // needs cookie with access_token
+  static signinViaHttpCookie() {
+    // return this.post('/users/signin')
+
+    const options = this.getDefaultOptions()
+
+    return fetch(options.baseURI + '/users/signin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    }).then((response) => {
+      return response.json()
+    }).then((body) => {
+      return Promise.resolve({ body: body })
     })
   }
 

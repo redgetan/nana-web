@@ -62,7 +62,7 @@ export default class UserProfileScreen extends Component {
 
   render() {
     if (this.state.notFound) {
-      return <div>User not found</div>
+      return <div className='container'>User not found</div>
     }
 
     if (!this.state.user) {

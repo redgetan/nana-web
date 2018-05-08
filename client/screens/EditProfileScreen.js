@@ -72,22 +72,6 @@ export default class EditProfileScreen extends Component {
     }
   }
 
-  connectToInstagram() {
-    if (this.state.user.providers.length > 0) {
-      return <a href={Config.getInstagramOAuthUrl()} >
-        <i className="fa fa-instagram" aria-hidden="true"></i>
-        Connect to Instagram
-        {
-          this.state.user.providers.map((provider) => (
-            <div key={provider.name} className="connected_account_label">
-              {provider.name}  
-            </div>
-          ))
-        }
-      </a>
-    }
-  }
-
   render() {
     if (!this.props.user) {
       return (
@@ -95,14 +79,17 @@ export default class EditProfileScreen extends Component {
       )
     }
 
+    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+
     return (
       <div className='user_settings_container container-fluid'>
         <div className='user_settings_navigation col-xs-12 col-sm-4 col-md-3 col-lg-2  '>
           <ul>
             <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
+            <li ><Link to="/account/verification">Verification</Link></li>
             <li ><Link to="/account/services">My Services</Link></li>
             <li ><Link to="/account/bookings">My Bookings</Link></li>
-            <Link to={`/users/${this.props.user.id}`} className="view_profile_btn">View Profile</Link>
+            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>

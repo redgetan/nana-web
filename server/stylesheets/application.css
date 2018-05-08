@@ -1581,4 +1581,46 @@ textarea {
   border: solid 1px;
 }
 
+.instagram_login_btn {
+  width: 100%;
+  background: #eee;
+  color: black;
+  padding: 5px;
+  margin-top: 20px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  border: solid 1px #ddd;
+}
 
+.instagram_login_btn:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.register_separator {
+  margin: 10px;
+  display: inline-block;
+}
+
+.connected_accounts_container {
+  border: 1px dotted #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.connected_accounts_container input {
+  width: 100%;
+  border: solid 2px #ccc;
+  margin: 10px 0px;
+}
+
+.instagram_connect_container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.connected_account_label {
+  color: steelblue;
+  font-size: 14px;
+}

@@ -27,8 +27,14 @@ const LoginForm = ({
         <div className="form_errors_container">
           {status && status.externalError}
         </div>
-        <h2>Login</h2>
-        <br />
+        <div className='row'>
+          <div className="col-xs-12">
+            <a href={Config.getInstagramOAuthUrl()} className="instagram_login_btn">
+              <i className='fa fa-instagram'></i> Login with Instagram
+            </a>
+          </div>
+        </div>
+        <span className='register_separator'>or</span>
         <div className='row'>
           <div className="col-xs-12"><FormField name="email" placeholder="Email" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>

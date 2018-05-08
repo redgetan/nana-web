@@ -27,7 +27,6 @@ export default class ProfileGalleryPicker extends Component {
 
   componentDidMount() {
     InstagramAPI.getSelfMediaRecent().then((res) => {
-      debugger
       this.setState({ available_photos: res.body.data })
     }).catch((err) => {
 

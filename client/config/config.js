@@ -37,16 +37,22 @@ export default class Config {
   }
 
   static getInstagramOAuthUrl() {
-    return "https://api.instagram.com/oauth/authorize/?client_id=" + this.c().INSTAGRAM_CLIENT_ID +
+    const currentUser = this.getCurrentUser()
+
+    let url =  "https://api.instagram.com/oauth/authorize/?client_id=" + this.c().INSTAGRAM_CLIENT_ID +
                                                       "&redirect_uri=" + this.c().INSTAGRAM_REDIRECT_URI + 
-                                                      "&state=" + this.getAuthenticationToken() + 
                                                       "&response_type=code"
+    if (currentUser) {
+      url += "&state=" + this.getAuthenticationToken() 
+    }
+
+    return url
   }
 
   static c() {
     return {
       INSTAGRAM_CLIENT_ID: "e1a7ed3d7af44eea8ccad4a5fced1bf5",
-      INSTAGRAM_REDIRECT_URI: "http://redgetan.cc:3000/login/callback"
+      INSTAGRAM_REDIRECT_URI: "http://dev.nanapx.com:3000/login/callback"
     }
   }
 
