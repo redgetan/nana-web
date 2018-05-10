@@ -110,7 +110,7 @@ export default withFormik({
   validateOnChange: false,
   // Transform outer props into form values
   mapPropsToValues: (props) => {
-    let initialState = {}
+    let initialState = { "name": "", "email": "", "text": ""}
 
     const currentUser = Config.getCurrentUser()
     if (currentUser) {

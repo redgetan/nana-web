@@ -40,7 +40,8 @@ export default class PublishServicesForm extends Component {
       <button className='nana_btn publish_service_btn' onClick={this.onPublishClick}>Publish</button>        
     )
 
-    const previewLink = this.props.user.is_photographer ? `/users/${this.props.user.id}` : `/users/${this.props.user.id}/preview_service`
+    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+    const previewLink = this.props.user.is_photographer ? profileLink : `/users/${this.props.user.id}/preview_service`
 
     return (
       <div className="">
