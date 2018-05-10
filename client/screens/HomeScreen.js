@@ -6,7 +6,7 @@ const Rating = require('react-rating')
 import { Link } from 'react-router-dom'
 
 
-export default class UserDirectoryScreen extends Component {
+export default class HomeScreen extends Component {
 
   state = {
     users: []
@@ -39,6 +39,7 @@ export default class UserDirectoryScreen extends Component {
   }
 
   formatShortLocation(location) {
+    if (!location) return ""
     return location.split(/,\s+/)[0]
   }
 
