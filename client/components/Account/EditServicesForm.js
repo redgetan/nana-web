@@ -89,6 +89,8 @@ export default class EditServicesForm extends Component {
             window.scrollTo(0, 0)
 
             if (res.body && res.body.error) {
+              let error = res.body.error
+              error = error.replace('price', 'hourly rate')
               setStatus({ error: res.body.error })
             } else {
               setStatus({ success: "Successfully updated" })
@@ -147,7 +149,7 @@ export default class EditServicesForm extends Component {
                 </div>
               </div>
               <div className='row'>
-                <div className="col-xs-3"><label>What you'll do</label></div>
+                <div className="col-xs-3"><label>What you'll do / Expectation</label></div>
                 <div className="col-xs-9"><FormTextArea name="expectation" placeholder="By the end of a 1 hour session, I'll have snapped at least 20 candid photos of you doing something interesting. I'll give you tips on what to wear, and suggest places to go based on your hobbies/lifestyle." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
               </div>
               <br />

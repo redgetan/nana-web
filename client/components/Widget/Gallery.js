@@ -42,6 +42,7 @@ export default class Gallery extends Component {
   }
 
   gotoNext() {
+    debugger
     this.setState({currentImage: this.state.currentImage + 1})
   }
 
@@ -53,7 +54,7 @@ export default class Gallery extends Component {
   }
 
   handleClickImage () {
-    if (this.state.currentImage === this.state.images.length - 1) return
+    if (this.state.currentImage === this.props.images.length - 1) return
 
     this.gotoNext()
   }
@@ -77,7 +78,7 @@ export default class Gallery extends Component {
 
         {
           this.props.images.map((image, index) => (
-            <img className="user_gallery_photo col-xs-6 col-sm-4 col-md-3" key={index} src={image.src} alt=""/>
+            <img className="user_gallery_photo col-xs-6 col-sm-4 col-md-3 col-lg-2" key={index} src={image.src} alt="" onClick={this.openLightbox.bind(this, index)}/>
           ))
         }
       </div>

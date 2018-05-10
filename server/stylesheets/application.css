@@ -213,6 +213,7 @@ select::-ms-expand {
   max-height: 250px;
   /*min-width: 250px;*/
   object-fit: cover;
+  cursor: pointer;
 }
 
 .book_request_form {
@@ -241,7 +242,6 @@ select::-ms-expand {
 .hourly_rate_summary_item {
   display: none;
 }
-
 
 @media only screen and (max-width : 768px) {
   .hourly_rate_summary_item {
@@ -293,9 +293,32 @@ select::-ms-expand {
   }
 
   .user_gallery_photo {
-    max-height: none;
+    min-height: 350px;
+    max-height: 350px;
   }
 }
+
+@media only screen and (max-width : 500px) {
+  .user_gallery_photo {
+    max-height: 250px;
+    min-height: 250px;
+  }
+}
+
+@media only screen and (max-width : 400px) {
+  .user_gallery_photo {
+    max-height: 180px;
+    min-height: 180px;
+  }
+}
+
+@media only screen and (max-width : 350px) {
+  .user_gallery_photo {
+    max-height: 150px;
+    min-height: 150px;
+  }
+}
+
 
 .secondary_action_btn {
   color: white;

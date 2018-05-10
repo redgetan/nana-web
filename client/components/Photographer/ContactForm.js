@@ -68,7 +68,7 @@ const ContactForm = ({
         <div className='row'>
           <div className="col-xs-12"><label>Message</label></div>
           <div className="col-xs-12">
-            <FormTextArea name="text" className="message_textarea" placeholder="Tell photographer a bit about yourself, where you want your shots taken, or ask them questions about the photoshoot." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+            <FormTextArea name="text" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
           </div>
         </div>
 
