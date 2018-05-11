@@ -8,13 +8,14 @@ export default class Profile extends Component {
 
   render() {
     const profileClassName = (this.props.user.is_photographer || this.props.isPreview) ? "user_profile_summary photographer" : "user_profile_summary" 
+    const priceLabel = this.props.user.price ? [this.props.user.price, this.props.user.currency].join(" ") : "$90-$200"
 
     return (
       <div className='user_profile_container col-xs-12 col-sm-7'>
         <div className={profileClassName}>
           <div className="summary_item hourly_rate_summary_item">
             <label>Hourly Rate</label>
-            <span className="">$ {this.props.user.price} {this.props.user.currency}</span>
+            <span className="">{priceLabel}</span>
           </div>
           <div className="summary_item">
             <label>Camera</label>
@@ -29,10 +30,13 @@ export default class Profile extends Component {
           <h3>Bio</h3>
           <pre>{this.props.user.bio || "User has no bio"}</pre>
         </div>
-        <div className="service_details">
-          <h3>What we'll do</h3>
-          <p>{this.props.user.expectation}</p>
-        </div>
+        {
+          this.props.user.expectation &&
+            <div className="service_details">
+              <h3>What we'll do</h3>
+              <p>{this.props.user.expectation}</p>
+            </div>
+        }
       </div>
     )
   }

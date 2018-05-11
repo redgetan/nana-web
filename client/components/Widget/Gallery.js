@@ -42,7 +42,6 @@ export default class Gallery extends Component {
   }
 
   gotoNext() {
-    debugger
     this.setState({currentImage: this.state.currentImage + 1})
   }
 

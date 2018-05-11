@@ -684,6 +684,7 @@ textarea.error {
   margin: auto;
   width: 100%;
   font-size: 30px;
+  padding: 0px 40px;
 }
 
 
@@ -722,9 +723,7 @@ textarea.error {
 .home_description {
   text-align: center;
   font-size: 20px;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 20px;
 }
 
 .background_header {
@@ -831,6 +830,10 @@ textarea.error {
 @media only screen and (max-width : 400px) {
   .photo_card {
     width: 100%;
+  }
+
+  .home_description {
+    display: none;
   }
 }
 
@@ -1072,7 +1075,7 @@ button[type='submit'][disabled='true'] {
 }
 
 .login_btn {
-  display: none !important;
+  /*display: none !important;*/
 }
 
 .react_root_container,
@@ -1101,10 +1104,11 @@ button[type='submit'][disabled='true'] {
   display: block;
   width: 100%;
   text-align: center;
-  margin: 50px 0px;
+  margin: 30px 0px;
 }
 
 .location_search_btn {
+  margin-top: 20px;
   width: 100px;
   height: 50px;
   border: none;

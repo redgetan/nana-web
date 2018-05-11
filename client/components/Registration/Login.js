@@ -44,7 +44,7 @@ const LoginForm = ({
         <br/>
         <input type="submit" className="btn bt-primary primary_action_btn" value="Login"/>
         <div className='row secondary_label secondary_actions_container'>
-          Don't have an account? <a href="/signup" className="">Signup</a>
+          Don't have an account? <Link to="/signup" className="">Signup</Link>
         </div>
       </form>
     </div>

@@ -50,7 +50,7 @@ export default class HomeScreen extends Component {
       <div>
         <div className="container home_container">
           <h1 className="home_title">
-            Find a Photographer for your <span className="home_highlight">Dating Profile</span>
+            Hire a Photographer for your <span className="home_highlight">Dating Profile</span>
           </h1>
           <div className="home_description">
             Improve your chances on Tinder, OKCupid, Match, Bumble, Coffee Meets Bagel.
@@ -77,7 +77,7 @@ export default class HomeScreen extends Component {
             <ul>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>1. Book a Shoot</p>
-                <p>Message photographers that you like once you've fill out a basic profile (i.e existing pictures used in dating sites). This will give photographers more context on how to prepare for your shoot. </p> 
+                <p>Message photographers that you like. Tell them what kind of shot you would like ( i.e link to a sample instagram photo )</p> 
               </li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>2. Meet with Photographer</p>

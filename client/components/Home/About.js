@@ -4,7 +4,7 @@ export default class About extends Component {
   render() {
     return (
       <div className="container about_container">
-        <h1>#1 Dating Profile Photography</h1>
+        <h1>Hassle-Free Candid Photography</h1>
         <i className="about_logo fa fa-camera-retro" ></i>
         <p>
           We are a marketplace that matches Instagram Photographers with people who need better dating profile pictures. 

@@ -5,6 +5,7 @@ import FormField from "./../Widget/FormField"
 import FormTextArea from "./../Widget/FormTextArea"
 import ClientAPI from './../../api/client_api'
 import Config from '../../config/config'
+import { Link } from 'react-router-dom'
 
 const SignupForm = ({
   values,
@@ -23,7 +24,15 @@ const SignupForm = ({
           {status && status.externalError}
         </div>
         <h2>Signup</h2>
-        <br />
+        <div className='row'>
+          <div className="col-xs-12">
+            <a href={Config.getInstagramOAuthUrl()} className="instagram_login_btn">
+              <i className='fa fa-instagram'></i> Connect with Instagram
+            </a>
+          </div>
+        </div>
+        <span className='register_separator'>or</span>
+
         <div className='row'>
           <div className="col-xs-12"><FormField name="first_name" placeholder="First name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>
@@ -39,7 +48,7 @@ const SignupForm = ({
         <br/>
         <input type="submit" className="btn bt-primary primary_action_btn" value="Create Account"/>
         <div className='row secondary_label secondary_actions_container'>
-          Already have an account? <a href="/signin" className="">Login</a>
+          Already have an account? <Link to="/signin" className="">Login</Link>
         </div>
 
       </form>
