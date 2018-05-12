@@ -48,7 +48,7 @@ export default class Faq extends Component {
           </li>
           <li className="faq_item_container">
             <div className='question'>I have more questions, how can i contact you?</div>
-            <p>You can send as an email at <a href="mailto:info@nanacupid.com">info@nanacupid.com</a></p>
+            <p>You can send as an email at <a href="mailto:info@nanapx.com">info@nanapx.com</a></p>
           </li>
         </ul>
 

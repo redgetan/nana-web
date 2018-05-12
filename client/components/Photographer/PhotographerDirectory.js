@@ -35,15 +35,10 @@ export default class PhotographerDirectory extends Component {
             <br/>
             <br/>
 
-            <div className="get_notified_container">
-              <div className='wait_list_description'>Not yet available in your city?</div>
-              <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className="nana_primary_btn btn btn-lg btn-primary">Join our Waiting List</a>
-            </div>
-
           </div>
         )
       }
-    } 
+    }
 
     let contents = []
     let usersByLocation = groupBy(this.props.users, "location")
@@ -93,7 +88,7 @@ export default class PhotographerDirectory extends Component {
         }
       </div>
     )
-    
+
   }
 }
 

@@ -8,7 +8,7 @@ export default class PrivacyPolicy extends Component {
         <ul>
           <li className="faq_item_container">
             <div className='question'>Overview</div>
-            <p>Nana, Inc. (“Nana”) offers an internet-based service through its website, www.nanacupid.com (the “Site”), that allows people to book a photographer in cities worldwide by selecting a photographer from Nana’s global roster of professional photographers (the “Service”).  Protecting our customer's’ private information is our highest priority.</p>
+            <p>Nana, Inc. (“Nana”) offers an internet-based service through its website, www.nanapx.com (the “Site”), that allows people to book a photographer in cities worldwide by selecting a photographer from Nana’s global roster of professional photographers (the “Service”).  Protecting our customer's’ private information is our highest priority.</p>
             <p>This Privacy Policy governs all data collection and usage by Nana, including through the Site.  By using the Site, you consent to the data collection and usage practices described in this Policy.</p>
           </li>
           <li className="faq_item_container">
@@ -45,7 +45,7 @@ export default class PrivacyPolicy extends Component {
           </li>
           <li className="faq_item_container">
             <div className='question'>Contact Information</div>
-            <p>If you have any questions, you can reach us at info@nanacupid.com</p>
+            <p>If you have any questions, you can reach us at info@nanapx.com</p>
           </li>
         </ul>
 

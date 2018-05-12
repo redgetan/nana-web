@@ -16,8 +16,8 @@ export default class HomeScreen extends Component {
     ClientAPI.listUsers().then((res) => {
       if (Array.isArray(res.body)) {
         const users = res.body
-        const sortedUsers = users.sort((a, b) => { 
-          return (new Date(b.created_at)) - (new Date(a.created_at)) 
+        const sortedUsers = users.sort((a, b) => {
+          return (new Date(b.created_at)) - (new Date(a.created_at))
         })
         this.setState({ users: sortedUsers })
       } else {
@@ -26,7 +26,7 @@ export default class HomeScreen extends Component {
     }).catch((err) => {
       alert(err.message)
     })
-  } 
+  }
 
   // https://stackoverflow.com/a/4878800
   toTitleCase(str) {
@@ -77,14 +77,14 @@ export default class HomeScreen extends Component {
             <ul>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>1. Book a Shoot</p>
-                <p>Message photographers that you like. Tell them what kind of shot you would like ( i.e link to a sample instagram photo )</p> 
+                <p>Message photographers that you like. Tell them what kind of shot you would like ( i.e link to a sample instagram photo )</p>
               </li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>2. Meet with Photographer</p>
                 <p>Setup a time/place to meet with photographer. You'll pay the photographers directly before the session starts. You'll be instructed on what to do for preparation.</p></li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>3. Receive Photos</p>
-                <p>You'll be sent photos via email once they have finished editing. It'll typically take less than a week. </p> 
+                <p>You'll be sent photos via email once they have finished editing. It'll typically take less than a week. </p>
               </li>
             </ul>
           </div>
@@ -105,13 +105,6 @@ export default class HomeScreen extends Component {
               </div>
             ))
           }
-        </div>
-
-        <div className="get_notified_container">
-          <h1>Get Notified</h1>
-
-          <div className='wait_list_description'>Not yet available in your city?</div>
-          <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className="nana_primary_btn btn btn-lg btn-primary">Join our Waiting List</a>
         </div>
 
         <div className="vertical_spacing" style={{marginBottom: '150px'}}></div>
