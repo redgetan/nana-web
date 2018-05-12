@@ -13,13 +13,11 @@ export default class BookRequest extends Component {
   }
 
   render() {
+    const price = this.props.user.price ? this.props.user.price : "90-200"
     return (
       <div className="book_request_form col-xs-12 col-sm-5">
         <form className='' onSubmit={this.bookRequest}>
-          {
-            this.props.user.price && 
-              <div className="cost"><span className="session_price">$ {this.props.user.price}</span> per hour</div>
-          }
+          <div className="cost"><span className="session_price">$ {price}</span> per hour</div>
           <div className='user_rating'>
             <Rating 
               emptySymbol="fa fa-star-o fa"

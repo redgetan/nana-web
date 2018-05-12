@@ -17,14 +17,20 @@ export default class Profile extends Component {
             <label>Hourly Rate</label>
             <span className="">{priceLabel}</span>
           </div>
-          <div className="summary_item">
-            <label>Camera</label>
-            <span>{this.props.user.cameras}</span>
-          </div>
-          <div className="summary_item">
-            <label>Language</label>
-            <span>{this.props.user.languages}</span>
-          </div>
+          {
+            this.props.user.cameras && 
+              <div className="summary_item">
+                <label>Camera</label>
+                <span>{this.props.user.cameras}</span>
+              </div>
+          }
+          {
+            this.props.user.languages &&   
+              <div className="summary_item">
+                <label>Language</label>
+                <span>{this.props.user.languages}</span>
+              </div>
+          }
         </div>
         <div className="user_bio">
           <h3>Bio</h3>
