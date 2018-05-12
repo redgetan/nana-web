@@ -4,19 +4,14 @@ export default class About extends Component {
   render() {
     return (
       <div className="container about_container">
-        <h1>Hassle-Free Candid Photography</h1>
-        <i className="about_logo fa fa-camera-retro" ></i>
+        <h1 className='center'>About</h1>
+        <br/>
         <p>
-          We are a marketplace that matches Instagram Photographers with people who need better dating profile pictures. 
+          We're building an on-demand photography service that's primarily catered towards people who want better dating profile pictures or who want to have a better social media profile. In this post-tinder/instagram era, its never been more important to invest in your online image, and portray yourself that would properly communicate who you as a person. 
         </p>
-        <br />
-        <br />
+        <p>A lot of people are not the selfie taking type of person, and as such their online pictures inadequately represents themselves. We want to bridge that gap, and match people with modern photographers who can take candid pictures in various circumstances, whether its someone travelling in cool places, or doing a fun activity with friends/strangers. </p>
+        <p>If you have any questions, feel free to reach out at <a href="mailto:info@nanapx.com">info@nanapx.com</a></p>
 
-        <div className='wait_list_description'>Not yet available in your city?</div>
-        <a target="_blank" href="https://nanacupid.typeform.com/to/S5VSBH" className="nana_primary_btn btn btn-lg btn-primary">Join our Waiting List</a>
-
-        <br />
-        <br />
         <br />
         <br />
 
