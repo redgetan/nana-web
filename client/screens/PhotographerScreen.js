@@ -79,13 +79,15 @@ export default class PhotographerScreen extends Component {
 
     if (!this.state.user) return <div></div>
 
+    const username = this.state.user.first_name ? [this.state.user.first_name, this.state.user.last_name].join(" ") : this.state.user.username
+
     return (
       <div>
         <div className="container">
           <div className="row">
             <div className='user_avatar_container col-xs-12' >
               <img className='user_avatar' src={this.state.user.avatar || "/dist/assets/default_avatar.png"} alt=""/>
-              <div className="username">{this.state.user.first_name} {this.state.user.last_name}</div>
+              <div className="username">{username}</div>
             </div>
             <div className="service_summary col-xs-12">
               <div className="location summary_item"><i className='fa fa-map-marker'></i>{this.formatLocation(this.state.user.location)}</div>
