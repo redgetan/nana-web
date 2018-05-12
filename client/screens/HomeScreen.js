@@ -66,7 +66,6 @@ export default class HomeScreen extends Component {
         <div className='home_photo_container'>
           <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/da36a3243757d42cdec08ee2af7a2a61/5B5DD210/t51.2885-15/e35/21149489_1452757384807116_8805558464408453120_n.jpg" alt=""/>
           <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/56edc3f2c7de2df59e694961e5ec32ec/5B9CDD89/t51.2885-15/e35/30084042_1917379354992766_8237989806236237824_n.jpg" alt=""/>
-          <img src="http://image-aws-us-west-2.vsco.co/137ec1/1247224/5a4ae7a15629ad6b80cc4c85/vsco5a4ae7bba522e.jpg" alt=""/>
           <img src="https://instagram.fybz2-1.fna.fbcdn.net/vp/def123fee3f51475da47a5c88c537c59/5B00D50B/t51.2885-15/e35/21576614_1919121631685734_897272020218150912_n.jpg" alt=""/>
           <img src="https://instagram.fybz2-2.fna.fbcdn.net/vp/ae79e4c52e4d0ecdddabe722347e1f4b/5B798902/t51.2885-15/e35/26229258_328237087662435_3347298219724898304_n.jpg" alt=""/>
         </div>
