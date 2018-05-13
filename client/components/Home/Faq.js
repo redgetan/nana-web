@@ -16,15 +16,15 @@ export default class Faq extends Component {
           </li>
           <li className="faq_item_container">
             <div className='question'>How are the Photographers chosen?</div>
-            <p>We're currently in alpha, and allow anyone to signup as a photogapher (link to portfolio needed). While we don't have a strict guideline for filtering submission, we do want to make sure that they meet a standard that the community would find acceptable.</p>
+            <p>We're currently in alpha, and allow anyone to signup as a photogapher. While we currently dont have a review process, this might change in future to ensure quality .</p>
           </li>
           <li className="faq_item_container">
             <div className='question'>Are you available in my city?</div>
-            <p>We're currently only operating in Toronto, Canada. But we will be expanding to other cities very soon. </p>
+            <p>Anyone from around the world can sign up as a photographer. So no photographers are currently available in your city but you know some photographers who might be interested, feel free to refer them to our site :)  </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>How much does it cost?</div>
-            <p>Each photographer have their own rate. As of now, we're making it open. A $99 package could typically give you 20 photos in 2 location for about an hour. </p>
+            <p>Each photographer have their own rate. As of now, we're making it open. A $99 package could typically give you 20 photos in 2 location for about an hour. We might add option for photographers to create their own packages that people can instantly book for.  </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>How long does a session take?</div>
@@ -37,10 +37,6 @@ export default class Faq extends Component {
           <li className="faq_item_container">
             <div className='question'>Can i go to different locations/venues?</div>
             <p>If time permits and agreed upon earlier, you can visit more than 1 location with your photographer</p>
-          </li>
-          <li className="faq_item_container">
-            <div className='question'>Why do I have to enter my phone number and photo?</div>
-            <p>We want to ensure that the photographers' time are respected. Having a phone number and photo reduces spam and gives photographers confidence that they're talking to a real person. </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>How do I become a photographer?</div>
