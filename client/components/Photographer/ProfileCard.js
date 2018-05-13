@@ -17,6 +17,8 @@ export default class ProfileCard extends Component {
   }
 
   render() {
+    const price = this.props.user.price ? this.props.user.price : "90-200"
+
     return (
       <div className="photo_card">
         <div className="author_header">
@@ -33,7 +35,7 @@ export default class ProfileCard extends Component {
               initialRating={5}
             />
           </div>
-          <div className="cost"><span className="session_price">$100</span> per person</div>
+          <div className="cost"><span className="session_price">{price}</span> per hour</div>
         </Link>
       </div>
     )

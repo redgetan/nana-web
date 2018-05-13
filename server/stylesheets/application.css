@@ -660,10 +660,9 @@ textarea.error {
 
 .home_sample_photo {
   display: block;
-  max-width: 400px;
-  max-height: 400px;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
 @media only screen and (max-width : 400px) {
@@ -819,11 +818,16 @@ textarea.error {
   color: #c70e92;
 }
 
+.directory_item_row {
+  display: inline-block;
+  width: 100%;
+}
+
 .photo_card {
   display: inline-block;
   text-align: center;
-  width: 400px;
-  margin-top: 50px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* Extra Small Devices, Phones */ 
@@ -1107,13 +1111,13 @@ button[type='submit'][disabled='true'] {
 }
 
 .location_search_btn {
-  margin-top: 20px;
   width: 100px;
   height: 50px;
   border: none;
   color: white;
   background-color: #c70e92;
   border-radius: 5px; 
+  vertical-align: top;
 }
 
 #PlacesAutocomplete__root {
@@ -1141,6 +1145,7 @@ button[type='submit'][disabled='true'] {
   width: 100%; 
   padding: 10px;
   border: solid 1px #bbb;
+  margin-bottom: 15px;
 }
 
 .contact_form {
@@ -1648,4 +1653,13 @@ textarea {
 .connected_account_label {
   color: steelblue;
   font-size: 14px;
+}
+
+.directory_card {
+  margin-top: 100px;
+}
+
+.slick-dots li button {
+  width: 10px !important;
+  height: 10px !important;
 }

@@ -94,6 +94,16 @@ export default class HomeScreen extends Component {
           <h3 className='home_section_header'>Nana Photographers</h3>
           <br/>
           {
+            this.state.users.length === 0 &&
+              <div className="spinner">
+                <div className="rect1"></div>
+                <div className="rect2"></div>
+                <div className="rect3"></div>
+                <div className="rect4"></div>
+                <div className="rect5"></div>
+              </div>
+          }
+          {
             this.state.users.map((user) => (
               <div className='home user_avatar_container col-xs-6 col-sm-4 col-md-3 col-lg-2' key={user.id} >
                 <Link to={`/users/${user.id}`} >

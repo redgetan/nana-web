@@ -53,8 +53,8 @@ export default class PhotographerDirectory extends Component {
 
       usersByLocation[location].map((user) => {
         contents.push(
-          <div className='directory_row' key={user.id} >
-            <div className='row'>
+          <div className='directory_card col-xs-12 col-sm-6 col-md-4' key={user.id} >
+            <div className='directory_item_row'>
               <Link to={`/users/${user.id}`}>
                 <div className="directory_item_col">
                   <img className='user_avatar' src={user.avatar} alt=""/>
@@ -64,17 +64,11 @@ export default class PhotographerDirectory extends Component {
                 </div>
               </Link>
             </div>
-            <div className='row photographer_directory_bio'>
-              {user.bio}
+            <div className='directory_item_row'>
+              <ProfileCard user={user} />
             </div>
-            <div className='row photo_gallery_thumbnails'>
-              <Link to={`/users/${user.id}`}>
-                {
-                  user.photos.map((photo, index) => (
-                    <img key={index} className="directory_photo_gallery_thumbnail" src={photo.src} />
-                  ))
-                }
-              </Link>
+            <div className='directory_item_row photographer_directory_bio'>
+              {user.bio}
             </div>
           </div>
         )
@@ -83,9 +77,11 @@ export default class PhotographerDirectory extends Component {
 
     return (
       <div className="photographer_directory container">
-        {
-          contents
-        }
+        <div className="row">
+          {
+            contents
+          }
+        </div>
       </div>
     )
 
