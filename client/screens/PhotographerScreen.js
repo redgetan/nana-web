@@ -86,7 +86,7 @@ export default class PhotographerScreen extends Component {
         <div className="container">
           <div className="row">
             <div className='user_avatar_container col-xs-12' >
-              <img className='user_avatar' src={this.state.user.avatar || "/dist/assets/default_avatar.png"} alt=""/>
+              <img className='user_avatar' src={this.state.user.avatar || "/assets/default_avatar.png"} alt=""/>
               <div className="username">{username}</div>
             </div>
             <div className="service_summary col-xs-12">

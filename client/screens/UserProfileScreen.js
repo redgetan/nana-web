@@ -86,7 +86,7 @@ export default class UserProfileScreen extends Component {
         <div className="container">
           <div className="row">
             <div className='normal user_avatar_container service_summary col-xs-12 col-sm-4' >
-              <img className='user_avatar' src={this.state.user.avatar || "/dist/assets/default_avatar.png"} alt=""/>
+              <img className='user_avatar' src={this.state.user.avatar || "/assets/default_avatar.png"} alt=""/>
               <div className="username">{this.state.user.first_name} {this.state.user.last_name}</div>
               <div className="location"><i className='fa fa-map-marker'></i>{this.formatLocation(this.state.user.location)}</div>
             </div>

@@ -64,10 +64,10 @@ export default class HomeScreen extends Component {
 
 
         <div className='home_photo_container'>
-          <img src="/dist/assets/girl_lights.jpg" alt=""/>
-          <img src="/dist/assets/monkey_forrest.jpg" alt=""/>
-          <img src="/dist/assets/dj_asian.jpg" alt=""/>
-          <img src="/dist/assets/asian_street.jpg" alt=""/>
+          <img src="/assets/girl_lights.jpg" alt=""/>
+          <img src="/assets/monkey_forrest.jpg" alt=""/>
+          <img src="/assets/dj_asian.jpg" alt=""/>
+          <img src="/assets/asian_street.jpg" alt=""/>
         </div>
 
         <div className='container-fluid home_more_info_container'>
