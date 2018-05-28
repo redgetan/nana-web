@@ -17,11 +17,14 @@ export default class PostOAuth extends Component {
   }
 
   componentDidMount() {
+    const params = new URLSearchParams(this.props.location.search)
+    const isInitialConnect = params.get('initial_connect')
+
     ClientAPI.signinViaHttpCookie().then((res) => {
       if (res.body && res.body.error) {
         this.setState({ error: "Cant login. something went wrong" })
       } else {
-        postAuth(res.body, this.props)  
+        postAuth(res.body, this.props, isInitialConnect)  
       }
     }).catch((err) => {
       this.setState({ error: "Unable to login. Try again later" })
@@ -33,7 +36,7 @@ export default class PostOAuth extends Component {
   
 }
 
-const postAuth = (data, props) => {
+const postAuth = (data, props, isInitialConnect) => {
   Config.setUserData(data)
 
   data.providers.forEach((provider) => {
@@ -41,7 +44,12 @@ const postAuth = (data, props) => {
   })
 
   props.onUserAuthenticated(data)
-  props.history.push("/account/manage")
+
+  if (isInitialConnect) {
+    props.history.push("/account/verification?success=true")
+  } else {
+    props.history.push("/account/manage")
+  }
 
   renderNavbar()
 }

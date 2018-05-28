@@ -79,7 +79,9 @@ export default class PhotographerScreen extends Component {
 
     if (!this.state.user) return <div></div>
 
-    const username = this.state.user.first_name ? [this.state.user.first_name, this.state.user.last_name].join(" ") : this.state.user.username
+    const name = [this.state.user.first_name, this.state.user.last_name].join(" ") 
+    const username = this.state.user.username
+    const instagramLink = "instagram.com/" + username
 
     return (
       <div>
@@ -87,10 +89,14 @@ export default class PhotographerScreen extends Component {
           <div className="row">
             <div className='user_avatar_container col-xs-12' >
               <img className='user_avatar' src={this.state.user.avatar || "/assets/default_avatar.png"} alt=""/>
-              <div className="username">{username}</div>
-            </div>
-            <div className="service_summary col-xs-12">
-              <div className="location summary_item"><i className='fa fa-map-marker'></i>{this.formatLocation(this.state.user.location)}</div>
+              <div className="username">{name}</div>
+              <div className="service_summary col-xs-12">
+                <div className="location summary_item"><i className='fa fa-map-marker'></i>{this.formatLocation(this.state.user.location)}</div>
+              </div>
+              {
+                username && 
+                  <a className="instagram_link" href={`https://${instagramLink}`} target="_blank">{instagramLink}</a>
+              }
             </div>
           </div>
           <div className='row'>

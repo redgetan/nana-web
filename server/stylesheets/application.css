@@ -2,7 +2,7 @@
 /* Global */
 
 div, ul, li, pre {
-  font-size: 18px;
+  font-size: 16px;
   color: #888;
 }
 
@@ -59,6 +59,11 @@ select::-ms-expand {
 
 .modal-header {
   border: none;
+}
+
+.alert {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) { 
@@ -416,7 +421,7 @@ select::-ms-expand {
 }
 
 .service_summary {
-  margin-bottom: 20px;
+  margin: 10px 0px;
   text-align: center;
 }
 
@@ -1666,4 +1671,9 @@ textarea {
 .slick-dots li button {
   width: 10px !important;
   height: 10px !important;
+}
+
+.instagram_link {
+  display: inline-block;
+  color: #aaa;
 }
