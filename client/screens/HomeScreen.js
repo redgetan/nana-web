@@ -53,7 +53,7 @@ export default class HomeScreen extends Component {
             Hire a Personal Photographer
           </h1>
           <div className="home_description">
-            For your Social Media, Dating, or Business Needs. Any place, any time.
+            For your Social Media, Dating, or Business Needs. 
           </div>
         </div>
 
@@ -87,7 +87,6 @@ export default class HomeScreen extends Component {
               </li>
             </ul>
           </div>
-
         </div>
 
         <div className='container-fluid sample_photographers_container home_section_container'>

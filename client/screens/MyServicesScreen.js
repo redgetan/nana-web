@@ -68,10 +68,9 @@ export default class MyServicesScreen extends Component {
     if (this.props.user.my_services_step === "initial") {
       content = (
         <div className="apply_photographer_description">
-          <h2>Apply to become a Photographer</h2>
-          <p>When it comes to dating profiles or instagram worthy pictures, several people struggle with coming up with quality content that captures their lifestyle appropriately. Or worse, they have too many selfies or cringe shots that they themselves are unaware of.</p>
-          <br/>
-          <p>They need the help of photographers, who understand how to take candid shots, and have a good understanding of current trends. If you're ready to make an impact in people's lives and capture the best verion of themselves through your lenses, then jump on board and become a photographer for our platform</p>
+          <h2>Become a Social Media Photographer</h2>
+          <p>A lot of people struggle with having good social media content, and as a result, they miss out on the benefits of being able to expand their network, establish new friendships, and meet romantic partners. </p>
+          <p>They need the help of photographers who can make them feel comfortable in their own skin. If you find the prospect of helping people have fun, authentic photos that push forward their brand, relationship, or business, and if you're ready to make an impact in people's lives through photography, then jump on board and apply. </p>
 
           <button className="nana_btn btn btn-primary" onClick={this.applyAsPhotographer}>Start</button>
         </div>

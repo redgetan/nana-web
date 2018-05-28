@@ -37,6 +37,8 @@ export default class LocationSearch extends React.Component {
   }
 
   trackSearch(address) {
+    if (typeof gtag === "undefined") return
+      
     gtag('event', 'search', {
       'event_category': 'Photographers',
       'event_label': address

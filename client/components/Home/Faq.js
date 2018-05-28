@@ -8,35 +8,28 @@ export default class Faq extends Component {
         <ul>
           <li className="faq_item_container">
             <div className='question'>What is nana?</div>
-            <p>Nana is a platform that matches people who want better dating profile pictures with photographers who understands what works best in a dating app. </p>
+            <p>Nana is a marketplace that match affordable photographers with users looking to improve their social media content, dating profile, or business brand.  </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>Why did you create this service?</div>
-            <p>Because your tinder/okcupid/bumble selfies suck. And we can make you look 10x more interesting. </p>
+            <p>Social Media when used properly can be powerful. You can make new connections, unlock new friendships, and enhance your dating life. The problem is that most people find it difficult to generate good content as a selfie camera can be a little restrictive. </p>
+            <p>We want to make the power of social media accessible to the masses. By building a marketplace that allows anyone to access affordable quality photographers, one no longer needs to worry about good camera equipment, post processing, filters, or asking strangers to take photos of them only to be disappointed with the results. They just need to be themselves, and photographers can guide them, act as their personal buddy or coach, and take care of generating photos with proper angles, tone, and composition that's social media worthy.  </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>How are the Photographers chosen?</div>
             <p>We're currently in alpha, and allow anyone to signup as a photogapher. While we currently dont have a review process, this might change in future to ensure quality .</p>
           </li>
           <li className="faq_item_container">
+            <div className='question'>How much does it cost?</div>
+            <p>Pricing starts from $10 per hour. This could be people who are just starting out and doesnt have much portfolio or reviews. People who have great portfolio will charge more. </p>
+          </li>
+          <li className="faq_item_container">
             <div className='question'>Are you available in my city?</div>
             <p>Anyone from around the world can sign up as a photographer. So no photographers are currently available in your city but you know some photographers who might be interested, feel free to refer them to our site :)  </p>
           </li>
           <li className="faq_item_container">
-            <div className='question'>How much does it cost?</div>
-            <p>Each photographer have their own rate. As of now, we're making it open. A $99 package could typically give you 20 photos in 2 location for about an hour. We might add option for photographers to create their own packages that people can instantly book for.  </p>
-          </li>
-          <li className="faq_item_container">
             <div className='question'>How long does a session take?</div>
             <p>It could be as short as 30min or as long as 3 hours, depending on your arrangement with the photographer.</p>
-          </li>
-          <li className="faq_item_container">
-            <div className='question'>What do i have to bring?</div>
-            <p>Its generally a good idea to bring a few different wardrobes/shirts to diversity your look</p>
-          </li>
-          <li className="faq_item_container">
-            <div className='question'>Can i go to different locations/venues?</div>
-            <p>If time permits and agreed upon earlier, you can visit more than 1 location with your photographer</p>
           </li>
           <li className="faq_item_container">
             <div className='question'>How do I become a photographer?</div>

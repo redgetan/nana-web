@@ -1124,7 +1124,7 @@ button[type='submit'][disabled='true'] {
   z-index: 5;
   display: inline-block;
   margin-right: 10px;
-  width: 70%;
+  width: 50%;
   text-align: left;
 }
 
@@ -1596,6 +1596,10 @@ textarea {
   border: none;
   height: auto;
   padding: 0px 0px 20px 0px;
+}
+
+.user_profile_summary.photographer:empty {
+  padding: 0px;
 }
 
 .user_profile_summary.photographer .summary_item label {
