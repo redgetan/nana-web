@@ -80,6 +80,7 @@ export default class EditProfileScreen extends Component {
     }
 
     const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+    const servicesLabel = this.props.user.my_services_step === "approved" ? "My Services" : "Apply as Photographer"
 
     return (
       <div className='user_settings_container container-fluid'>
@@ -87,7 +88,7 @@ export default class EditProfileScreen extends Component {
           <ul>
             <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
             <li ><Link to="/account/verification">Verification</Link></li>
-            <li ><Link to="/account/services">My Services</Link></li>
+            <li ><Link to="/account/services">{servicesLabel}</Link></li>
             <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>

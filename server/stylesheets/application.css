@@ -575,19 +575,26 @@ select::-ms-expand {
 .wizard_navigation_container .step.current, 
 .wizard_navigation_container .step.completed {
   color: black !important;
-  text-decoration: underline;
 }
 
-.wizard_navigation_container .step.current .step_icon, 
-.wizard_navigation_container .step.completed .step_icon {
+.wizard_navigation_container .step.current .step_icon {
   background-color: whitesmoke;
 }
 
+.wizard_navigation_container .step.completed .step_icon {
+  background-color: black;
+  color: white;
+}
+
+
+.wizard_navigation_container .step:hover {
+  cursor: pointer; 
+}
 
 .wizard_navigation_container .step.completed:hover {
-  cursor: pointer; 
   text-decoration: underline; 
 }
+
 
 .price_summary_container {
   border: solid 1px #ccc;
@@ -1054,6 +1061,8 @@ button[type='submit'][disabled='true'] {
 }
 
 .nana_btn {
+  border-radius: 4px;
+  padding: 7px 12px;
   color: white;
   background-color: #c70e92;
   border: none;
@@ -1676,4 +1685,17 @@ textarea {
 .instagram_link {
   display: inline-block;
   color: #aaa;
+}
+
+.services_toggle_container {
+  display: flex;
+  align-items: center;
+}    
+
+.services_toggle_container span {
+  margin-right: 20px;
+}
+
+.servies_toggle_btn {
+  cursor: pointer;
 }

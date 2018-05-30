@@ -58,6 +58,8 @@ export default class VerificationScreen extends Component {
     const params = new URLSearchParams(this.props.location.search)
     const isSuccess = params.get('success')
     const status = isSuccess ? { success: "Your instagram account has now been connected" } : {}
+    const servicesLabel = this.props.user.my_services_step === "approved" ? "My Services" : "Apply as Photographer"
+
 
     return (
       <div className='user_settings_container container-fluid'>
@@ -65,7 +67,7 @@ export default class VerificationScreen extends Component {
           <ul>
             <li ><Link to="/account/manage">Edit Profile</Link></li>
             <li className="active"><Link to="/account/verification">Verification</Link></li>
-            <li ><Link to="/account/services">My Services</Link></li>
+            <li ><Link to="/account/services">{servicesLabel}</Link></li>
             <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>
         </div>

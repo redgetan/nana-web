@@ -60,7 +60,7 @@ export default class EditServicesForm extends Component {
 
         initialValues={
           { 
-            price: this.props.user.price || "", 
+            price: this.props.user.price || 20, 
             languages: this.props.user.languages || "", 
             currency: this.props.user.currency || "", 
             cameras: this.props.user.cameras || "", 
@@ -81,8 +81,6 @@ export default class EditServicesForm extends Component {
         ) => {
           setStatus({ error: null, success: null })
 
-          values.step_type = "my_services_step"
-
           return ClientAPI.updateUser(Config.getCurrentUser().id, values).then((res) => {
             setSubmitting(false)
 
@@ -94,11 +92,15 @@ export default class EditServicesForm extends Component {
               setStatus({ error: res.body.error })
             } else {
               setStatus({ success: "Successfully updated" })
-              const user = res.body
-              Config.setUserData(user)
-              values.onUserUpdated(user)
 
-              this.onStepSuccess()
+              ClientAPI.completeServicesStep(this.props.user.id, "details").then((res) => {
+                const user = res.body
+
+                Config.setUserData(user)
+                values.onUserUpdated(user)
+
+                this.onStepSuccess()
+              })
             }
 
           }).catch((err) => {

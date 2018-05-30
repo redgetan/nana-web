@@ -46,7 +46,7 @@ export default class UploadPhotosForm extends Component {
   }
 
   handleNext() {
-    ClientAPI.completeServicesStep(this.props.user.id).then((res) => {
+    ClientAPI.completeServicesStep(this.props.user.id, "upload_photos").then((res) => {
       const user = res.body
 
       Config.setUserData(user)

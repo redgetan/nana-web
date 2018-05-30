@@ -26,24 +26,26 @@ export default class MyServicesScreen extends Component {
 
   }
 
-  steps() {
-    return [
-      { 
-        step: "details",
-        label: "Details",
-        component: <EditServicesForm ref={el => (this.stepRefs["details"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
-      },
+  steps(currentStep) {
+    let steps = [
       { 
         step: "upload_photos",
         label: "Upload Photos",
         component: <UploadPhotosForm ref={el => (this.stepRefs["upload_photos"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
       },
       { 
-        step: "publish",
-        label: "Publish",
-        component: <PublishServicesForm ref={el => (this.stepRefs["publish"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
+        step: "details",
+        label: "Details",
+        component: <EditServicesForm ref={el => (this.stepRefs["details"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
+      },
+      {
+        step: "submit",
+        label: "Submit",
+        component: <PublishServicesForm ref={el => (this.stepRefs["submit"] = el)} user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
       }
     ]
+
+    return steps
   }
 
 
@@ -76,10 +78,11 @@ export default class MyServicesScreen extends Component {
         </div>
       )
     } else {
-      content = <Wizard steps={this.steps()} stepRefs={this.stepRefs} match={this.props.match} currentStep={this.props.user.my_services_step} />
+      content = <Wizard steps={this.steps(this.props.user.my_services_step)} stepRefs={this.stepRefs} match={this.props.match} currentStep={this.props.user.my_services_step} />
     }
 
     const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+    const servicesLabel = this.props.user.my_services_step === "approved" ? "My Services" : "Apply as Photographer"
 
     return (
       <div className='user_settings_container container-fluid'>
@@ -87,7 +90,7 @@ export default class MyServicesScreen extends Component {
           <ul>
             <li><Link to="/account/manage">Edit Profile</Link></li>
             <li ><Link to="/account/verification">Verification</Link></li>
-            <li className="active"><Link to="/account/services">My Services</Link></li>
+            <li className="active"><Link to="/account/services">{servicesLabel}</Link></li>
 
             <Link to={profileLink} className="view_profile_btn">View Profile</Link>
           </ul>

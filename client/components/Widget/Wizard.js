@@ -39,7 +39,7 @@ export default class Wizard extends Component {
 
     const stepRef = this.props.stepRefs[this.state.currentStep]
 
-    stepRef.setOnStepSuccess(() => {
+    stepRef.setOnStepSuccess((newStep) => {
       const nextStepData = this.props.steps[index + 1]
       this.transitionToNextStep(nextStepData)
     })
@@ -50,9 +50,11 @@ export default class Wizard extends Component {
   goToPrev = (e) => {
     e.preventDefault()
 
-    const index = this.props.steps.findIndex((stepData) => { 
+    let index = this.props.steps.findIndex((stepData) => { 
       return stepData.step === this.state.currentStep 
     })
+
+    if (index === -1) index = this.props.steps.length - 1 // assume im coming from last step
 
     const prevStepData = this.props.steps[index - 1]
     this.transitionToPrevStep(prevStepData)
@@ -94,11 +96,6 @@ export default class Wizard extends Component {
     const targetStep = $(e.target).closest(".step").attr("id")
     if (!this.isStepRenderable(targetStep)) return
 
-    const completedSteps = this.state.completedSteps
-    const indexOfTargetStep = completedSteps.indexOf(targetStep)
-    completedSteps.splice(indexOfTargetStep)
-
-    this.setState({ completedSteps: completedSteps })
     this.setState({ currentStep: targetStep })
   }
 
@@ -115,7 +112,9 @@ export default class Wizard extends Component {
     }
 
     const isFirstStep = this.state.currentStep === this.props.steps[0].step
-    const isLastStep = this.state.currentStep === this.props.steps[this.props.steps.length - 1].step
+    const isLastStep = this.state.currentStep === this.props.steps[this.props.steps.length - 1].step ||
+                       this.state.currentStep === "submitted"
+
 
     return (
       <div>
@@ -161,9 +160,12 @@ const WizardNavigation = (props) => {
 
 
 const WizardContent = (props) => {
-  const stepData = props.steps.find((stepData) => {
+  let stepData = props.steps.find((stepData) => {
     return props.currentStep === stepData.step
   })
+
+  const hasFinishedAllSteps = !stepData
+  if (hasFinishedAllSteps) stepData = props.steps[props.steps.length - 1]
 
   return (
     <div className='wizard_content_container'>

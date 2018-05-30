@@ -120,10 +120,11 @@ export default class ClientAPI {
     })
   }
 
-  static completeServicesStep(id) {
+  static completeServicesStep(id, step) {
     return this.post('/users/' + id + '/complete_step', {
       body: {
-        step_type: "my_services_step"
+        step_type: "my_services_step",
+        step: step
       }
     })
   }

@@ -72,10 +72,12 @@ const main = () => {
     if (Config.isSignedIn()) {
       document.querySelector(".login_btn").style.display = 'none'
       document.querySelector(".signup_btn").style.display = 'none'
+      document.querySelector(".become_photographer_btn").style.display = 'none'
       document.querySelector(".home_user_menu").dataset.shown = 'true'
     } else {
       document.querySelector(".login_btn").style.display = 'block'
       document.querySelector(".signup_btn").style.display = 'block'
+      document.querySelector(".become_photographer_btn").style.display = 'block'
       document.querySelector(".home_user_menu").dataset.shown = ''
     }
   }
