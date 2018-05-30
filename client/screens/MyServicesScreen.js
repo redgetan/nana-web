@@ -57,6 +57,21 @@ export default class MyServicesScreen extends Component {
     })
   }
 
+  componentDidMount() {
+    ClientAPI.getCurrentStep().then((res) => {
+      const currentStep = res.body
+
+      const isCurrentStepChanged = currentStep !== this.props.user.my_services_step
+      if (isCurrentStepChanged) {
+        let user = this.props.user
+        user.my_services_step = currentStep
+        
+        Config.setUserData(user) 
+        this.props.onUserUpdated(user)
+      }
+
+    })
+  } 
 
   render() {
     if (!this.props.user) {

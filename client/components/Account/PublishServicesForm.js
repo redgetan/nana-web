@@ -60,7 +60,7 @@ export default class PublishServicesForm extends Component {
     const currentStep = this.props.user.my_services_step
 
     let component = <div></div>
-    if (this.props.user.is_approved === true) {
+    if (currentStep === "approved") {
       component = <div className="services_toggle_container">
         <span>Enable Services </span>
         <Switch className="servies_toggle_btn" checked={isChecked} onChange={this.onServicesEnabledChanged}  onColor="#c70e92" />

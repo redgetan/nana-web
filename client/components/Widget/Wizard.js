@@ -113,7 +113,8 @@ export default class Wizard extends Component {
 
     const isFirstStep = this.state.currentStep === this.props.steps[0].step
     const isLastStep = this.state.currentStep === this.props.steps[this.props.steps.length - 1].step ||
-                       this.state.currentStep === "submitted"
+                       this.state.currentStep === "submitted" ||
+                       this.state.currentStep === "approved" 
 
 
     return (

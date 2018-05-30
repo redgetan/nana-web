@@ -91,8 +91,6 @@ export default class EditServicesForm extends Component {
               error = error.replace('price', 'hourly rate')
               setStatus({ error: res.body.error })
             } else {
-              setStatus({ success: "Successfully updated" })
-
               ClientAPI.completeServicesStep(this.props.user.id, "details").then((res) => {
                 const user = res.body
 

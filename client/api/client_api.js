@@ -120,6 +120,10 @@ export default class ClientAPI {
     })
   }
 
+  static getCurrentStep() {
+    return this.get('/users/current_step')
+  }
+
   static completeServicesStep(id, step) {
     return this.post('/users/' + id + '/complete_step', {
       body: {
