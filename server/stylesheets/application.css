@@ -2,7 +2,6 @@
 /* Global */
 
 div, ul, li, pre {
-  font-size: 16px;
   color: #888;
 }
 
@@ -1698,4 +1697,75 @@ textarea {
 
 .servies_toggle_btn {
   cursor: pointer;
+}
+
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  width: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 12px;
+}
+
+.react-datepicker__time-list {
+  padding: 0px;
+}
+
+.react-datepicker__time-container,
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  width: 90px;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box ul.react-datepicker__time-list li.react-datepicker__time-list-item {
+  font-size: 12px;
+}
+
+.photoshoot_input_container {
+  display: inline-block;
+}
+
+.photoshoot_details_row {
+  text-align: left;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 100%;
+}
+
+.photoshoot_details_row input {
+  width: 100%;
+}
+
+.photoshoot_block label {
+  width: 50px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.book_request_form .cost {
+  margin-bottom: 20px;
+}
+
+.react-datepicker-wrapper {
+  float: left;
+  width: 50%;
+}
+
+.react-datepicker__input-container {
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+}
+
+.react-datepicker-popper {
+  left: -140px !important;
+}
+
+.react-datepicker__triangle {
+  left: 160px;
+}
+
+.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+  right: 100px;
 }
