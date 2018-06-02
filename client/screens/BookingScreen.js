@@ -15,17 +15,25 @@ export default class BookScreen extends Component {
     guests: []
   }
 
+  constructor(props) {
+    super(props)
+    
+    this.stepRefs = {}
+
+  }
+
+
   steps() {
     return [
       { 
-        step: "order_details",
+        step: "details",
         label: "Order Details",
-        component: <OrderDetails user={this.state.user} />
+        component: <OrderDetails user={this.state.user} ref={el => (this.stepRefs["details"] = el)} />
       },
       { 
         step: "payment",
         label: "Confirm Payment",
-        component: <ConfirmPayment user={this.state.user} />
+        component: <ConfirmPayment user={this.state.user} ref={el => (this.stepRefs["payment"] = el)} />
       }
     ]
   }
@@ -54,9 +62,11 @@ export default class BookScreen extends Component {
   render() {
     if (!this.state.user) return <div></div>
 
+    const currentStep = this.props.match.params.step
+
     return (
-      <div>
-        <Wizard steps={this.steps()} match={this.props.match} />
+      <div className='container'>
+        <Wizard steps={this.steps()} stepRefs={this.stepRefs} match={this.props.match} currentStep={currentStep} />
         <PriceSummary basePrice={100} guests={this.state.guests} nextHandler={this.goToNext} />
       </div>
     )

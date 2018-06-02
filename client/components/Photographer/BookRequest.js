@@ -10,6 +10,7 @@ import ContactForm from "./ContactForm"
 import Select from 'react-select';
 import SelectField from "./../Widget/SelectField"
 import FlashMessage from "./../Widget/FlashMessage"
+import { Link } from 'react-router-dom'
 
 export default class BookRequest extends Component {
 
@@ -44,11 +45,14 @@ export default class BookRequest extends Component {
     const price = this.props.user.price ? this.props.user.price : "90-200"
     const minEndDate = this.state.startDate ? this.state.startDate : moment()
     const selectedOption = 'two'
+    const user_id = this.props.user.username ? this.props.user.username : this.props.user.id
 
     return (
       <div className="book_request_form col-xs-12 col-sm-5">
         <div className="cost"><span className="session_price">$ {price}</span> per hour</div>
-        <input type='submit' className='book_request_btn btn secondary_action_btn pull-right' value="Request to Book" data-toggle="modal" data-target="#contact_modal" />
+        <Link to={`/users/${user_id}/book/details`} className='book_request_btn btn secondary_action_btn pull-right' >
+          Request to Book
+        </Link>
         <p>You won't be charged yet</p>
         <ContactForm user={this.props.user} />
       </div>
