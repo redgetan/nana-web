@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import FlashMessage from './../components/Widget/FlashMessage'
+import AccountNavigationTab from './../components/Account/AccountNavigationTab'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -53,24 +54,14 @@ export default class VerificationScreen extends Component {
     }
 
     const username = this.props.user.username ? this.props.user.username : "username"
-    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
 
     const params = new URLSearchParams(this.props.location.search)
     const isSuccess = params.get('success')
     const status = isSuccess ? { success: "Your instagram account has now been connected" } : {}
-    const servicesLabel = this.props.user.my_services_step === "approved" ? "My Services" : "Apply as Photographer"
-
 
     return (
       <div className='user_settings_container container-fluid'>
-        <div className='user_settings_navigation col-xs-12 col-sm-4 col-md-3 col-lg-2  '>
-          <ul>
-            <li ><Link to="/account/manage">Edit Profile</Link></li>
-            <li className="active"><Link to="/account/verification">Verification</Link></li>
-            <li ><Link to="/account/services">{servicesLabel}</Link></li>
-            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
-          </ul>
-        </div>
+        <AccountNavigationTab user={this.props.user} location={this.props.location} />
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
           <div className='connected_accounts_container'>
             <FlashMessage status={status} />

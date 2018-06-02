@@ -80,6 +80,10 @@ export default class ClientAPI {
     return address ? this.get('/users?address=' + address) : this.get('/users')
   }
 
+  static listBookings(address) {
+    return this.get('/book_requests') 
+  }
+
   static getUser(username) {
     return this.get('/users/' + username)
   }
@@ -160,6 +164,12 @@ export default class ClientAPI {
 
   static createMessage(attributes) {
     return this.post('/messages', {
+      body: attributes
+    })
+  }
+
+  static createBookRequest(attributes) {
+    return this.post('/book_requests', {
       body: attributes
     })
   }

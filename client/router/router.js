@@ -20,6 +20,7 @@ import BookingScreen from './../screens/BookingScreen'
 import EditProfileScreen from './../screens/EditProfileScreen'
 import VerificationScreen from './../screens/VerificationScreen'
 import MyServicesScreen from './../screens/MyServicesScreen'
+import MyBookingsScreen from './../screens/MyBookingsScreen'
 import PartnerRegisterScreen from './../screens/PartnerRegisterScreen'
 import Config from './../config/config'
 
@@ -63,6 +64,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/verification" render={ (props) => <VerificationScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/services" render={ (props) => <MyServicesScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
+		      <Route exact path="/account/bookings" render={ (props) => <MyBookingsScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/places/:address" component={PhotographerDirectoryScreen}/>
 		      <Route exact path="/:username" component={UserProfileScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>

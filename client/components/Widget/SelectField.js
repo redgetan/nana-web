@@ -10,8 +10,8 @@ export default class SelectField extends Component {
         <Field component="select" value={this.props.values[this.props.name]} name={this.props.name} className={this.props.touched[this.props.name] && this.props.errors[this.props.name] ? "error" : ""}>
           <option disabled value="">{this.props.label}</option> 
           {
-            this.props.options.map((value, index) => (
-              <option key={index} value={value}>{value}</option>
+            this.props.options.map((option, index) => (
+              <option key={index} value={option.value}>{option.label}</option>
             ))
           }
         </Field>

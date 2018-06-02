@@ -121,6 +121,10 @@ export default class EditServicesForm extends Component {
           setFieldValue,
           isSubmitting
         }) => {
+          const languageOptions = ["English", "Spanish", "French", "Arabic", "Hindi", "Russian", "Portuguese", "Mandarin", "Japanese", "Korean"].map((language) => {
+            return { value: language, label: language }
+          })
+
           return (
             <form onSubmit={handleSubmit} className="edit_services_form nana_form">
               <FlashMessage status={status} />
@@ -133,13 +137,13 @@ export default class EditServicesForm extends Component {
               <div className='row'>
                 <div className="col-xs-3"><label>Currency</label></div>
                 <div className="col-xs-9">
-                  <SelectField name="currency" label="Select Currency" options={["USD", "CAD"]} values={values} errors={errors} touched={touched}/>
+                  <SelectField name="currency" label="Select Currency" options={[{ value: "USD", label: "USD" }, { value: "CAD", label: "CAD" }]} values={values} errors={errors} touched={touched}/>
                 </div>
               </div>
               <div className='row'>
                 <div className="col-xs-3"><label>Languages</label></div>
                 <div className="col-xs-9">
-                  <SelectField name="languages" label="Select Languages" options={["English", "Spanish", "French", "Arabic", "Hindi", "Russian", "Portuguese", "Mandarin", "Japanese", "Korean"]} values={values} errors={errors} touched={touched}/>
+                  <SelectField name="languages" label="Select Languages" options={languageOptions} values={values} errors={errors} touched={touched}/>
                 </div>
               </div>
               <div className='row'>

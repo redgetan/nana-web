@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import EditProfileForm from './../components/Account/EditProfileForm'
+import AccountNavigationTab from './../components/Account/AccountNavigationTab'
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -79,19 +80,9 @@ export default class EditProfileScreen extends Component {
       )
     }
 
-    const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
-    const servicesLabel = this.props.user.my_services_step === "approved" ? "My Services" : "Apply as Photographer"
-
     return (
       <div className='user_settings_container container-fluid'>
-        <div className='user_settings_navigation col-xs-12 col-sm-4 col-md-3 col-lg-2  '>
-          <ul>
-            <li className="active"><Link to="/account/manage">Edit Profile</Link></li>
-            <li ><Link to="/account/verification">Verification</Link></li>
-            <li ><Link to="/account/services">{servicesLabel}</Link></li>
-            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
-          </ul>
-        </div>
+        <AccountNavigationTab user={this.props.user} location={this.props.location} />
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
           <EditProfileForm user={this.props.user} onUserUpdated={this.props.onUserUpdated} />
         </div>

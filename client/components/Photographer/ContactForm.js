@@ -5,6 +5,26 @@ import FormField from "./../Widget/FormField"
 import FormTextArea from "./../Widget/FormTextArea"
 import ClientAPI from './../../api/client_api'
 import Config from '../../config/config'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import SelectField from "./../Widget/SelectField"
+import FlashMessage from "./../Widget/FlashMessage"
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+
+const locationInputProps = (values, setFieldValue) => {
+  return {
+    value: values.location,
+    onChange: (newValue) => { setFieldValue('location', newValue) },
+    placeholder: 'address of meeting place',
+    autoFocus: false,
+    autoComplete: "new-password"
+  }
+}  
+
+const cssClasses = {
+  input: '',
+  autocompleteContainer: 'location_autocomplete_container'
+}
 
 // Our inner form component which receives our form's state and updater methods as props
 const ContactForm = ({
@@ -14,6 +34,7 @@ const ContactForm = ({
   touched,
   handleChange,
   handleBlur,
+  setFieldValue,
   handleSubmit,
   isSubmitting,
 }) => {
@@ -40,42 +61,53 @@ const ContactForm = ({
         <div className="form_errors_container">
           {status && status.externalError}
         </div>
-        {
-          !currentUser &&
-            <div>
-              <div className='row'>
-                <div className="col-xs-12"><label>Name</label></div>
-                <div className="col-xs-12">
-                  <FormField name="name" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-                </div>
-              </div>
-              <div className='row'>
-                <div className="col-xs-12"><label>Email</label></div>
-                <div className="col-xs-12">
-                  <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
-                </div>
-              </div>
-            </div>
-        }
-        <div className='row' style={{ display: 'none' }}>
-          <div className="col-xs-12"><label>Link to Existing Pictures</label></div>
-          <div className="col-xs-12"><span>Example: <a href="https://imgur.com/gallery/2s30Y7g" target="_blank">https://imgur.com/gallery/2s30Y7g</a></span></div>
+        <div className='row'>
+          <div className="col-xs-12"><label>When</label></div>
           <div className="col-xs-12">
-            <FormField name="album_link" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+            <DatePicker
+              dateFormat="LL"
+              placeholderText="photoshoot date"
+              selected={values.start_date}
+              onChange={(date, event) => {
+                setFieldValue('start_date', date)
+              }}
+              minDate={moment()}
+            />
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className="col-xs-12"><label>Where</label></div>
+          <div className="col-xs-12">
+            <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={{}} />
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className="col-xs-12"><label>Duration</label></div>
+          <div className="col-xs-12">
+            <SelectField name="duration" label="Select Duration" 
+              options={[
+                { value: 1, label: "1 hour  - 30 photos" },
+                { value: 2, label: "2 hours - 60 photos" },
+                { value: 3, label: "3 hours - 90 photos" },
+                { value: 4, label: "4 hours - 120 photos" }
+              ]} 
+              values={values} errors={errors} touched={touched}/>
           </div>
         </div>
 
         <div className='row'>
           <div className="col-xs-12"><label>Message</label></div>
           <div className="col-xs-12">
-            <FormTextArea name="text" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+            <FormTextArea name="message" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
           </div>
         </div>
 
         <button className="btn nana_btn btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
-          Send Message
+          Send Request
         </button>
-        <button className="cancel_btn btn btn-lg" data-dismiss="modal" >Cancel</button>
+        <button className="cancel_btn btn" data-dismiss="modal" >Cancel</button>
         <br />
         <br />
       </form>
@@ -95,11 +127,16 @@ const ContactForm = ({
 }
 
 const requiredFields = ["email",
-                        "text"]
+                        "message", 
+                        "location", 
+                        "start_date",
+                        "duration"]
 
 const allFieldsPopulated = (values) => {
   const result = Object.keys(values).every((field) => { 
-    return values[field].length > 0 
+    const notEmptyString = typeof values[field] === "string" ? values[field].length > 0 : true
+    const notNull = values[field] !== null
+    return  notEmptyString && notNull
   })
 
   return result
@@ -110,7 +147,7 @@ export default withFormik({
   validateOnChange: false,
   // Transform outer props into form values
   mapPropsToValues: (props) => {
-    let initialState = { "name": "", "email": "", "text": ""}
+    let initialState = { "name": "", "email": "", "message": "", duration: 1, location: "", start_date: null}
 
     const currentUser = Config.getCurrentUser()
     if (currentUser) {
@@ -152,13 +189,12 @@ export default withFormik({
       return
     }
 
-
-    ClientAPI.createMessage({
-      sender_name: values.name,
-      sender_email: values.email,
-      album_link: values.album_link,
-      text: values.text,
-      recipient_id: props.user.id
+    ClientAPI.createBookRequest({
+      location: values.location,
+      start_time: values.start_date.format("LL"),
+      duration: values.duration,
+      message: values.message,
+      photographer_id: props.user.id
     }).then((res) => {
       setSubmitting(false)
 

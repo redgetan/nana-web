@@ -227,8 +227,8 @@ select::-ms-expand {
 }
 
 .book_request_btn {
+  margin-bottom: 10px;
   width: 100%;
-  margin-top: 20px;
   background-color: #c70e92 !important;
 }
 
@@ -285,6 +285,7 @@ select::-ms-expand {
   }
 
   .book_request_btn {
+    float: none !important;
     width: 250px;
     margin-top: 0px;
 /*    width: calc(100% - 120px);
@@ -1758,14 +1759,27 @@ textarea {
   width: 100%;
 }
 
+.react-datepicker__input-container {
+  width: 100%;
+}
+
+#contact_modal select {
+  width: 100%;
+  border-color: #aaa;
+}
+
+#contact_modal .row {
+  margin-bottom: 15px;
+}
+
+#contact_modal #PlacesAutocomplete__root {
+  width: 100%;
+}
+
 .react-datepicker-popper {
-  left: -140px !important;
+  z-index: 6;
 }
 
-.react-datepicker__triangle {
-  left: 160px;
-}
-
-.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
-  right: 100px;
+.my_bookings_table tr {
+  cursor: pointer;
 }

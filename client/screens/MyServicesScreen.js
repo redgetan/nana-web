@@ -3,6 +3,7 @@ import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import EditServicesForm from './../components/Account/EditServicesForm'
 import UploadPhotosForm from './../components/Account/UploadPhotosForm'
+import AccountNavigationTab from './../components/Account/AccountNavigationTab'
 import PublishServicesForm from './../components/Account/PublishServicesForm'
 import Wizard from './../components/Widget/Wizard'
 import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPicker'
@@ -101,15 +102,7 @@ export default class MyServicesScreen extends Component {
 
     return (
       <div className='user_settings_container container-fluid'>
-        <div className='user_settings_navigation col-xs-12 col-md-3 col-sm-4'>
-          <ul>
-            <li><Link to="/account/manage">Edit Profile</Link></li>
-            <li ><Link to="/account/verification">Verification</Link></li>
-            <li className="active"><Link to="/account/services">{servicesLabel}</Link></li>
-
-            <Link to={profileLink} className="view_profile_btn">View Profile</Link>
-          </ul>
-        </div>
+        <AccountNavigationTab user={this.props.user} location={this.props.location} />
         <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>
           {content} 
         </div>
