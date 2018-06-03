@@ -3,17 +3,16 @@ import { Link } from 'react-router-dom'
 import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+
 import SelectField from "./../components/Widget/SelectField"
 import FormField from "./../components/Widget/FormField"
 import FormTextArea from "./../components/Widget/FormTextArea"
 import FlashMessage from "./../components/Widget/FlashMessage"
 import PriceSummary from './../components/Booking/PriceSummary'
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import Config from '../config/config'
 
 import ClientAPI from './../api/client_api'
-import ConfirmPayment from './../components/Booking/ConfirmPayment'
-
 
 const locationInputProps = (values, setFieldValue) => {
   return {
@@ -49,11 +48,13 @@ const allFieldsPopulated = (values) => {
 
 export default class BookingScreen extends Component {
   state = {
-    user: null
+    user: null,
+    stripeCustomerId: stripeCustomerId
   }
 
-  onProceedPayment() {
-    console.log("payment..")
+  onConfirmOrder(stripeCustomerId) {
+    this.setState({ stripeCustomerId: stripeCustomerId })
+    this.formik.submitForm()
   }
 
   componentDidMount() {
@@ -126,6 +127,7 @@ export default class BookingScreen extends Component {
           }
 
           ClientAPI.createBookRequest({
+            stripe_customer_id: stripeCustomerId,
             location: values.location,
             start_time: values.start_date.format("LL"),
             duration: values.duration,
@@ -239,7 +241,7 @@ export default class BookingScreen extends Component {
                     start_date={values.start_date}
                     location={values.location}
                     duration={values.duration} 
-                    onProceedPayment={this.onProceedPayment} 
+                    onConfirmOrder={this.onConfirmOrder} 
                     disabled={isSubmitting || !allFieldsPopulated(values)} />
                 </div>
               </div>

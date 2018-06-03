@@ -174,6 +174,12 @@ export default class ClientAPI {
     })
   }
 
+  static createPaymentMethod(attributes) {
+    return this.post('/payment_methods', {
+      body: attributes
+    })
+  }
+
   static s3Sign(attributes) {
     return this.post('/users/s3_sign', {
       body: attributes

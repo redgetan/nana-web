@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 
 import ClientAPI from './../api/client_api'
-import OrderDetails from './../components/Booking/OrderDetails'
-import ConfirmPayment from './../components/Booking/ConfirmPayment'
 import PriceSummary from './../components/Booking/PriceSummary'
 import Wizard from './../components/Widget/Wizard'
 import PartnerDetailsForm from './../components/Registration/PartnerDetailsForm'

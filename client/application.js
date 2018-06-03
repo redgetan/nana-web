@@ -4,16 +4,22 @@ import AppRouter from './router/router';
 import Config from './config/config';
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
+import {StripeProvider} from 'react-stripe-elements';
+
+const App = () => {
+  return (
+    <StripeProvider apiKey="pk_test_rirrDsVemD2s5DOmg1P4HccZ">
+      <Router history={browserHistory}>
+        <AppRouter />
+      </Router>
+    </StripeProvider>
+  )
+}
 
 const main = () => {
   window.browserHistory = createBrowserHistory()
 
-  ReactDOM.render(
-    <Router history={browserHistory}>
-      <AppRouter />
-    </Router>, 
-  document.getElementById('root'))
-
+  ReactDOM.render(<App />, document.getElementById('root'))
 
   browserHistory.listen((location) => {
     if (typeof gtag === "undefined") return

@@ -2,9 +2,23 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import { Elements } from 'react-stripe-elements';
 
+import InjectedCheckoutForm from './CheckoutForm';
 
 export default class PriceSummary extends Component {
+  state = {
+    checkout: false
+  }
+
+  onProceedPayment = () => {
+    this.setState({ checkout: true }) 
+  }
+
+  onConfirmOrder = (stripeCustomerId) => {
+    this.props.onConfirmOrder(stripeCustomerId)
+  }
+
   render() {
     const totalPrice = this.props.user.price * this.props.duration
     const photographerName = this.props.user.username ? this.props.user.username : [this.props.user.first_name, this.state.props.last_name].join(" ")
@@ -42,7 +56,17 @@ export default class PriceSummary extends Component {
           <div className="pull-right">${totalPrice}</div> 
         </div>
 
-        <button disabled={this.props.disabled} onClick={this.props.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
+        {
+          !this.state.checkout &&
+            <button disabled={this.props.disabled} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
+        }
+
+        {
+          this.state.checkout &&
+            <Elements>
+              <InjectedCheckoutForm onConfirmOrder={this.onConfirmOrder} />
+            </Elements>
+        }
         
       </div>
     )
