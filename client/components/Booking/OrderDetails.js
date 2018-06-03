@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { withFormik, Field } from 'formik'
+import { withFormik, Formik, Field } from 'formik'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
+import SelectField from "./../Widget/SelectField"
+import FormTextArea from "./../Widget/FormTextArea"
+import FlashMessage from "./../Widget/FlashMessage"
+import PriceSummary from './PriceSummary'
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import Config from '../../config/config'
 
 
 const locationInputProps = (values, setFieldValue) => {
@@ -42,6 +50,10 @@ export default class OrderDetails extends Component {
 
   setOnStepSuccess(listener) {
     this.onStepSuccess = listener
+  }
+
+  onProceedPayment() {
+    console.log("payment..")
   }
 
   render() {
@@ -124,60 +136,62 @@ export default class OrderDetails extends Component {
           setFieldValue,
           isSubmitting
         }) => {
-
           return (
-            <form onSubmit={handleSubmit} className="edit_services_form nana_form">
-              <FlashMessage status={status} />
-              <div className='row'>
-                <div className="col-xs-12"><label>When</label></div>
-                <div className="col-xs-12">
-                  <DatePicker
-                    dateFormat="LL"
-                    placeholderText="photoshoot date"
-                    selected={values.start_date}
-                    onChange={(date, event) => {
-                      setFieldValue('start_date', date)
-                    }}
-                    minDate={moment()}
-                  />
+            <div>
+              <form onSubmit={handleSubmit} className="edit_services_form nana_form">
+                <FlashMessage status={status} />
+                <div className='row'>
+                  <div className="col-xs-12"><label>When</label></div>
+                  <div className="col-xs-12">
+                    <DatePicker
+                      dateFormat="LL"
+                      placeholderText="photoshoot date"
+                      selected={values.start_date}
+                      onChange={(date, event) => {
+                        setFieldValue('start_date', date)
+                      }}
+                      minDate={moment()}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              <div className='row'>
-                <div className="col-xs-12"><label>Where</label></div>
-                <div className="col-xs-12">
-                  <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={{}} />
+                <div className='row'>
+                  <div className="col-xs-12"><label>Where</label></div>
+                  <div className="col-xs-12">
+                    <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={{}} />
+                  </div>
                 </div>
-              </div>
 
-              <div className='row'>
-                <div className="col-xs-12"><label>Duration</label></div>
-                <div className="col-xs-12">
-                  <SelectField name="duration" label="Select Duration" 
-                    options={[
-                      { value: 1, label: "1 hour  - 30 photos" },
-                      { value: 2, label: "2 hours - 60 photos" },
-                      { value: 3, label: "3 hours - 90 photos" },
-                      { value: 4, label: "4 hours - 120 photos" }
-                    ]} 
-                    values={values} errors={errors} touched={touched}/>
+                <div className='row'>
+                  <div className="col-xs-12"><label>Duration</label></div>
+                  <div className="col-xs-12">
+                    <SelectField name="duration" label="Select Duration" 
+                      options={[
+                        { value: 1, label: "1 hour  - 30 photos" },
+                        { value: 2, label: "2 hours - 60 photos" },
+                        { value: 3, label: "3 hours - 90 photos" },
+                        { value: 4, label: "4 hours - 120 photos" }
+                      ]} 
+                      values={values} errors={errors} touched={touched}/>
+                  </div>
                 </div>
-              </div>
 
-              <div className='row'>
-                <div className="col-xs-12"><label>Message</label></div>
-                <div className="col-xs-12">
-                  <FormTextArea name="message" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                <div className='row'>
+                  <div className="col-xs-12"><label>Message</label></div>
+                  <div className="col-xs-12">
+                    <FormTextArea name="message" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                  </div>
                 </div>
-              </div>
 
-              <button className="btn nana_btn btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
-                Send Request
-              </button>
-              <button className="cancel_btn btn" data-dismiss="modal" >Cancel</button>
-              <br />
-              <br />
-            </form>
+                <button className="btn nana_btn btn-lg" type="submit" disabled={isSubmitting || !allFieldsPopulated(values)}>
+                  Send Request
+                </button>
+                <button className="cancel_btn btn" data-dismiss="modal" >Cancel</button>
+                <br />
+                <br />
+              </form>
+              <PriceSummary basePrice={this.props.user.price} duration={values.duration} onProceedPayment={this.onProceedPayment} />
+            </div>
           )
 
         }}

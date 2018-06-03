@@ -58,7 +58,7 @@ export default class AppRouter extends Component {
 	        <Route exact path='/signin' render={ (props) => <Login onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 		      <Route exact path="/signup" render={ (props) => <Signup onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 		      <Route exact path="/partner/registration" component={PartnerRegisterScreen}/>
-		      <Route exact path="/users/:username/book/:step" component={BookingScreen}/>
+		      <Route exact path="/users/:username/book_request" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={UserProfileScreen}/>
 		      <Route exact path="/users/:username/preview_service" render={ (props) => <PhotographerScreen isPreview={true} {...props} /> } />
 		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />

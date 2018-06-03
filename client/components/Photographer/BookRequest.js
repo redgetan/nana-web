@@ -50,7 +50,7 @@ export default class BookRequest extends Component {
     return (
       <div className="book_request_form col-xs-12 col-sm-5">
         <div className="cost"><span className="session_price">$ {price}</span> per hour</div>
-        <Link to={`/users/${user_id}/book/details`} className='book_request_btn btn secondary_action_btn pull-right' >
+        <Link to={`/users/${user_id}/book_request`} className='book_request_btn btn secondary_action_btn pull-right' >
           Request to Book
         </Link>
         <p>You won't be charged yet</p>

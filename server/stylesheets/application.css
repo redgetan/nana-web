@@ -600,6 +600,7 @@ select::-ms-expand {
   border: solid 1px #ccc;
   padding: 20px;
   font-size: 18px;
+  background: whitesmoke;
 }
 
 .block {
@@ -1768,11 +1769,11 @@ textarea {
   border-color: #aaa;
 }
 
-#contact_modal .row {
+.book_details_form .row {
   margin-bottom: 15px;
 }
 
-#contact_modal #PlacesAutocomplete__root {
+.book_details_form #PlacesAutocomplete__root {
   width: 100%;
 }
 
@@ -1782,4 +1783,26 @@ textarea {
 
 .my_bookings_table tr {
   cursor: pointer;
+}
+
+.price_summary_container img {
+  display: block;
+  width: 75px;
+  min-height: 75px;
+  border: solid 1px #ccc;
+  margin: 10px 0px;
+}
+
+.book_details_form h2 {
+  margin-top: 0px;
+}
+
+.service_location {
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.service_time_range {
+  display: none;
 }
