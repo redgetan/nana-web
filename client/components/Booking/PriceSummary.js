@@ -62,9 +62,9 @@ export default class PriceSummary extends Component {
         }
 
         {
-          this.state.checkout &&
+          !this.state.checkout &&
             <Elements>
-              <InjectedCheckoutForm onConfirmOrder={this.onConfirmOrder} />
+              <InjectedCheckoutForm onConfirmOrder={this.onConfirmOrder} customerEmail={this.props.customerEmail} />
             </Elements>
         }
         

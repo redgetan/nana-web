@@ -49,10 +49,11 @@ const allFieldsPopulated = (values) => {
 export default class BookingScreen extends Component {
   state = {
     user: null,
-    stripeCustomerId: stripeCustomerId
+    stripeCustomerId: null
   }
 
-  onConfirmOrder(stripeCustomerId) {
+  onConfirmOrder = (stripeCustomerId) => {
+    debugger
     this.setState({ stripeCustomerId: stripeCustomerId })
     this.formik.submitForm()
   }
@@ -238,6 +239,7 @@ export default class BookingScreen extends Component {
                 <div className='col-xs-12 col-sm-6'>
                   <PriceSummary 
                     user={this.state.user} 
+                    customerEmail={values.email}
                     start_date={values.start_date}
                     location={values.location}
                     duration={values.duration} 
