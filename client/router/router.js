@@ -8,6 +8,7 @@ import {
 
 import About from './../components/Home/About'
 import Faq from './../components/Home/Faq'
+import PaymentPolicy from './../components/Home/PaymentPolicy'
 import PrivacyPolicy from './../components/Home/PrivacyPolicy'
 import Signup from './../components/Registration/Signup'
 import Login from './../components/Registration/Login'
@@ -55,6 +56,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/about" component={About}/>
 		      <Route exact path="/faq" component={Faq}/>
 		      <Route exact path="/privacy" component={PrivacyPolicy}/>
+		      <Route exact path="/payment_policy" component={PaymentPolicy}/>
 	        <Route exact path='/post_oauth' render={ (props) => <PostOAuth onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 	        <Route exact path='/signin' render={ (props) => <Login onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 		      <Route exact path="/signup" render={ (props) => <Signup onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />

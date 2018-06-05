@@ -14,6 +14,7 @@ export default class FormField extends Component {
           onChange={this.props.onChange}
           placeholder={this.props.placeholder}
           onBlur={this.props.onBlur}
+          readOnly={this.props.readOnly}
           value={this.props.values[this.props.name]}
         />
       </div>

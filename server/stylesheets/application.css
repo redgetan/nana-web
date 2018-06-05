@@ -1083,7 +1083,8 @@ button[type='submit'][disabled='true'] {
 }
 
 
-.nana_primary_btn:hover {
+.nana_primary_btn:hover, 
+.nana_primary_btn:focus {
   color: white;
   background-color: #b80885;
 }
@@ -1916,4 +1917,27 @@ input::placeholder {
 .accept_book_request_btn {
   margin-top: 25px;
   margin-bottom: 15px;
+}
+
+
+.request_status {
+  font-size: 16px;
+}
+
+.book_request_status_label, .book_request_status_value {
+  display: inline-block;
+}
+
+.book_request_status_value { 
+  margin-left: 15px;
+}
+
+.request_status .accepted {
+  font-weight: bold;
+  color: #41c441;
+}
+
+.request_status .pending {
+  font-weight: bold;
+  color: palevioletred;
 }

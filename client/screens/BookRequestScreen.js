@@ -9,7 +9,8 @@ export default class BookRequestScreen extends Component {
   state = {
     bookRequest: null,
     notFound: false,
-    status: {}
+    status: {},
+    isSubmitting: false
   }
 
   constructor(props) {
@@ -20,30 +21,46 @@ export default class BookRequestScreen extends Component {
   componentDidMount() {
     window.scrollTo(0, 0)
 
+    this.loadBookRequest()
+  } 
+
+  loadBookRequest() {
     const token = this.props.match.params.token
 
-    ClientAPI.getBookRequest(token).then((res) => {
+    return ClientAPI.getBookRequest(token).then((res) => {
       if (res.body && res.body.error) {
         this.setState({ notFound: true })
       } else {
         this.setState({ bookRequest: res.body })
       }
+
+      return Promise.resolve({})
     }).catch((err) => {
       console.log("fail..")
     })
-  } 
+
+  }
 
   onAcceptRequest = (event) => {
+    this.setState({ isSubmitting: true })
+    this.setState({ status: {}})
+
     const token = this.props.match.params.token
 
     ClientAPI.acceptBookRequest(token).then((res) => {
+
       if (res.body && res.body.error) {
-        this.setState({ notFound: true })
+        this.setState({ status: { error: res.body.error }})
+        this.setState({ isSubmitting: false })
       } else {
-        this.setState({ status: { success: "You have accepted this booking. You will be paid shortly." } })
+        this.loadBookRequest().then(() => {
+          this.setState({ status: { success: "You have accepted this booking. You will be paid shortly." } })
+          this.setState({ isSubmitting: false })
+        })
       }
     }).catch((err) => {
       console.log("fail..")
+      this.setState({ isSubmitting: false })
     })
   }
 
@@ -52,7 +69,7 @@ export default class BookRequestScreen extends Component {
       return <div className='container'>Book Request not found</div>
     }
 
-    if (!this.state.bookRequest) {
+   if (!this.state.bookRequest) {
       return (
           <div className="spinner">
             <div className="rect1"></div>
@@ -74,6 +91,23 @@ export default class BookRequestScreen extends Component {
       <div>
         <div className="container book_request_container">
           <FlashMessage status={this.state.status} />
+
+          <div className="request_status block">
+            <div className='book_request_status_label'>Status: </div>
+            <div className='book_request_status_value'>
+              { 
+                this.state.bookRequest.is_accepted && 
+                  <div className='accepted'>Accepted</div>
+              }
+              { 
+                !this.state.bookRequest.is_accepted && 
+                  <div className='pending'>Pending</div>
+              }
+            </div>
+          </div>  
+
+          <div className="vertical_spacing line" />
+
           <div className='photographer block'>
             Photoshoot with <Link to={profileLink} >{photographerName}</Link>
             <img src={this.state.bookRequest.photographer.avatar} className='user_avatar' />
@@ -99,11 +133,20 @@ export default class BookRequestScreen extends Component {
             <div className="pull-right">${this.state.bookRequest.price}</div> 
           </div>
 
+
           {
-            isBookRequestRecepient &&
+            isBookRequestRecepient && !this.state.bookRequest.is_accepted &&
               <div>
-                <button onClick={this.onAcceptRequest} className="accept_book_request_btn btn nana_primary_btn">Accept Booking</button>
-                <p>By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date. For more information on how we process payments for photographers and users, visit our <Link to="/payment_policy">payment policy</Link> </p>
+                <button 
+                  onClick={this.onAcceptRequest} 
+                  className="accept_book_request_btn btn nana_primary_btn"
+                  disabled={this.state.isSubmitting}
+                  >
+                  { this.state.isSubmitting ? "Loading..." : "Accept Booking" }
+                </button>
+                <p>
+                  By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date. 
+                </p>
               </div>
           }
 

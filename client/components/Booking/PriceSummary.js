@@ -62,9 +62,16 @@ export default class PriceSummary extends Component {
         }
 
         {
-          !this.state.checkout &&
+          this.state.checkout &&
             <Elements>
-              <InjectedCheckoutForm onConfirmOrder={this.onConfirmOrder} customerEmail={this.props.customerEmail} />
+              <InjectedCheckoutForm 
+                onConfirmOrder={this.onConfirmOrder} 
+                isSubmitting={this.props.isSubmitting} 
+                customerEmail={this.props.customerEmail} 
+                stripeCustomerId={this.props.stripeCustomerId}
+                onCreditCardAdd={this.props.onCreditCardAdd}
+                onCreditCardAddFailed={this.props.onCreditCardAddFailed}
+                />
             </Elements>
         }
         
