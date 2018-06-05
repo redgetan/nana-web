@@ -15,21 +15,19 @@ import Config from '../config/config'
 import ClientAPI from './../api/client_api'
 
 const locationInputProps = (values, setFieldValue) => {
-  return {
+  let props = {
     value: values.location,
     onChange: (newValue) => { setFieldValue('location', newValue) },
     placeholder: 'address of meeting place',
     autoFocus: false,
     autoComplete: "new-password"
   }
+
+  return props
 }  
 
-const cssClasses = {
-  input: '',
-  autocompleteContainer: 'location_autocomplete_container'
-}
-
-const requiredFields = ["email",
+const requiredFields = ["name",
+                        "email",
                         "message", 
                         "location", 
                         "start_date",
@@ -53,8 +51,13 @@ export default class BookingScreen extends Component {
   }
 
   onConfirmOrder = (stripeCustomerId) => {
-    debugger
     this.setState({ stripeCustomerId: stripeCustomerId })
+
+    // touch all fields
+    requiredFields.forEach((fieldName) => {
+      this.formik.setTouched(fieldName,true)
+    })
+    
     this.formik.submitForm()
   }
 
@@ -75,6 +78,17 @@ export default class BookingScreen extends Component {
   } 
 
 
+  locationClassNames(touched, errors) {
+    let classNames = {
+      autocompleteContainer: 'location_autocomplete_container'
+    }
+
+    if (touched["location"] && errors["location"]) {
+      classNames["input"] = 'error' 
+    }
+
+    return classNames
+  }
 
   render() {
     if (!this.state.user) return <div></div>
@@ -128,7 +142,9 @@ export default class BookingScreen extends Component {
           }
 
           ClientAPI.createBookRequest({
-            stripe_customer_id: stripeCustomerId,
+            stripe_customer_id: this.state.stripeCustomerId,
+            name: values.name,
+            email: values.email,
             location: values.location,
             start_time: values.start_date.format("LL"),
             duration: values.duration,
@@ -157,6 +173,7 @@ export default class BookingScreen extends Component {
           handleBlur,
           handleSubmit,
           setFieldValue,
+          setFieldTouched,
           isSubmitting
         }) => {
           const fullName = [this.state.user.first_name, this.state.user.last_name].join(" ")
@@ -177,13 +194,13 @@ export default class BookingScreen extends Component {
                             <div className='row'>
                               <div className="col-xs-12 col-sm-3"><label>Name</label></div>
                               <div className="col-xs-12 col-sm-9">
-                                <FormField name="name" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                                <FormField name="name" placeholder="" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
                               </div>
                             </div>
                             <div className='row'>
                               <div className="col-xs-12 col-sm-3"><label>Email</label></div>
                               <div className="col-xs-12 col-sm-9">
-                                <FormField name="email" placeholder="" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                                <FormField name="email" placeholder="" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
                               </div>
                             </div>
                           </div>
@@ -200,6 +217,10 @@ export default class BookingScreen extends Component {
                           onChange={(date, event) => {
                             setFieldValue('start_date', date)
                           }}
+                          onBlur={() => {
+                            setFieldTouched("start_date", true)
+                          }}
+                          className={touched["start_date"] && errors["start_date"] ? "error" : ""}
                           minDate={moment()}
                         />
                       </div>
@@ -222,7 +243,7 @@ export default class BookingScreen extends Component {
                     <div className='row'>
                       <div className="col-xs-12 col-sm-3"><label>Where</label></div>
                       <div className="col-xs-12 col-sm-9">
-                        <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={cssClasses} options={{}} />
+                        <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={this.locationClassNames(touched, errors)} options={{}} />
                       </div>
                     </div>
 
@@ -230,7 +251,7 @@ export default class BookingScreen extends Component {
                     <div className='row'>
                       <div className="col-xs-12 col-sm-3"><label>Message</label></div>
                       <div className="col-xs-12 col-sm-9">
-                        <FormTextArea name="message" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                        <FormTextArea name="message" className="message_textarea" placeholder="Tell the photographer what kind (i.e Outdoor/Action/Group) of photoshoot you're looking for. It might help to share your existing pictures or even links to sample photos that you want to emulate. " values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
                       </div>
                     </div>
 

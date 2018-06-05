@@ -1785,6 +1785,7 @@ textarea {
   cursor: pointer;
 }
 
+.book_request_container img,
 .price_summary_container img {
   display: block;
   width: 75px;

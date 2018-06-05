@@ -6,13 +6,12 @@ import { withFormik, Formik, Field } from 'formik'
 
 import Config from './../../config/config'
 import ClientAPI from './../../api/client_api'
-import ContactForm from "./ContactForm"
 import Select from 'react-select';
 import SelectField from "./../Widget/SelectField"
 import FlashMessage from "./../Widget/FlashMessage"
 import { Link } from 'react-router-dom'
 
-export default class BookRequest extends Component {
+export default class BookForm extends Component {
 
   state = {
     startDate: null,
@@ -54,15 +53,8 @@ export default class BookRequest extends Component {
           Request to Book
         </Link>
         <p>You won't be charged yet</p>
-        <ContactForm user={this.props.user} />
       </div>
     )
-  }
-
-  bookRequest = (event) => {
-    event.preventDefault()
-
-    console.log("button clicked")
   }
 
 }

@@ -17,6 +17,7 @@ import PhotographerDirectoryScreen from './../screens/PhotographerDirectoryScree
 import PhotographerScreen from './../screens/PhotographerScreen'
 import UserProfileScreen from './../screens/UserProfileScreen'
 import BookingScreen from './../screens/BookingScreen'
+import BookRequestScreen from './../screens/BookRequestScreen'
 import EditProfileScreen from './../screens/EditProfileScreen'
 import VerificationScreen from './../screens/VerificationScreen'
 import MyServicesScreen from './../screens/MyServicesScreen'
@@ -58,7 +59,7 @@ export default class AppRouter extends Component {
 	        <Route exact path='/signin' render={ (props) => <Login onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 		      <Route exact path="/signup" render={ (props) => <Signup onUserAuthenticated={this.onUserAuthenticated} {...props} /> } />
 		      <Route exact path="/partner/registration" component={PartnerRegisterScreen}/>
-		      <Route exact path="/users/:username/book_request" component={BookingScreen}/>
+		      <Route exact path="/users/:username/book" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={UserProfileScreen}/>
 		      <Route exact path="/users/:username/preview_service" render={ (props) => <PhotographerScreen isPreview={true} {...props} /> } />
 		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
@@ -66,6 +67,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/account/services" render={ (props) => <MyServicesScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/bookings" render={ (props) => <MyBookingsScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/places/:address" component={PhotographerDirectoryScreen}/>
+		      <Route exact path="/book_requests/:token" component={BookRequestScreen}/>
 		      <Route exact path="/:username" component={UserProfileScreen}/>
 		      <Route exact path="/" component={HomeScreen}/>
 				</Switch>

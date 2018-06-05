@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Profile from './../components/Photographer/Profile'
 import Gallery from './../components/Widget/Gallery'
-import BookRequest from './../components/Photographer/BookRequest'
+import BookForm from './../components/Photographer/BookForm'
 import ReviewList from './../components/Review/ReviewList'
 import Config from './../config/config'
 import { Link } from 'react-router-dom'
@@ -100,7 +100,7 @@ export default class PhotographerScreen extends Component {
             </div>
           </div>
           <div className='row'>
-            <BookRequest user={this.state.user} />
+            <BookForm user={this.state.user} />
             <Profile user={this.state.user} isPreview={this.props.isPreview} />
           </div>
           <div className='row'>
