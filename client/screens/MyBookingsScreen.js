@@ -10,10 +10,41 @@ import ProfileGalleryPicker from './../components/Photographer/ProfileGalleryPic
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
+const BookRequestTable = (props) => {
+  const {className, style, onClick} = props
+
+  return (
+    <table className="table table-hover my_bookings_table">
+      <thead>
+        <tr>
+          <th>Photoshoot Date</th>
+          <th>Location</th>
+          <th>Duration</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          props.book_requests.map((book_request, index) => (
+            <tr onClick={props.onRowClick} data-token={book_request.token} key={index}>
+              <td className='col-xs-2'>{moment(book_request.start_time).format('LL')}</td>
+              <td className='col-xs-7'>{book_request.location}</td>
+              <td className='col-xs-1'>{book_request.duration} hours</td>
+              <td className='col-xs-1'>{book_request.price}</td>
+              <td className='col-xs-1'>{book_request.is_accepted ? "accepted" : "pending" }</td>
+            </tr>  
+          ))
+        }
+      </tbody>
+    </table>
+  )
+}
+
 export default class MyServicesScreen extends Component {
 
   state = {
-    book_requests: []
+    bookRequestMap: null
   }
 
   componentWillUpdate() {
@@ -26,12 +57,8 @@ export default class MyServicesScreen extends Component {
 
   componentDidMount() {
     ClientAPI.listBookings().then((res) => {
-      if (Array.isArray(res.body)) {
-        const book_requests = res.body
-        this.setState({ book_requests: book_requests })
-      } else {
-        console.log("failed to list bookings..")
-      }
+      const bookRequestMap = res.body
+      this.setState({ bookRequestMap: bookRequestMap })
     })
   } 
 
@@ -52,9 +79,11 @@ export default class MyServicesScreen extends Component {
         <AccountNavigationTab user={this.props.user} location={this.props.location} />
         <div className='user_settings_panel col-xs-12 col-md-9 col-sm-8'>
           <h2>My Bookings</h2>
-          <div className=''>
+
+          <div className='book_requests_container'>
+            <h4>Sent</h4>
             {
-              this.state.book_requests.length === 0 &&
+              !this.state.bookRequestMap &&
                 <div className="spinner">
                   <div className="rect1"></div>
                   <div className="rect2"></div>
@@ -64,34 +93,44 @@ export default class MyServicesScreen extends Component {
                 </div>
             }
             {
-              this.state.book_requests.length > 0 &&
-                <table className="table table-hover my_bookings_table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Location</th>
-                      <th>Duration</th>
-                      <th>Price</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {
-                      this.state.book_requests.map((book_request, index) => (
-                        <tr onClick={this.onRowClick} data-token={book_request.token} key={index}>
-                          <td className='col-xs-1'>{moment(book_request.start_time).format('LL')}</td>
-                          <td className='col-xs-8'>{book_request.location}</td>
-                          <td className='col-xs-1'>{book_request.duration} hours</td>
-                          <td className='col-xs-1'>{book_request.price}</td>
-                          <td className='col-xs-1'>{book_request.is_accepted ? "accepted" : "pending" }</td>
-                        </tr>  
-                      ))
-                    }
-                  </tbody>
-                </table>
+              this.state.bookRequestMap && this.state.bookRequestMap.sent.length === 0 &&
+                <div className="empty_state">
+                  No bookings yet
+                </div>
+            }
+            {
+              this.state.bookRequestMap && this.state.bookRequestMap.sent.length > 0 &&
+                <BookRequestTable book_requests={this.state.bookRequestMap.sent} onRowClick={this.onRowClick} />
             }
           </div>
+
+          <div className='book_requests_container'>
+            <h4>Received</h4>
+            {
+              !this.state.bookRequestMap &&
+                <div className="spinner">
+                  <div className="rect1"></div>
+                  <div className="rect2"></div>
+                  <div className="rect3"></div>
+                  <div className="rect4"></div>
+                  <div className="rect5"></div>
+                </div>
+            }
+            {
+              this.state.bookRequestMap && this.state.bookRequestMap.received.length === 0 &&
+                <div className="empty_state">
+                  No bookings yet
+                </div>
+            }
+            {
+              this.state.bookRequestMap && this.state.bookRequestMap.received.length > 0 &&
+                <BookRequestTable book_requests={this.state.bookRequestMap.received} onRowClick={this.onRowClick} />
+            }
+          </div>
+
+
         </div>
+
       </div>
     )
   }

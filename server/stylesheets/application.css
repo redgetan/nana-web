@@ -1895,3 +1895,25 @@ input::placeholder {
 .checkout_form {
   margin-top: 25px;
 }
+
+.book_requests_container {
+  margin-top: 30px;
+  padding: 10px;
+  border: solid 1px #eee;
+}
+
+.book_requests_container h4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.book_requests_container .empty_state {
+  text-align: center;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+.accept_book_request_btn {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}

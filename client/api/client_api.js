@@ -214,6 +214,10 @@ export default class ClientAPI {
     return this.get('/book_requests/' + token)
   }
 
+  static acceptBookRequest(token) {
+    return this.post('/book_requests/' + token + '/accept')
+  }
+
   static updatePartner(username, attributes) {
     let body = Object.assign({}, attributes, { user_id: username })
 
