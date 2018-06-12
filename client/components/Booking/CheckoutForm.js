@@ -15,6 +15,7 @@ class CheckoutForm extends React.Component {
   handleSubmit = (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault()
+    this.setState({ status: {} })
 
     if (this.props.stripeCustomerId) {
       return this.props.onConfirmOrder(this.props.stripeCustomerId)
@@ -27,7 +28,13 @@ class CheckoutForm extends React.Component {
   addCreditCardAndSubmitBooking() {
     this.props.onCreditCardAdd()
 
-    this.props.stripe.createToken({}).then(({token}) => {
+    this.props.stripe.createToken({}).then(({token, error}) => {
+      if (error) {
+        this.setState({ status: { error: error.message }})
+        this.props.onCreditCardAddFailed()
+        return
+      }
+
       if (!token) {
         this.setState({ status: { error: "Unable to create stripe card token" }})
         this.props.onCreditCardAddFailed()
@@ -51,16 +58,21 @@ class CheckoutForm extends React.Component {
   }
 
   render() {
+    const style = {
+      base: {fontSize: '18px'},
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+      }
+    }
+
     return (
       <form onSubmit={this.handleSubmit} className='checkout_form'>
         <FlashMessage status={this.state.status} />
         <label>
           Card details
         </label>
-        <CardElement style={
-          {
-            base: {fontSize: '18px'},
-          }} />
+        <CardElement style={style} />
         <button className='checkout_btn' disabled={this.props.isSubmitting}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
       </form>
     );

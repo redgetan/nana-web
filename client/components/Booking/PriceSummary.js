@@ -13,6 +13,7 @@ export default class PriceSummary extends Component {
 
   onProceedPayment = () => {
     this.setState({ checkout: true }) 
+    this.props.onProceedPayment()
   }
 
   onConfirmOrder = (stripeCustomerId) => {

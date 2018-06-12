@@ -4,6 +4,7 @@ import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
+import classNames from 'classnames'
 
 import SelectField from "./../components/Widget/SelectField"
 import FormField from "./../components/Widget/FormField"
@@ -14,13 +15,16 @@ import Config from '../config/config'
 
 import ClientAPI from './../api/client_api'
 
-const locationInputProps = (values, setFieldValue) => {
+const locationInputProps = (values, setFieldValue, setFieldTouched) => {
   let props = {
     value: values.location,
     onChange: (newValue) => { setFieldValue('location', newValue) },
     placeholder: 'address of meeting place',
     autoFocus: false,
-    autoComplete: "new-password"
+    autoComplete: "new-password",
+    onBlur: () => {
+      setFieldTouched("location", true)
+    }
   }
 
   return props
@@ -47,7 +51,8 @@ const allFieldsPopulated = (values) => {
 export default class BookingScreen extends Component {
   state = {
     user: null,
-    stripeCustomerId: null
+    stripeCustomerId: null,
+    checkout: false
   }
 
   onConfirmOrder = (stripeCustomerId) => {
@@ -55,7 +60,7 @@ export default class BookingScreen extends Component {
 
     // touch all fields
     requiredFields.forEach((fieldName) => {
-      this.formik.setTouched(fieldName,true)
+      this.formik.setFieldTouched(fieldName,true)
     })
     
     this.formik.submitForm()
@@ -96,6 +101,10 @@ export default class BookingScreen extends Component {
     }
 
     return classNames
+  }
+
+  onProceedPayment = () => {
+    this.setState({ checkout: true })  
   }
 
   render() {
@@ -188,34 +197,42 @@ export default class BookingScreen extends Component {
         }) => {
           const fullName = [this.state.user.first_name, this.state.user.last_name].join(" ")
           const currentUser = Config.getCurrentUser()
+          const formClass = classNames({
+            'checkout': this.state.checkout,
+            'book_details_form': true,
+            'nana_form': true
+          })
+
 
           return (
             <div className='container'>
               {
                 status && status.success && 
                   <div className='row'>
-                    <FlashMessage status={status} />
-                    <h3>Your photoshoot booking request has been submitted.</h3>  
-                    <p>
-                      You will only be charged if the photographer accepts your request. Once they have accepted your payment, you'll receive an email notification. 
-                      { 
-                        currentUser && 
-                          <span>
-                            To check the status of your request, you can view your pending bookings at
-                            <Link to="/account/bookings" >/account/bookings</Link> 
-                          </span>
-                      }
-                    </p>
+                    <div className='col-xs-12'>
+                      <FlashMessage status={status} />
+                      <h3>Your photoshoot booking request has been submitted.</h3>  
+                      <p>
+                        You will only be charged if the photographer accepts your request. Once they have accepted your payment, you'll receive an email notification. 
+                        { 
+                          currentUser && 
+                            <span>
+                              To check the status of your request, you can view your pending bookings at
+                              <Link to="/account/bookings" >/account/bookings</Link> 
+                            </span>
+                        }
+                      </p>
+                    </div>
                   </div>
               }
               {
                 (!status || (status && !status.success)) &&
                   <div className='row'>
                     <div className='col-xs-12 col-sm-6'>
-                      <form onSubmit={handleSubmit} className="book_details_form nana_form">
+                      <FlashMessage status={status} />
+                      <form onSubmit={handleSubmit} className={formClass}>
                         <h2 className='center'>Booking Details</h2>
                         <br />
-                        <FlashMessage status={status} />
 
                           {
                             !currentUser && 
@@ -272,7 +289,7 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>Where</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue)} classNames={this.locationClassNames(touched, errors)} options={{}} />
+                            <PlacesAutocomplete inputProps={locationInputProps(values, setFieldValue, setFieldTouched)} classNames={this.locationClassNames(touched, errors)} options={{}} />
                           </div>
                         </div>
 
@@ -293,6 +310,7 @@ export default class BookingScreen extends Component {
                         start_date={values.start_date}
                         location={values.location}
                         duration={values.duration} 
+                        onProceedPayment={this.onProceedPayment}
                         onConfirmOrder={this.onConfirmOrder} 
                         onCreditCardAdd={this.onCreditCardAdd}
                         onCreditCardAddFailed={this.onCreditCardAddFailed}
