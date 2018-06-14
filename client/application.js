@@ -8,7 +8,7 @@ import {StripeProvider} from 'react-stripe-elements';
 
 const App = () => {
   return (
-    <StripeProvider apiKey="pk_test_rirrDsVemD2s5DOmg1P4HccZ">
+    <StripeProvider apiKey={Config.getStripePublicKey()}>
       <Router history={browserHistory}>
         <AppRouter />
       </Router>
@@ -88,18 +88,7 @@ const main = () => {
     }
   }
 
-  // document.addEventListener("click", (event) => {
-  //   const eventAction = $(event).data("event-action")
-  //   const eventCategory = $(event).data("event-category")
-  //   const eventLabel = $(event).data("event-label")
-
-  //   if (eventAction) {
-  //     gtag('event', eventAction)
-  //   }
-  // })
-
   renderNavbar()
-
 
   window.AccountKit_OnInteractive = () => {
     AccountKit.init(

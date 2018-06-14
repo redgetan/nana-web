@@ -18,12 +18,16 @@ const LoginForm = ({
   handleSubmit,
   isSubmitting,
 }) => {
-  if (Config.getCurrentUser()) return <Redirect to="/account/manage"/>
- 
+  if (Config.getCurrentUser() && !values.redirect) {
+    return <Redirect to="/account/manage"/>
+  }
 
   return (
     <div className='login_container'>
       <form className='' onSubmit={handleSubmit}>
+        <div className='signin_flash_container'>
+          {values.redirect && "You need to signin first"}
+        </div>
         <div className="form_errors_container">
           {status && status.externalError}
         </div>
@@ -64,6 +68,9 @@ export default withFormik({
       let fieldName = requiredFields[i]
       initialState[fieldName] = ""
     }
+
+    const params = new URLSearchParams(props.location.search)
+    initialState["redirect"] = params.get("redirect")
 
     return initialState
   },
@@ -123,7 +130,14 @@ const postAuth = (data, props) => {
   })
 
   props.onUserAuthenticated(data)
-  props.history.push("/account/manage")
+
+  const params = new URLSearchParams(props.location.search)
 
   renderNavbar()
+
+  if (params.get("redirect")) {
+    window.location.href = params.get("redirect")
+  } else {
+    props.history.push("/account/manage")
+  }
 }

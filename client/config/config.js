@@ -49,16 +49,22 @@ export default class Config {
     return url
   }
 
+  static getStripePublicKey() {
+    return this.c().STRIPE_PUBLIC_KEY
+  }
+
   static c() {
     if (process.env.NODE_ENV === "production") {
       return {
         INSTAGRAM_CLIENT_ID: "e1a7ed3d7af44eea8ccad4a5fced1bf5",
-        INSTAGRAM_REDIRECT_URI: "https://5jbouftijk.execute-api.us-west-2.amazonaws.com/production/login/callback"
+        INSTAGRAM_REDIRECT_URI: "https://5jbouftijk.execute-api.us-west-2.amazonaws.com/production/login/callback",
+        STRIPE_PUBLIC_KEY: "pk_test_rirrDsVemD2s5DOmg1P4HccZ"
       }
     } else {
       return {
         INSTAGRAM_CLIENT_ID: "e1a7ed3d7af44eea8ccad4a5fced1bf5",
-        INSTAGRAM_REDIRECT_URI: "http://dev.nanapx.com:3000/login/callback"
+        INSTAGRAM_REDIRECT_URI: "http://dev.nanapx.com:3000/login/callback",
+        STRIPE_PUBLIC_KEY: "pk_live_0SvoLzprLiFPyrhb1XUDCWRK"
       }
     }
   }

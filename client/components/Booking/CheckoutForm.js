@@ -50,7 +50,7 @@ class CheckoutForm extends React.Component {
           this.props.onConfirmOrder(stripeCustomerId)
         }
       }).catch((error) => {
-        this.setState({ status: { error: error }})
+        this.setState({ status: { error: "Failed to reach nanapx server. Unable to add credit card as payment method" }})
         this.props.onCreditCardAddFailed()
       })
 
@@ -66,13 +66,24 @@ class CheckoutForm extends React.Component {
       }
     }
 
+    const paymentMethod = this.props.paymentMethods && this.props.paymentMethods[0]
+
     return (
       <form onSubmit={this.handleSubmit} className='checkout_form'>
         <FlashMessage status={this.state.status} />
         <label>
           Card details
         </label>
-        <CardElement style={style} />
+        {
+          paymentMethod && 
+            <div className="payment_method_row">
+              {paymentMethod.brand} **** **** **** {paymentMethod.last4} - {paymentMethod.exp_month}/{paymentMethod.exp_year}             
+            </div>
+        }
+        {
+          !paymentMethod &&
+            <CardElement style={style} />
+        }
         <button className='checkout_btn' disabled={this.props.isSubmitting}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
       </form>
     );

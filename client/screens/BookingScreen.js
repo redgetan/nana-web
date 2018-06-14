@@ -107,6 +107,16 @@ export default class BookingScreen extends Component {
     this.setState({ checkout: true })  
   }
 
+  componentWillMount() {
+    const currentUser = Config.getCurrentUser()
+    if (currentUser && currentUser.payment_methods && currentUser.payment_methods.length > 0) {
+      const paymentMethod = currentUser.payment_methods[0]
+
+      this.setState({ stripeCustomerId: paymentMethod.stripe_customer_id })
+      this.setState({ paymentMethods: currentUser.paymentMethods })
+    }
+  }
+
   render() {
     if (!this.state.user) return <div></div>
 
@@ -217,8 +227,8 @@ export default class BookingScreen extends Component {
                         { 
                           currentUser && 
                             <span>
-                              To check the status of your request, you can view your pending bookings at
-                              <Link to="/account/bookings" >/account/bookings</Link> 
+                              To check the status of your request, you can view your pending bookings at 
+                              <Link to="/account/bookings" > /account/bookings</Link> 
                             </span>
                         }
                       </p>
@@ -315,6 +325,7 @@ export default class BookingScreen extends Component {
                         onCreditCardAdd={this.onCreditCardAdd}
                         onCreditCardAddFailed={this.onCreditCardAddFailed}
                         stripeCustomerId={this.state.stripeCustomerId}
+                        paymentMethods={this.state.paymentMethods}
                         isSubmitting={isSubmitting}
                         disabled={isSubmitting || !allFieldsPopulated(values)} />
                     </div>

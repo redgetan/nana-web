@@ -25,6 +25,7 @@ import MyServicesScreen from './../screens/MyServicesScreen'
 import MyBookingsScreen from './../screens/MyBookingsScreen'
 import PartnerRegisterScreen from './../screens/PartnerRegisterScreen'
 import Config from './../config/config'
+import ClientAPI from './../api/client_api'
 
 
 export default class AppRouter extends Component {
@@ -46,6 +47,13 @@ export default class AppRouter extends Component {
 		const user = Config.getCurrentUser()
 		if (user) {
 			this.onUserAuthenticated(user)
+
+		  // reload user account data on first page load
+			ClientAPI.getUserAccount().then((res) => {
+	      if (res.body && res.body.error) return
+				
+	      this.onUserAuthenticated(res.body)
+			})
 		}
 	}
 

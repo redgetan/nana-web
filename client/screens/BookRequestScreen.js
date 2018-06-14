@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ClientAPI from './../api/client_api'
 import Config from './../config/config'
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import FlashMessage from "./../components/Widget/FlashMessage"
 
 export default class BookRequestScreen extends Component {
@@ -65,6 +66,12 @@ export default class BookRequestScreen extends Component {
   }
 
   render() {
+    const currentUser = Config.getCurrentUser()
+    
+    if (!currentUser) {
+      return <Redirect to={`/signin?redirect=${window.location.href}`} />
+    } 
+
     if (this.state.notFound) {
       return <div className='container'>Book Request not found</div>
     }
@@ -130,7 +137,7 @@ export default class BookRequestScreen extends Component {
 
           <div className="price_total_row block">
             <div className="price_total_label pull-left">Total</div> 
-            <div className="pull-right">${this.state.bookRequest.price}</div> 
+            <div className="pull-right">${this.state.bookRequest.price} {this.state.bookRequest.currency}</div> 
           </div>
 
 

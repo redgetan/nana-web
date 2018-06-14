@@ -1950,3 +1950,17 @@ input::placeholder {
     display: none;
   }
 }
+
+.payment_method_row {
+  margin: 10px 5px;
+  background: #eee;
+  padding: 5px 10px;
+  border: solid 1px #ccc;
+}
+
+.signin_flash_container {
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: cadetblue;
+}

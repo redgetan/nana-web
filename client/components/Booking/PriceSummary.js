@@ -70,6 +70,7 @@ export default class PriceSummary extends Component {
                 isSubmitting={this.props.isSubmitting} 
                 customerEmail={this.props.customerEmail} 
                 stripeCustomerId={this.props.stripeCustomerId}
+                paymentMethods={this.props.paymentMethods}
                 onCreditCardAdd={this.props.onCreditCardAdd}
                 onCreditCardAddFailed={this.props.onCreditCardAddFailed}
                 />
