@@ -67,14 +67,13 @@ export default class PublishServicesForm extends Component {
       </div>
     } else if (currentStep === "submitted") {
       component = <div className="">
-        <p>Your application has been submitted. Once approved, your profile page would be changed into a photographer profile that can accept bookings from users.</p>
+        <p>Your application has been submitted. Once approved, you will be notified and your profile page would be changed into a photographer profile that can accept bookings from users.</p>
       </div>
     } else {
       component = <div className="">
-        <p>The approval should take less than a couple of days. We're looking for the right kind of photographers, and want to control quality initially as we undergo our beta testing. </p>
-        <p>Once you're approved, you'll receive an email notification with a link to your updated photographer profile. </p>
+        <p>If you are ready to submit your application, click the button below. The approval should take less than a couple of days. We're looking for the right kind of photographers, and want to control quality initially as we undergo our beta testing. </p>
         <br/> 
-        <button className='nana_btn' onClick={this.onSubmitApplication}>Submit</button>
+        <button className='submit_application_btn nana_btn' onClick={this.onSubmitApplication}>Submit Application</button>
         <br/> 
       </div>
     }

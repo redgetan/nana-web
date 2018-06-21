@@ -44,6 +44,13 @@ const main = () => {
     renderNavbar()
   })
 
+  $(document).on("click", (event) => {
+    const isNotNavBar = $(event.target).closest(".navbar-nav").length === 0
+    if (isNotNavBar) {
+      $('.collapse').collapse('hide')
+    }
+  })
+
   $(".faq_btn").on("click", (event) => {
     event.preventDefault()
     browserHistory.push("/faq")
@@ -79,12 +86,12 @@ const main = () => {
       document.querySelector(".login_btn").style.display = 'none'
       document.querySelector(".signup_btn").style.display = 'none'
       document.querySelector(".become_photographer_btn").style.display = 'none'
-      document.querySelector(".home_user_menu").dataset.shown = 'true'
+      document.querySelectorAll(".home_user_menu").forEach((el) => { el.dataset.shown = 'true' })
     } else {
       document.querySelector(".login_btn").style.display = 'block'
       document.querySelector(".signup_btn").style.display = 'block'
       document.querySelector(".become_photographer_btn").style.display = 'block'
-      document.querySelector(".home_user_menu").dataset.shown = ''
+      document.querySelectorAll(".home_user_menu").forEach((el) => { el.dataset.shown = '' })
     }
   }
 

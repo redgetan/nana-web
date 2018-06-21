@@ -946,6 +946,7 @@ textarea.error {
 .footer_container ul,
 .footer_container li {
   list-style: none;
+  padding-left: 5px;
 }
 
 .footer_section {
@@ -2046,4 +2047,9 @@ input::placeholder {
 
 .change_photo_spinner {
   display: none;
+}
+
+.submit_application_btn {
+  display: block;
+  margin: auto;
 }

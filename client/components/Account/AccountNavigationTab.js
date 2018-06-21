@@ -18,7 +18,7 @@ export default class AccountNavigationTab extends Component {
     return (
       <div className='user_settings_navigation col-xs-12 col-sm-4 col-md-3 col-lg-2  '>
         <ul>
-          <li className={this.props.location.pathname === "/account/manage" ? "active": ""}><Link to="/account/manage">Edit Profile</Link></li>
+          <li className={this.props.location.pathname === "/account/manage" ? "active": ""}><Link to="/account/manage">Profile</Link></li>
           <li className={this.props.location.pathname === "/account/verification" ? "active": ""}><Link to="/account/verification">Verification</Link></li>
           <li className={this.props.location.pathname === "/account/bookings" ? "active": ""}><Link to="/account/bookings">My Bookings</Link></li>
           <li className={this.props.location.pathname === "/account/services" ? "active": ""}><Link to="/account/services">{servicesLabel}</Link></li>
