@@ -243,13 +243,29 @@ select::-ms-expand {
   text-align: left;
 }
 
+.user_gallery_container h3 {
+  margin-top: 0px;
+}
+
 .hourly_rate_summary_item {
   display: none;
 }
 
 @media only screen and (max-width : 768px) {
-  .hourly_rate_summary_item {
-    display: inline-block;
+  .user_settings_navigation li {
+    border-bottom: solid 1px #eee;
+  }
+
+  .user_settings_navigation li.active a {
+    color: #c70e92;
+  }
+
+  .view_profile_btn {
+    width: 100%;
+  }
+
+  .book_request_form {
+    background-color: #eee;  
   }
 
   .book_request_form,
@@ -258,17 +274,6 @@ select::-ms-expand {
     float: none;
     margin-top: 0px;
     border: none;
-
-    /*    border: solid 1px #ccc;
-        width: 100%;
-        position: fixed;
-        bottom: 0px;
-        left: 0px;
-        margin: 0px;
-        background: #ffedfa;
-        z-index: 5;
-        padding: 10px;
-    */  
   }
 
   .book_request_form form {
@@ -276,22 +281,14 @@ select::-ms-expand {
   }
 
   .book_request_form .cost {
-    display: none;
-  /*    float: left;
-      line-height: 38px;
-      font-size: 12px;
-      width: 115px;
-  */  
   }
 
   .book_request_btn {
     float: none !important;
     width: 250px;
     margin-top: 0px;
-/*    width: calc(100% - 120px);
-    margin-top: 0px;
-    font-size: 16px !important;
-*/  }
+
+  }
 
   .user_gallery_container {
     white-space: normal !important;
@@ -669,6 +666,7 @@ textarea.error {
   background: none;
   border-bottom: none;
   padding: 20px;
+  margin-bottom: 0px;
 }
 
 .home_sample_photo {
@@ -1223,7 +1221,7 @@ textarea {
 }
 
 .service_details {
-  /*display: none; */
+  display: none; 
 }
 
 .login_container,
@@ -1963,4 +1961,89 @@ input::placeholder {
   margin-top: 20px;
   margin-bottom: 20px;
   color: cadetblue;
+}
+
+.circular_spinner {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 10px;
+  display: block;
+  margin: 30px auto;
+}
+
+.circular_spinner div {
+  width: 6%;
+  height: 16%;
+  background: #aaa;
+  position: absolute;
+  left: 49%;
+  top: 43%;
+  opacity: 0;
+  -webkit-border-radius: 50px;
+  -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  -webkit-animation: fade 1s linear infinite;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: 1;}
+  to {opacity: 0.25;}
+}
+
+.circular_spinner div.bar1 {
+  -webkit-transform:rotate(0deg) translate(0, -130%);
+  -webkit-animation-delay: 0s;
+}    
+
+.circular_spinner div.bar2 {
+  -webkit-transform:rotate(30deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.9167s;
+}
+
+.circular_spinner div.bar3 {
+  -webkit-transform:rotate(60deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.833s;
+}
+.circular_spinner div.bar4 {
+  -webkit-transform:rotate(90deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.7497s;
+}
+.circular_spinner div.bar5 {
+  -webkit-transform:rotate(120deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.667s;
+}
+.circular_spinner div.bar6 {
+  -webkit-transform:rotate(150deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.5837s;
+}
+.circular_spinner div.bar7 {
+  -webkit-transform:rotate(180deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.5s;
+}
+.circular_spinner div.bar8 {
+  -webkit-transform:rotate(210deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.4167s;
+}
+.circular_spinner div.bar9 {
+  -webkit-transform:rotate(240deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.333s;
+}
+.circular_spinner div.bar10 {
+  -webkit-transform:rotate(270deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.2497s;
+}
+.circular_spinner div.bar11 {
+  -webkit-transform:rotate(300deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.167s;
+}
+.circular_spinner div.bar12 {
+  -webkit-transform:rotate(330deg) translate(0, -130%); 
+  -webkit-animation-delay: -0.0833s;
+}
+
+
+.change_photo_spinner {
+  display: none;
 }

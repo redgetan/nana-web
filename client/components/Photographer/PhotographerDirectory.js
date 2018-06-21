@@ -60,7 +60,7 @@ export default class PhotographerDirectory extends Component {
                   <img className='user_avatar' src={user.avatar} alt=""/>
                 </div>
                 <div className="directory_item_col">
-                  <div className="username">{user.username}</div>
+                  <div className="username">{user.username || user.first_name}</div>
                 </div>
               </Link>
             </div>

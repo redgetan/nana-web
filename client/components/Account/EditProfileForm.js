@@ -48,6 +48,10 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
 
 const onAvatarProvided = (props, setFieldValue, event) => {
   const file = event.target.files[0]
+
+  $(".change_photo_spinner").show()
+  $(".user_avatar img").attr("src", "")
+
   return ClientAPI.s3Sign({ filename: file.name }).then((res) => {
     const data = res.body
 
@@ -62,13 +66,16 @@ const onAvatarProvided = (props, setFieldValue, event) => {
 
         ClientAPI.changeUserAvatar(Config.getCurrentUser().id, avatarUrl).then((res) => {
           const user = res.body
+
+          $(".change_photo_spinner").hide()
+
           setFieldValue('avatar', user.avatar)
           Config.setUserData(user)
           props.onUserUpdated(user)
         })
       },
       error: function(data) {
-
+        $(".change_photo_spinner").hide()
       }
     })
 
@@ -94,6 +101,20 @@ const EditProfileForm = ({
       <div className="col-xs-3"><label>Avatar</label></div>
       <div className="col-xs-9">
         <div className="user_avatar">
+          <div className="circular_spinner change_photo_spinner">
+            <div className="bar1"></div>
+            <div className="bar2"></div>
+            <div className="bar3"></div>
+            <div className="bar4"></div>
+            <div className="bar5"></div>
+            <div className="bar6"></div>
+            <div className="bar7"></div>
+            <div className="bar8"></div>
+            <div className="bar9"></div>
+            <div className="bar10"></div>
+            <div className="bar11"></div>
+            <div className="bar12"></div>
+          </div>
           <img src={values.avatar} alt="" />
           <span className="upload_avatar_btn btn-file">
             <div className="upload_avatar_label">

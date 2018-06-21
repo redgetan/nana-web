@@ -22,7 +22,7 @@ export default class PriceSummary extends Component {
 
   render() {
     const totalPrice = this.props.user.price * this.props.duration
-    const photographerName = this.props.user.username ? this.props.user.username : [this.props.user.first_name, this.state.props.last_name].join(" ")
+    const photographerName = this.props.user.username ? this.props.user.username : [this.props.user.first_name, this.props.user.last_name].join(" ")
     const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
 
     return (

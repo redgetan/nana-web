@@ -64,7 +64,6 @@ export default class EditServicesForm extends Component {
             languages: this.props.user.languages || "", 
             currency: this.props.user.currency || "", 
             cameras: this.props.user.cameras || "", 
-            expectation: this.props.user.expectation || "", 
             onUserUpdated: this.props.onUserUpdated 
           }
         }
@@ -141,7 +140,7 @@ export default class EditServicesForm extends Component {
                 </div>
               </div>
               <div className='row'>
-                <div className="col-xs-3"><label>Languages</label></div>
+                <div className="col-xs-3"><label>Language</label></div>
                 <div className="col-xs-9">
                   <SelectField name="languages" label="Select Languages" options={languageOptions} values={values} errors={errors} touched={touched}/>
                 </div>
@@ -151,10 +150,6 @@ export default class EditServicesForm extends Component {
                 <div className="col-xs-9">
                   <FormField name="cameras" placeholder="i.e Sony a6000, iPhone X" values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} />
                 </div>
-              </div>
-              <div className='row'>
-                <div className="col-xs-3"><label>What you'll do / Expectation</label></div>
-                <div className="col-xs-9"><FormTextArea name="expectation" placeholder="By the end of a 1 hour session, I'll have snapped at least 20 candid photos of you doing something interesting. I'll give you tips on what to wear, and suggest places to go based on your hobbies/lifestyle." values={values} errors={{}} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
               </div>
               <br />
               <br />
