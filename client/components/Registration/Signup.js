@@ -24,15 +24,7 @@ const SignupForm = ({
           {status && status.externalError}
         </div>
         <h2>Signup</h2>
-        <div className='row'>
-          <div className="col-xs-12">
-            <a href={Config.getInstagramOAuthUrl()} className="instagram_login_btn">
-              <i className='fa fa-instagram'></i> Connect with Instagram
-            </a>
-          </div>
-        </div>
-        <span className='register_separator'>or</span>
-
+        <br/>
         <div className='row'>
           <div className="col-xs-12"><FormField name="first_name" placeholder="First name" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} /></div>
         </div>

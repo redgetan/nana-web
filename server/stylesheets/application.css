@@ -190,12 +190,30 @@ select::-ms-expand {
   width: 250px;
 }
 
-.home_user_menu {
+.home_user_menu_desktop {
   display: none !important;
 }
 
-.home_user_menu[data-shown='true'] {
+.home_user_menu_desktop[data-shown='true'] {
   display: block !important;
+}
+
+.home_user_menu_mobile {
+  display: none !important;
+}
+
+@media only screen and (max-width : 768px) {
+  .home_user_menu_desktop {
+    display: none !important;
+  }
+
+  .home_user_menu_desktop[data-shown='true'] {
+    display: none !important;
+  }
+
+  .home_user_menu_mobile[data-shown='true'] {
+    display: block !important;
+  }
 }
 
 /* Photographer */
@@ -257,7 +275,7 @@ select::-ms-expand {
   }
 
   .user_settings_navigation li.active a {
-    color: #c70e92;
+    color: black;
   }
 
   .view_profile_btn {
@@ -1127,7 +1145,7 @@ button[type='submit'][disabled='true'] {
 
 .location_search_btn {
   width: 100px;
-  height: 50px;
+  height: 40px;
   border: none;
   color: white;
   background-color: #c70e92;
@@ -1382,6 +1400,8 @@ textarea {
 
 .user_settings_navigation li a {
   color: #777;
+  width: 100%;
+  display: block;
 }
 
 .user_settings_navigation li:hover a {

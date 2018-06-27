@@ -69,14 +69,14 @@ const main = () => {
     renderNavbar()
   })
 
-  document.querySelector(".home_logout_btn").addEventListener("click", (event) => {
+  $(".home_logout_btn").on("click", (event) => {
     event.preventDefault()
     Config.clearCredentials()
     browserHistory.push("/")
     renderNavbar()
   })
 
-  document.querySelector(".edit_profile_btn").addEventListener("click", (event) => {
+  $(".edit_profile_btn").on("click", (event) => {
     event.preventDefault()
     browserHistory.push("/account/manage")
   })
@@ -86,12 +86,14 @@ const main = () => {
       document.querySelector(".login_btn").style.display = 'none'
       document.querySelector(".signup_btn").style.display = 'none'
       document.querySelector(".become_photographer_btn").style.display = 'none'
-      document.querySelectorAll(".home_user_menu").forEach((el) => { el.dataset.shown = 'true' })
+      document.querySelectorAll(".home_user_menu_desktop").forEach((el) => { el.dataset.shown = 'true' })
+      document.querySelectorAll(".home_user_menu_mobile").forEach((el) => { el.dataset.shown = 'true' })
     } else {
       document.querySelector(".login_btn").style.display = 'block'
       document.querySelector(".signup_btn").style.display = 'block'
       document.querySelector(".become_photographer_btn").style.display = 'block'
-      document.querySelectorAll(".home_user_menu").forEach((el) => { el.dataset.shown = '' })
+      document.querySelectorAll(".home_user_menu_desktop").forEach((el) => { el.dataset.shown = '' })
+      document.querySelectorAll(".home_user_menu_mobile").forEach((el) => { el.dataset.shown = '' })
     }
   }
 
