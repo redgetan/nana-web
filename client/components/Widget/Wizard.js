@@ -40,9 +40,12 @@ export default class Wizard extends Component {
     const stepRef = this.props.stepRefs[this.state.currentStep]
 
     stepRef.setOnStepSuccess((newStep) => {
+      this.setState({ isSubmitting: false })
       const nextStepData = this.props.steps[index + 1]
       this.transitionToNextStep(nextStepData)
     })
+
+    this.setState({ isSubmitting: true })
 
     stepRef.handleNext()
   }
@@ -132,7 +135,7 @@ export default class Wizard extends Component {
         }
         { 
           !isLastStep && 
-            <button className="wizard_next_btn btn btn-primary pull-right" onClick={this.goToNext}>Next</button>
+            <button className="wizard_next_btn btn btn-primary pull-right" disabled={this.state.isSubmitting} onClick={this.goToNext}>{this.state.isSubmitting ? "Loading..." : "Next" }</button>
         }
         
       </div>
