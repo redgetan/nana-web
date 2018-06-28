@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
+import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
+import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
+import 'react-dates/initialize'
+
+
 import moment from 'moment'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 import classNames from 'classnames'
@@ -133,7 +138,8 @@ export default class BookingScreen extends Component {
             message: "", 
             duration: 1, 
             location: "", 
-            start_date: null
+            start_date: null,
+            focused: false
           }
         }
 
@@ -213,6 +219,8 @@ export default class BookingScreen extends Component {
             'nana_form': true
           })
 
+          const calendarOrientation = window.innerWidth < 786 ? VERTICAL_ORIENTATION : HORIZONTAL_ORIENTATION
+          const withPortal = window.innerWidth < 786 
 
           return (
             <div className='container'>
@@ -266,18 +274,16 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>When</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <DatePicker
-                              dateFormat="LL"
-                              placeholderText="photoshoot date"
-                              selected={values.start_date}
-                              onChange={(date, event) => {
-                                setFieldValue('start_date', date)
-                              }}
-                              onBlur={() => {
-                                setFieldTouched("start_date", true)
-                              }}
-                              className={touched["start_date"] && errors["start_date"] ? "error" : ""}
-                              minDate={moment()}
+                            <SingleDatePicker
+                              date={values.start_date} // momentPropTypes.momentObj or null
+                              onDateChange={date => setFieldValue('start_date', date )} // PropTypes.func.isRequired
+                              focused={values.focused} // PropTypes.bool
+                              onFocusChange={({ focused }) => setFieldValue('focused', focused)} // PropTypes.func.isRequired
+                              id="start_date_input" // PropTypes.string.isRequired,
+                              orientation={calendarOrientation}
+                              withPortal={withPortal}
+                              withFullScreenPortal={withPortal}
+                              isOutsideRange={day => isInclusivelyBeforeDay(day, moment().add(-1, 'days'))}
                             />
                           </div>
                         </div>

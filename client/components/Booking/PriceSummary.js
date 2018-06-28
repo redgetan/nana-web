@@ -12,6 +12,7 @@ export default class PriceSummary extends Component {
   }
 
   onProceedPayment = () => {
+    window.scrollTo(0, 0)
     this.setState({ checkout: true }) 
     this.props.onProceedPayment()
   }
