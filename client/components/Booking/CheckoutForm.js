@@ -59,7 +59,6 @@ class CheckoutForm extends React.Component {
 
   render() {
     const style = {
-      base: {fontSize: '18px'},
       invalid: {
         color: '#fa755a',
         iconColor: '#fa755a'
