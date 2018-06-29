@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
-import { DayPickerSingleDateController, SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
-import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
+import { DayPicker, DayPickerSingleDateController, SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
+import { VERTICAL_SCROLLABLE, VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 import 'react-dates/initialize'
 
 
@@ -122,6 +122,14 @@ export default class BookingScreen extends Component {
     }
   }
 
+  disableTouchScroll() {
+
+  }
+
+  enableTouchScroll() {
+    
+  }
+
   render() {
     if (!this.state.user) return <div></div>
 
@@ -219,7 +227,7 @@ export default class BookingScreen extends Component {
             'nana_form': true
           })
 
-          const calendarOrientation = window.innerWidth < 786 ? VERTICAL_ORIENTATION : HORIZONTAL_ORIENTATION
+          const calendarOrientation = window.innerWidth < 786 ? VERTICAL_SCROLLABLE : HORIZONTAL_ORIENTATION
           const withPortal = window.innerWidth < 786 
 
           return (
@@ -277,10 +285,18 @@ export default class BookingScreen extends Component {
                             <SingleDatePicker
                               date={values.start_date} // momentPropTypes.momentObj or null
                               onDateChange={date => setFieldValue('start_date', date )} // PropTypes.func.isRequired
-                              focused={values.focused} // PropTypes.bool
                               readOnly={true}
+                              hideKeyboardShortcutsPanel={true}
+                              focused={values.focused} // PropTypes.bool
                               onFocusChange={({ focused }) => { 
                                 setFieldValue('focused', focused) 
+
+                                if (focused) {
+                                  this.disableTouchScroll()                                  
+                                } else {
+                                  this.enableTouchScroll()                                  
+                                }
+
                               }}  
                               id="start_date_input" // PropTypes.string.isRequired,
                               orientation={calendarOrientation}
