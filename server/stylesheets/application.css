@@ -2912,3 +2912,36 @@ input::placeholder {
 .DateInput_input {
   line-height: 16px;
 }
+
+.start_date_picker {
+  position: fixed;
+  z-index: 1;
+}
+
+.start_date_picker.hidden {
+  display: none;
+}
+
+.start_date_picker .DayPicker {
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) { 
+  .start_date_picker {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #eee;
+  }
+}
+
+.start_date_custom_input {
+  border: solid 1px #ddd;
+  height: 36px;
+  line-height: 36px;
+  width: 150px;
+  text-align: left;
+  padding-left: 10px;
+}

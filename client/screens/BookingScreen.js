@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
-import { DayPicker, DayPickerSingleDateController, SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
-import { VERTICAL_SCROLLABLE, VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
+import { DayPickerSingleDateController, isInclusivelyBeforeDay } from 'react-dates'
+import { HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 import 'react-dates/initialize'
 
 
@@ -147,7 +147,8 @@ export default class BookingScreen extends Component {
             duration: 1, 
             location: "", 
             start_date: null,
-            focused: false
+            focused: false,
+            show_date_picker: false
           }
         }
 
@@ -227,8 +228,10 @@ export default class BookingScreen extends Component {
             'nana_form': true
           })
 
-          const calendarOrientation = window.innerWidth < 786 ? VERTICAL_SCROLLABLE : HORIZONTAL_ORIENTATION
-          const withPortal = window.innerWidth < 786 
+          const isMobile = window.innerWidth < 786
+          const calendarOrientation = isMobile ? HORIZONTAL_ORIENTATION : HORIZONTAL_ORIENTATION
+          const withPortal = isMobile 
+          const numberOfMonths = isMobile ? 1 : 2
 
           return (
             <div className='container'>
@@ -282,28 +285,32 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>When</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <SingleDatePicker
-                              date={values.start_date} // momentPropTypes.momentObj or null
-                              onDateChange={date => setFieldValue('start_date', date )} // PropTypes.func.isRequired
-                              readOnly={true}
-                              hideKeyboardShortcutsPanel={true}
-                              focused={values.focused} // PropTypes.bool
-                              onFocusChange={({ focused }) => { 
-                                setFieldValue('focused', focused) 
-
-                                if (focused) {
-                                  this.disableTouchScroll()                                  
-                                } else {
-                                  this.enableTouchScroll()                                  
-                                }
-
-                              }}  
-                              id="start_date_input" // PropTypes.string.isRequired,
-                              orientation={calendarOrientation}
-                              withPortal={withPortal}
-                              withFullScreenPortal={withPortal}
-                              isOutsideRange={day => isInclusivelyBeforeDay(day, moment().add(-1, 'days'))}
-                            />
+                            <div className='start_date_custom_input' onClick={() => { 
+                              setFieldValue('show_date_picker', true) 
+                              $('html, body').css({ overflow: 'hidden' })
+                            }}>
+                              {values.start_date && values.start_date.format("LL")}
+                            </div>
+                            {
+                              values.show_date_picker && 
+                                <div className="start_date_picker">
+                                  <DayPickerSingleDateController
+                                    keepOpenOnDateSelect={false}
+                                    onClose={() => { 
+                                      setFieldValue('show_date_picker', false) 
+                                      $('html, body').css({ overflow: 'auto' })
+                                    }}
+                                    numberOfMonths={numberOfMonths}
+                                    orientation={calendarOrientation}
+                                    withPortal={withPortal}
+                                    date={values.start_date}
+                                    onDateChange={date => setFieldValue('start_date', date )} 
+                                    focused={true}
+                                    hideKeyboardShortcutsPanel={true}
+                                    isOutsideRange={day => isInclusivelyBeforeDay(day, moment().add(-1, 'days'))}
+                                  />
+                                </div>
+                            }
                           </div>
                         </div>
 
