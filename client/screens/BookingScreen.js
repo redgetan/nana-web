@@ -192,10 +192,10 @@ export default class BookingScreen extends Component {
             photographer_id: this.state.user.id
           }).then((res) => {
             setSubmitting(false)
+            window.scrollTo(0, 0)
 
             if (res.body && res.body.error) {
               setStatus({ error: res.body.error })
-              window.scrollTo(0, 0)
             } else {
               setStatus({ success: "Booking Request successful." })
             }
