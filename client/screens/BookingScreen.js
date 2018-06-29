@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { withFormik, Formik, Field } from 'formik'
 import DatePicker from 'react-datepicker'
-import { SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
+import { DayPickerSingleDateController, SingleDatePicker, isInclusivelyBeforeDay } from 'react-dates'
 import { VERTICAL_ORIENTATION, HORIZONTAL_ORIENTATION } from 'react-dates/constants'
 import 'react-dates/initialize'
 
@@ -278,7 +278,10 @@ export default class BookingScreen extends Component {
                               date={values.start_date} // momentPropTypes.momentObj or null
                               onDateChange={date => setFieldValue('start_date', date )} // PropTypes.func.isRequired
                               focused={values.focused} // PropTypes.bool
-                              onFocusChange={({ focused }) => setFieldValue('focused', focused)} // PropTypes.func.isRequired
+                              readOnly={true}
+                              onFocusChange={({ focused }) => { 
+                                setFieldValue('focused', focused) 
+                              }}  
                               id="start_date_input" // PropTypes.string.isRequired,
                               orientation={calendarOrientation}
                               withPortal={withPortal}
