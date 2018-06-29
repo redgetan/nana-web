@@ -269,13 +269,13 @@ export default class BookingScreen extends Component {
                                 <div className='row'>
                                   <div className="col-xs-12 col-sm-3"><label>Name</label></div>
                                   <div className="col-xs-12 col-sm-9">
-                                    <FormField name="name" placeholder="" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
+                                    <FormField name="name" placeholder="John Smith" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
                                   </div>
                                 </div>
                                 <div className='row'>
                                   <div className="col-xs-12 col-sm-3"><label>Email</label></div>
                                   <div className="col-xs-12 col-sm-9">
-                                    <FormField name="email" placeholder="" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} readOnly={!!this.state.stripeCustomerId} />
+                                    <FormField name="email" placeholder="jonsnow@gmail.com" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} readOnly={!!this.state.stripeCustomerId} />
                                   </div>
                                 </div>
                               </div>
