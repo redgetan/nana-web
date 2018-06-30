@@ -2,6 +2,7 @@ import React from 'react'
 import {injectStripe} from 'react-stripe-elements'
 import {CardElement, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement } from 'react-stripe-elements'
 import StripeCheckout from 'react-stripe-checkout'
+import Config from './../../config/config';
 
 import ClientAPI from './../../api/client_api'
 import FlashMessage from "./../Widget/FlashMessage"
@@ -58,6 +59,10 @@ class CheckoutForm extends React.Component {
     })
   }
 
+  onToken(token) {
+    console.log("shit token: " + token)
+  }
+
   render() {
     const style = {
       invalid: {
@@ -83,26 +88,11 @@ class CheckoutForm extends React.Component {
         {
           !paymentMethod &&
             <div className='credit_card_form_container'>
-              <div className='row'>
-                <div className='col-xs-12'>
-                  <label htmlFor="">Credit Card</label>
-                  <CardNumberElement />
-                </div>
-              </div>
-              <div className='row'>
-                <div className='col-xs-4'>
-                  <label htmlFor="">Expiry</label>
-                  <CardExpiryElement />
-                </div>
-                <div className='col-xs-4'>
-                  <label htmlFor="">CVC</label>
-                  <CardCVCElement />
-                </div>
-                <div className='col-xs-4'>
-                  <label htmlFor="">Postal Code</label>
-                  <PostalCodeElement />
-                </div>
-              </div>
+              <StripeCheckout
+                email="redge.tan@gmail.com"
+                token={this.onToken}
+                stripeKey={Config.getStripePublicKey()}
+              />
             </div> 
         }
         <button className='checkout_btn' disabled={this.props.isSubmitting}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
