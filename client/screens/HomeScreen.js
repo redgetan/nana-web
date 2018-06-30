@@ -50,7 +50,7 @@ export default class HomeScreen extends Component {
       <div>
         <div className="container home_container">
           <h1 className="home_title">
-            Hire a Personal Photographer
+            Rent a Photographer
           </h1>
           <div className="home_description">
             For your Social Media, Dating, or Business Needs. 
@@ -76,11 +76,11 @@ export default class HomeScreen extends Component {
             <ul>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>1. Book a Shoot</p>
-                <p>Message photographers that you like. Tell them what kind of shot you would like ( i.e link to a sample instagram photo )</p>
+                <p>Book a photographer that you like while specifying desired time, place, and vision ( i.e link to a sample instagram photo that you want to emulate )</p>
               </li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>2. Meet with Photographer</p>
-                <p>Setup a time/place to meet with photographer. You'll pay the photographers directly before the session starts. You'll be instructed on what to do for preparation.</p></li>
+                <p>Once a photographer accepts your photoshoot request, you'll meet them on agreed place/time and start having your pictures taken.</p></li>
               <li className='col-xs-12 col-sm-4'>
                 <p className='how_it_works_item_header'>3. Receive Photos</p>
                 <p>You'll be sent photos via email once they have finished editing. It'll typically take less than a week. </p>
