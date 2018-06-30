@@ -1,6 +1,7 @@
 import React from 'react'
 import {injectStripe} from 'react-stripe-elements'
-import {CardElement} from 'react-stripe-elements'
+import {CardElement, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement } from 'react-stripe-elements'
+import StripeCheckout from 'react-stripe-checkout'
 
 import ClientAPI from './../../api/client_api'
 import FlashMessage from "./../Widget/FlashMessage"
@@ -81,7 +82,28 @@ class CheckoutForm extends React.Component {
         }
         {
           !paymentMethod &&
-            <CardElement style={style} />
+            <div className='credit_card_form_container'>
+              <div className='row'>
+                <div className='col-xs-12'>
+                  <label htmlFor="">Credit Card</label>
+                  <CardNumberElement />
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-xs-4'>
+                  <label htmlFor="">Expiry</label>
+                  <CardExpiryElement />
+                </div>
+                <div className='col-xs-4'>
+                  <label htmlFor="">CVC</label>
+                  <CardCVCElement />
+                </div>
+                <div className='col-xs-4'>
+                  <label htmlFor="">Postal Code</label>
+                  <PostalCodeElement />
+                </div>
+              </div>
+            </div> 
         }
         <button className='checkout_btn' disabled={this.props.isSubmitting}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
       </form>

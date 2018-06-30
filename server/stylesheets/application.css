@@ -1886,7 +1886,7 @@ h1 {
 
 .StripeElement {
   display: block;
-  margin: 10px 0 20px 0;
+  margin: 0px;
   padding: 10px 14px;
   font-size: 1em;
   font-family: 'Source Code Pro', monospace;
@@ -2944,4 +2944,12 @@ input::placeholder {
   width: 150px;
   text-align: left;
   padding-left: 10px;
+}
+
+.credit_card_form_container .row {
+  margin-bottom: 10px;
+}
+
+.credit_card_form_container label {
+  font-size: 14px;
 }
