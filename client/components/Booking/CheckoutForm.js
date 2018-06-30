@@ -1,7 +1,6 @@
 import React from 'react'
 import {injectStripe} from 'react-stripe-elements'
 import {CardElement, CardNumberElement, CardExpiryElement, CardCVCElement, PostalCodeElement } from 'react-stripe-elements'
-import StripeCheckout from 'react-stripe-checkout'
 import Config from './../../config/config';
 
 import ClientAPI from './../../api/client_api'
@@ -26,6 +25,7 @@ class CheckoutForm extends React.Component {
     }
 
   }
+
 
   addCreditCardAndSubmitBooking() {
     this.props.onCreditCardAdd()
@@ -87,12 +87,10 @@ class CheckoutForm extends React.Component {
         }
         {
           !paymentMethod &&
-            <div className='credit_card_form_container'>
-              <StripeCheckout
-                email="redge.tan@gmail.com"
-                token={this.onToken}
-                stripeKey={Config.getStripePublicKey()}
-              />
+            <div className='credit_card_form_container' onClick={this.addPaymentMethod}>
+              <div className="vertical_spacing line" />
+              Add Payment Method
+              <div className="vertical_spacing line" />
             </div> 
         }
         <button className='checkout_btn' disabled={this.props.isSubmitting}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>

@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { Elements } from 'react-stripe-elements';
+import Config from './../../config/config';
+
 
 import InjectedCheckoutForm from './CheckoutForm';
 
@@ -11,15 +13,45 @@ export default class PriceSummary extends Component {
     checkout: false
   }
 
+  componentDidMount() {
+    this.initStripe()
+  }
+
   onProceedPayment = () => {
     window.scrollTo(0, 0)
     this.setState({ checkout: true }) 
     this.props.onProceedPayment()
+
+    this.addPaymentMethod()
   }
 
   onConfirmOrder = (stripeCustomerId) => {
     this.props.onConfirmOrder(stripeCustomerId)
   }
+
+  addPaymentMethod = () => {
+    this.stripeHandler.open({
+      name: 'Nanapx',
+      email: this.props.customerEmail,
+      zipCode: true,
+      panelLabel: "Confirm Order"
+    })
+  }
+
+  initStripe() {
+    this.stripeHandler = StripeCheckout.configure({
+      key: Config.getStripePublicKey(),
+      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+      locale: 'auto',
+      token: function(token) {
+        console.log(token)
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+      }
+    })
+
+  }
+
 
   render() {
     const totalPrice = this.props.user.price * this.props.duration
@@ -60,7 +92,7 @@ export default class PriceSummary extends Component {
 
         {
           !this.state.checkout &&
-            <button disabled={this.props.disabled} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
+            <button disabled={false} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
         }
 
         {
