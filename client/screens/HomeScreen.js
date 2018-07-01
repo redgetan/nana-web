@@ -28,6 +28,10 @@ export default class HomeScreen extends Component {
     })
   }
 
+  profileLink(user) {
+    return user.username ? `/${user.username}` : `/users/${user.id}`
+  }
+
   // https://stackoverflow.com/a/4878800
   toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -105,7 +109,7 @@ export default class HomeScreen extends Component {
           {
             this.state.users.map((user) => (
               <div className='home user_avatar_container col-xs-6 col-sm-4 col-md-3 col-lg-2' key={user.id} >
-                <Link to={`/users/${user.id}`} >
+                <Link to={this.profileLink(user)} >
                   <img className='user_avatar' src={user.avatar} alt=""/>
                   <div className="username">{user.username || user.first_name}</div>
                   <div className="location">{this.formatShortLocation(user.location)}</div>
