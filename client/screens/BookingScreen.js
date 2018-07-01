@@ -159,11 +159,13 @@ export default class BookingScreen extends Component {
             let fieldName = requiredFields[i]
             if (!values[fieldName]) {
               errors[fieldName] = "Required"
+              window.scrollTo(0, 0)
             }
           }
 
           if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
             errors["email"] = "Invalid"
+            window.scrollTo(0, 0)
           }
 
           return errors;
@@ -285,7 +287,8 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>When</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <div className='start_date_custom_input' onClick={() => { 
+                            <div className={touched["start_date"] && errors["start_date"] ? "start_date_custom_input error" : "start_date_custom_input"} onClick={() => { 
+                              setFieldTouched('start_date', true)
                               setFieldValue('show_date_picker', true) 
                               $('html, body').css({ overflow: 'hidden' })
                             }}>

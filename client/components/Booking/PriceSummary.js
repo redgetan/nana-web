@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { Elements } from 'react-stripe-elements';
 import Config from './../../config/config';
+import ClientAPI from './../../api/client_api'
+import FlashMessage from "./../Widget/FlashMessage"
 
-
-import InjectedCheckoutForm from './CheckoutForm';
 
 export default class PriceSummary extends Component {
   state = {
-    checkout: false
+    checkout: false,
+    status: {}
   }
 
   componentDidMount() {
@@ -32,9 +33,30 @@ export default class PriceSummary extends Component {
   addPaymentMethod = () => {
     this.stripeHandler.open({
       name: 'Nanapx',
+      image: 'https://i.imgur.com/ZqhRE80.png',
       email: this.props.customerEmail,
       zipCode: true,
-      panelLabel: "Confirm Order"
+      panelLabel: "Confirm Order",
+      allowRememberMe: false
+    })
+  }
+
+  onStripeTokenCreated = (token) => {
+    console.log(token)
+
+    ClientAPI.createPaymentMethod({ email: this.props.customerEmail, token: token }).then((res) => {
+      if (res.body.error) {
+        this.setState({ status: { error: res.body.error }})
+
+        this.props.onCreditCardAddFailed()
+      } else {
+        const stripeCustomerId = res.body
+        this.props.onConfirmOrder(stripeCustomerId)
+      }
+    }).catch((error) => {
+      this.setState({ status: { error: "Failed to reach nanapx server. Unable to add credit card as payment method" }})
+
+      this.props.onCreditCardAddFailed()
     })
   }
 
@@ -43,13 +65,15 @@ export default class PriceSummary extends Component {
       key: Config.getStripePublicKey(),
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
-      token: function(token) {
-        console.log(token)
-        // You can access the token ID with `token.id`.
-        // Get the token ID to your server-side code for use.
-      }
+      token: this.onStripeTokenCreated
     })
 
+  }
+
+  confirmOrder = () => {
+    if (this.props.stripeCustomerId) {
+      this.props.onConfirmOrder(this.props.stripeCustomerId)
+    }
   }
 
 
@@ -57,6 +81,7 @@ export default class PriceSummary extends Component {
     const totalPrice = this.props.user.price * this.props.duration
     const photographerName = this.props.user.username ? this.props.user.username : [this.props.user.first_name, this.props.user.last_name].join(" ")
     const profileLink = this.props.user.username ? `/${this.props.user.username}` : `/users/${this.props.user.id}`
+    const paymentMethod = this.props.paymentMethods && this.props.paymentMethods[0]
 
     return (
       <div className="price_summary_container">
@@ -90,24 +115,24 @@ export default class PriceSummary extends Component {
           <div className="pull-right">${totalPrice}</div> 
         </div>
 
-        {
-          !this.state.checkout &&
-            <button disabled={false} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
-        }
+        <FlashMessage status={this.state.status} />
 
         {
-          !this.state.checkout &&
-            <Elements>
-              <InjectedCheckoutForm 
-                onConfirmOrder={this.onConfirmOrder} 
-                isSubmitting={this.props.isSubmitting} 
-                customerEmail={this.props.customerEmail} 
-                stripeCustomerId={this.props.stripeCustomerId}
-                paymentMethods={this.props.paymentMethods}
-                onCreditCardAdd={this.props.onCreditCardAdd}
-                onCreditCardAddFailed={this.props.onCreditCardAddFailed}
-                />
-            </Elements>
+          !this.props.stripeCustomerId &&
+            <button disabled={this.props.disabled} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
+        }
+        {
+          this.props.stripeCustomerId && paymentMethod &&
+            <div>
+              <div className="vertical_spacing line" />
+              <label>
+                Card details
+              </label>
+              <div className="payment_method_row">
+                {paymentMethod.brand} **** **** **** {paymentMethod.last4} - {paymentMethod.exp_month}/{paymentMethod.exp_year}             
+              </div>
+              <button className='checkout_btn' disabled={this.props.isSubmitting} onClick={this.confirmOrder}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
+            </div>
         }
         
       </div>

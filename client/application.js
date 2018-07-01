@@ -4,15 +4,12 @@ import AppRouter from './router/router';
 import Config from './config/config';
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import {StripeProvider} from 'react-stripe-elements';
 
 const App = () => {
   return (
-    <StripeProvider apiKey={Config.getStripePublicKey()}>
-      <Router history={browserHistory}>
-        <AppRouter />
-      </Router>
-    </StripeProvider>
+    <Router history={browserHistory}>
+      <AppRouter />
+    </Router>
   )
 }
 
@@ -51,6 +48,12 @@ const main = () => {
     }
   })
 
+  $(".explore_btn").on("click", (event) => {
+    event.preventDefault()
+    browserHistory.push("/")
+    renderNavbar()
+  })
+
   $(".faq_btn").on("click", (event) => {
     event.preventDefault()
     browserHistory.push("/faq")
@@ -82,15 +85,19 @@ const main = () => {
   })
 
   window.renderNavbar = () => {
+    window.scrollTo(0, 0)
+
     if (Config.isSignedIn()) {
       document.querySelector(".login_btn").style.display = 'none'
       document.querySelector(".signup_btn").style.display = 'none'
+      document.querySelector(".explore_btn").style.display = 'block'
       document.querySelector(".become_photographer_btn").style.display = 'none'
       document.querySelectorAll(".home_user_menu_desktop").forEach((el) => { el.dataset.shown = 'true' })
       document.querySelectorAll(".home_user_menu_mobile").forEach((el) => { el.dataset.shown = 'true' })
     } else {
       document.querySelector(".login_btn").style.display = 'block'
       document.querySelector(".signup_btn").style.display = 'block'
+      document.querySelector(".explore_btn").style.display = 'none'
       document.querySelector(".become_photographer_btn").style.display = 'block'
       document.querySelectorAll(".home_user_menu_desktop").forEach((el) => { el.dataset.shown = '' })
       document.querySelectorAll(".home_user_menu_mobile").forEach((el) => { el.dataset.shown = '' })

@@ -2946,6 +2946,10 @@ input::placeholder {
   padding-left: 10px;
 }
 
+.start_date_custom_input.error {
+  border: 2px solid #f08080!important;
+}
+
 .credit_card_form_container .row {
   margin-bottom: 10px;
 }
