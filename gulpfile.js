@@ -32,7 +32,7 @@ const VENDORS = [
   'babel-polyfill',
   'request-promise-native',
   'formik',
-  'react-stripe-elements'
+  'react-stripe-checkout'
 ]
 
 const ENTRY       = "./client/application.js"
