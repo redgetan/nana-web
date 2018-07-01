@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import { Elements } from 'react-stripe-elements';
 import Config from './../../config/config';
 import ClientAPI from './../../api/client_api'
 import FlashMessage from "./../Widget/FlashMessage"
