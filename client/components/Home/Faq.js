@@ -8,7 +8,7 @@ export default class Faq extends Component {
         <ul>
           <li className="faq_item_container">
             <div className='question'>What is nana?</div>
-            <p>Nana is a marketplace that match affordable photographers with users looking to improve their social media content, dating profile, or business brand.  </p>
+            <p>Nana is a marketplace that match modern photographers with users looking to improve their social media content, dating profile, or business brand.  </p>
           </li>
           <li className="faq_item_container">
             <div className='question'>Why did you create this service?</div>
