@@ -1624,7 +1624,7 @@ textarea {
 
 .user_profile_summary {
   border: solid 1px #ddd;
-  height: 250px;
+  min-height: 250px;
   padding: 20px;
 }
 
