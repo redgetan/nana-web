@@ -82,6 +82,7 @@ export default class PhotographerScreen extends Component {
     const name = [this.state.user.first_name, this.state.user.last_name].join(" ") 
     const username = this.state.user.username
     const instagramLink = "instagram.com/" + username
+    const isNotOnInstagram = this.state.user.is_ign
 
     return (
       <div>
@@ -94,7 +95,7 @@ export default class PhotographerScreen extends Component {
                 <div className="location summary_item"><i className='fa fa-map-marker'></i>{this.formatLocation(this.state.user.location)}</div>
               </div>
               {
-                username && 
+                username && !isNotOnInstagram &&
                   <a className="instagram_link" href={`https://${instagramLink}`} target="_blank">{instagramLink}</a>
               }
             </div>

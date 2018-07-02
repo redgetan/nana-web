@@ -42,13 +42,14 @@ export default class BookForm extends Component {
 
   render() {
     const price = this.props.user.price ? this.props.user.price : "90-200"
+    const currency = this.props.user.currency
     const minEndDate = this.state.startDate ? this.state.startDate : moment()
     const selectedOption = 'two'
     const user_id = this.props.user.username ? this.props.user.username : this.props.user.id
 
     return (
       <div className="book_request_form col-xs-12 col-sm-5">
-        <div className="cost"><span className="session_price">$ {price}</span> per hour</div>
+        <div className="cost"><span className="session_price">$ {price} </span> {currency} per hour</div>
         <Link to={`/users/${user_id}/book`} className='book_request_btn btn secondary_action_btn pull-right' >
           Request to Book
         </Link>

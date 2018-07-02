@@ -42,10 +42,10 @@ const main = () => {
   })
 
   $(document).on("click", (event) => {
-    const isNotNavBar = $(event.target).closest(".navbar-nav").length === 0
-    if (isNotNavBar) {
+    // const isNotNavBar = $(event.target).closest(".navbar-nav").length === 0
+    // if (isNotNavBar) {
       $('.collapse').collapse('hide')
-    }
+    // }
   })
 
   $(".explore_btn").on("click", (event) => {
