@@ -44,7 +44,8 @@ export default class HomeScreen extends Component {
 
   formatShortLocation(location) {
     if (!location) return ""
-    return location.split(/,\s+/)[0]
+    const tokens = location.split(/,\s+/)
+    return [tokens[0], tokens[1]].join(", ")
   }
 
   render() {

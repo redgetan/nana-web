@@ -31,13 +31,7 @@ export default class PhotographerScreen extends Component {
     if (!text) return "World"
 
     let location = text.replace(/\b\w/g, l => l.toUpperCase())
-    let words = location.split(/,\s+/)
-
-    if (words.length === 2) { 
-      return words.join(", ")
-    } else {
-      return words[0] + ", " + words[words.length - 1]
-    }
+    return location
   }
 
   componentDidMount() {
