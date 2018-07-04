@@ -65,11 +65,8 @@ export default class VerificationScreen extends Component {
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
           <div className='connected_accounts_container'>
             <FlashMessage status={status} />
-            <span className="form_field_description">Claim your unique url by connecting to instagram</span>
+            <span className="form_field_description">Claim your unique url by following our instagram account <a href="https://www.instagram.com/getnanapx/"> @getnanapx</a> and sending us a DM</span>
             <input type="text" onFocus={this.handleFocus} value={`nanapx.com/${username}`} readOnly="true" />
-
-
-            <InstagramConnect user={this.props.user} />
           </div>
         </div>
       </div>
