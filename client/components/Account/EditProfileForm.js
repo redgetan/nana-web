@@ -120,7 +120,7 @@ const EditProfileForm = ({
             <div className="upload_avatar_label">
               Change Photo
             </div>
-            <input className="user_avatar" name="user[avatar]" type="file" onChange={onAvatarProvided.bind(this, values, setFieldValue)} />
+            <input className="user_avatar" name="user[avatar]" type="file" accept="image/*" onChange={onAvatarProvided.bind(this, values, setFieldValue)} />
           </span>
         </div>
       </div>
