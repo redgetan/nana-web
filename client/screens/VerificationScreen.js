@@ -58,15 +58,22 @@ export default class VerificationScreen extends Component {
     const params = new URLSearchParams(this.props.location.search)
     const isSuccess = params.get('success')
     const status = isSuccess ? { success: "Your instagram account has now been connected" } : {}
+    const verifiedClass = this.props.user.username ? "verified" : ""
 
     return (
       <div className='user_settings_container container-fluid'>
         <AccountNavigationTab user={this.props.user} location={this.props.location} />
         <div className='user_settings_panel col-xs-12 col-sm-8  col-md-9 col-lg-10 '>
-          <div className='connected_accounts_container'>
+          <div className={`connected_accounts_container ${verifiedClass}`}>
             <FlashMessage status={status} />
             <span className="form_field_description">Claim your unique url by following our instagram account <a href="https://www.instagram.com/getnanapx/"> @getnanapx</a> and sending us a DM</span>
             <input type="text" onFocus={this.handleFocus} value={`nanapx.com/${username}`} readOnly="true" />
+            {
+              this.props.user.username && 
+                <div className="connected_account_label">
+                  Instagram account verified
+                </div>
+            }
           </div>
         </div>
       </div>

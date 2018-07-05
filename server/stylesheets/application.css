@@ -1685,6 +1685,10 @@ textarea {
   margin: 10px 0px;
 }
 
+.connected_accounts_container.verified input {
+  border: solid 1px steelblue;
+}
+
 .instagram_connect_container {
   text-align: center;
   margin-top: 10px;
@@ -1693,6 +1697,7 @@ textarea {
 .connected_account_label {
   color: steelblue;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .directory_card {
