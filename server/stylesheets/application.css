@@ -570,6 +570,14 @@ select::-ms-expand {
   color: #ccc;
 }
 
+@media only screen and (max-width : 400px) {
+  .wizard_navigation_container .step {
+    width: 100%;    
+    margin-bottom: 10px;
+  }
+}
+
+
 .wizard_navigation_container .step .step_icon {
   float: left;
   margin-right: 10px;
@@ -2980,3 +2988,4 @@ input::placeholder {
   min-width: 250px;
   width: 50%;
 }
+
