@@ -19,7 +19,7 @@ export default class PriceSummary extends Component {
 
   onProceedPayment = () => {
     window.scrollTo(0, 0)
-    this.setState({ checkout: true }) 
+    this.setState({ checkout: true })
     this.props.onProceedPayment()
 
     this.addPaymentMethod()
@@ -92,7 +92,7 @@ export default class PriceSummary extends Component {
         <div className="vertical_spacing line" />
 
         {
-          this.props.start_date && 
+          this.props.start_date &&
             <div className="service_date_row block">
               <div className="service_date">{moment(this.props.start_date).format("LL")}</div>
               <div className="service_time_range">18:00 − 22:00</div>
@@ -103,18 +103,18 @@ export default class PriceSummary extends Component {
         }
 
         <div className="price_subtotal_row block">
-          <div className="pull-left">${this.props.user.price} x {this.props.duration} hours</div> 
-          <div className="pull-right">{totalPrice}</div> 
+          <div className="pull-left">${this.props.user.price} x {this.props.duration} hours</div>
+          <div className="pull-right">{totalPrice}</div>
         </div>
 
         <div className="vertical_spacing line" />
 
         <div className="price_total_row block">
-          <div className="price_total_label pull-left">Total</div> 
-          <div className="pull-right">${totalPrice}</div> 
+          <div className="price_total_label pull-left">Total</div>
+          <div className="pull-right">${totalPrice}</div>
         </div>
 
-        <FlashMessage status={this.state.status} />
+        <FlashMessage status={this.state.status} clearStatus={() => { this.setState({ status: {} }) }} />
 
         {
           !this.props.stripeCustomerId &&
@@ -128,12 +128,12 @@ export default class PriceSummary extends Component {
                 Card details
               </label>
               <div className="payment_method_row">
-                {paymentMethod.brand} **** **** **** {paymentMethod.last4} - {paymentMethod.exp_month}/{paymentMethod.exp_year}             
+                {paymentMethod.brand} **** **** **** {paymentMethod.last4} - {paymentMethod.exp_month}/{paymentMethod.exp_year}
               </div>
               <button className='checkout_btn' disabled={this.props.isSubmitting} onClick={this.confirmOrder}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
             </div>
         }
-        
+
       </div>
     )
   }

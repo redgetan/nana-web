@@ -19,7 +19,7 @@ const locationInputProps = (values, setFieldValue) => {
     autoFocus: false,
     autoComplete: "new-password"
   }
-}  
+}
 
 
 const searchOptions = {
@@ -38,7 +38,7 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
       {suggestions.map(suggestion => (
         <div {...getSuggestionItemProps(suggestion)}>
           <span>{suggestion.description}</span>
-        </div>  
+        </div>
       ))}
     </div>
   </div>
@@ -53,18 +53,22 @@ export default class EditServicesForm extends Component {
     this.onStepSuccess = listener
   }
 
+  setOnStepFailure(listener) {
+    this.onStepFailure = listener
+  }
+
   render() {
     return (
       <Formik
         ref={el => (this.formik = el)}
 
         initialValues={
-          { 
-            price: this.props.user.price || 20, 
-            languages: this.props.user.languages || "", 
-            currency: this.props.user.currency || "", 
-            cameras: this.props.user.cameras || "", 
-            onUserUpdated: this.props.onUserUpdated 
+          {
+            price: this.props.user.price || 20,
+            languages: this.props.user.languages || "",
+            currency: this.props.user.currency || "",
+            cameras: this.props.user.cameras || "",
+            onUserUpdated: this.props.onUserUpdated
           }
         }
 
@@ -89,6 +93,7 @@ export default class EditServicesForm extends Component {
               let error = res.body.error
               error = error.replace('price', 'hourly rate')
               setStatus({ error: res.body.error })
+              this.onStepFailure()
             } else {
               ClientAPI.completeServicesStep(this.props.user.id, "details").then((res) => {
                 const user = res.body
@@ -104,12 +109,13 @@ export default class EditServicesForm extends Component {
             setSubmitting(false)
             window.scrollTo(0, 0)
             setStatus({ error: err })
+            this.onStepFailure()
           })
-       
+
 
         }}
 
-        render={({  
+        render={({
           values,
           errors,
           status,
@@ -117,6 +123,7 @@ export default class EditServicesForm extends Component {
           handleChange,
           handleBlur,
           handleSubmit,
+          setStatus,
           setFieldValue,
           isSubmitting
         }) => {
@@ -126,7 +133,7 @@ export default class EditServicesForm extends Component {
 
           return (
             <form onSubmit={handleSubmit} className="edit_services_form nana_form">
-              <FlashMessage status={status} />
+              <FlashMessage status={status} clearStatus={() => { setStatus({}) }} />
               <div className='row'>
                 <div className="col-xs-3"><label>Hourly Rate</label></div>
                 <div className="col-xs-9">

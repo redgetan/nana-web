@@ -23,7 +23,7 @@ export default class BookRequestScreen extends Component {
     window.scrollTo(0, 0)
 
     this.loadBookRequest()
-  } 
+  }
 
   loadBookRequest() {
     const token = this.props.match.params.token
@@ -67,10 +67,10 @@ export default class BookRequestScreen extends Component {
 
   render() {
     const currentUser = Config.getCurrentUser()
-    
+
     if (!currentUser) {
       return <Redirect to={`/signin?redirect=${window.location.href}`} />
-    } 
+    }
 
     if (this.state.notFound) {
       return <div className='container'>Book Request not found</div>
@@ -86,7 +86,7 @@ export default class BookRequestScreen extends Component {
             <div className="rect5"></div>
           </div>
       )
-    } 
+    }
 
     const profileLink = "/" + this.state.bookRequest.photographer.username
     const photographerName = this.state.bookRequest.photographer.username
@@ -97,21 +97,21 @@ export default class BookRequestScreen extends Component {
     return (
       <div>
         <div className="container book_request_container">
-          <FlashMessage status={this.state.status} />
+          <FlashMessage status={this.state.status} clearStatus={() => { this.setState({ status: {} }) }} />
 
           <div className="request_status block">
             <div className='book_request_status_label'>Status: </div>
             <div className='book_request_status_value'>
-              { 
-                this.state.bookRequest.is_accepted && 
+              {
+                this.state.bookRequest.is_accepted &&
                   <div className='accepted'>Accepted</div>
               }
-              { 
-                !this.state.bookRequest.is_accepted && 
+              {
+                !this.state.bookRequest.is_accepted &&
                   <div className='pending'>Pending</div>
               }
             </div>
-          </div>  
+          </div>
 
           <div className="vertical_spacing line" />
 
@@ -136,23 +136,23 @@ export default class BookRequestScreen extends Component {
           </div>
 
           <div className="price_total_row block">
-            <div className="price_total_label pull-left">Total</div> 
-            <div className="pull-right">${this.state.bookRequest.price} {this.state.bookRequest.currency}</div> 
+            <div className="price_total_label pull-left">Total</div>
+            <div className="pull-right">${this.state.bookRequest.price} {this.state.bookRequest.currency}</div>
           </div>
 
 
           {
             isBookRequestRecepient && !this.state.bookRequest.is_accepted &&
               <div>
-                <button 
-                  onClick={this.onAcceptRequest} 
+                <button
+                  onClick={this.onAcceptRequest}
                   className="accept_book_request_btn btn nana_primary_btn"
                   disabled={this.state.isSubmitting}
                   >
                   { this.state.isSubmitting ? "Loading..." : "Accept Booking" }
                 </button>
                 <p>
-                  By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date. 
+                  By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date.
                 </p>
               </div>
           }

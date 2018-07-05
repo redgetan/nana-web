@@ -2962,3 +2962,21 @@ input::placeholder {
 .credit_card_form_container label {
   font-size: 14px;
 }
+
+.forgot_password_container {
+  padding: 35px;
+}
+
+.forgot_password_container h3 {
+  padding-bottom: 10px;
+  color: #555;
+  border-bottom: dotted 1px #ddd;
+  margin-bottom: 15px;
+  margin-top: 0px;
+}
+
+.forgot_password_container input[type='text'] {
+  margin-bottom: 10px;
+  min-width: 250px;
+  width: 50%;
+}

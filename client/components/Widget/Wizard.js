@@ -45,6 +45,10 @@ export default class Wizard extends Component {
       this.transitionToNextStep(nextStepData)
     })
 
+    stepRef.setOnStepFailure(() => {
+      this.setState({ isSubmitting: false })
+    })
+
     this.setState({ isSubmitting: true })
 
     stepRef.handleNext()

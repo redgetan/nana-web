@@ -16,11 +16,12 @@ const PartnerDetailsForm = ({
   touched,
   handleChange,
   handleBlur,
+  setStatus,
   handleSubmit,
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="application_form container">
-    <FlashMessage status={status} />
+    <FlashMessage status={status} clearStatus={() => { setStatus({}) }} />
     <br />
     <div className='row'>
       <div className="col-sm-3 col-xs-12"><label>Country</label></div>
@@ -70,7 +71,7 @@ const PartnerDetailsForm = ({
         <FormField name="legal_entity.address.postal_code" placeholder="Your Postal Code" values={values} errors={errors} onChange={handleChange} onBlur={handleBlur} touched={touched} />
       </div>
     </div>
-    
+
     <div className='row'>
       <div className="col-xs-12">
         <input type="checkbox" name="checkbox" id="checkbox_id" value="value" />
@@ -87,15 +88,15 @@ const PartnerDetailsForm = ({
 )
 
 const requiredFields = ["country",
-                        "legal_entity.address.city", 
-                        "legal_entity.address.line1", 
-                        "legal_entity.address.postal_code", 
-                        "legal_entity.address.state", 
-                        "legal_entity.dob.day", 
-                        "legal_entity.dob.month", 
+                        "legal_entity.address.city",
+                        "legal_entity.address.line1",
+                        "legal_entity.address.postal_code",
+                        "legal_entity.address.state",
+                        "legal_entity.dob.day",
+                        "legal_entity.dob.month",
                         "legal_entity.dob.year",
                         "legal_entity.type",
-                        "legal_entity.first_name", 
+                        "legal_entity.first_name",
                         "legal_entity.last_name"]
 
 

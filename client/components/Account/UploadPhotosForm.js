@@ -45,6 +45,10 @@ export default class UploadPhotosForm extends Component {
     this.onStepSuccess = listener
   }
 
+  setOnStepFailure(listener) {
+    this.onStepFailure = listener
+  }
+
   handleNext() {
     ClientAPI.completeServicesStep(this.props.user.id, "upload_photos").then((res) => {
       const user = res.body

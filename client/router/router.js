@@ -24,6 +24,7 @@ import VerificationScreen from './../screens/VerificationScreen'
 import MyServicesScreen from './../screens/MyServicesScreen'
 import MyBookingsScreen from './../screens/MyBookingsScreen'
 import PartnerRegisterScreen from './../screens/PartnerRegisterScreen'
+import ForgotPasswordScreen from './../screens/ForgotPasswordScreen'
 import Config from './../config/config'
 import ClientAPI from './../api/client_api'
 
@@ -72,6 +73,7 @@ export default class AppRouter extends Component {
 		      <Route exact path="/users/:username/book" component={BookingScreen}/>
 		      <Route exact path="/users/:username" component={UserProfileScreen}/>
 		      <Route exact path="/users/:username/preview_service" render={ (props) => <PhotographerScreen isPreview={true} {...props} /> } />
+		      <Route exact path="/forgot_password" render={ (props) => <ForgotPasswordScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/manage" render={ (props) => <EditProfileScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/verification" render={ (props) => <VerificationScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />
 		      <Route exact path="/account/services" render={ (props) => <MyServicesScreen user={this.state.user} onUserUpdated={this.onUserUpdated} {...props} /> } />

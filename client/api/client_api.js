@@ -180,6 +180,12 @@ export default class ClientAPI {
     })
   }
 
+  static sendPasswordResetEmail(attributes) {
+    return this.post('/users/password_reset_email', {
+      body: attributes
+    })
+  }
+
   static s3Sign(attributes) {
     return this.post('/users/s3_sign', {
       body: attributes

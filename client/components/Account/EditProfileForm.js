@@ -11,7 +11,7 @@ import FormConfig from '../../config/form_config'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
 const onChange = (newVal) => {
-  console.log(newVal) 
+  console.log(newVal)
 }
 
 const locationInputProps = (values, setFieldValue) => {
@@ -22,7 +22,7 @@ const locationInputProps = (values, setFieldValue) => {
     autoFocus: false,
     autoComplete: "new-password"
   }
-}  
+}
 
 const searchOptions = {
   types: ['(cities)']
@@ -40,7 +40,7 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
       {suggestions.map(suggestion => (
         <div {...getSuggestionItemProps(suggestion)}>
           <span>{suggestion.description}</span>
-        </div>  
+        </div>
       ))}
     </div>
   </div>
@@ -92,10 +92,11 @@ const EditProfileForm = ({
   handleBlur,
   handleSubmit,
   setFieldValue,
+  setStatus,
   isSubmitting,
 }) => (
   <form onSubmit={handleSubmit} className="edit_profile_form nana_form">
-    <FlashMessage status={status} />
+    <FlashMessage status={status} clearStatus={() => { setStatus({}) }} />
 
     <div className='row'>
       <div className="col-xs-3"><label>Avatar</label></div>
@@ -167,8 +168,8 @@ const EditProfileForm = ({
 const requiredFields = ["first_name",
                         "last_name",
                         "email",
-                        "location", 
-                        "bio", 
+                        "location",
+                        "bio",
                         "avatar"
                         ]
 

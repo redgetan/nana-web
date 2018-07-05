@@ -8,6 +8,7 @@ export default class FlashMessage extends Component {
 
   onCloseClick = () => {
     this.setState({ visible: false })
+    this.props.clearStatus()
   }
 
   componentWillReceiveProps() {

@@ -33,17 +33,17 @@ const locationInputProps = (values, setFieldValue, setFieldTouched) => {
   }
 
   return props
-}  
+}
 
 const requiredFields = ["name",
                         "email",
-                        "message", 
-                        "location", 
+                        "message",
+                        "location",
                         "start_date",
                         "duration"]
 
 const allFieldsPopulated = (values) => {
-  const result = Object.keys(values).every((field) => { 
+  const result = Object.keys(values).every((field) => {
     const notEmptyString = typeof values[field] === "string" ? values[field].length > 0 : true
     const notNull = values[field] !== null
     return  notEmptyString && notNull
@@ -67,16 +67,16 @@ export default class BookingScreen extends Component {
     requiredFields.forEach((fieldName) => {
       this.formik.setFieldTouched(fieldName,true)
     })
-    
+
     this.formik.submitForm()
   }
 
   onCreditCardAdd = () => {
-    this.formik.setSubmitting(true)  
+    this.formik.setSubmitting(true)
   }
 
   onCreditCardAddFailed = () => {
-    this.formik.setSubmitting(false)  
+    this.formik.setSubmitting(false)
   }
 
   componentDidMount() {
@@ -93,7 +93,7 @@ export default class BookingScreen extends Component {
     }).catch((err) => {
       console.log("fail..")
     })
-  } 
+  }
 
 
   locationClassNames(touched, errors) {
@@ -102,14 +102,14 @@ export default class BookingScreen extends Component {
     }
 
     if (touched["location"] && errors["location"]) {
-      classNames["input"] = 'error' 
+      classNames["input"] = 'error'
     }
 
     return classNames
   }
 
   onProceedPayment = () => {
-    this.setState({ checkout: true })  
+    this.setState({ checkout: true })
   }
 
   componentWillMount() {
@@ -127,7 +127,7 @@ export default class BookingScreen extends Component {
   }
 
   enableTouchScroll() {
-    
+
   }
 
   render() {
@@ -140,12 +140,12 @@ export default class BookingScreen extends Component {
         ref={el => (this.formik = el)}
 
         initialValues={
-          { 
-            name: currentUser ? [currentUser.first_name, currentUser.last_name].join(" ") : "", 
+          {
+            name: currentUser ? [currentUser.first_name, currentUser.last_name].join(" ") : "",
             email: currentUser ? currentUser.email : "",
-            message: "", 
-            duration: 1, 
-            location: "", 
+            message: "",
+            duration: 1,
+            location: "",
             start_date: null,
             focused: false,
             show_date_picker: false
@@ -210,7 +210,7 @@ export default class BookingScreen extends Component {
 
         }}
 
-        render={({  
+        render={({
           values,
           errors,
           status,
@@ -219,6 +219,7 @@ export default class BookingScreen extends Component {
           handleBlur,
           handleSubmit,
           setFieldValue,
+          setStatus,
           setFieldTouched,
           isSubmitting
         }) => {
@@ -232,24 +233,24 @@ export default class BookingScreen extends Component {
 
           const isMobile = window.innerWidth < 786
           const calendarOrientation = isMobile ? HORIZONTAL_ORIENTATION : HORIZONTAL_ORIENTATION
-          const withPortal = isMobile 
+          const withPortal = isMobile
           const numberOfMonths = isMobile ? 1 : 2
 
           return (
             <div className='container'>
               {
-                status && status.success && 
+                status && status.success &&
                   <div className='row'>
                     <div className='col-xs-12'>
-                      <FlashMessage status={status} />
-                      <h3>Your photoshoot booking request has been submitted.</h3>  
+                      <FlashMessage status={status} clearStatus={() => { setStatus({}) }} />
+                      <h3>Your photoshoot booking request has been submitted.</h3>
                       <p>
-                        You will only be charged if the photographer accepts your request. Once they have accepted your payment, you'll receive an email notification. 
-                        { 
-                          currentUser && 
+                        You will only be charged if the photographer accepts your request. Once they have accepted your payment, you'll receive an email notification.
+                        {
+                          currentUser &&
                             <span>
-                              To check the status of your request, you can view your pending bookings at 
-                              <Link to="/account/bookings" > /account/bookings</Link> 
+                              To check the status of your request, you can view your pending bookings at
+                              <Link to="/account/bookings" > /account/bookings</Link>
                             </span>
                         }
                       </p>
@@ -260,14 +261,14 @@ export default class BookingScreen extends Component {
                 (!status || (status && !status.success)) &&
                   <div className='row'>
                     <div className='col-xs-12 col-sm-6'>
-                      <FlashMessage status={status} />
+                      <FlashMessage status={status} clearStatus={() => { setStatus({}) }} />
                       <form onSubmit={handleSubmit} className={formClass}>
                         <h2 className='center'>Booking Details</h2>
                         <br />
 
                           {
-                            !currentUser && 
-                              <div className=''>      
+                            !currentUser &&
+                              <div className=''>
                                 <div className='row'>
                                   <div className="col-xs-12 col-sm-3"><label>Name</label></div>
                                   <div className="col-xs-12 col-sm-9">
@@ -287,27 +288,27 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>When</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <div className={touched["start_date"] && errors["start_date"] ? "start_date_custom_input error" : "start_date_custom_input"} onClick={() => { 
+                            <div className={touched["start_date"] && errors["start_date"] ? "start_date_custom_input error" : "start_date_custom_input"} onClick={() => {
                               setFieldTouched('start_date', true)
-                              setFieldValue('show_date_picker', true) 
+                              setFieldValue('show_date_picker', true)
                               $('html, body').css({ overflow: 'hidden' })
                             }}>
                               {values.start_date && values.start_date.format("LL")}
                             </div>
                             {
-                              values.show_date_picker && 
+                              values.show_date_picker &&
                                 <div className="start_date_picker">
                                   <DayPickerSingleDateController
                                     keepOpenOnDateSelect={false}
-                                    onClose={() => { 
-                                      setFieldValue('show_date_picker', false) 
+                                    onClose={() => {
+                                      setFieldValue('show_date_picker', false)
                                       $('html, body').css({ overflow: 'auto' })
                                     }}
                                     numberOfMonths={numberOfMonths}
                                     orientation={calendarOrientation}
                                     withPortal={withPortal}
                                     date={values.start_date}
-                                    onDateChange={date => setFieldValue('start_date', date )} 
+                                    onDateChange={date => setFieldValue('start_date', date )}
                                     focused={true}
                                     hideKeyboardShortcutsPanel={true}
                                     isOutsideRange={day => isInclusivelyBeforeDay(day, moment().add(-1, 'days'))}
@@ -320,13 +321,13 @@ export default class BookingScreen extends Component {
                         <div className='row'>
                           <div className="col-xs-12 col-sm-3"><label>Duration</label></div>
                           <div className="col-xs-12 col-sm-9">
-                            <SelectField name="duration" label="Select Duration" 
+                            <SelectField name="duration" label="Select Duration"
                               options={[
                                 { value: 1, label: "1 hour  - 30 photos" },
                                 { value: 2, label: "2 hours - 60 photos" },
                                 { value: 3, label: "3 hours - 90 photos" },
                                 { value: 4, label: "4 hours - 120 photos" }
-                              ]} 
+                              ]}
                               values={values} errors={errors} touched={touched}/>
                           </div>
                         </div>
@@ -349,14 +350,14 @@ export default class BookingScreen extends Component {
                       </form>
                     </div>
                     <div className='col-xs-12 col-sm-6'>
-                      <PriceSummary 
-                        user={this.state.user} 
+                      <PriceSummary
+                        user={this.state.user}
                         customerEmail={values.email}
                         start_date={values.start_date}
                         location={values.location}
-                        duration={values.duration} 
+                        duration={values.duration}
                         onProceedPayment={this.onProceedPayment}
-                        onConfirmOrder={this.onConfirmOrder} 
+                        onConfirmOrder={this.onConfirmOrder}
                         onCreditCardAdd={this.onCreditCardAdd}
                         onCreditCardAddFailed={this.onCreditCardAddFailed}
                         stripeCustomerId={this.state.stripeCustomerId}
