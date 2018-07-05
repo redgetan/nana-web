@@ -2989,3 +2989,18 @@ input::placeholder {
   width: 50%;
 }
 
+.forgot_password_container label {
+  margin-top: 10px;
+}
+
+.reset_password_btn {
+  margin-top: 15px;
+}
+
+.password_reset_success_container {
+  margin: 20px;
+}
+
+.login_forgot_password_btn {
+  margin-right: 15px; 
+}

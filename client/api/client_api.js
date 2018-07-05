@@ -96,6 +96,10 @@ export default class ClientAPI {
     return this.get('/users/' + user_id + "/photos")
   }
 
+  static checkResetPasswordTokenValidity(token) {
+    return this.get('/users/reset_password_valid_check/' + token)
+  }
+
   static updateUser(id, attributes) {
     return this.put('/users/' + id, {
       body: {
@@ -182,6 +186,12 @@ export default class ClientAPI {
 
   static sendPasswordResetEmail(attributes) {
     return this.post('/users/password_reset_email', {
+      body: attributes
+    })
+  }
+
+  static resetPassword(token, attributes) {
+    return this.post('/users/password_reset/' + token, {
       body: attributes
     })
   }

@@ -43,6 +43,13 @@ export default class ForgotPasswordScreen extends Component {
     })
   } 
 
+  componentDidMount() {
+    const params = new URLSearchParams(this.props.location.search)
+    if (params.get('expired')) {
+      this.setState({ status: { error: "Password reset link has expired. Send a new link to your email" }})  
+    }
+  }
+
   handleChange = (event) => {
     this.setState({ email: event.target.value })
   }
