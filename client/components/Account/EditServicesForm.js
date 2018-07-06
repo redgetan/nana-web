@@ -127,7 +127,7 @@ export default class EditServicesForm extends Component {
           setFieldValue,
           isSubmitting
         }) => {
-          const languageOptions = ["English", "Spanish", "French", "Arabic", "Hindi", "Russian", "Portuguese", "Mandarin", "Japanese", "Korean"].map((language) => {
+          const languageOptions = ["English", "French", "Spanish", "Mandarin", "Cantonese", "Japanese", "Hindi", "Russian", "Portuguese", "Korean", "Arabic", "Dutch", "Swedish", "Polish"].map((language) => {
             return { value: language, label: language }
           })
 
@@ -147,9 +147,9 @@ export default class EditServicesForm extends Component {
                 </div>
               </div>
               <div className='row'>
-                <div className="col-xs-3"><label>Language</label></div>
+                <div className="col-xs-3"><label>Languages</label></div>
                 <div className="col-xs-9">
-                  <SelectField name="languages" label="Select Languages" options={languageOptions} values={values} errors={errors} touched={touched}/>
+                  <SelectField name="languages" label="Select Languages" multi={true} options={languageOptions} values={values} errors={errors} touched={touched} setFieldValue={setFieldValue} />
                 </div>
               </div>
               <div className='row'>

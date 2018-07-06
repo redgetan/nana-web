@@ -27,8 +27,8 @@ export default class Profile extends Component {
           {
             this.props.user.languages &&   
               <div className="summary_item">
-                <label>Language</label>
-                <span>{this.props.user.languages}</span>
+                <label>Languages</label>
+                <span>{this.props.user.languages.split(",").join(", ")}</span>
               </div>
           }
         </div>
