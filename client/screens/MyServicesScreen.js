@@ -77,7 +77,7 @@ export default class MyServicesScreen extends Component {
   render() {
     if (!this.props.user) {
       return (
-        <Redirect to="/signin"/>
+        <Redirect to={`/signin?redirect=${window.location.href}`}/>
       )
     }
 
