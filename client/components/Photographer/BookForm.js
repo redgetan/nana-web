@@ -41,7 +41,7 @@ export default class BookForm extends Component {
   }
 
   render() {
-    const price = this.props.user.price ? this.props.user.price : "90-200"
+    const price = this.props.user.price 
     const currency = this.props.user.currency
     const minEndDate = this.state.startDate ? this.state.startDate : moment()
     const selectedOption = 'two'

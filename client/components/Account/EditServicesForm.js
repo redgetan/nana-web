@@ -64,7 +64,7 @@ export default class EditServicesForm extends Component {
 
         initialValues={
           {
-            price: this.props.user.price || 20,
+            price: this.props.user.price,
             languages: this.props.user.languages || "",
             currency: this.props.user.currency || "",
             cameras: this.props.user.cameras || "",

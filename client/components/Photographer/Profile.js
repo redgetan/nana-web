@@ -8,7 +8,7 @@ export default class Profile extends Component {
 
   render() {
     const profileClassName = (this.props.user.is_photographer || this.props.isPreview) ? "user_profile_summary photographer" : "user_profile_summary" 
-    const priceLabel = this.props.user.price ? [this.props.user.price, this.props.user.currency].join(" ") : "$90-$200"
+    const priceLabel = [this.props.user.price, this.props.user.currency].join(" ") 
 
     return (
       <div className='user_profile_container col-xs-12 col-sm-7'>
