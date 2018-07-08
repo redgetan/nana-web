@@ -55,7 +55,9 @@ export default class BookRequestScreen extends Component {
         this.setState({ isSubmitting: false })
       } else {
         this.loadBookRequest().then(() => {
-          this.setState({ status: { success: "You have accepted this booking. You will be paid shortly." } })
+          const isFree = this.state.bookRequest.price === 0
+          const message = isFree ? "You have accepted this booking" : "You have accepted this booking. You will be paid shortly."
+          this.setState({ status: { success: message  } })
           this.setState({ isSubmitting: false })
         })
       }
@@ -93,6 +95,7 @@ export default class BookRequestScreen extends Component {
 
     const customerLink = "/users/" + this.state.bookRequest.user.id
     const isBookRequestRecepient = this.props.user && this.props.user.id === this.state.bookRequest.photographer.id
+    const isFree = this.state.bookRequest.price === 0
 
     return (
       <div>
@@ -151,9 +154,18 @@ export default class BookRequestScreen extends Component {
                   >
                   { this.state.isSubmitting ? "Loading..." : "Accept Booking" }
                 </button>
-                <p>
-                  By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date.
-                </p>
+                {
+                  isFree &&
+                  <p>
+                    By clicking accept, you agree to provide photography services to customer for free and fullfill your duties on the agreed upon date.
+                  </p>
+                }
+                {
+                  !isFree &&
+                  <p>
+                    By clicking accept, the customer will be charged with the corresponding payment. You agree to fullfill your duties on the agreed upon date.
+                  </p>
+                }
               </div>
           }
 

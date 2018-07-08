@@ -70,7 +70,9 @@ export default class PriceSummary extends Component {
   }
 
   confirmOrder = () => {
-    if (this.props.stripeCustomerId) {
+    if (this.props.user.price === 0) {
+      this.props.onConfirmOrder()
+    } else if (this.props.stripeCustomerId) {
       this.props.onConfirmOrder(this.props.stripeCustomerId)
     }
   }
@@ -117,11 +119,11 @@ export default class PriceSummary extends Component {
         <FlashMessage status={this.state.status} clearStatus={() => { this.setState({ status: {} }) }} />
 
         {
-          !this.props.stripeCustomerId &&
+          !this.props.stripeCustomerId && totalPrice > 0 &&
             <button disabled={this.props.disabled} onClick={this.onProceedPayment} className="proceed_payment_btn btn btn-lg btn-success">Proceed to Payment</button>
         }
         {
-          this.props.stripeCustomerId && paymentMethod &&
+          this.props.stripeCustomerId && paymentMethod && totalPrice > 0 &&
             <div>
               <div className="vertical_spacing line" />
               <label>
@@ -130,6 +132,13 @@ export default class PriceSummary extends Component {
               <div className="payment_method_row">
                 {paymentMethod.brand} **** **** **** {paymentMethod.last4} - {paymentMethod.exp_month}/{paymentMethod.exp_year}
               </div>
+              <button className='checkout_btn' disabled={this.props.isSubmitting} onClick={this.confirmOrder}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
+            </div>
+        }
+        {
+          totalPrice === 0 &&
+            <div>
+              <div className="vertical_spacing line" />
               <button className='checkout_btn' disabled={this.props.isSubmitting} onClick={this.confirmOrder}>{this.props.isSubmitting ? "Loading..." : "Confirm order"}</button>
             </div>
         }
