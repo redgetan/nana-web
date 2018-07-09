@@ -49,7 +49,14 @@ export default class BookForm extends Component {
 
     return (
       <div className="book_request_form col-xs-12 col-sm-5">
-        <div className="cost"><span className="session_price">$ {price} </span> {currency} per hour</div>
+        { 
+          price === 0 &&
+            <div className="cost"><span className="session_price">FREE</span></div>
+        }
+        { 
+          price > 0 &&
+            <div className="cost"><span className="session_price">$ {price} </span> {currency} per hour</div>
+        }
         <Link to={`/users/${user_id}/book`} className='book_request_btn btn secondary_action_btn pull-right' >
           Request to Book
         </Link>
