@@ -323,10 +323,10 @@ export default class BookingScreen extends Component {
                           <div className="col-xs-12 col-sm-9">
                             <SelectField name="duration" label="Select Duration"
                               options={[
-                                { value: 1, label: "1 hour  - 30 photos" },
-                                { value: 2, label: "2 hours - 60 photos" },
-                                { value: 3, label: "3 hours - 90 photos" },
-                                { value: 4, label: "4 hours - 120 photos" }
+                                { value: 1, label: "1 hour  - 15 photos" },
+                                { value: 2, label: "2 hours - 30 photos" },
+                                { value: 3, label: "3 hours - 45 photos" },
+                                { value: 4, label: "4 hours - 60 photos" }
                               ]}
                               values={values} errors={errors} touched={touched}/>
                           </div>
