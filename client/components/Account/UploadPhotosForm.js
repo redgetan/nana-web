@@ -123,7 +123,7 @@ export default class UploadPhotosForm extends Component {
       replaceTargetContent: true,
       showLinkToFileUploadResult: false,
       showProgressDetails: true,
-      note: 'Images only, 1–5 files, up to 5 MB',
+      note: 'Images only, 1–50 files, up to 5 MB',
       height: 470,
       metaFields: [
         { id: 'name', name: 'Name', placeholder: 'file name' },
