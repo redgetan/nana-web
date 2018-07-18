@@ -111,7 +111,7 @@ export default class UploadPhotosForm extends Component {
       autoProceed: false,
       restrictions: {
         maxFileSize: 5000000,
-        maxNumberOfFiles: 5,
+        maxNumberOfFiles: 50,
         minNumberOfFiles: 1,
         allowedFileTypes: ['image/*']
       }
