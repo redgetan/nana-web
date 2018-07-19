@@ -51,11 +51,13 @@ export default class PhotographerDirectory extends Component {
         </div>
       )
 
-      usersByLocation[location].map((user) => {
+      usersByLocation[location].forEach((user) => {
+        let user_id = user.username ? user.username : user.id
+
         contents.push(
-          <div className='directory_card col-xs-12 col-sm-4 col-md-4' key={user.id} >
+          <div className='directory_card col-xs-12 col-sm-6 col-md-4 col-lg-3' key={user_id} >
             <div className='directory_item_row'>
-              <Link to={`/users/${user.id}`}>
+              <Link to={`/users/${user_id}`}>
                 <div className="directory_item_col">
                   <img className='user_avatar' src={user.avatar} alt=""/>
                 </div>
@@ -64,12 +66,19 @@ export default class PhotographerDirectory extends Component {
                 </div>
               </Link>
             </div>
-            <div className='directory_item_row'>
-              <ProfileCard user={user} />
-            </div>
             <div className='directory_item_row photographer_directory_bio'>
               {user.bio}
             </div>
+            <div className='directory_item_row'>
+              <ProfileCard user={user} />
+            </div>
+            <Link to={`/users/${user_id}/book`} className='view_full_profile_btn'>
+              View Full Profile
+            </Link>
+            <Link to={`/users/${user_id}/book`} className='book_request_btn btn secondary_action_btn pull-right' >
+              Request to Book
+            </Link>
+
           </div>
         )
       })

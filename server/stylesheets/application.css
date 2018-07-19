@@ -81,6 +81,12 @@ select::-ms-expand {
 }
 
 @media screen and (max-width: 768px) { 
+  input[type='text'],
+  input[type='number'],
+  textarea {
+    /*font-size: 16px;*/
+  }
+
   body.modal-open {
     position: fixed;
   }
@@ -1500,7 +1506,7 @@ textarea {
 .photographer_directory_bio {
   height: 70px;
   overflow: hidden;
-  text-align: justify;
+  /*text-align: justify;*/
   margin-top: 20px;
   font-size: 16px;
 }
@@ -3004,4 +3010,23 @@ input::placeholder {
 
 .login_forgot_password_btn {
   margin-right: 15px; 
+}
+
+.directory_card .book_request_btn {
+  width: 100%;
+  font-size: 16px;
+  margin-top: 10px;
+  background-color:  #b3338e !important;
+}
+
+.directory_card .book_request_btn:hover {
+  background-color:  #c70e92 !important;
+}
+
+.directory_card .view_full_profile_btn {
+  text-decoration: underline;
+  font-size: 14px;
+  margin-top: 10px; 
+  display: block;
+  text-align: center;
 }

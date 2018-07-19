@@ -1,3 +1,7 @@
+/*
+  Used in Developemt only. Production uses static files.
+*/
+
 import express from 'express'
 
 
