@@ -3030,3 +3030,7 @@ input::placeholder {
   display: block;
   text-align: center;
 }
+
+.search_result_header {
+  text-align: center;
+}

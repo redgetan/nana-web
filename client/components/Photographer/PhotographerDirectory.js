@@ -46,7 +46,7 @@ export default class PhotographerDirectory extends Component {
     for (let location in usersByLocation) {
       contents.push(
         <div key={location}>
-          <h3>Photographers in {location}</h3>
+          <h3 className='search_result_header'>Photographers in {location}</h3>
           <br/>
         </div>
       )
