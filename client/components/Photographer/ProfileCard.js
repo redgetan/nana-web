@@ -19,6 +19,8 @@ export default class ProfileCard extends Component {
   render() {
     const price = this.props.user.price 
     const currency = this.props.user.currency
+    const user_id = this.props.user.username ? this.props.user.username : this.props.user.id
+
 
     return (
       <div className="photo_card">
@@ -26,8 +28,8 @@ export default class ProfileCard extends Component {
           <div className="user_avatar"><img src="https://pbs.twimg.com/profile_images/763917100624715776/C8hiV68x_bigger.jpg" alt=""/></div>
           <div className="username">{this.props.user.email}</div>
         </div>
-        <PhotoSlider photos={this.props.user.photos} userId={this.props.user.id} />
-        <Link className="profile_card_bottom" to={`/users/${this.props.user.id}`} >
+        <PhotoSlider photos={this.props.user.photos} userId={user_id} />
+        <Link className="profile_card_bottom" to={`/users/${user_id}`} >
           <div className="user_rating">
             <Rating 
               emptySymbol="fa fa-star-o"
