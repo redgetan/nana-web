@@ -53,7 +53,7 @@ export default class PhotographerDirectory extends Component {
 
       usersByLocation[location].map((user) => {
         contents.push(
-          <div className='directory_card col-xs-12 col-sm-6 col-md-4' key={user.id} >
+          <div className='directory_card col-xs-12 col-sm-4 col-md-4' key={user.id} >
             <div className='directory_item_row'>
               <Link to={`/users/${user.id}`}>
                 <div className="directory_item_col">

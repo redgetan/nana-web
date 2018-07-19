@@ -702,11 +702,12 @@ textarea.error {
   object-fit: cover;
 }
 
-@media only screen and (max-width : 400px) {
+@media only screen and (max-width : 768px) {
   .home_sample_photo {
     max-width: none;
     object-fit: cover;
     width: 100%;
+    object-position: 50% 25%;
   }
 
   .desktop_description {
