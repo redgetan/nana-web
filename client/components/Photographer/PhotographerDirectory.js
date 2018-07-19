@@ -72,7 +72,7 @@ export default class PhotographerDirectory extends Component {
             <div className='directory_item_row'>
               <ProfileCard user={user} />
             </div>
-            <Link to={`/users/${user_id}/book`} className='view_full_profile_btn'>
+            <Link to={`/users/${user_id}`} className='view_full_profile_btn'>
               View Full Profile
             </Link>
             <Link to={`/users/${user_id}/book`} className='book_request_btn btn secondary_action_btn pull-right' >
