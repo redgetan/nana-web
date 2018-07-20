@@ -127,7 +127,7 @@ export default class EditServicesForm extends Component {
           setFieldValue,
           isSubmitting
         }) => {
-          const languageOptions = ["English", "French", "Spanish", "Mandarin", "Cantonese", "Japanese", "Hindi", "Russian", "Portuguese", "Korean", "Arabic", "Dutch", "Swedish", "Polish"].map((language) => {
+          const languageOptions = ["English", "French", "Vietnamese", "Spanish", "Mandarin", "Cantonese", "Japanese", "Hindi", "Russian", "Portuguese", "Korean", "Arabic", "Dutch", "Swedish", "Polish"].map((language) => {
             return { value: language, label: language }
           })
 
