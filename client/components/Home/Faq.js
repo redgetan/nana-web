@@ -36,6 +36,10 @@ export default class Faq extends Component {
             <p>We are accepting signups to be a photographer in our platform</p>
           </li>
           <li className="faq_item_container">
+            <div className='question'>How much percentage do you take from photographer bookings?</div>
+            <p>Although this might change in the future, right now, we take 0% commission from photographer bookings to encourage signups and reward early adopters. This is to encourage early adopters to use our platform. We're still experimenting on potential business models, but our current focus is on connecting new clients with photographers.</p>
+          </li>
+          <li className="faq_item_container">
             <div className='question'>When do I get charged as a customer booking a photoshoot?</div>
             <p>You only get charged when a photographer accepts your request. If the schedule or distance restrictions doesnt allow it, and photographer can't fullfill your request, you won't be charged.</p>
           </li>
