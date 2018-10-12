@@ -39,7 +39,7 @@
     "react-stripe-checkout": "^2.6.3",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "tcomb-form": "^0.9.19",
+    "tcomb-form": "git+https://github.com/gcanti/tcomb-form.git#0.9.19",
     "uppy": "^0.24.2"
   },
   "devDependencies": {
