@@ -248,12 +248,14 @@ select::-ms-expand {
   text-align: center;
   float: right;
   border: solid 1px #ddd;
+  display: none;
 }
 
 .book_request_btn {
   margin-bottom: 10px;
   width: 100%;
   background-color: #c70e92 !important;
+  display: none;
 }
 
 .book_request_btn:hover,
@@ -502,6 +504,7 @@ select::-ms-expand {
 }
 
 .cost {
+  display: none;
 }
 
 .user_gallery_picker img {
