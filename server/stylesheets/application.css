@@ -231,6 +231,11 @@ select::-ms-expand {
   display: inline-block;
 }
 
+.user_profile_container {
+  margin-top: 0px;
+}
+
+.user_profile_container .user_bio h3 ,
 .user_profile_container .user_bio h1 {
   margin-top: 0px;
 }
@@ -248,14 +253,12 @@ select::-ms-expand {
   text-align: center;
   float: right;
   border: solid 1px #ddd;
-  display: none;
 }
 
 .book_request_btn {
   margin-bottom: 10px;
   width: 100%;
   background-color: #c70e92 !important;
-  display: none;
 }
 
 .book_request_btn:hover,
@@ -504,7 +507,7 @@ select::-ms-expand {
 }
 
 .cost {
-  display: none;
+  /*display: none;*/
 }
 
 .user_gallery_picker img {

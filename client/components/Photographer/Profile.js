@@ -11,7 +11,7 @@ export default class Profile extends Component {
     const priceLabel = [this.props.user.price, this.props.user.currency].join(" ") 
 
     return (
-      <div className='user_profile_container col-xs-12'>
+      <div className='user_profile_container col-xs-12 col-sm-7'>
         <div className={profileClassName}>
           <div className="summary_item hourly_rate_summary_item">
             <label>Hourly Rate</label>
