@@ -231,6 +231,10 @@ select::-ms-expand {
   display: inline-block;
 }
 
+.book_request_form {
+  display: none;
+}
+
 .user_profile_container {
   margin-top: 0px;
 }
@@ -256,9 +260,14 @@ select::-ms-expand {
 }
 
 .book_request_btn {
+  display: none;
   margin-bottom: 10px;
   width: 100%;
   background-color: #c70e92 !important;
+}
+
+.photo_card .cost {
+  display: none;
 }
 
 .book_request_btn:hover,
